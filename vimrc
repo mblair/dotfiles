@@ -11,6 +11,7 @@ set backspace=2
 
 " Source .vimrc when you change it.
 autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost vimrc source %
 
 " Show line numbers.
 set number
@@ -98,7 +99,7 @@ set nolist
 
 " Sweet statusline.
 set laststatus=2
-set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]
+set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]%{fugitive#statusline()} 
 "               | | | |  |   |       |    |
 "               | | | |  |   |       |    +--current column
 "               | | | |  |   |       +-------current line
