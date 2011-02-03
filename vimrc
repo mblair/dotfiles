@@ -11,7 +11,6 @@ set backspace=2
 
 " Source .vimrc when you change it.
 autocmd! bufwritepost .vimrc source %
-autocmd! bufwritepost vimrc source %
 
 " Show line numbers.
 set number
