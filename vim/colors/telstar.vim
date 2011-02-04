@@ -29,6 +29,8 @@ hi Directory     guifg=Grey
 hi MoreMsg       gui=bold guifg=White
 hi NonText       gui=bold guifg=DarkGrey
 hi Question      gui=bold guifg=White
+hi Search        gui=bold guifg=Grey guibg=fg
+hi IncSearch     gui=bold guifg=Grey guibg=fg
 hi SpecialKey    guifg=White
 hi Title         gui=bold guifg=Grey
 hi WildMenu      guibg=Yellow guifg=Black
@@ -58,8 +60,6 @@ hi Identifier    guifg=#686888
 hi Pmenu         guibg=#101033 guifg=#999999 gui=bold
 
 hi MatchParen    gui=bold guifg=Grey guibg=fg
-hi Search        gui=bold guifg=Grey guibg=fg
-hi IncSearch     gui=bold guifg=Grey guibg=fg
 
 " java highlighting
 hi javaExternal  guifg=#666666

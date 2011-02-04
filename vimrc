@@ -88,6 +88,9 @@ map <C-c> "+y
 " Make Ctrl-V paste stuff from the clipboard (again, not a register).
 map <C-v> "+gP
 
+" Toggle Gundo with F5.
+nnoremap <F5> :GundoToggle<CR>
+
 " Persistent undo! Vim 7.3 only.
 set undodir=~/.vim/undodir
 set undofile
@@ -109,3 +112,31 @@ set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]%{fugitive#statusline()}
 "               | | +---------------------------read-only flag like so: [RO]
 "               | +-----------------------------modified flag like so: [+]
 "               +-------------------------------full path to the file in the buffer
+
+" http://stackoverflow.com/questions/3907639/how-can-i-make-nerdtree-to-open-on-the-same-drive-that-the-file-that-im-editing/4170294#4170294
+function! NTFinderP()
+    "" Check if NERDTree is open
+    if exists("t:NERDTreeBufName")
+        let s:ntree = bufwinnr(t:NERDTreeBufName)
+    else
+        let s:ntree = -1
+    endif
+    if (s:ntree != -1)
+        "" If NERDTree is open, close it.
+        :NERDTreeClose
+    else
+        "" Try to open a :Rtree for the rails project
+        if exists(":Rtree")
+            "" Open Rtree (using rails plugin, it opens in project dir)
+            :Rtree
+        else
+            "" Open NERDTree in the file path
+            :NERDTreeFind
+        endif
+    endif
+endfunction
+
+"" Toggles NERDTree
+map <silent> <F2> :call NTFinderP()<CR>
+
+map <C-a> <plug>NERDCommenterToggle
