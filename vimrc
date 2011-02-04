@@ -108,4 +108,4 @@ set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]%{fugitive#statusline()}
 "               | | | +-------------------------total number of lines
 "               | | +---------------------------read-only flag like so: [RO]
 "               | +-----------------------------modified flag like so: [+]
-"               +----------------------------full path to the file in the buffer
+"               +-------------------------------full path to the file in the buffer
