@@ -99,12 +99,13 @@ set nolist
 " Sweet statusline.
 set laststatus=2
 set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]%{fugitive#statusline()} 
-"               | | | |  |   |       |    |
-"               | | | |  |   |       |    +--current column
-"               | | | |  |   |       +-------current line
-"               | | | |  |   +---------------current % into file
-"               | | | |  +-------------------total number of lines, left-justified for some reason.
-"               | | | +----------------------stuff to the left of this is left-justified, stuff to the right is right-justified.
-"               | | +------------------------read-only flag like so: [RO]
-"               | +--------------------------modified flag like so: [+]
+"               | | | |  |   |       |    |  |
+"               | | | |  |   |       |    |  +--shows your current git branch
+"               | | | |  |   |       |    +-----current column
+"               | | | |  |   |       +----------current line
+"               | | | |  |   +------------------current % into file
+"               | | | |  +----------------------stuff to the left of this is left-justified, stuff to the right is right-justified.
+"               | | | +-------------------------total number of lines
+"               | | +---------------------------read-only flag like so: [RO]
+"               | +-----------------------------modified flag like so: [+]
 "               +----------------------------full path to the file in the buffer
