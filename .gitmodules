@@ -7,3 +7,27 @@
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/ragtag"]
+	path = vim/bundle/ragtag
+	url = git://github.com/tpope/vim-ragtag.git
+[submodule "vim/bundle/color_sampler_pack"]
+	path = vim/bundle/color_sampler_pack
+	url = git://github.com/vim-scripts/Color-Sampler-Pack.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vim/bundle/scrollcolors"]
+	path = vim/bundle/scrollcolors
+	url = git://github.com/vim-scripts/ScrollColors.git
+[submodule "vim/bundle/csapprox"]
+	path = vim/bundle/csapprox
+	url = git://github.com/vim-scripts/CSApprox.git
+[submodule "vim/bundle/gundo"]
+	path = vim/bundle/gundo
+	url = git://github.com/sjl/gundo.vim.git
+[submodule "vim/bundle/ack"]
+	path = vim/bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
