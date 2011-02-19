@@ -140,3 +140,5 @@ endfunction
 map <silent> <F2> :call NTFinderP()<CR>
 
 map <C-a> <plug>NERDCommenterToggle
+
+autocmd FileType ruby                   setlocal ai et ts=2 sw=2 tw=0
