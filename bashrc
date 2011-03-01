@@ -1,4 +1,6 @@
 if [ "`uname`" == "Linux" ]; then
+	PAGER=less
+
 	# LESS man page colors
 	export LESS_TERMCAP_mb=$'\E[01;31m'
 	export LESS_TERMCAP_md=$'\E[01;31m'
@@ -117,7 +119,7 @@ if [ "`uname`" == "Linux" ]; then
 	alias grep='grep --color=always'
 	alias ls='ls --color=auto -p'
 	alias less='less -N' #show line numbers when I invoke less myself, not for man.
-	alias egrep='egrep --color=auto'
+	alias pstree='pstree -ap' #args & PID
 	alias f='find | grep'
 	alias c='clear'
 
