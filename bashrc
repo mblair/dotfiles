@@ -1,3 +1,9 @@
+#TODO: Get LSCOLORS working on Darwin.
+
+if [ "`uname`" == "Darwin" ]; then
+	echo
+fi
+
 if [ "`uname`" == "Linux" ]; then
 	PAGER=less
 
@@ -75,6 +81,33 @@ if [ "`uname`" == "Linux" ]; then
 		fi
 	}
 
+	#Thanks Gary Bernhardt.
+	minutes_since_last_commit() {
+		now=`date +%s`
+		last_commit=`git log --pretty=format:'%at' -1`
+		seconds_since_last_commit=$((now - last_commit))
+		minutes_since_last_commit=$((seconds_since_last_commit / 60))
+		echo $minutes_since_last_commit
+	}
+
+	git_prompt() {
+		local g="$(__gitdir)"
+		if [ -n "$g" ]; then
+			local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
+			if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
+				local COLOR=${bldred}
+			elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
+				local COLOR=${bldylw}
+			else
+				local COLOR=${bldgrn}
+			fi
+			local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${txtrst}"
+			# __git_ps1 is from the Git source tree's contrib/completion/git-completion.bash
+			local GIT_PROMPT=`__git_ps1 "(%s|${SINCE_LAST_COMMIT})"`
+			echo ${GIT_PROMPT}
+		fi
+	}
+
 	update_prompt() {
 		RET=$?;
 
@@ -87,8 +120,7 @@ if [ "`uname`" == "Linux" ]; then
 		RET_VALUE="$(if [[ $RET = 0 ]]; then echo -ne "${bldgrn}$RET"; else echo -ne "${bldred}$RET"; fi;)"
 		svn_rev
 		
-		# __git_ps1 is from git-completion.bash in the Git source distribution.
-		PS1="${bldblu}[${txtrst}\w${bldblu}]${bldgrn}$(__git_ps1 " (%s)")${SVN_REV} ${txtblu}\$ ${txtrst}"
+		PS1="${bldblu}[${txtrst}\w${bldblu}]${bldgrn}$(git_prompt)${SVN_REV} ${txtblu}\$ ${txtrst}"
 
 		# Set the title to user@host: dir
 		PS1="\[\e]0;\u@\h: \w\a\]$PS1"
