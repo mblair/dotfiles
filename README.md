@@ -4,8 +4,8 @@ My Dotfiles
 Eventually this will contain my configuration files for:
 
 * Bash
+* Vim (currently [here](vimrc))
 * Zsh (I'm migrating to it)
-* Vim
 * Git
 * IRB
 * Screen
