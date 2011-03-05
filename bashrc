@@ -135,9 +135,8 @@ if [ "`uname`" == "Linux" ]; then
 		. /etc/bash_completion
 	fi
 
-	#TODO: Make this work for user-local RVM installations also.
-	if [ -f /usr/local/rvm/scripts/completion ]; then
-		. /usr/local/rvm/scripts/completion
+	if [ -f ~/.rvm/scripts/completion ]; then
+		. ~/.rvm/scripts/completion
 	fi
 
 	#TODO: Profile your prompt and see if this is what's slowing things down.
