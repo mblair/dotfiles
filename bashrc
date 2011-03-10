@@ -151,7 +151,7 @@ if [ "`uname`" == "Linux" ]; then
 	alias ls='ls --color=auto -p'
 	alias less='less -N' #show line numbers when I invoke less myself, not for man.
 	alias pstree='pstree -ap' #args & PID
-	alias f='find | grep'
+	alias f='find | grep -i'
 	alias c='clear'
 
 	#Archive extractor.
