@@ -82,11 +82,12 @@ endif
 " look normal.
 set pastetoggle=<C-p>
 
-" Make Ctrl-C copy stuff to the clipboard (not to a register).
+" Make Ctrl-C copy stuff to the system clipboard, also known as the + register. 
 map <C-c> "+y
 
-" Make Ctrl-V paste stuff from the clipboard (again, not a register).
-map <C-v> "+gP
+" Make Ctrl-V paste stuff from the clipboard.
+" Disables visual block mode, which I never use.
+map <C-v> "+gp
 
 " Toggle Gundo with F5.
 nnoremap <F5> :GundoToggle<CR>
@@ -139,6 +140,7 @@ endfunction
 "" Toggles NERDTree
 map <silent> <F2> :call NTFinderP()<CR>
 
+" Can no longer increment numbers in normal mode.
 map <C-a> <plug>NERDCommenterToggle
 
 autocmd FileType ruby                   setlocal ai et ts=2 sw=2 tw=0
