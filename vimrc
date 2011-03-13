@@ -1,7 +1,9 @@
-filetype off
+" What is vi again?
+set nocompatible
+
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-filetype plugin indent on       " thanks nvie
+filetype plugin indent on
 
 " Syntax highlighting.
 syntax on
@@ -10,7 +12,7 @@ syntax on
 set backspace=2
 
 " Source .vimrc when you change it.
-autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost vimrc source %
 
 " Show line numbers.
 set number
@@ -34,13 +36,14 @@ set splitbelow
 set splitright
 
 " Don't break in the middle of words.
-set lbr
+set linebreak
 
 " Search with case insensitivity.
-set ic
+set ignorecase
 
-" No toolbar for gvim
+" No toolbar, menu for gvim
 set guioptions-=T
+set guioptions-=m
 
 " cd to the buffer's working directory.
 set autochdir
@@ -58,20 +61,11 @@ set incsearch
 " Highlight search results.
 set hlsearch
 
-" What is vi again?
-set nocompatible
-
 if has("gui_running")
 " Use (my modified version of) telstar for gvim.
 	color telstar
 else
 	color zellner
-set background=dark
-endif
-
-" If you want to change your gVim font or its size, set it here.
-if has('gui_gtk2')
-	set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
 endif
 
 " Tabs are converted to spaces. Use only when required.
@@ -144,3 +138,44 @@ map <silent> <F2> :call NTFinderP()<CR>
 map <C-a> <plug>NERDCommenterToggle
 
 autocmd FileType ruby                   setlocal ai et ts=2 sw=2 tw=0
+
+"Macvim already has shortcuts for font size changes.
+if has("gui_gtk2")
+	set guifont=Inconsolata\ 14
+	"set guifont=DejaVu\ Sans\ Mono\ 14
+
+	"http://vim.wikia.com/wiki/Change_font_size_quickly
+	let s:pattern = '^\(.* \)\([1-9][0-9]*\)$'
+	let s:minfontsize = 12
+	let s:maxfontsize = 30
+	function! AdjustFontSize(amount)
+	if has("gui_gtk2") && has("gui_running")
+		let fontname = substitute(&guifont, s:pattern, '\1', '')
+		let cursize = substitute(&guifont, s:pattern, '\2', '')
+		let newsize = cursize + a:amount
+		if (newsize >= s:minfontsize) && (newsize <= s:maxfontsize)
+		let newfont = fontname . newsize
+		let &guifont = newfont
+		endif
+	else
+		echoerr "You need to run the GTK2 version of Vim to use this function."
+	endif
+	endfunction
+
+	function! LargerFont()
+	call AdjustFontSize(1)
+	endfunction
+
+	function! SmallerFont()
+	call AdjustFontSize(-1)
+	endfunction
+
+	"Make F11/F12 decrease/increase the font size. Reset split heights and widths,
+	"and display the new font size.
+	nnoremap <F11> :call SmallerFont()<CR><C-w>=:set guifont<CR>
+	nnoremap <F12> :call LargerFont()<CR><C-w>=:set guifont<CR>
+endif
+
+if has("mac") && has("gui_running")
+	set guifont=Menlo Regular:h14
+endif
