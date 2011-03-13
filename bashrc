@@ -109,6 +109,13 @@ if [ "`uname`" == "Linux" ]; then
 	}
 
 	update_prompt() {
+		#For gVim's :sh
+		if [ $TERM == 'dumb' ]; then
+			#Fix LS_COLORS too.
+			PS1="[\w]$ "
+			return 0;
+		fi
+
 		RET=$?;
 
 		#TODO: Fix these.
@@ -127,6 +134,7 @@ if [ "`uname`" == "Linux" ]; then
 
 		#Show the current Ruby's version, patchlevel and gemset via RVM.
 		PS1="$RET_VALUE ${bldred}$(rvm-prompt v p g) $PS1"
+
 	}
 
 	PROMPT_COMMAND=update_prompt
