@@ -74,7 +74,7 @@ endif
 " When using Vim in a terminal (not gVim/MacVim) and you're in insert mode, 
 " hit Ctrl-P if you want to paste text from somewhere else and have it 
 " look normal.
-set pastetoggle=<C-p>
+"set pastetoggle=<C-p>
 
 " Make Ctrl-C copy stuff to the system clipboard, also known as the + register. 
 map <C-c> "+y
