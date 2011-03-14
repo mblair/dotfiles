@@ -14,7 +14,7 @@ set backspace=2
 " Source .vimrc when you change it.
 " This causes problems with Fugtive's :Gdiff if I'm staging changes in my
 " vimrc. So just do `:so %`
-autocmd! bufwritepost vimrc source %
+"autocmd! bufwritepost vimrc source %
 
 " Show line numbers.
 set number
@@ -100,10 +100,14 @@ set undodir=~/.vim/undodir
 set undofile
 
 " Show tabs and trailing spaces. Use when you feel like it.
-" set listchars=tab:>-,trail:-
+"set list listchars=tab:>-,trail:-
 set nolist
 
-" Sweet statusline.
+" Change the background of the entire line the cursor's on.
+set cursorline
+highlight CursorLine guibg=black
+
+" Always show the statusline.
 set laststatus=2
 " Sweet statusline.
 " Formatting from here:
@@ -210,6 +214,18 @@ function! Browser ()
   exec ':silent !google-chrome ' . line
 endfunction
 map <F6> :call Browser ()<CR>
+
+" All of these are thanks to Hacking Vim 7.2.
+" Move up and down virtual lines when they're soft-wrapped.
+map <DOWN> gj
+map <UP> gk
+imap <DOWN> <ESC>gji
+imap <UP> <ESC>gki
+
+" F1 gets help on the WORD under the cursor.
+" Words are only alphanumeric.
+" WORDS contain everything but whitespace.
+map <F1> <ESC>:exec "help ".expand("<cWORD>")<CR>
 
 highlight hlShowMarks guibg=bg
 highlight SignColumn guibg=bg
