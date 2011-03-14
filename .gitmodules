@@ -1,15 +1,18 @@
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+	ignore = dirty
 [submodule "vim/bundle/rails"]
 	path = vim/bundle/rails
 	url = git://github.com/tpope/vim-rails.git
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
+	ignore = dirty
 [submodule "vim/bundle/ragtag"]
 	path = vim/bundle/ragtag
 	url = git://github.com/tpope/vim-ragtag.git
+	ignore = dirty
 [submodule "vim/bundle/color_sampler_pack"]
 	path = vim/bundle/color_sampler_pack
 	url = git://github.com/vim-scripts/Color-Sampler-Pack.git
@@ -22,6 +25,7 @@
 [submodule "vim/bundle/gundo"]
 	path = vim/bundle/gundo
 	url = git://github.com/sjl/gundo.vim.git
+	ignore = dirty
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
