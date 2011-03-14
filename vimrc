@@ -206,7 +206,9 @@ function! Browser ()
 endfunction
 map <F6> :call Browser ()<CR>
 
-DoShowMarks!
+highlight hlShowMarks guibg=bg
+highlight SignColumn guibg=bg
+autocmd VimEnter * DoShowMarks!
 " Write the swap file every [updatetime] ms. Showmarks relies on this to load
 " the marks.
 set updatetime=250
