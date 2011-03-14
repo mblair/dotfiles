@@ -81,7 +81,9 @@ map <C-c> "+y
 
 " Make Ctrl-V paste stuff from the clipboard.
 " Disables visual block mode, which I never use.
-map <C-v> "+gp
+nnoremap <C-v> "+gp
+" Make it work in insert mode.
+inoremap <C-v> <Esc>"+gpa
 
 " Toggle Gundo with F5.
 nnoremap <F5> :GundoToggle<CR>
