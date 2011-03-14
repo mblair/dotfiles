@@ -12,6 +12,8 @@ syntax on
 set backspace=2
 
 " Source .vimrc when you change it.
+" This causes problems with Fugtive's :Gdiff if I'm staging changes in my
+" vimrc. So just do `:so %`
 autocmd! bufwritepost vimrc source %
 
 " Show line numbers.
@@ -68,9 +70,9 @@ set hlsearch
 
 if has("gui_running")
 " Use (my modified version of) telstar for gvim.
-	color telstar
+	colorscheme telstar
 else
-	color zellner
+	colorscheme zellner
 endif
 
 " Tabs are converted to spaces. Use only when required.
@@ -103,7 +105,10 @@ set nolist
 
 " Sweet statusline.
 set laststatus=2
-set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]%{fugitive#statusline()} 
+" Sweet statusline.
+" Formatting from here:
+" http://www.vi-improved.org/vimrc.php
+set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]%{fugitive#statusline()}
 "               | | | |  |   |       |    |  |
 "               | | | |  |   |       |    |  +--shows your current git branch
 "               | | | |  |   |       |    +-----current column
@@ -144,7 +149,7 @@ map <silent> <F2> :call NTFinderP()<CR>
 " Can no longer increment numbers in normal mode.
 map <C-a> <plug>NERDCommenterToggle
 
-autocmd FileType ruby                   setlocal ai et ts=2 sw=2 tw=0
+autocmd FileType ruby     setlocal ai et ts=2 sw=2 tw=0
 
 "Macvim already has shortcuts for font size changes.
 if has("gui_gtk2")
