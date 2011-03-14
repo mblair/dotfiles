@@ -1,5 +1,6 @@
 vim/.netrwhist
 vim/autoload/*
 vim/doc/*
+vim/undodir/*
 vim/plugin/*
 *.swp
