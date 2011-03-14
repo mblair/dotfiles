@@ -181,3 +181,22 @@ endif
 if has("mac") && has("gui_running")
 	set guifont=Menlo Regular:h14
 endif
+
+"Why is this not working?
+":w !sudo tee >/dev/null %
+
+"Open the file under the cursor in a new vertical split with F8.
+"vim.wikia.com/wiki/Open_file_under_cursor
+:map <F8> :vertical wincmd f<CR>
+
+"http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
+function! Browser ()
+  let line0 = getline (".")
+  let line = matchstr (line0, "http[^ ]*")
+  let line = escape (line, "#?&;|%")
+  :if line==""
+  let line = "\"" . (expand("%:p")) . "\""
+  :endif
+  exec ':silent !google-chrome ' . line
+endfunction
+map <F6> :call Browser ()<CR>
