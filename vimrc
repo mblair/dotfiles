@@ -41,9 +41,14 @@ set linebreak
 " Search with case insensitivity.
 set ignorecase
 
-" No toolbar, menu for gvim
+" No toolbar, menu, scrollbars for gvim
 set guioptions-=T
 set guioptions-=m
+set guioptions-=L
+set guioptions-=l
+set guioptions-=R
+set guioptions-=r
+set guioptions-=b
 
 " cd to the buffer's working directory.
 set autochdir
@@ -200,3 +205,8 @@ function! Browser ()
   exec ':silent !google-chrome ' . line
 endfunction
 map <F6> :call Browser ()<CR>
+
+DoShowMarks!
+" Write the swap file every [updatetime] ms. Showmarks relies on this to load
+" the marks.
+set updatetime=250

@@ -35,3 +35,6 @@
 [submodule "vim/bundle/mru"]
 	path = vim/bundle/mru
 	url = git://github.com/vim-scripts/mru.vim.git
+[submodule "vim/bundle/showmarks-politz"]
+	path = vim/bundle/showmarks-politz
+	url = https://github.com/vim-scripts/showmarks--Politz
