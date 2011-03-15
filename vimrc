@@ -1,14 +1,16 @@
-" What is vi again?
+" Be iMproved.
+" This must be first, as it changes other options.
 set nocompatible
 
 call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+
+" Enable filetype detection, along with language-aware indentation.
 filetype plugin indent on
 
 " Syntax highlighting.
 syntax on
 
-" Make backspace/del work like they should.
+" Allow backspacing over everything in insert mode.
 set backspace=2
 
 " Source .vimrc when you change it.
@@ -47,7 +49,6 @@ set ignorecase
 set guioptions-=T
 set guioptions-=m
 set guioptions-=L
-set guioptions-=l
 set guioptions-=R
 set guioptions-=r
 set guioptions-=b
@@ -56,7 +57,7 @@ set guioptions-=b
 set autochdir
 
 " For commands that autocomplete filenames, ignore these files.
-set wildignore=*.class
+set wildignore=*.class,*.o,*.so
 
 " Lower the priority of swap files when doing tab completion. Don't want to
 " ignore them in case I need to actually open them.
@@ -69,19 +70,23 @@ set incsearch
 set hlsearch
 
 if has("gui_running")
-" Use (my modified version of) telstar for gvim.
+	" Use (my modified version of) telstar for gvim.
 	colorscheme telstar
 else
-	colorscheme zellner
+	" http://vim.wikia.com/wiki/256_colors_in_vim 
+	set t_Co=256
+	colorscheme inkpot
+	 "colorscheme zellner
 endif
 
 " Tabs are converted to spaces. Use only when required.
 "set expandtab
 
 " When using Vim in a terminal (not gVim/MacVim) and you're in insert mode, 
-" hit Ctrl-P if you want to paste text from somewhere else and have it 
-" look normal.
-"set pastetoggle=<C-p>
+" hit Shift-Insert if you want to paste text from somewhere else and have it 
+" look normal. This basically toggles autoindentation on pasted code (which is
+" probably already indented).
+set pastetoggle=<S-Insert>
 
 " Make Ctrl-C copy stuff to the system clipboard, also known as the + register. 
 map <C-c> "+y
@@ -89,7 +94,7 @@ map <C-c> "+y
 " Make Ctrl-V paste stuff from the clipboard.
 " Disables visual block mode, which I never use.
 nnoremap <C-v> "+gp
-" Make it work in insert mode.
+" Make it work in insert mode too.
 inoremap <C-v> <Esc>"+gpa
 
 " Toggle Gundo with F5.
@@ -98,6 +103,9 @@ nnoremap <F5> :GundoToggle<CR>
 " Persistent undo! Vim 7.3 only.
 set undodir=~/.vim/undodir
 set undofile
+
+" TODO: Document this.
+set viminfo=%,'100,<1000,f100,n~/Dropbox/viminfo
 
 " Show tabs and trailing spaces. Use when you feel like it.
 "set list listchars=tab:>-,trail:-
@@ -146,10 +154,10 @@ function! NTFinderP()
     endif
 endfunction
 
-"" Toggles NERDTree
+ "Toggles NERDTree
 map <silent> <F2> :call NTFinderP()<CR>
 
-" Can no longer increment numbers in normal mode.
+ "Can no longer increment numbers in normal mode. Oh well.
 map <C-a> <plug>NERDCommenterToggle
 
 autocmd FileType ruby     setlocal ai et ts=2 sw=2 tw=0
@@ -195,7 +203,7 @@ if has("mac") && has("gui_running")
 	set guifont=Menlo Regular:h14
 endif
 
-"Why is this not working?
+" Why is this not working?
 ":w !sudo tee >/dev/null %
 
 "Open the file under the cursor in a new vertical split with F8.
@@ -214,7 +222,7 @@ function! Browser ()
 endfunction
 map <F6> :call Browser ()<CR>
 
-" All of these are thanks to Hacking Vim 7.2.
+" Courtesy of Hacking Vim 7.2.
 " Move up and down virtual lines when they're soft-wrapped.
 map <DOWN> gj
 map <UP> gk
@@ -229,6 +237,28 @@ map <F1> <ESC>:exec "help ".expand("<cWORD>")<CR>
 highlight hlShowMarks guibg=bg
 highlight SignColumn guibg=bg
 autocmd VimEnter * DoShowMarks!
-" Write the swap file every [updatetime] ms. Showmarks relies on this to load
-" the marks.
+" Write the swap file every [updatetime] ms. Showmarks relies on this to
+" update marks.
 set updatetime=250
+
+" https://github.com/linsong/vim-config/blob/master/_vimrc
+" Make moving betweens splits easy.
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <c-w>h
+nmap <C-l> <c-w>l
+
+" Make enter clear search highlighting. Just hit n/N to see them again.
+nnoremap <CR> :nohlsearch<CR>
+
+" Nice mapping for quickfix mode
+nnoremap <F3>   :cprev \| norm zz<CR>
+nnoremap <F4>   :cnext \| norm zz<CR>
+
+" No need to press <shift> anymore :-)
+nnoremap ; :
+
+" Read and write sessions.
+" TODO: Figure out why this messes with manpageview.vim
+nnoremap <F9> :source ~/Dropbox/session.vim<CR>
+nnoremap <F10> :mksession! ~/Dropbox/session.vim<CR>
