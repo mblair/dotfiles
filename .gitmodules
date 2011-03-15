@@ -38,3 +38,6 @@
 [submodule "vim/bundle/showmarks-politz"]
 	path = vim/bundle/showmarks-politz
 	url = https://github.com/vim-scripts/showmarks--Politz
+[submodule "vim/bundle/manpageview"]
+	path = vim/bundle/manpageview
+	url = https://github.com/vim-scripts/ManPageView
