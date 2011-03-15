@@ -105,7 +105,6 @@ set nolist
 
 " Change the background of the entire line the cursor's on.
 set cursorline
-highlight CursorLine guibg=black
 
 " Always show the statusline.
 set laststatus=2

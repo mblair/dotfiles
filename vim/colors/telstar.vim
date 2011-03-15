@@ -18,6 +18,7 @@ let g:colors_name = "telstar"
 hi Normal        guifg=#5060c0 guibg=#000022
 hi Cursor        guibg=#aaaaaa guifg=Black
 hi lCursor       guibg=#bababa guifg=Black
+hi CursorLine    guibg=black
 hi ModeMsg       gui=bold
 hi StatusLine    gui=bold
 hi StatusLineNC  gui=bold
