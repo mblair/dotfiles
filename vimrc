@@ -200,7 +200,7 @@ if has("gui_gtk2")
 endif
 
 if has("mac") && has("gui_running")
-	set guifont=Menlo Regular:h14
+	set guifont=Menlo\ Regular:h14
 endif
 
 " Why is this not working?
