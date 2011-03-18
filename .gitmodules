@@ -41,3 +41,6 @@
 [submodule "vim/bundle/manpageview"]
 	path = vim/bundle/manpageview
 	url = https://github.com/vim-scripts/ManPageView
+[submodule "vim/bundle/extradite"]
+	path = vim/bundle/extradite
+	url = https://github.com/int3/vim-extradite
