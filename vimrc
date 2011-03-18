@@ -3,6 +3,7 @@
 set nocompatible
 
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
 " Enable filetype detection, along with language-aware indentation.
 filetype plugin indent on
