@@ -1,0 +1,31 @@
+[user]
+	name = Matt Blair
+	email = me@matthewblair.net
+[alias]
+	ci = commit
+	co = checkout
+	discard = checkout --
+	branches = branch -a
+	create-branch = checkout -b
+	delete-branch = branch -d
+	lg = log --graph --all --abbrev-commit
+	st = status --ignore-submodules=untracked
+	br = branch
+	ignore = !echo "$@" >> .gitignore
+[merge]
+	tool = vimdiff
+[core]
+	excludesfile = /home/matt/.gitignore_global
+	editor = vim -f
+	pager = less
+[color]
+	ui = auto
+	diff = auto
+	interactive = auto
+	branch = auto
+[color "status"]
+	changed = yellow
+	added = green
+	untracked = red
+[branch]
+	autosetuprebase = always
