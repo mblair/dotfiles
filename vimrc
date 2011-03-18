@@ -234,8 +234,6 @@ imap <UP> <ESC>gki
 " WORDS contain everything but whitespace.
 map <F1> <ESC>:exec "help ".expand("<cWORD>")<CR>
 
-highlight hlShowMarks guibg=bg
-highlight SignColumn guibg=bg
 autocmd VimEnter * DoShowMarks!
 " Write the swap file every [updatetime] ms. Showmarks relies on this to
 " update marks.
