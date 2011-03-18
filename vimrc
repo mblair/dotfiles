@@ -261,3 +261,24 @@ nnoremap ; :
 " TODO: Figure out why this messes with manpageview.vim
 nnoremap <F9> :source ~/Dropbox/session.vim<CR>
 nnoremap <F10> :mksession! ~/Dropbox/session.vim<CR>
+
+function! RemoveFugitiveBuffers()
+	for buf in range(1, bufnr('$'))
+		if bufname(buf) =~? "fugitive.*"
+			if buflisted(buf)
+				exe 'bdelete ' . buf
+			endif
+		endif
+	endfor
+endfunction
+
+function! ListVersion()
+	let bye = []
+	bufdo if bufname("%") =~? "fugitive.*" | :call add(bye, bufnr("%")) | endif
+
+	for buf in bye
+		exe 'bdelete ' . buf
+	endfor
+endfunction
+
+autocmd VimLeave * :call RemoveFugitiveBuffers()
