@@ -284,4 +284,5 @@ function! ListVersion()
 	endfor
 endfunction
 
+"TODO: Figure out something with nobuflisted that makes this all unnecessary.
 autocmd VimLeave * :call RemoveFugitiveBuffers()
