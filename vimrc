@@ -242,10 +242,13 @@ set updatetime=250
 
 " https://github.com/linsong/vim-config/blob/master/_vimrc
 " Make moving betweens splits easy.
-nmap <C-j> <C-W>j
-nmap <C-k> <C-W>k
-nmap <C-h> <c-w>h
-nmap <C-l> <c-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Make realigning splits easy.
+nnoremap <C-w> <C-w>=
 
 " Make enter clear search highlighting. Just hit n/N to see them again.
 nnoremap <CR> :nohlsearch<CR>
