@@ -46,7 +46,7 @@ set linebreak
 " Search with case insensitivity.
 set ignorecase
 
-" No toolbar, menu, scrollbars for gvim
+" No toolbar, menu, or scrollbars for gVim.
 set guioptions-=T
 set guioptions-=m
 set guioptions-=L
