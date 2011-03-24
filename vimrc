@@ -162,6 +162,7 @@ map <silent> <F2> :call NTFinderP()<CR>
 map <C-a> <plug>NERDCommenterToggle
 
 autocmd FileType ruby     setlocal ai et ts=2 sw=2 tw=0
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 "Macvim already has shortcuts for font size changes.
 if has("gui_gtk2")
