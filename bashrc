@@ -16,9 +16,8 @@ if [ "`uname`" == "Linux" ]; then
 	export LESS_TERMCAP_ue=$'\E[0m'
 	export LESS_TERMCAP_us=$'\E[01;32m'
 
-	#Disable flow control so Ctrl-S (forward-search-history) works.
-	stty -ixon
-	stty -ixoff
+	#This makes Ctrl-S (forward-search-history) work.
+	stty stop undef
 
 	export HISTSIZE=100000 #bash history will save this many commands.
 	export HISTFILESIZE=${HISTSIZE} #bash will remember this many commands.
