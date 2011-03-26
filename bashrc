@@ -1,7 +1,9 @@
 #TODO: Get LSCOLORS working on Darwin.
 
 if [ "`uname`" == "Darwin" ]; then
-	echo
+	PATH=/usr/local/bin:$PATH
+        alias ls="ls -G"
+        export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 fi
 
 if [ "`uname`" == "Linux" ]; then
