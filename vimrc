@@ -62,7 +62,9 @@ set wildignore=*.class,*.o,*.so
 
 " Lower the priority of swap files when doing tab completion. Don't want to
 " ignore them in case I need to actually open them.
-set suffixes=.swp
+" Also lower the priority of HTML files so I don't keep opening Rocco's
+" generated docs.
+set suffixes=.swp,.html
 
 " Search incrementally.
 set incsearch
