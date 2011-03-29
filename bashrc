@@ -128,7 +128,9 @@ if [ "`uname`" == "Linux" ]; then
 		RET_VALUE="$(if [[ $RET = 0 ]]; then echo -ne "${bldgrn}$RET"; else echo -ne "${bldred}$RET"; fi;)"
 		svn_rev
 		
-		PS1="${bldblu}[${txtrst}\w${bldblu}]${bldgrn}$(git_prompt)${SVN_REV} ${txtblu}\$ ${txtrst}"
+		PS1="${bldblu}[${txtrst}\w${bldblu}]"
+		#PS1="$PS1${bldgrn}$(git_prompt)${SVN_REV} "
+		PS1="$PS1${txtblu}\$ ${txtrst}"
 
 		# Set the title to user@host: dir
 		PS1="\[\e]0;\u@\h: \w\a\]$PS1"
