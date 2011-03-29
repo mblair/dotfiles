@@ -289,3 +289,9 @@ endfunction
 
 "TODO: Figure out something with nobuflisted that makes this all unnecessary.
 autocmd VimLeave * :call RemoveFugitiveBuffers()
+
+let Tlist_GainFocus_On_ToggleOpen=1
+"let Tlist_Show_One_File=1
+nnoremap <silent> <F7> :TlistToggle<CR>
+
+"TODO: Make mappings for rspec, cucumber/steak, minitest, rocco/pandoc.
