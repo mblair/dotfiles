@@ -222,7 +222,7 @@ function! Browser ()
   :if line==""
   let line = "\"" . (expand("%:p")) . "\""
   :endif
-  exec ':silent !google-chrome ' . line
+  exec ':silent !chromium-browser ' . line
 endfunction
 map <F6> :call Browser ()<CR>
 
