@@ -218,5 +218,4 @@ if [ "`uname`" == "Linux" ]; then
 		history | awk '{a[$2]++}END{for(i in a){printf"%5d\t%s\n",a[i],i}}' | sort -nr | head; 
 	}
 
-	. ~/.bash_profile
 fi
