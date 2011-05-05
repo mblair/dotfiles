@@ -165,6 +165,11 @@ if [ "`uname`" == "Linux" ]; then
 	alias f='find | grep -i'
 	alias c='clear'
 
+	#http://www.webupd8.org/2010/07/get-notified-when-job-you-run-in.html#comment-64740149
+	alias alert_summ='history|tail -n1|sed -e "s/^\s*[0-9]\+\s*//" -e "s/\s*;\s*alert[0-9]*.*$//"'
+	alias alert_body='history|tail -n1|sed -e "s/\([^;]*\;\)\+//" -e "s/\s*alert\s*//" -e "s/#\(.*\)/\1/"'
+	alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "$(alert_summ)" "$(alert_body)"'
+
 	#Archive extractor.
 	ex ()
 	{
