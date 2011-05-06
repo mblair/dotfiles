@@ -110,6 +110,8 @@ if [ "`uname`" == "Linux" ]; then
 	}
 
 	update_prompt() {
+		RET=$?;
+
 		#For gVim's :sh
 		if [ $TERM == 'dumb' ]; then
 			#Fix LS_COLORS too.
@@ -117,19 +119,17 @@ if [ "`uname`" == "Linux" ]; then
 			return 0;
 		fi
 
-		RET=$?;
-
 		#TODO: Fix these.
 		#history -a #write the current terminal's history to the history file
 		#history -n
 
 		#https://wiki.archlinux.org/index.php/Color_Bash_Prompt#Advanced_return_value_visualisation
 		#Basically, prepend the prompt with a green 0 if the last command returned 0, or prepend it with a red [error code] if not.
-		RET_VALUE="$(if [[ $RET = 0 ]]; then echo -ne "${bldgrn}$RET"; else echo -ne "${bldred}$RET"; fi;)"
+		RET_VALUE="$(if [[ $RET == 0 ]]; then echo -ne "${bldgrn}$RET"; else echo -ne "${bldred}$RET"; fi;)"
 		svn_rev
 		
 		PS1="${bldblu}[${txtrst}\w${bldblu}]"
-		#PS1="$PS1${bldgrn}$(git_prompt)${SVN_REV} "
+	    PS1="$PS1${bldgrn}$(git_prompt)${SVN_REV} "
 		PS1="$PS1${txtblu}\$ ${txtrst}"
 
 		# Set the title to user@host: dir
