@@ -163,7 +163,10 @@ map <silent> <F2> :call NTFinderP()<CR>
  "Can no longer increment numbers in normal mode. Oh well.
 map <C-a> <plug>NERDCommenterToggle
 
-autocmd FileType ruby     setlocal ai et ts=2 sw=2 tw=0
+autocmd FileType ruby setlocal autoindent tabstop=2 expandtab shiftwidth=2 textwidth=0
+
+"http://svn.python.org/view/*checkout*/python/trunk/Misc/Vim/vimrc
+autocmd FileType python setlocal autoindent tabstop=4 expandtab shiftwidth=4 softtabstop=4
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 "Macvim already has shortcuts for font size changes.
