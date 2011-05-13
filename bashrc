@@ -167,6 +167,7 @@ if [ "`uname`" == "Linux" ]; then
 	alias less='less -N' #show line numbers when I invoke less myself, not for man.
 	alias pstree='pstree -ap' #args & PID
 	alias f='find | grep -i'
+	alias p='ping google.com'
 	alias c='clear'
 
 	#http://www.webupd8.org/2010/07/get-notified-when-job-you-run-in.html#comment-64740149
