@@ -162,7 +162,7 @@ if [ "`uname`" == "Linux" ]; then
 
 	alias path='echo -e ${PATH//:/\\n}' # print path components, one per line
 	#http://superuser.com/questions/36022/less-and-grep-color
-	alias grep='grep --color=always'
+	alias grep='grep --color=always -H'
 	alias ls='ls --color=auto -p --group-directories-first'
 	alias less='less -N' #show line numbers when I invoke less myself, not for man.
 	alias pstree='pstree -ap' #args & PID
