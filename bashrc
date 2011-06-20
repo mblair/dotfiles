@@ -134,7 +134,7 @@ if [ "`uname`" == "Linux" ]; then
 		PS1="\[\e]0;\u@\h: \w\a\]$PS1"
 
 		#Show the current Ruby's version, patchlevel and gemset via RVM.
-		if [ -f ~/.rvm/bin/rvm-prompt ]; then
+		if [ -f ~/bin/rvm-prompt ]; then
 			PS1="$RET_VALUE ${bldred}$(rvm-prompt v p g) $PS1"
 		else
 			PS1="$RET_VALUE $PS1"
