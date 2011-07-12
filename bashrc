@@ -168,6 +168,7 @@ if [ "`uname`" == "Linux" ]; then
 	alias f='find | grep -i'
 	alias p='ping google.com'
 	alias c='clear'
+	alias git=hub
 
 	#http://www.webupd8.org/2010/07/get-notified-when-job-you-run-in.html#comment-64740149
 	alias alert_summ='history|tail -n1|sed -e "s/^\s*[0-9]\+\s*//" -e "s/\s*;\s*alert[0-9]*.*$//"'
