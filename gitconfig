@@ -15,7 +15,7 @@
 [merge]
 	tool = vimdiff
 [core]
-	excludesfile = /home/matt/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = vim -f
 	pager = less
 [color]
