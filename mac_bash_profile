@@ -1,0 +1,20 @@
+rvm_path="/Users/matt/.rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+EDITOR=mvim
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+
+. /usr/local/etc/bash_completion.d/git-completion.bash
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+#Lion opens new terminal windows & tabs in the same directory, 
+#therefore you don't cd into them. RVM loads rvmrcs based on `cd`,
+#so here's a workaround.
+cd .

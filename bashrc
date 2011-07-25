@@ -136,7 +136,9 @@ alias path='echo -e ${PATH//:/\\n}' # print path components, one per line
 
 if [ "`uname`" == "Darwin" ]; then
 	rvm use --default 1.9.2 #Figure out why this isn't working.
-	PATH=/usr/local/bin:$PATH
+	if [ -d "$HOME/Library/Haskell/bin" ]; then
+		export PATH="$HOME/Library/Haskell/bin:/usr/local/bin:$PATH"
+	fi
 	#http://superuser.com/questions/36022/less-and-grep-color
 	alias grep='grep --color=always -H'
 	alias ls='ls -pG'

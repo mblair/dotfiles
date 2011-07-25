@@ -29,3 +29,5 @@
 	untracked = red
 [branch]
 	autosetuprebase = always
+[github]
+	user = mblair
