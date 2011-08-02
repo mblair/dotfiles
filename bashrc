@@ -109,7 +109,9 @@ update_prompt() {
 	
 	PS1="${bldblu}[${txtrst}\w${bldblu}]"
 	PS1="$PS1${bldgrn}$(git_prompt)${SVN_REV} "
-	PS1="$PS1${txtblu}\$ ${txtrst}"
+
+	#http://www.fileformat.info/info/unicode/char/26a1/index.htm
+	PS1="$PS1${txtblu}⚡ ${txtrst}"
 
 	# Set the title to user@host: dir
 	PS1="\[\e]0;\u@\h: \w\a\]$PS1"
