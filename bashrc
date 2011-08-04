@@ -117,7 +117,7 @@ update_prompt() {
 	PS1="\[\e]0;\u@\h: \w\a\]$PS1"
 
 	#Show the current Ruby's version, patchlevel and gemset via RVM.
-	if [ -f ~/bin/rvm-prompt ]; then
+	if [ -f ~/bin/rvm-prompt -o -f ~/.rvm/bin/rvm-prompt ]; then
 		PS1="$RET_VALUE ${bldred}$(rvm-prompt v p g) $PS1"
 	else
 		PS1="$RET_VALUE $PS1"
@@ -137,7 +137,7 @@ export LESS="-IMR" #search case insensitively, prompt verbosely (i.e. show perce
 alias path='echo -e ${PATH//:/\\n}' # print path components, one per line
 
 if [ "`uname`" == "Darwin" ]; then
-	rvm use --default 1.9.2 #Figure out why this isn't working.
+	#rvm use --default 1.9.3 #No longer necessary, afaik.
 	if [ -d "$HOME/Library/Haskell/bin" ]; then
 		export PATH="$HOME/Library/Haskell/bin:/usr/local/bin:$PATH"
 	fi
