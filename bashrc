@@ -142,9 +142,8 @@ if [ "`uname`" == "Darwin" ]; then
 	source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 	export PATH="/usr/local/sbin/:/usr/local/bin:$PATH"
 
-	#rvm use --default 1.9.3 #No longer necessary, afaik.
-	if [ -d "$HOME/Library/Haskell/bin" ]; then
-		export PATH="$HOME/Library/Haskell/bin:$PATH"
+	if [ -d "$HOME/.cabal/bin" ]; then
+		export PATH="$HOME/.cabal/bin:$PATH"
 	fi
 
 	#https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
