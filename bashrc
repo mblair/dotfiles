@@ -145,6 +145,10 @@ if [ "`uname`" == "Darwin" ]; then
 	if [ -d "$HOME/Library/Haskell/bin" ]; then
 		export PATH="$HOME/Library/Haskell/bin:/usr/local/bin:$PATH"
 	fi
+
+	#https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
+	export PATH="/usr/local/share/python:$PATH"
+
 	#http://superuser.com/questions/36022/less-and-grep-color
 	alias grep='grep --color=always -H'
 	alias ls='ls -pG'
