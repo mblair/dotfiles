@@ -78,7 +78,7 @@ if has("gui_running")
 else
 	" http://vim.wikia.com/wiki/256_colors_in_vim 
 	set t_Co=256
-	colorscheme inkpot
+	colorscheme wombat256
 	 "colorscheme zellner
 endif
 
