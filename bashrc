@@ -137,6 +137,9 @@ export LESS="-IMR" #search case insensitively, prompt verbosely (i.e. show perce
 alias path='echo -e ${PATH//:/\\n}' # print path components, one per line
 
 if [ "`uname`" == "Darwin" ]; then
+	# Crusty, but I'm not putting my Flipboard hostnames in here.
+	complete -W "$(echo $(grep '^ssh ' .bash_history | sort -u | sed 's/^ssh //'))" ssh
+
 	. ~/.git-completion.bash
 
 	source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
