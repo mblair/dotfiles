@@ -19,6 +19,9 @@ set backspace=2
 " vimrc. So just do `:so %`
 "autocmd! bufwritepost vimrc source %
 
+" Change the width to fit my work monitor.
+set columns=159
+
 " Show line numbers.
 set number
 
