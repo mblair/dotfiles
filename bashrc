@@ -139,7 +139,7 @@ alias path='echo -e ${PATH//:/\\n}' # print path components, one per line
 if [ "`uname`" == "Darwin" ]; then
 	# Crusty, but I'm not putting my Flipboard hostnames in here.
 	# http://www.commandlinefu.com/commands/view/2766/ssh-autocomplete
-	complete -W "$(echo $(grep '^ssh ' .bash_history | sort -u | sed 's/^ssh //'))" ssh
+	complete -W "$(echo $(grep '^ssh ' .bash_history | sort -u | sed 's/^ssh //'))" ssh ssh-copy-id
 
 	. ~/.git-completion.bash
 
