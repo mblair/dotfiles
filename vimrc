@@ -210,7 +210,7 @@ if has("gui_gtk2")
 endif
 
 if has("mac") && has("gui_running")
-	set guifont=Menlo\ Regular:h25
+	set guifont=Menlo\ Regular:h33
 endif
 
 " Why is this not working?
