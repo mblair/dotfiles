@@ -210,6 +210,7 @@ if has("gui_gtk2")
 endif
 
 if has("mac") && has("gui_running")
+	source $VIMRUNTIME/macros/matchit.vim
 	set guifont=Menlo\ Regular:h33
 endif
 
