@@ -136,6 +136,9 @@ alias git=hub
 export LESS="-IMR" #search case insensitively, prompt verbosely (i.e. show percentage through the file) and repaint the screen, useful when a file is changing as you're reading it.
 alias path='echo -e ${PATH//:/\\n}' # print path components, one per line
 
+#http://superuser.com/questions/36022/less-and-grep-color
+alias grep='grep --color=always -HI'
+
 if [ "`uname`" == "Darwin" ]; then
 	# Crusty, but I'm not putting my Flipboard hostnames in here.
 	# http://www.commandlinefu.com/commands/view/2766/ssh-autocomplete
@@ -158,8 +161,6 @@ if [ "`uname`" == "Darwin" ]; then
 	#https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
 	export PATH="/usr/local/share/python:$PATH"
 
-	#http://superuser.com/questions/36022/less-and-grep-color
-	alias grep='grep --color=always -H'
 	alias ls='ls -pG'
 	export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 fi
@@ -192,8 +193,6 @@ if [ "`uname`" == "Linux" ]; then
 
 	. ~/.git-completion.bash
 
-	#http://superuser.com/questions/36022/less-and-grep-color
-	alias grep='grep --color=always -H'
 	alias ls='ls --color=auto -p --group-directories-first'
 	alias pstree='pstree -ap' #args & PID
 
