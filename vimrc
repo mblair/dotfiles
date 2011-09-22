@@ -19,7 +19,7 @@ set backspace=2
 " vimrc. So just do `:so %`
 "autocmd! bufwritepost vimrc source %
 
-" Change the width to fit my work monitor.
+" Change the width to fit my enormous Flipboard monitor.
 set columns=159
 
 " Show line numbers.
@@ -49,7 +49,7 @@ set linebreak
 " Search with case insensitivity.
 set ignorecase
 
-" No toolbar, menu, or scrollbars for gVim.
+" No toolbar, menu, or scrollbars for gVim. These have no effect in MacVim.
 set guioptions-=T
 set guioptions-=m
 set guioptions-=L
@@ -76,7 +76,7 @@ set incsearch
 set hlsearch
 
 if has("gui_running")
-	" Use (my modified version of) telstar for gvim.
+	" Use (my modified version of) telstar for gvim/MacVim.
 	colorscheme telstar
 else
 	" http://vim.wikia.com/wiki/256_colors_in_vim 
@@ -149,7 +149,7 @@ function! NTFinderP()
         "" If NERDTree is open, close it.
         :NERDTreeClose
     else
-        "" Try to open a :Rtree for the rails project
+        "" Try to open :Rtree for the rails project
         if exists(":Rtree")
             "" Open Rtree (using rails plugin, it opens in project dir)
             :Rtree
@@ -170,6 +170,7 @@ autocmd FileType ruby setlocal autoindent tabstop=2 expandtab shiftwidth=2 textw
 
 "http://svn.python.org/view/*checkout*/python/trunk/Misc/Vim/vimrc
 autocmd FileType python setlocal autoindent tabstop=4 expandtab shiftwidth=4 softtabstop=4
+
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 "Macvim already has shortcuts for font size changes.
@@ -209,6 +210,8 @@ if has("gui_gtk2")
 	nnoremap <F12> :call LargerFont()<CR><C-w>=:set guifont<CR>
 endif
 
+" TODO: Find out how to adjust font size automatically based on screen size.
+" 33pt on a 13" MacBook makes me look like an old person.
 if has("mac") && has("gui_running")
 	source $VIMRUNTIME/macros/matchit.vim
 	set guifont=Menlo\ Regular:h33
@@ -221,6 +224,7 @@ endif
 "vim.wikia.com/wiki/Open_file_under_cursor
 :map <F8> :vertical wincmd f<CR>
 
+"TODO: Make this Mac-friendly. I believe they use 'open'.
 "http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 function! Browser ()
   let line0 = getline (".")
@@ -233,7 +237,7 @@ function! Browser ()
 endfunction
 map <F6> :call Browser ()<CR>
 
-" Courtesy of Hacking Vim 7.2.
+" Courtesy of 'Hacking Vim 7.2'.
 " Move up and down virtual lines when they're soft-wrapped.
 map <DOWN> gj
 map <UP> gk
@@ -246,6 +250,7 @@ imap <UP> <ESC>gki
 map <F1> <ESC>:exec "help ".expand("<cWORD>")<CR>
 
 autocmd VimEnter * DoShowMarks!
+
 " Write the swap file every [updatetime] ms. Showmarks relies on this to
 " update marks.
 set updatetime=250
@@ -300,5 +305,3 @@ autocmd VimLeave * :call RemoveFugitiveBuffers()
 let Tlist_GainFocus_On_ToggleOpen=1
 "let Tlist_Show_One_File=1
 nnoremap <silent> <F7> :TlistToggle<CR>
-
-"TODO: Make mappings for rspec, cucumber/steak, minitest, rocco/pandoc.
