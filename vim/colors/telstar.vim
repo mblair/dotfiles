@@ -55,6 +55,10 @@ hi Statement     guifg=#8070b0
 hi Label         gui=bold guifg=#805070
 hi Todo          gui=bold guifg=Magenta guibg=#000022
 " The light pink is #ff80ff, or PreProc from syncolor.vim's background=dark default.
+hi TodoRed       ctermfg=LightRed guifg=#E01B1B
+hi TodoOrange    ctermfg=LightMagenta guifg=#E0841B
+hi TodoYellow    ctermfg=LightYellow  guifg=#E0D91B
+
 hi String        guifg=#999999
 hi Operator      guifg=#8080c0
 hi Identifier    guifg=#686888

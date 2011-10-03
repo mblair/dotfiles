@@ -85,6 +85,15 @@ else
 	 "colorscheme zellner
 endif
 
+" dtuite.github.com/define-custom-vim-tags-and-labels.html
+if has("autocmd")
+	if v:version > 701
+		autocmd Syntax * call matchadd('TodoRed',  '\W\zs\(TODO1\)')
+		autocmd Syntax * call matchadd('TodoOrange', '\W\zs\(TODO2\)')
+		autocmd Syntax * call matchadd('ToDoYellow', '\W\zs\(TODO3\)')
+	endif
+endif
+
 " Tabs are converted to spaces. Use only when required.
 "set expandtab
 
@@ -214,7 +223,7 @@ endif
 " 33pt on a 13" MacBook makes me look like an old person.
 if has("mac") && has("gui_running")
 	source $VIMRUNTIME/macros/matchit.vim
-	set guifont=Menlo\ Regular:h33
+	set guifont=Menlo\ Regular:h22
 endif
 
 " Why is this not working?
