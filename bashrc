@@ -11,6 +11,14 @@ shopt -s cmdhist # save multi-line commands as a single line in the history.
 shopt -s expand_aliases   # expand aliases in this file.
 shopt -s histappend # append to the history file instead of overwriting
 
+pcp() {
+	if [ -d "$2" ]; then
+		pv "$1" > "$2"/"$1"
+	else
+		pv "$1" > "$2"
+	fi
+}
+
 #Regular Colors
 txtblk='\[\e[0;30m\]' # Black
 txtred='\[\e[0;31m\]' # Red
@@ -128,6 +136,11 @@ update_prompt() {
 PROMPT_COMMAND=update_prompt
 
 alias :w='echo "idiot"'
+
+#http://www.debianadmin.com/pv-pipe-viewer-shell-pipeline-element-to-meter-data-passing-through.html/comment-page-1#comment-3739
+alias rscp='rsync -aP --no-whole-file --inplace'
+alias rsmv='rscp --remove-source-files'
+
 alias less='less -N' #show line numbers when I invoke less myself, not for man.
 alias f='find . | grep -i'
 alias p='ping google.com'
