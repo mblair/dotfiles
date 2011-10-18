@@ -78,6 +78,13 @@ set hlsearch
 if has("gui_running")
 	" Use (my modified version of) telstar for gvim/MacVim.
 	colorscheme telstar
+	if has("autocmd")
+		if v:version > 701
+			autocmd Syntax * call matchadd('TodoRed',  '\W\zs\(TODO1\)')
+			autocmd Syntax * call matchadd('TodoOrange', '\W\zs\(TODO2\)')
+			autocmd Syntax * call matchadd('ToDoYellow', '\W\zs\(TODO3\)')
+		endif
+	endif
 else
 	" http://vim.wikia.com/wiki/256_colors_in_vim 
 	set t_Co=256
@@ -86,13 +93,6 @@ else
 endif
 
 " dtuite.github.com/define-custom-vim-tags-and-labels.html
-if has("autocmd")
-	if v:version > 701
-		autocmd Syntax * call matchadd('TodoRed',  '\W\zs\(TODO1\)')
-		autocmd Syntax * call matchadd('TodoOrange', '\W\zs\(TODO2\)')
-		autocmd Syntax * call matchadd('ToDoYellow', '\W\zs\(TODO3\)')
-	endif
-endif
 
 " Tabs are converted to spaces. Use only when required.
 "set expandtab
