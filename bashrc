@@ -237,15 +237,6 @@ if [ "`uname`" == "Linux" ]; then
 	fi
 	}
 
-	#Grep for processes.
-	psgrep() {
-		if [ ! -z $1 ] ; then
-			command ps -A -o pid,uname,%cpu,%mem,stat,time,args | grep "$@" | grep -v grep
-		else
-			echo "!! Need name to grep for."
-		fi
-	}
-
 	cleanup() {
 		ls | while read -r FILE
 			do
@@ -257,10 +248,6 @@ if [ "`uname`" == "Linux" ]; then
 		if [ "$1" ]; then
 			mkdir -p "$1" && cd "$1"
 		fi
-	}
-
-	mem () {
-		free -m | grep 'buffers/cache' | awk '{print $4}'
 	}
 
 	historyawk() {
