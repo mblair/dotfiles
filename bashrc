@@ -150,6 +150,7 @@ export LESS="-IMR" #search case insensitively, prompt verbosely (i.e. show perce
 alias path='echo -e ${PATH//:/\\n}' # print path components, one per line
 
 #http://superuser.com/questions/36022/less-and-grep-color
+#Print the filename, don't search binary files.
 alias grep='grep --color=always -HI'
 
 if [ "`uname`" == "Darwin" ]; then
@@ -159,9 +160,11 @@ if [ "`uname`" == "Darwin" ]; then
 
 	. ~/.git-completion.bash
 
-	source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+	if [ -f "`brew --prefix`/Library/Contributions/brew_bash_completion.sh" ]; then
+		source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+	fi
 
-	if [ -f `brew --prefix`/etc/bash_completion ]; then
+	if [ -f "`brew --prefix`/etc/bash_completion" ]; then
 		. `brew --prefix`/etc/bash_completion
 	fi
 
@@ -174,7 +177,10 @@ if [ "`uname`" == "Darwin" ]; then
 	#https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
 	export PATH="/usr/local/share/python:$PATH"
 
+	#Colors, slash after a directory name.
 	alias ls='ls -pG'
+
+	#Document this.
 	export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 fi
 

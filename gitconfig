@@ -2,7 +2,6 @@
 	name = Matt Blair
 	email = me@matthewblair.net
 [alias]
-	ci = commit
 	co = checkout
 	discard = checkout --
 	branches = branch -a

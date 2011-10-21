@@ -78,6 +78,7 @@ set hlsearch
 if has("gui_running")
 	" Use (my modified version of) telstar for gvim/MacVim.
 	colorscheme telstar
+	" dtuite.github.com/define-custom-vim-tags-and-labels.html
 	if has("autocmd")
 		if v:version > 701
 			autocmd Syntax * call matchadd('TodoRed',  '\W\zs\(TODO1\)')
@@ -91,8 +92,6 @@ else
 	colorscheme wombat256
 	 "colorscheme zellner
 endif
-
-" dtuite.github.com/define-custom-vim-tags-and-labels.html
 
 " Tabs are converted to spaces. Use only when required.
 "set expandtab
@@ -122,6 +121,8 @@ set undofile
 " TODO: Document this.
 set viminfo=%,'100,<1000,f100,n~/Dropbox/viminfo
 
+" TODO: Figure out how to change the background color of these,
+"  like git diff.
 " Show tabs and trailing spaces. Use when you feel like it.
 "set list listchars=tab:>-,trail:-
 set nolist
