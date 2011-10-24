@@ -1,5 +1,6 @@
 #http://www.shallowsky.com/blog/linux/bash-word-erase.html
 set bind-tty-special-chars off
+
 "\C-w": backward-kill-word #http://www.gnu.org/software/bash/manual/html_node/Commands-For-Killing.html
 
 set completion-ignore-case on
