@@ -177,6 +177,10 @@ if [ "`uname`" == "Darwin" ]; then
 	#https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
 	export PATH="/usr/local/share/python:$PATH"
 
+	if [ -d "$HOME/android-sdk-macosx" ]; then
+		export PATH="/Users/matt/android-sdk-macosx/platform-tools:/Users/matt/android-sdk-macosx/tools:$PATH"
+	fi
+
 	#Colors, slash after a directory name.
 	alias ls='ls -pG'
 
