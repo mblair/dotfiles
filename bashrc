@@ -153,6 +153,8 @@ alias path='echo -e ${PATH//:/\\n}' # print path components, one per line
 #Print the filename, don't search binary files.
 alias grep='grep --color=always -HI'
 
+export PATH="$HOME/dotfiles/bin:$PATH"
+
 if [ "`uname`" == "Darwin" ]; then
 	# Crusty, but I'm not putting my Flipboard hostnames in here.
 	# http://www.commandlinefu.com/commands/view/2766/ssh-autocomplete

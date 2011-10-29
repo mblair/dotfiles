@@ -17,6 +17,7 @@
 	excludesfile = ~/.gitignore_global
 	editor = vim -f
 	pager = less
+	whitespace = trailing-space,space-before-tab
 [color]
 	ui = auto
 	diff = auto
@@ -30,3 +31,5 @@
 	autosetuprebase = always
 [github]
 	user = mblair
+[push]
+	default = tracking
