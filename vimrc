@@ -89,8 +89,8 @@ if has("gui_running")
 else
 	" http://vim.wikia.com/wiki/256_colors_in_vim 
 	set t_Co=256
-	colorscheme wombat256
-	 "colorscheme zellner
+	"colorscheme wombat256
+	colorscheme zellner
 endif
 
 " Tabs are converted to spaces. Use only when required.
@@ -312,6 +312,6 @@ endfunction
 "TODO: Figure out something with nobuflisted that makes this all unnecessary.
 autocmd VimLeave * :call RemoveFugitiveBuffers()
 
-let Tlist_GainFocus_On_ToggleOpen=1
+"let Tlist_GainFocus_On_ToggleOpen=1
 "let Tlist_Show_One_File=1
-nnoremap <silent> <F7> :TlistToggle<CR>
+"nnoremap <silent> <F7> :TlistToggle<CR>
