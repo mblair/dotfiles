@@ -145,7 +145,11 @@ alias less='less -N' #show line numbers when I invoke less myself, not for man.
 alias f='find . | grep -i'
 alias p='ping google.com'
 alias c='clear'
-alias git=hub
+
+if [[ -f /usr/local/bin/hub ]]; then
+	alias git=hub
+fi
+
 export LESS="-IMR" #search case insensitively, prompt verbosely (i.e. show percentage through the file) and repaint the screen, useful when a file is changing as you're reading it.
 alias path='echo -e ${PATH//:/\\n}' # print path components, one per line
 
