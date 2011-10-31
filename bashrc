@@ -220,7 +220,10 @@ if [ "`uname`" == "Linux" ]; then
 	#TODO: Profile your prompt and see if this is what's slowing things down.
 	#GIT_PS1_SHOWUPSTREAM="verbose"
 
-	. ~/.git-completion.bash
+	# Only source this if we installed Git from source. If we didn't, it's installed already.
+	if [[ -f ~/.git-completion.bash ]]; then
+		. ~/.git-completion.bash
+	fi
 
 	alias ls='ls --color=auto -p --group-directories-first'
 	alias pstree='pstree -ap' #args & PID
