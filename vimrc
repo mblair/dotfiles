@@ -119,8 +119,10 @@ inoremap <C-v> <Esc>"+gpa
 nnoremap <F5> :GundoToggle<CR>
 
 " Persistent undo! Vim 7.3 only.
-set undodir=~/.vim/undodir
-set undofile
+if v:version >= 703
+	set undodir=~/.vim/undodir
+	set undofile
+endif
 
 " TODO: Document this.
 set viminfo=%,'100,<1000,f100,n~/Dropbox/viminfo
