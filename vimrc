@@ -86,11 +86,15 @@ if has("gui_running")
 			autocmd Syntax * call matchadd('ToDoYellow', '\W\zs\(TODO3\)')
 		endif
 	endif
+
+	" Change the background of the entire line the cursor's on, only for GUIs.
+	set cursorline
 else
 	" http://vim.wikia.com/wiki/256_colors_in_vim 
 	set t_Co=256
 	"colorscheme wombat256
 	colorscheme zellner
+	set nocursorline
 endif
 
 " Tabs are converted to spaces. Use only when required.
@@ -126,9 +130,6 @@ set viminfo=%,'100,<1000,f100,n~/Dropbox/viminfo
 " Show tabs and trailing spaces. Use when you feel like it.
 "set list listchars=tab:>-,trail:-
 set nolist
-
-" Change the background of the entire line the cursor's on.
-set cursorline
 
 " Always show the statusline.
 set laststatus=2
