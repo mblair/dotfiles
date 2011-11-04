@@ -77,20 +77,22 @@ svn_rev() {
 }
 
 git_prompt() {
-	local g="$(__gitdir)"
-	if [ -n "$g" ]; then
-		local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
-		if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
-			local COLOR=${bldred}
-		elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
-			local COLOR=${bldylw}
-		else
-			local COLOR=${bldgrn}
+	if [[ -f ~/.git-completion.bash ]]; then
+		local g="$(__gitdir)"
+		if [ -n "$g" ]; then
+			local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
+			if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
+				local COLOR=${bldred}
+			elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
+				local COLOR=${bldylw}
+			else
+				local COLOR=${bldgrn}
+			fi
+			local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${txtrst}"
+			# __git_ps1 is from the Git source tree's contrib/completion/git-completion.bash
+			local GIT_PROMPT=`__git_ps1 "(%s|${SINCE_LAST_COMMIT})"`
+			echo ${GIT_PROMPT}
 		fi
-		local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${txtrst}"
-		# __git_ps1 is from the Git source tree's contrib/completion/git-completion.bash
-		local GIT_PROMPT=`__git_ps1 "(%s|${SINCE_LAST_COMMIT})"`
-		echo ${GIT_PROMPT}
 	fi
 }
 
