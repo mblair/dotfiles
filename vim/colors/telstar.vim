@@ -53,6 +53,9 @@ hi Type          guifg=#9060c8
 hi Comment       guifg=#604060
 hi Statement     guifg=#8070b0
 hi Label         gui=bold guifg=#805070
+
+hi ColorColumn guibg=#FF80FF
+
 hi Todo          gui=bold guifg=Magenta guibg=#000022
 " The light pink is #ff80ff, or PreProc from syncolor.vim's background=dark default.
 hi TodoRed       ctermfg=LightRed guifg=#E01B1B

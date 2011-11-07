@@ -19,9 +19,6 @@ set backspace=2
 " vimrc. So just do `:so %`
 "autocmd! bufwritepost vimrc source %
 
-" Change the width to fit my enormous Flipboard monitor.
-set columns=159
-
 " Show line numbers.
 set number
 
@@ -227,7 +224,7 @@ endif
 " 33pt on a 13" MacBook makes me look like an old person.
 if has("mac") && has("gui_running")
 	source $VIMRUNTIME/macros/matchit.vim
-	set guifont=Menlo\ Regular:h22
+	set guifont=Menlo\ Regular:h16
 endif
 
 " Why is this not working?
