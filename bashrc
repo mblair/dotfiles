@@ -161,6 +161,8 @@ alias grep='grep --color=always -HI'
 
 export PATH="$HOME/dotfiles/bin:$PATH"
 
+export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
+
 if [ "`uname`" == "Darwin" ]; then
 	# Crusty, but I'm not putting my Flipboard hostnames in here.
 	# http://www.commandlinefu.com/commands/view/2766/ssh-autocomplete
