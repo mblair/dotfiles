@@ -7,7 +7,9 @@
 	branches = branch -a
 	create-branch = checkout -b
 	delete-branch = branch -d
-	lg = log --graph --all --abbrev-commit
+	wlog = log --color-words -p
+	glog = log --graph --all --abbrev-commit
+	wdiff = diff --color-words
 	st = status --ignore-submodules=untracked
 	br = branch
 	ignore = !echo "$@" >> .gitignore
