@@ -164,6 +164,11 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
 if [ "`uname`" == "Darwin" ]; then
+	export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.6.0_26-b03-383.jdk/Contents/Home"
+	export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
+	export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
+	export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.0.1/jars"
+
 	# Crusty, but I'm not putting my Flipboard hostnames in here.
 	# http://www.commandlinefu.com/commands/view/2766/ssh-autocomplete
 	#complete -W "$(echo $(grep '^ssh ' .bash_history | sort -u | sed 's/^ssh //'))" ssh ssh-copy-id
