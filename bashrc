@@ -161,7 +161,7 @@ alias grep='grep --color=always -HI'
 
 export PATH="$HOME/dotfiles/bin:$PATH"
 
-export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
+export NODE_PATH="/usr/local/lib/node_modules"
 
 if [ "`uname`" == "Darwin" ]; then
 	export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.6.0_26-b03-383.jdk/Contents/Home"
