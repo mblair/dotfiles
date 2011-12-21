@@ -44,3 +44,6 @@
 [submodule "vim/bundle/extradite"]
 	path = vim/bundle/extradite
 	url = https://github.com/int3/vim-extradite
+[submodule "vim/bundle/vim-coffee-script"]
+	path = vim/bundle/vim-coffee-script
+	url = git://github.com/vim-scripts/vim-coffee-script
