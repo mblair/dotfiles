@@ -3,7 +3,7 @@
 set nocompatible
 
 call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#helptags() " I...guess. This makes my submodules dirty.
 
 " Enable filetype detection, along with language-aware indentation.
 filetype plugin indent on
@@ -15,7 +15,7 @@ syntax on
 set backspace=2
 
 " Source .vimrc when you change it.
-" This causes problems with Fugtive's :Gdiff if I'm staging changes in my
+" This causes problems with Fugtive's :Gdiff if I've staged changes in my
 " vimrc. So just do `:so %`
 "autocmd! bufwritepost vimrc source %
 
@@ -34,10 +34,10 @@ set shiftwidth=4
 " Shift a multiple of shiftwidth.
 set shiftround
 
-" Open a vertical split window *below* the current one.
+" Open vertical split windows *below* the current one.
 set splitbelow
 
-" Open a horizontal split window to the *right* of the current one.
+" Open horizontal split windows to the *right* of the current one.
 set splitright
 
 " Don't break in the middle of words.
@@ -62,7 +62,7 @@ set wildignore=*.class,*.o,*.so
 
 " Lower the priority of swap files when doing tab completion. Don't want to
 " ignore them in case I need to actually open them.
-" Also lower the priority of HTML files so I don't keep opening Rocco's
+" Also lower the priority of HTML files so I don't keep opening Shocco's
 " generated docs.
 set suffixes=.swp,.html
 
@@ -73,8 +73,9 @@ set incsearch
 set hlsearch
 
 if has("gui_running")
-	" Use (my modified version of) telstar for gvim/MacVim.
+	" Use (my modified version of) telstar for gVim/MacVim.
 	colorscheme telstar
+
 	" dtuite.github.com/define-custom-vim-tags-and-labels.html
 	if has("autocmd")
 		if v:version > 701
@@ -87,23 +88,20 @@ if has("gui_running")
 	" Change the background of the entire line the cursor's on, only for GUIs.
 	set cursorline
 else
-	" http://vim.wikia.com/wiki/256_colors_in_vim 
+	" http://vim.wikia.com/wiki/256_colors_in_vim
 	set t_Co=256
 	"colorscheme wombat256
 	colorscheme zellner
 	set nocursorline
 endif
 
-" Tabs are converted to spaces. Use only when required.
-"set expandtab
-
-" When using Vim in a terminal (not gVim/MacVim) and you're in insert mode, 
-" hit Shift-Insert if you want to paste text from somewhere else and have it 
+" When using Vim in a terminal (not gVim/MacVim) and you're in insert mode,
+" hit Shift-Insert if you want to paste text from somewhere else and have it
 " look normal. This basically toggles autoindentation on pasted code (which is
 " probably already indented).
 set pastetoggle=<S-Insert>
 
-" Make Ctrl-C copy stuff to the system clipboard, also known as the + register. 
+" Make Ctrl-C copy stuff to the system clipboard, also known as the + register.
 map <C-c> "+y
 
 " Make Ctrl-V paste stuff from the clipboard.
@@ -124,10 +122,12 @@ endif
 " TODO: Document this.
 set viminfo=%,'100,<1000,f100,n~/Dropbox/viminfo
 
-" TODO: Figure out how to change the background color of these,
-"  like git diff.
-" Show tabs and trailing spaces. Use when you feel like it.
-"set list listchars=tab:>-,trail:-
+" Show trailing whitespace, but don't highlight as I type.
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+highlight ExtraWhitespace guibg=Red
+match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * redraw!
+
 set nolist
 
 " Always show the statusline.
@@ -238,14 +238,14 @@ endif
 "http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 function! Browser ()
   let line0 = getline (".")
-  let line = matchstr (line0, "http[^ ]*")
+  let line = matchstr (line0, "http[^ )]*")
   let line = escape (line, "#?&;|%")
   :if line==""
   let line = "\"" . (expand("%:p")) . "\""
   :endif
-  exec ':silent !chromium-browser ' . line . ' &'
+  exec ':silent !open ' . line . ' &'
 endfunction
-map <F6> :call Browser ()<CR>
+map ,w :call Browser ()<CR>
 
 " Courtesy of 'Hacking Vim 7.2'.
 " Move up and down virtual lines when they're soft-wrapped.
@@ -266,6 +266,7 @@ autocmd VimEnter * DoShowMarks!
 set updatetime=250
 
 " https://github.com/linsong/vim-config/blob/master/_vimrc
+"  (which is a 2,000+ line vimrc)
 " Make moving betweens splits easy.
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -285,10 +286,26 @@ nnoremap <F4>   :cnext \| norm zz<CR>
 " No need to press <shift> anymore :-)
 nnoremap ; :
 
+" Start using this thing.
+let mapleader = ","
+
+" It does what it says.
+function! StripWhitespace ()
+    exec ':%s/ \+$//gc'
+endfunction
+map ,s :call StripWhitespace ()<CR>
+
 " Read and write sessions.
 " TODO: Figure out why this messes with manpageview.vim
+" TODO: Figure out if you care that this messes with manpageview.vim
 nnoremap <F9> :source ~/Dropbox/session.vim<CR>
 nnoremap <F10> :mksession! ~/Dropbox/session.vim<CR>
+
+" readline keybindings. thanks rtomayko!
+imap <C-a> <C-o>0
+imap <C-e> <C-o>$
+map <C-e> $
+map <C-a> 0
 
 function! RemoveFugitiveBuffers()
 	for buf in range(1, bufnr('$'))
