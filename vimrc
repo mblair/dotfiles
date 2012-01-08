@@ -315,3 +315,5 @@ autocmd VimLeave * :call RemoveFugitiveBuffers()
 "let Tlist_GainFocus_On_ToggleOpen=1
 "let Tlist_Show_One_File=1
 "nnoremap <silent> <F7> :TlistToggle<CR>
+
+autocmd BufEnter *.ronn set filetype=markdown
