@@ -3,7 +3,7 @@
 set nocompatible
 
 call pathogen#runtime_append_all_bundles()
-call pathogen#helptags() " I...guess. This makes my submodules dirty.
+" call pathogen#helptags() " I...guess. This makes my submodules dirty.
 
 " Enable filetype detection, along with language-aware indentation.
 filetype plugin indent on
