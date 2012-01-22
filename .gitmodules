@@ -2,23 +2,9 @@
 	path = vim/bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
 	ignore = dirty
-[submodule "vim/bundle/rails"]
-	path = vim/bundle/rails
-	url = git://github.com/tpope/vim-rails.git
-[submodule "vim/bundle/surround"]
-	path = vim/bundle/surround
-	url = git://github.com/tpope/vim-surround.git
-	ignore = dirty
-[submodule "vim/bundle/ragtag"]
-	path = vim/bundle/ragtag
-	url = git://github.com/tpope/vim-ragtag.git
-	ignore = dirty
 [submodule "vim/bundle/color_sampler_pack"]
 	path = vim/bundle/color_sampler_pack
 	url = git://github.com/vim-scripts/Color-Sampler-Pack.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundle/scrollcolors"]
 	path = vim/bundle/scrollcolors
 	url = git://github.com/vim-scripts/ScrollColors.git
@@ -26,24 +12,12 @@
 	path = vim/bundle/gundo
 	url = git://github.com/sjl/gundo.vim.git
 	ignore = dirty
-[submodule "vim/bundle/ack"]
-	path = vim/bundle/ack
-	url = git://github.com/mileszs/ack.vim.git
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
-[submodule "vim/bundle/mru"]
-	path = vim/bundle/mru
-	url = git://github.com/vim-scripts/mru.vim.git
 [submodule "vim/bundle/showmarks-politz"]
 	path = vim/bundle/showmarks-politz
 	url = https://github.com/vim-scripts/showmarks--Politz
-[submodule "vim/bundle/manpageview"]
-	path = vim/bundle/manpageview
-	url = https://github.com/vim-scripts/ManPageView
-[submodule "vim/bundle/extradite"]
-	path = vim/bundle/extradite
-	url = https://github.com/int3/vim-extradite
 [submodule "vim/bundle/vim-coffee-script"]
 	path = vim/bundle/vim-coffee-script
 	url = git://github.com/vim-scripts/vim-coffee-script
