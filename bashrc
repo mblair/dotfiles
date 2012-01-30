@@ -117,7 +117,14 @@ update_prompt() {
 	RET_VALUE="$(if [[ $RET == 0 ]]; then echo -ne "${bldgrn}$RET"; else echo -ne "${bldred}$RET"; fi;)"
 	svn_rev
 	
-	PS1="${bldblu}[${txtrst}\w${bldblu}]"
+	if [[ ${EUID} == 0 ]]; then
+		_color="${bldred}"
+	else
+		_color="${bldgrn}"
+	fi
+
+	PS1="$_color\u@\h "
+	PS1="$PS1${bldblu}[${txtrst}\w${bldblu}]"
 	PS1="$PS1${bldgrn}$(git_prompt)${SVN_REV} "
 
 	#http://www.fileformat.info/info/unicode/char/26a1/index.htm
