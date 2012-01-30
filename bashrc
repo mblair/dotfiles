@@ -130,16 +130,10 @@ update_prompt() {
 	#http://www.fileformat.info/info/unicode/char/26a1/index.htm
 	PS1="$PS1${txtblu}⚡ ${txtrst}"
 
-	# Set the title to user@host: dir
+	# Set the title to user@host: working_dir
 	PS1="\[\e]0;\u@\h: \w\a\]$PS1"
 
-	#Show the current Ruby's version, patchlevel and gemset via RVM.
-	if [ -f ~/bin/rvm-prompt -o -f ~/.rvm/bin/rvm-prompt ]; then
-		PS1="$RET_VALUE ${bldred}$(rvm-prompt v p g) $PS1"
-	else
-		PS1="$RET_VALUE $PS1"
-	fi
-
+	PS1="$RET_VALUE $PS1"
 }
 
 PROMPT_COMMAND=update_prompt
