@@ -1,11 +1,11 @@
 #This makes Ctrl-S (forward-search-history) work.
 stty stop undef
 
-export HISTSIZE=100000 #bash history will save this many commands.
-export HISTFILESIZE=${HISTSIZE} #bash will remember this many commands.
+export HISTSIZE=100000 #bash history will save this many commands
+export HISTFILESIZE=${HISTSIZE} #bash will remember this many commands
 export HISTCONTROL=ignoredups #ignore duplicate commands
-export HISTIGNORE="ls:pwd:exit:clear" #don't put this in the history.
-export HISTTIMEFORMAT="[%Y-%m-%d - %H:%M:%S] "
+export HISTIGNORE="ls:pwd:exit:clear" #don't put these in the history
+export HISTTIMEFORMAT="[%Y-%m-%d - %H:%M:%S] " #timestamps
 
 shopt -s cmdhist # save multi-line commands as a single line in the history.
 shopt -s expand_aliases   # expand aliases in this file.
@@ -96,6 +96,7 @@ git_prompt() {
 	fi
 }
 
+# Setting this to 1 will slow down `cd`s into big repositories, so beware.
 GIT_PS1_SHOWDIRTYSTATE=1
 
 update_prompt() {
@@ -287,4 +288,5 @@ if [ "`uname`" == "Linux" ]; then
 		. "$HOME/.bash_profile"
 	fi
 fi
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

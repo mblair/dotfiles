@@ -266,7 +266,7 @@ autocmd VimEnter * DoShowMarks!
 set updatetime=250
 
 " https://github.com/linsong/vim-config/blob/master/_vimrc
-"  (which is a 2,000+ line vimrc)
+"  (which is a 2,000+ line vimrc, btw)
 " Make moving betweens splits easy.
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -305,6 +305,7 @@ nnoremap <F10> :mksession! ~/Dropbox/session.vim<CR>
 imap <C-a> <C-o>0
 imap <C-e> <C-o>$
 map <C-e> $
+" Can no longer increment numbers in normal mode. Oh well.
 map <C-a> 0
 
 function! RemoveFugitiveBuffers()
