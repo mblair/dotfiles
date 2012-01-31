@@ -173,7 +173,7 @@ endfunction
  "Toggles NERDTree
 map <silent> <F2> :call NTFinderP()<CR>
 
-map <C-z> <plug>NERDCommenterToggle
+map <C-g> <plug>NERDCommenterToggle
 
 autocmd FileType ruby setlocal autoindent tabstop=2 expandtab shiftwidth=2 textwidth=0
 
