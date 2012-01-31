@@ -102,12 +102,12 @@ GIT_PS1_SHOWDIRTYSTATE=1
 update_prompt() {
 	RET=$?;
 
-	#For gVim's :sh
-	if [ $TERM == 'dumb' ]; then
+	#For gVim's :sh, which I no longer use.
+	#if [ $TERM == 'dumb' ]; then
 		#Fix LS_COLORS too.
-		PS1="[\w]$ "
-		return 0;
-	fi
+		#PS1="[\w]$ "
+		#return 0;
+	#fi
 
 	#TODO: Fix these.
 	#history -a #write the current terminal's history to the history file
