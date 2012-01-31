@@ -173,8 +173,7 @@ endfunction
  "Toggles NERDTree
 map <silent> <F2> :call NTFinderP()<CR>
 
- "Can no longer increment numbers in normal mode. Oh well.
-map <C-a> <plug>NERDCommenterToggle
+map <C-z> <plug>NERDCommenterToggle
 
 autocmd FileType ruby setlocal autoindent tabstop=2 expandtab shiftwidth=2 textwidth=0
 
@@ -234,7 +233,7 @@ endif
 "vim.wikia.com/wiki/Open_file_under_cursor
 :map <F8> :vertical wincmd f<CR>
 
-"TODO: Make this Mac-friendly. I believe they use 'open'.
+"TODO: Make this friendly for both Mac and Linux.
 "http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 function! Browser ()
   let line0 = getline (".")
