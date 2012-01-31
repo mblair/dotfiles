@@ -124,7 +124,7 @@ update_prompt() {
 		_color="${bldgrn}"
 	fi
 
-	PS1="$_color\u@\h "
+	PS1="${_color}\u${bldblu}@${_color}\h "
 	PS1="$PS1${bldblu}[${txtrst}\w${bldblu}]"
 	PS1="$PS1${bldgrn}$(git_prompt)${SVN_REV} "
 
