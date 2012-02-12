@@ -97,7 +97,7 @@ git_prompt() {
 }
 
 # Setting this to 1 will slow down `cd`s into big repositories, so beware.
-GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWDIRTYSTATE=0
 
 update_prompt() {
 	RET=$?;
@@ -116,7 +116,7 @@ update_prompt() {
 	#https://wiki.archlinux.org/index.php/Color_Bash_Prompt#Advanced_return_value_visualisation
 	#Basically, prepend the prompt with a green 0 if the last command returned 0, or prepend it with a red [error code] if not.
 	RET_VALUE="$(if [[ $RET == 0 ]]; then echo -ne "${bldgrn}$RET"; else echo -ne "${bldred}$RET"; fi;)"
-	svn_rev
+	#svn_rev
 	
 	if [[ ${EUID} == 0 ]]; then
 		_color="${bldred}"
@@ -126,7 +126,8 @@ update_prompt() {
 
 	PS1="${_color}\u${bldblu}@${_color}\h "
 	PS1="$PS1${bldblu}[${txtrst}\w${bldblu}]"
-	PS1="$PS1${bldgrn}$(git_prompt)${SVN_REV} "
+	PS1="$PS1${bldgrn}"
+	#PS1="$PS1$(git_prompt)${SVN_REV} "
 
 	#http://www.fileformat.info/info/unicode/char/26a1/index.htm
 	PS1="$PS1${txtblu}⚡ ${txtrst}"
@@ -189,6 +190,11 @@ if [ "`uname`" == "Darwin" ]; then
 
 	if [ -d "$HOME/.cabal/bin" ]; then
 		export PATH="$HOME/.cabal/bin:$PATH"
+	fi
+
+	#http://tug.org/mactex/faq/
+	if [ -d "/usr/texbin" ]; then
+		export PATH="/usr/texbin:$PATH"
 	fi
 
 	#https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
@@ -288,5 +294,3 @@ if [ "`uname`" == "Linux" ]; then
 		. "$HOME/.bash_profile"
 	fi
 fi
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
