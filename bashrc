@@ -96,8 +96,8 @@ git_prompt() {
 	fi
 }
 
-# Setting this to 1 will slow down `cd`s into big repositories, so beware.
-GIT_PS1_SHOWDIRTYSTATE=0
+# I think setting this to 1 will slow down `cd`s into big repositories, so beware.
+GIT_PS1_SHOWDIRTYSTATE=1
 
 update_prompt() {
 	RET=$?;
@@ -127,7 +127,7 @@ update_prompt() {
 	PS1="${_color}\u${bldblu}@${_color}\h "
 	PS1="$PS1${bldblu}[${txtrst}\w${bldblu}]"
 	PS1="$PS1${bldgrn}"
-	#PS1="$PS1$(git_prompt)${SVN_REV} "
+	PS1="$PS1$(git_prompt) "
 
 	#http://www.fileformat.info/info/unicode/char/26a1/index.htm
 	PS1="$PS1${txtblu}⚡ ${txtrst}"
@@ -146,7 +146,7 @@ alias :w='echo "idiot"'
 alias rscp='rsync -aP --no-whole-file --inplace'
 alias rsmv='rscp --remove-source-files'
 
-alias less='less -N' #show line numbers when I invoke less myself, not for man.
+alias less='less -N' # show line numbers when I invoke `less` myself, but not for `man`.
 alias f='find . | grep -i'
 alias p='ping google.com'
 alias c='clear'
