@@ -306,6 +306,8 @@ imap <C-e> <C-o>$
 map <C-e> $
 " Can no longer increment numbers in normal mode. Oh well.
 map <C-a> 0
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 
 function! RemoveFugitiveBuffers()
 	for buf in range(1, bufnr('$'))
