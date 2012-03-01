@@ -57,6 +57,17 @@ bakcyn='\[\e[46m\]'   # Cyan
 bakwht='\[\e[47m\]'   # White
 txtrst='\[\e[0m\]'    # Text Reset
 
+cleanup() {
+	ls | while read -r FILE
+		do
+		mv -v "$FILE" `echo $FILE | tr ' ' '_' | tr -d '[{}(),\!]:"' | tr -d "\'" | tr '[A-Z]' '[a-z]' | sed 's/_-_/_/g'`
+		done
+}
+
+unpack_everything() {
+	find . -type f -regex "^.*.rar$" -print0 | xargs -0 -I__ unrar e -o- __
+}
+
 #Thanks Gary Bernhardt.
 minutes_since_last_commit() {
 	now=`date +%s`
@@ -97,7 +108,7 @@ git_prompt() {
 }
 
 # I think setting this to 1 will slow down `cd`s into big repositories, so beware.
-GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWDIRTYSTATE=0
 
 update_prompt() {
 	RET=$?;
@@ -126,8 +137,8 @@ update_prompt() {
 
 	PS1="${_color}\u${bldblu}@${_color}\h "
 	PS1="$PS1${bldblu}[${txtrst}\w${bldblu}]"
-	PS1="$PS1${bldgrn}"
-	PS1="$PS1$(git_prompt) "
+	PS1="$PS1${bldgrn} "
+	#PS1="$PS1$(git_prompt) "
 
 	#http://www.fileformat.info/info/unicode/char/26a1/index.htm
 	PS1="$PS1${txtblu}⚡ ${txtrst}"
@@ -230,13 +241,6 @@ if [ "`uname`" == "Linux" ]; then
 		. /etc/bash_completion
 	fi
 
-	if [ -f ~/.rvm/scripts/completion ]; then
-		. ~/.rvm/scripts/completion
-	fi
-
-	#TODO: Profile your prompt and see if this is what's slowing things down.
-	#GIT_PS1_SHOWUPSTREAM="verbose"
-
 	# Only source this if we installed Git from source. If we didn't, it's installed already.
 	if [[ -f ~/.git-completion.bash ]]; then
 		. ~/.git-completion.bash
@@ -249,46 +253,6 @@ if [ "`uname`" == "Linux" ]; then
 	alias alert_summ='history|tail -n1|sed -e "s/^\s*[0-9]\+\s*//" -e "s/\s*;\s*alert[0-9]*.*$//"'
 	alias alert_body='history|tail -n1|sed -e "s/\([^;]*\;\)\+//" -e "s/\s*alert\s*//" -e "s/#\(.*\)/\1/"'
 	alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "$(alert_summ)" "$(alert_body)"'
-
-	#Archive extractor.
-	ex ()
-	{
-	if [ -f $1 ] ; then
-		case $1 in
-		*.tar.bz2)   tar xjvf $1      ;;
-		*.tar.gz)    tar xzvf $1      ;;
-		*.bz2)       bunzip2 $1      ;;
-		*.rar)       unrar e $1        ;;
-		*.gz)        gunzip $1       ;;
-		*.tar)       tar xvf $1       ;;
-		*.tbz2)      tar xjvf $1      ;;
-		*.tgz)       tar xzvf $1      ;;
-		*.zip)       unzip -jo $1        ;;
-		*.Z)         uncompress $1   ;;
-		*.7z)        7z x $1         ;;
-		*)           echo "'$1' cannot be extracted via ex()" ;;
-		esac
-	else
-		echo "'$1' is not a valid file"
-	fi
-	}
-
-	cleanup() {
-		ls | while read -r FILE
-			do
-			mv -v "$FILE" `echo $FILE | tr ' ' '_' | tr -d '[{}(),\!]:"' | tr -d "\'" | tr '[A-Z]' '[a-z]' | sed 's/_-_/_/g'`
-			done
-	}
-
-	mkcd() {
-		if [ "$1" ]; then
-			mkdir -p "$1" && cd "$1"
-		fi
-	}
-
-	historyawk() {
-		history | awk '{a[$2]++}END{for(i in a){printf"%5d\t%s\n",a[i],i}}' | sort -nr | head; 
-	}
 
 	if [[ -s "$HOME/.bash_profile" ]]; then
 		. "$HOME/.bash_profile"
