@@ -178,10 +178,13 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
 
 if [ "`uname`" == "Darwin" ]; then
-	export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.6.0_26-b03-383.jdk/Contents/Home"
-	export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
-	export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
-	export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.0.1/jars"
+	export JAVA_HOME="$(/usr/libexec/java_home)"
+
+	if [[ -d $HOME/.ec2 ]]; then
+		export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
+		export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
+		export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.3/jars"
+	fi
 
 	# Crusty, but I'm not putting my Flipboard hostnames in here.
 	# http://www.commandlinefu.com/commands/view/2766/ssh-autocomplete
@@ -197,7 +200,11 @@ if [ "`uname`" == "Darwin" ]; then
 		. `brew --prefix`/etc/bash_completion
 	fi
 
+	# For Homebrew.
 	export PATH="/usr/local/sbin/:/usr/local/bin:$PATH"
+
+	# I use Homebrew's Ruby and its gems.
+	export PATH="/usr/local/Cellar/ruby/1.9.3-p125/bin:$PATH"
 
 	if [ -d "$HOME/.cabal/bin" ]; then
 		export PATH="$HOME/.cabal/bin:$PATH"
