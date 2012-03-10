@@ -2,7 +2,7 @@
 " This must be first, as it changes other options.
 set nocompatible
 
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags() " I...guess. This makes my submodules dirty.
 
 " Enable filetype detection, along with language-aware indentation.
@@ -135,7 +135,8 @@ set laststatus=2
 " Sweet statusline.
 " Formatting from here:
 " http://www.vi-improved.org/vimrc.php
-set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]%{fugitive#statusline()}
+set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]
+"%{fugitive#statusline()}
 "               | | | |  |   |       |    |  |
 "               | | | |  |   |       |    |  +--shows your current git branch
 "               | | | |  |   |       |    +-----current column
@@ -258,7 +259,7 @@ imap <UP> <ESC>gki
 " WORDS contain everything but whitespace.
 map <F1> <ESC>:exec "help ".expand("<cWORD>")<CR>
 
-autocmd VimEnter * DoShowMarks!
+"autocmd VimEnter * DoShowMarks!
 
 " Write the swap file every [updatetime] ms. Showmarks relies on this to
 " update marks.
@@ -329,7 +330,7 @@ function! ListVersion()
 endfunction
 
 "TODO: Figure out something with nobuflisted that makes this all unnecessary.
-autocmd VimLeave * :call RemoveFugitiveBuffers()
+"autocmd VimLeave * :call RemoveFugitiveBuffers()
 
 "let Tlist_GainFocus_On_ToggleOpen=1
 "let Tlist_Show_One_File=1
