@@ -135,8 +135,14 @@ update_prompt() {
 		_color="${bldgrn}"
 	fi
 
-	PS1="${_color}\u${bldblu}@${_color}\h "
-	PS1="$PS1${bldblu}[${txtrst}\w${bldblu}]"
+	# On a Mac, just show the return value and working directory.
+	if [[ $(uname -s) == "Darwin" ]]; then
+		PS1="${bldblu}[${txtrst}\w${bldblu}]"
+	else
+		# On Linux, show the user and hostname too.
+		PS1="${_color}\u${bldblu}@${_color}\h "
+		PS1="${PS1}${bldblu}[${txtrst}\w${bldblu}]"
+	fi
 	PS1="$PS1${bldgrn} "
 	#PS1="$PS1$(git_prompt) "
 
