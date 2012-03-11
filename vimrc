@@ -310,24 +310,24 @@ map <C-a> 0
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
-function! RemoveFugitiveBuffers()
-	for buf in range(1, bufnr('$'))
-		if bufname(buf) =~? "fugitive.*"
-			if buflisted(buf)
-				exe 'bdelete ' . buf
-			endif
-		endif
-	endfor
-endfunction
+"function! RemoveFugitiveBuffers()
+"	for buf in range(1, bufnr('$'))
+"		if bufname(buf) =~? "fugitive.*"
+"			if buflisted(buf)
+"				exe 'bdelete ' . buf
+"			endif
+"		endif
+"	endfor
+"endfunction
 
-function! ListVersion()
-	let bye = []
-	bufdo if bufname("%") =~? "fugitive.*" | :call add(bye, bufnr("%")) | endif
-
-	for buf in bye
-		exe 'bdelete ' . buf
-	endfor
-endfunction
+"function! ListVersion()
+"	let bye = []
+"	bufdo if bufname("%") =~? "fugitive.*" | :call add(bye, bufnr("%")) | endif
+"
+"	for buf in bye
+"		exe 'bdelete ' . buf
+"	endfor
+"endfunction
 
 "TODO: Figure out something with nobuflisted that makes this all unnecessary.
 "autocmd VimLeave * :call RemoveFugitiveBuffers()
