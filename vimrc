@@ -2,7 +2,7 @@
 " This must be first, as it changes other options.
 set nocompatible
 
-"call pathogen#runtime_append_all_bundles()
+call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags() " I...guess. This makes my submodules dirty.
 
 " Enable filetype detection, along with language-aware indentation.
@@ -135,8 +135,7 @@ set laststatus=2
 " Sweet statusline.
 " Formatting from here:
 " http://www.vi-improved.org/vimrc.php
-set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]
-"%{fugitive#statusline()}
+set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]%{fugitive#statusline()}
 "               | | | |  |   |       |    |  |
 "               | | | |  |   |       |    |  +--shows your current git branch
 "               | | | |  |   |       |    +-----current column
@@ -310,24 +309,24 @@ map <C-a> 0
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
-"function! RemoveFugitiveBuffers()
-"	for buf in range(1, bufnr('$'))
-"		if bufname(buf) =~? "fugitive.*"
-"			if buflisted(buf)
-"				exe 'bdelete ' . buf
-"			endif
-"		endif
-"	endfor
-"endfunction
+function! RemoveFugitiveBuffers()
+	for buf in range(1, bufnr('$'))
+		if bufname(buf) =~? "fugitive.*"
+			if buflisted(buf)
+				exe 'bdelete ' . buf
+			endif
+		endif
+	endfor
+endfunction
 
-"function! ListVersion()
-"	let bye = []
-"	bufdo if bufname("%") =~? "fugitive.*" | :call add(bye, bufnr("%")) | endif
-"
-"	for buf in bye
-"		exe 'bdelete ' . buf
-"	endfor
-"endfunction
+function! ListVersion()
+	let bye = []
+	bufdo if bufname("%") =~? "fugitive.*" | :call add(bye, bufnr("%")) | endif
+
+	for buf in bye
+		exe 'bdelete ' . buf
+	endfor
+endfunction
 
 "TODO: Figure out something with nobuflisted that makes this all unnecessary.
 "autocmd VimLeave * :call RemoveFugitiveBuffers()
