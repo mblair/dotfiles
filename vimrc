@@ -2,7 +2,7 @@
 " This must be first, as it changes other options.
 set nocompatible
 
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags() " I...guess. This makes my submodules dirty.
 
 " Enable filetype detection, along with language-aware indentation.
@@ -135,7 +135,8 @@ set laststatus=2
 " Sweet statusline.
 " Formatting from here:
 " http://www.vi-improved.org/vimrc.php
-set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]%{fugitive#statusline()}
+set statusline=%F%m%r[%L]%=[%p%%][%04l,%04v]
+"%{fugitive#statusline()}
 "               | | | |  |   |       |    |  |
 "               | | | |  |   |       |    |  +--shows your current git branch
 "               | | | |  |   |       |    +-----current column
@@ -223,7 +224,7 @@ endif
 " 33pt on a 13" MacBook makes me look like an old person.
 if has("mac") && has("gui_running")
 	source $VIMRUNTIME/macros/matchit.vim
-	set guifont=Menlo\ Regular:h18
+	set guifont=Menlo\ Regular:h20
 endif
 
 " Why is this not working?
