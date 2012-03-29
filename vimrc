@@ -2,7 +2,7 @@
 " This must be first, as it changes other options.
 set nocompatible
 
-"call pathogen#runtime_append_all_bundles()
+call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags() " I...guess. This makes my submodules dirty.
 
 " Enable filetype detection, along with language-aware indentation.
@@ -99,7 +99,7 @@ endif
 " hit Shift-Insert if you want to paste text from somewhere else and have it
 " look normal. This basically toggles autoindentation on pasted code (which is
 " probably already indented).
-set pastetoggle=<S-Insert>
+"set pastetoggle=<S-Insert>
 
 " Make Ctrl-C copy stuff to the system clipboard, also known as the + register.
 map <C-c> "+y
@@ -171,8 +171,8 @@ function! NTFinderP()
     endif
 endfunction
 
- "Toggles NERDTree
-map <silent> <F2> :call NTFinderP()<CR>
+" Toggles NERDTree
+" map <silent> <F2> :call NTFinderP()<CR>
 
 map <C-g> <plug>NERDCommenterToggle
 
@@ -257,13 +257,13 @@ imap <UP> <ESC>gki
 " F1 gets help on the WORD under the cursor.
 " Words are only alphanumeric.
 " WORDS contain everything but whitespace.
-map <F1> <ESC>:exec "help ".expand("<cWORD>")<CR>
+" map <F1> <ESC>:exec "help ".expand("<cWORD>")<CR>
 
 "autocmd VimEnter * DoShowMarks!
 
 " Write the swap file every [updatetime] ms. Showmarks relies on this to
 " update marks.
-set updatetime=250
+" set updatetime=250
 
 " https://github.com/linsong/vim-config/blob/master/_vimrc
 "  (which is a 2,000+ line vimrc, btw)
