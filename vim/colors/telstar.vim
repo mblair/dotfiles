@@ -24,6 +24,7 @@ hi StatusLine    gui=bold
 hi StatusLineNC  gui=bold
 hi VertSplit     gui=bold
 hi LineNr        guifg=DarkGrey
+hi CursorLineNr  guifg=DarkGrey
 hi Visual        gui=bold guifg=Grey guibg=fg
 hi VisualNOS     gui=underline,bold
 hi Directory     guifg=Grey
