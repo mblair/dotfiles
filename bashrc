@@ -183,6 +183,9 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 
 export NODE_PATH="/usr/local/lib/node_modules"
 
+export VISUAL=vim
+export EDITOR=$VISUAL
+
 if [ "`uname`" == "Darwin" ]; then
 	export JAVA_HOME="$(/usr/libexec/java_home)"
 
@@ -210,7 +213,7 @@ if [ "`uname`" == "Darwin" ]; then
 	export PATH="/usr/local/sbin/:/usr/local/bin:$PATH"
 
 	# I use Homebrew's Ruby and its gems.
-	export PATH="/usr/local/Cellar/ruby/1.9.3-p125/bin:$PATH"
+	export PATH="/usr/local/Cellar/ruby/1.9.3-p174/bin:$PATH"
 
 	if [ -d "$HOME/.cabal/bin" ]; then
 		export PATH="$HOME/.cabal/bin:$PATH"
@@ -236,17 +239,14 @@ if [ "`uname`" == "Darwin" ]; then
 fi
 
 if [ "`uname`" == "Linux" ]; then
-	export VISUAL=vim
-	export EDITOR=$VISUAL
-
 	PAGER=less
 
 	# LESS man page colors
 	export LESS_TERMCAP_mb=$'\E[01;31m'
 	export LESS_TERMCAP_md=$'\E[01;31m'
 	export LESS_TERMCAP_me=$'\E[0m'
-	export LESS_TERMCAP_se=$'\E[0m'                           
-	export LESS_TERMCAP_so=$'\E[01;44;33m'                                 
+	export LESS_TERMCAP_se=$'\E[0m'
+	export LESS_TERMCAP_so=$'\E[01;44;33m'
 	export LESS_TERMCAP_ue=$'\E[0m'
 	export LESS_TERMCAP_us=$'\E[01;32m'
 
