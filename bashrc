@@ -128,7 +128,7 @@ update_prompt() {
 	#Basically, prepend the prompt with a green 0 if the last command returned 0, or prepend it with a red [error code] if not.
 	RET_VALUE="$(if [[ $RET == 0 ]]; then echo -ne "${bldgrn}$RET"; else echo -ne "${bldred}$RET"; fi;)"
 	#svn_rev
-	
+
 	if [[ ${EUID} == 0 ]]; then
 		_color="${bldred}"
 	else
@@ -213,7 +213,7 @@ if [ "`uname`" == "Darwin" ]; then
 	export PATH="/usr/local/sbin/:/usr/local/bin:$PATH"
 
 	# I use Homebrew's Ruby and its gems.
-	export PATH="/usr/local/Cellar/ruby/1.9.3-p174/bin:$PATH"
+	export PATH="/usr/local/Cellar/ruby/1.9.3-p194/bin:$PATH"
 
 	if [ -d "$HOME/.cabal/bin" ]; then
 		export PATH="$HOME/.cabal/bin:$PATH"
