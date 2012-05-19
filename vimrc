@@ -28,6 +28,9 @@ set autoindent
 " Number of spaces that a tab is equivalent to.
 set tabstop=4
 
+" Hard tabs suck.
+set expandtab
+
 " Number of spaces to (auto)indent.
 set shiftwidth=4
 
