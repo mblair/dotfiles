@@ -1,3 +1,4 @@
-schedule = watch_directory_2,10,10,"load_start=~/Dropbox/Torrents/Current/*.torrent,d.set_directory=~/rtorrent/stuff/"
+#schedule = watch_directory_2,10,10,"load_start=~/Dropbox/Torrents/Current/*.torrent,d.set_directory=~/rtorrent/stuff/"
+schedule = watch_directory_2,10,10,"load_start=~/Dropbox/Torrents/new_current/*.torrent,d.set_directory=~/rtorrent/stuff/"
 session = ~/rtorrent/session
 system.method.set_key = event.download.finished,move_complete,"execute=mv,-n,$d.get_base_path=,~/Desktop/;d.set_directory=~/Desktop/"
