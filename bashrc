@@ -101,7 +101,7 @@ git_prompt() {
 			fi
 			local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${txtrst}"
 			# __git_ps1 is from the Git source tree's contrib/completion/git-completion.bash
-			local GIT_PROMPT=`__git_ps1 "(%s|${SINCE_LAST_COMMIT})"`
+			local GIT_PROMPT=`__git_ps1 "${txtrst}(${bldgrn}%s${txtrst}|${SINCE_LAST_COMMIT}${txtrst})"`
 			echo ${GIT_PROMPT}
 		fi
 	fi
@@ -143,11 +143,11 @@ update_prompt() {
 		PS1="${_color}\u${bldblu}@${_color}\h "
 		PS1="${PS1}${bldblu}[${txtrst}\w${bldblu}]"
 	fi
-	PS1="$PS1${bldgrn} "
-	#PS1="$PS1$(git_prompt) "
+	#PS1="$PS1${bldgrn} "
+	PS1="$PS1$(git_prompt) "
 
 	#http://www.fileformat.info/info/unicode/char/26a1/index.htm
-	PS1="$PS1${txtblu}⚡ ${txtrst}"
+	PS1="$PS1${bldblu}⚡ ${txtrst}"
 
 	# Set the title to user@host: working_dir
 	PS1="\[\e]0;\u@\h: \w\a\]$PS1"
