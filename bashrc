@@ -108,7 +108,7 @@ git_prompt() {
 }
 
 # I think setting this to 1 will slow down `cd`s into big repositories, so beware.
-GIT_PS1_SHOWDIRTYSTATE=0
+GIT_PS1_SHOWDIRTYSTATE=1
 
 update_prompt() {
 	RET=$?;
