@@ -179,6 +179,7 @@ endfunction
 
 map <C-g> <plug>NERDCommenterToggle
 
+autocmd BufRead,BufNewFile *.ru set filetype=ruby
 autocmd FileType ruby setlocal autoindent tabstop=2 expandtab shiftwidth=2 textwidth=0
 
 "http://svn.python.org/view/*checkout*/python/trunk/Misc/Vim/vimrc
