@@ -166,6 +166,7 @@ alias rsmv='rscp --remove-source-files'
 alias less='less -N' # show line numbers when I invoke `less` myself, but not for `man`.
 alias f='find . | grep -i'
 alias p='ping google.com'
+alias m='make'
 alias c='clear'
 
 if [[ -f /usr/local/bin/hub ]]; then
