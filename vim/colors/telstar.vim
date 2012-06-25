@@ -6,6 +6,8 @@
 " the java highlighting depends on claudio fleiner's
 " java.vim syntax highlighting at
 " http://www.fleiner.com/vim/download.html
+"
+" some modifications by matt blair <me@matthewblair.net>
 
 set background=dark
 hi clear
@@ -15,7 +17,7 @@ endif
 
 let g:colors_name = "telstar"
 
-hi Normal        guifg=#5060c0 guibg=#000022
+hi Normal        guifg=#6070e0 guibg=#000022
 hi Cursor        guibg=#aaaaaa guifg=Black
 hi lCursor       guibg=#bababa guifg=Black
 hi CursorLine    guibg=black
@@ -45,7 +47,6 @@ hi DiffDelete    gui=bold guifg=#604060 guibg=#302030
 hi ErrorMsg      gui=bold guifg=Black
 hi WarningMsg    guifg=White " Makes 'search hit bottom/top' messages readable.
 
-" general highlighting
 hi Constant      gui=bold guifg=#9060c8
 hi Special       guifg=#807087
 hi Ignore        guifg=red
@@ -59,6 +60,7 @@ hi ColorColumn guibg=#FF80FF
 
 hi Todo          gui=bold guifg=Magenta guibg=#000022
 " The light pink is #ff80ff, or PreProc from syncolor.vim's background=dark default.
+
 hi TodoRed       ctermfg=LightRed guifg=#E01B1B
 hi TodoOrange    ctermfg=LightMagenta guifg=#E0841B
 hi TodoYellow    ctermfg=LightYellow  guifg=#E0D91B
@@ -70,7 +72,7 @@ hi Pmenu         guibg=#101033 guifg=#999999 gui=bold
 
 hi MatchParen    gui=bold guifg=Grey guibg=fg
 
-" java highlighting
+" java highlighting, lol.
 hi javaExternal  guifg=#666666
 hi javaScopeDecl guifg=#8040c0
 hi javaParen     guifg=#6080e0
@@ -80,6 +82,6 @@ hi javaFuncDef   guifg=#7080f0
 hi javaLangObject guifg=#6080c0
 hi javaBraces    guifg=#406090
 
-"For showmarks.
+" For showmarks...which I no longer use.
 highlight hlShowMarks guibg=bg
 highlight SignColumn guibg=bg
