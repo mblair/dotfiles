@@ -184,7 +184,7 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 
 export NODE_PATH="/usr/local/lib/node_modules"
 
-export VISUAL=vim
+export VISUAL=emacs
 export EDITOR=$VISUAL
 
 if [ "`uname`" == "Darwin" ]; then
