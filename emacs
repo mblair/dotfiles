@@ -31,8 +31,12 @@
 ;; stupid stuff to disable
 (setq inhibit-startup-message t)
 (setq-default make-backup-files nil)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+(defalias 'yes-or-no-p 'y-or-no-p)
 
 (set-face-attribute 'default nil :height 140)
 
