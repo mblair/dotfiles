@@ -19,3 +19,6 @@
 (scroll-bar-mode -1)
 
 (set-face-attribute 'default nil :height 140)
+
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
+                         ("gnu" . "http://elpa.gnu.org/packages/"))
