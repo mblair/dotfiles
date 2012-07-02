@@ -7,6 +7,13 @@
 (require 'ruby-electric)
 (add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
 
+;; markdown mode, found [here](http://jblevins.org/git/markdown-mode.git)
+(add-to-list 'load-path "~/.emacs.d/")
+(autoload 'markdown-mode "markdown-mode"
+					"Major mode for editing Markdown files" t)
+(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist)
+(setq auto-mode-alist (cons '("\\.ronn" . markdown-mode) auto-mode-alist)
+
 ;; cool stuff to enable
 (show-paren-mode 1)
 
