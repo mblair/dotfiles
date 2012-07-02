@@ -10,7 +10,9 @@
 (setq-default standard-indent 2)
 (setq-default initial-buffer-choice t)
 (setq-default initial-scratch-message "")
-(setq show-trailing-whitespace t)
+(setq-default show-trailing-whitespace t)
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; stupid stuff to disable
 (setq inhibit-startup-message t)
