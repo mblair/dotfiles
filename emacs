@@ -2,6 +2,11 @@
 (add-to-list 'custom-theme-load-path "~/git_src/emacs-color-theme-solarized/")
 (load-theme 'solarized-dark t)
 
+;; electric rubies
+(add-to-list 'load-path "~/.emacs.d/elpa/ruby-electric-1.1/")
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
+
 ;; cool stuff to enable
 (show-paren-mode 1)
 
