@@ -11,8 +11,10 @@
 (add-to-list 'load-path "~/.emacs.d/")
 (autoload 'markdown-mode "markdown-mode"
 					"Major mode for editing Markdown files" t)
-(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist)
-(setq auto-mode-alist (cons '("\\.ronn" . markdown-mode) auto-mode-alist)
+(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.ronn" . markdown-mode) auto-mode-alist))
+
+(setq auto-mode-alist (cons '("\\.gemspec" . ruby-mode) auto-mode-alist))
 
 ;; cool stuff to enable
 (show-paren-mode 1)
@@ -35,4 +37,4 @@
 (set-face-attribute 'default nil :height 140)
 
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-                         ("gnu" . "http://elpa.gnu.org/packages/"))
+                         ("gnu" . "http://elpa.gnu.org/packages/")))
