@@ -7,6 +7,10 @@
 (require 'ruby-electric)
 (add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
 
+;; clojure-mode
+(add-to-list 'load-path "~/.emacs.d/elpa/clojure-mode-1.11.5/")
+(require 'clojure-mode)
+
 ;; markdown mode, found [here](http://jblevins.org/git/markdown-mode.git)
 (add-to-list 'load-path "~/.emacs.d/")
 (autoload 'markdown-mode "markdown-mode"
