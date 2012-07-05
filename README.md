@@ -3,7 +3,7 @@ My Dotfiles, for OS X and Ubuntu
 
 * bash
 * git
-* irssi
 * readline
 * rtorrent
-* vim
+* emacs (which i started using on 6/25/12)
+* vim (which i used prior to that)
