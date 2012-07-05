@@ -277,3 +277,5 @@ if [ "`uname`" == "Linux" ]; then
 		. "$HOME/.bash_profile"
 	fi
 fi
+
+. ~/my_src/personal/flip_bash
