@@ -230,8 +230,8 @@ if [ "`uname`" == "Darwin" ]; then
 	#https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
 	export PATH="/usr/local/share/python:$PATH"
 
-    source ~/venv/bin/activate
-    export PATH="~/venv/bin:$PATH"
+        source ~/venv/bin/activate
+        export PATH="~/venv/bin:$PATH"
 
 	if [ -d "$HOME/android-sdk-macosx" ]; then
 		export PATH="/Users/matt/android-sdk-macosx/platform-tools:/Users/matt/android-sdk-macosx/tools:$PATH"
