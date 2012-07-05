@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-#This displays the 10 most recently created files in a Git repo.
+# This displays the 10 most recently created files in a Git repo.
+# I use this to show the newest Homebrew recipes.
 
 git log -p | /usr/bin/grep '\--- \/dev\/null' -A1 | /usr/bin/grep -v '\/dev\/null' | /usr/bin/grep -v '\--' | cut -d"/" -f2- | head
