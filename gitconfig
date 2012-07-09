@@ -36,3 +36,5 @@
 	user = mblair
 [push]
 	default = tracking
+[web]
+	browser = open
