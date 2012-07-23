@@ -1,10 +1,10 @@
-#This makes Ctrl-S (forward-search-history) work.
+# This makes Ctrl-S (forward-search-history) work.
 stty stop undef
 
 export HISTSIZE=100000 #bash history will save this many commands
 export HISTFILESIZE=${HISTSIZE} #bash will remember this many commands
 export HISTCONTROL=ignoredups #ignore duplicate commands
-export HISTIGNORE="ls:pwd:exit:clear" #don't put these in the history
+export HISTIGNORE="cd:ls:clear" #don't put these in the history
 export HISTTIMEFORMAT="[%Y-%m-%d - %H:%M:%S] " #timestamps
 
 shopt -s cmdhist # save multi-line commands as a single line in the history.
@@ -64,11 +64,7 @@ cleanup() {
 		done
 }
 
-unpack_everything() {
-	find . -type f -regex "^.*.rar$" -print0 | xargs -0 -I__ unrar e -o- __
-}
-
-#Thanks Gary Bernhardt.
+# Thanks Gary Bernhardt.
 minutes_since_last_commit() {
 	now=`date +%s`
 	last_commit=`git log --pretty=format:'%at' -1`
@@ -77,65 +73,47 @@ minutes_since_last_commit() {
 	echo $minutes_since_last_commit
 }
 
-# Revision of the svn repo in the current directory
-svn_rev() {
-	unset SVN_REV
-	local rev=`svn info 2>/dev/null | grep -i "Revision" | cut -d ' ' -f 2`
-	if test $rev
-		then
-			SVN_REV="${bldgrn}svn:${txtrst}$rev"
-	fi
-}
-
 git_prompt() {
-	if [[ -f ~/.git-completion.bash ]]; then
-		local g="$(__gitdir)"
-		if [ -n "$g" ]; then
-			local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
-			if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
-				local COLOR=${bldred}
-			elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
-				local COLOR=${bldylw}
-			else
-				local COLOR=${bldgrn}
-			fi
-			local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${txtrst}"
-			# __git_ps1 is from the Git source tree's contrib/completion/git-completion.bash
-			local GIT_PROMPT=`__git_ps1 "${txtrst}(${bldgrn}%s${txtrst}|${SINCE_LAST_COMMIT}${txtrst})"`
-			echo ${GIT_PROMPT}
+    local g="$(__gitdir)"
+	if [ -n "$g" ]; then
+		local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
+		if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
+			local COLOR=${bldred}
+		elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
+			local COLOR=${bldylw}
+		else
+			local COLOR=${bldgrn}
 		fi
+		local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${txtrst}"
+		# __git_ps1 is from the Git source tree's contrib/completion/git-completion.bash
+		local GIT_PROMPT=`__git_ps1 "${txtrst}(${bldgrn}%s${txtrst}|${SINCE_LAST_COMMIT}${txtrst})"`
+		echo ${GIT_PROMPT}
 	fi
 }
 
-# I think setting this to 1 will slow down `cd`s into big repositories, so beware.
+# If you don't have an SSD, setting this to 1 will noticeably slow down
+# operations within that directory (including `cd`), so be careful.
 GIT_PS1_SHOWDIRTYSTATE=1
 
 update_prompt() {
 	RET=$?;
 
-	#For gVim's :sh, which I no longer use.
-	#if [ $TERM == 'dumb' ]; then
-		#Fix LS_COLORS too.
-		#PS1="[\w]$ "
-		#return 0;
-	#fi
-
 	#TODO: Fix these.
 	#history -a #write the current terminal's history to the history file
 	#history -n
 
-	#https://wiki.archlinux.org/index.php/Color_Bash_Prompt#Advanced_return_value_visualisation
-	#Basically, prepend the prompt with a green 0 if the last command returned 0, or prepend it with a red [error code] if not.
+	# https://wiki.archlinux.org/index.php/Color_Bash_Prompt#Advanced_return_value_visualisation
+	# Basically, prepend the prompt with a green 0 if the last command returned 0, or prepend it with a red $error_code if not.
 	RET_VALUE="$(if [[ $RET == 0 ]]; then echo -ne "${bldgrn}$RET"; else echo -ne "${bldred}$RET"; fi;)"
-	#svn_rev
 
+        # If I'm root, use a red prompt. Green otherwise.
 	if [[ ${EUID} == 0 ]]; then
 		_color="${bldred}"
 	else
 		_color="${bldgrn}"
 	fi
 
-	# On a Mac, just show the return value and working directory.
+	# On a Mac (read: my workstation), just show the return value and working directory.
 	if [[ $(uname -s) == "Darwin" ]]; then
 		PS1="${bldblu}[${txtrst}\w${bldblu}]"
 	else
@@ -143,13 +121,12 @@ update_prompt() {
 		PS1="${_color}\u${bldblu}@${_color}\h "
 		PS1="${PS1}${bldblu}[${txtrst}\w${bldblu}]"
 	fi
-	#PS1="$PS1${bldgrn} "
 	PS1="$PS1$(git_prompt) "
 
 	#http://www.fileformat.info/info/unicode/char/26a1/index.htm
 	PS1="$PS1${bldblu}⚡ ${txtrst}"
 
-	# Set the title to user@host: working_dir
+	# Set the term title to user@host: working_dir
 	PS1="\[\e]0;\u@\h: \w\a\]$PS1"
 
 	PS1="$RET_VALUE $PS1"
@@ -164,7 +141,8 @@ alias rscp='rsync -aP --no-whole-file --inplace'
 alias rsmv='rscp --remove-source-files'
 
 alias less='less -N' # show line numbers when I invoke `less` myself, but not for `man`.
-alias f='find . | grep -i'
+alias f='find . | grep -i' # useful for finding files within the
+                           # current directory.
 alias p='ping google.com'
 alias m='make'
 alias c='clear'
@@ -173,13 +151,17 @@ if [[ -f /usr/local/bin/hub ]]; then
 	alias git=hub
 fi
 
-export LESS="-IMR" #search case insensitively, prompt verbosely (i.e. show percentage through the file) and repaint the screen, useful when a file is changing as you're reading it.
-alias path='echo -e ${PATH//:/\\n}' # print path components, one per line
+export LESS="-IMR" # search case insensitively, prompt verbosely (i.e. show percentage through the file) and repaint the screen, useful when a file is changing as you're reading it.
+alias path='echo -e ${PATH//:/\\n}' # print path components, one per line.
 
-#http://superuser.com/questions/36022/less-and-grep-color
-#Print the filename, don't search binary files.
+# http://superuser.com/questions/36022/less-and-grep-color
+# Print the filename and don't search binary files. Note that if you're
+# piping stuff through grep, the `-H` will annoy you. So I call `env
+# grep` in pipelines.
 alias grep='grep --color=always -HI'
 
+# I have a `git-new` script in here that I use to see new Homebrew
+# formulae. I never use it, but why not.
 export PATH="$HOME/dotfiles/bin:$PATH"
 
 export NODE_PATH="/usr/local/lib/node_modules"
@@ -190,18 +172,6 @@ export EDITOR=$VISUAL
 if [ "`uname`" == "Darwin" ]; then
 	export JAVA_HOME="$(/usr/libexec/java_home)"
 
-	if [[ -d $HOME/.ec2 ]]; then
-		export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
-		export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
-		export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.3/jars"
-	fi
-
-	# Crusty, but I'm not putting my Flipboard hostnames in here.
-	# http://www.commandlinefu.com/commands/view/2766/ssh-autocomplete
-	#complete -W "$(echo $(grep '^ssh ' .bash_history | sort -u | sed 's/^ssh //'))" ssh ssh-copy-id
-
-	. ~/.git-completion.bash
-
 	if [ -f "`brew --prefix`/Library/Contributions/brew_bash_completion.sh" ]; then
 		source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 	fi
@@ -210,7 +180,7 @@ if [ "`uname`" == "Darwin" ]; then
 		. `brew --prefix`/etc/bash_completion
 	fi
 
-	# For Homebrew.
+	# Put Homebrew stuff before Apple's stuff.
 	export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
 	# I use Homebrew's Ruby and its gems.
@@ -222,25 +192,21 @@ if [ "`uname`" == "Darwin" ]; then
 		export PATH="$HOME/.cabal/bin:$PATH"
 	fi
 
-	#http://tug.org/mactex/faq/
+	# http://tug.org/mactex/faq/
 	if [ -d "/usr/texbin" ]; then
 		export PATH="/usr/texbin:$PATH"
 	fi
 
-	#https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
+	# https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
 	export PATH="/usr/local/share/python:$PATH"
 
         source ~/venv/bin/activate
         export PATH="~/venv/bin:$PATH"
 
-	if [ -d "$HOME/android-sdk-macosx" ]; then
-		export PATH="/Users/matt/android-sdk-macosx/platform-tools:/Users/matt/android-sdk-macosx/tools:$PATH"
-	fi
-
-	#Colors, slash after a directory name.
+	# Colors + slash after directory names.
 	alias ls='ls -pG'
 
-	#Document this.
+	# Document this.
 	export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 fi
 
@@ -260,18 +226,15 @@ if [ "`uname`" == "Linux" ]; then
 		. /etc/bash_completion
 	fi
 
-	# Only source this if we installed Git from source. If we didn't, it's installed already.
+	# Only source this if we installed Git from source. If we
+	# didn't, it's installed already.
+        # TODO: Put this file somewhere else.
 	if [[ -f ~/.git-completion.bash ]]; then
 		. ~/.git-completion.bash
 	fi
 
 	alias ls='ls --color=auto -p --group-directories-first'
-	alias pstree='pstree -ap' #args & PID
-
-	#http://www.webupd8.org/2010/07/get-notified-when-job-you-run-in.html#comment-64740149
-	alias alert_summ='history|tail -n1|sed -e "s/^\s*[0-9]\+\s*//" -e "s/\s*;\s*alert[0-9]*.*$//"'
-	alias alert_body='history|tail -n1|sed -e "s/\([^;]*\;\)\+//" -e "s/\s*alert\s*//" -e "s/#\(.*\)/\1/"'
-	alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "$(alert_summ)" "$(alert_body)"'
+	alias pstree='pstree -ap' # args & PID
 
 	if [[ -s "$HOME/.bash_profile" ]]; then
 		. "$HOME/.bash_profile"
