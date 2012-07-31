@@ -12,13 +12,6 @@
 
 (global-linum-mode 1)
 
-;; Automatically save and restore sessions
-;; http://stackoverflow.com/questions/4477376/some-emacs-desktop-save-questions-how-to-change-it-to-save-in-emacs-d-emacs
-(setq desktop-dirname             "~/.emacs.d/desktop/"
-      desktop-base-file-name      "emacs.desktop"
-      desktop-base-lock-name      "lock"
-      desktop-path                (list desktop-dirname)
-      desktop-save                t
-      desktop-files-not-to-save   "^$" ;reload tramp paths
-      desktop-load-locked-desktop nil)
-(desktop-save-mode 1)
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+(add-to-list 'auto-mode-alist '("riemann.config$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
