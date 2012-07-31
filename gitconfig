@@ -12,7 +12,7 @@
 	wdiff = diff --color-words
 	st = status --ignore-submodules=untracked
 	br = branch
-    tags-sorted = !git for-each-ref --format='%(committerdate:iso8601)%(taggerdate:iso8601) %(refname:short)' refs/tags | sort -n
+    tags-sorted = !git for-each-ref --format='%(refname)' --sort=taggerdate refs/tags | cut -d'/' -f3
 	ignore = !echo "$@" >> .gitignore
 [merge]
 	tool = vimdiff
