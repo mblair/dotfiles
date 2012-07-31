@@ -144,6 +144,7 @@ alias less='less -N' # show line numbers when I invoke `less` myself, but not fo
 alias f='find . | grep -i' # useful for finding files within the
                            # current directory.
 alias p='ping google.com'
+alias e='emacs'
 alias m='make'
 alias v='vagrant'
 alias c='clear'
