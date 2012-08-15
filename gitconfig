@@ -3,6 +3,7 @@
 	email = me@matthewblair.net
 [alias]
 	co = checkout
+    cp = cherry-pick
 	discard = checkout --
 	branches = branch -a
 	create-branch = checkout -b
