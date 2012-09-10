@@ -247,4 +247,3 @@ if [ "`uname`" == "Linux" ]; then
 fi
 
 . /Users/mblair/my_src/personal/flip_bash
-/
