@@ -145,6 +145,7 @@ alias f='find . | grep -i' # useful for finding files within the
                            # current directory.
 alias p='ping google.com'
 alias e='emacs'
+alias E='open -a Emacs'
 alias m='make'
 alias v='vagrant'
 alias c='clear'
@@ -182,6 +183,8 @@ if [ "`uname`" == "Darwin" ]; then
 		. `brew --prefix`/etc/bash_completion
 	fi
 
+        . /usr/local/share/git-core/contrib/completion/git-prompt.sh
+
 	# Put Homebrew stuff before Apple's stuff.
 	export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
@@ -202,8 +205,8 @@ if [ "`uname`" == "Darwin" ]; then
 	# https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
 	export PATH="/usr/local/share/python:$PATH"
 
-        source ~/venv/bin/activate
-        export PATH="~/venv/bin:$PATH"
+    source /Users/mblair/venv/bin/activate
+    export PATH="/Users/mblair/venv/bin:$PATH"
 
 	# Colors + slash after directory names.
 	alias ls='ls -pG'
@@ -243,4 +246,5 @@ if [ "`uname`" == "Linux" ]; then
 	fi
 fi
 
-. ~/my_src/personal/flip_bash
+. /Users/mblair/my_src/personal/flip_bash
+/
