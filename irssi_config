@@ -1,0 +1,67 @@
+settings = {
+  core = {
+    real_name = "Matt Blair";
+    user_name = "mattyb";
+    nick = "mattyb";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
+  "fe-common/core" = {
+    activity_hide_level = "";
+    activity_hide_targets = "";
+  };
+};
+
+servers = (
+  {
+    address = "irc.freenode.net";
+    chatnet = "freenode";
+    port = "7000";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    ssl_capath = "/etc/ssl/certs";
+    autoconnect = "yes";
+  }
+);
+
+chatnets = {
+  freenode = {
+    autosendcmd = "/msg nickserv identify not_my_password";
+    type = "IRC";
+  };
+};
+
+channels = (
+  { name = "#lugsb"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#logstash"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#puppet"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#fpm"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#leiningen"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "##infra-talk"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#hadoop"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#hbase"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#cassandra"; chatnet = "freenode"; autojoin = "yes"; }
+);
+
+hilights = ( { text = "mattyb"; nick = "yes"; word = "yes"; } );
+
+statusbar = {
+  default = {
+    window = {
+      items = {
+        barstart = { priority = "100"; };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        act = { priority = "10"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+  };
+};
+
+keyboard = (
+  { key = "^C"; id = "command"; data = "clear "; },
+  { key = "^X"; id = "command"; data = "window next"; }
+);
