@@ -149,6 +149,7 @@ alias E='open -a Emacs'
 alias m='make'
 alias v='vagrant'
 alias c='clear'
+alias x='clear' # what is this X you speak of?
 
 if [[ -f /usr/local/bin/hub ]]; then
 	alias git=hub
