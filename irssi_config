@@ -66,4 +66,4 @@ keyboard = (
   { key = "^X"; id = "command"; data = "window next"; }
 );
 
-ignores = ( { level = "JOINS PARTS QUITS"; } );
+ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
