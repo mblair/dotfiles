@@ -184,8 +184,6 @@ if [ "`uname`" == "Darwin" ]; then
 		. `brew --prefix`/etc/bash_completion
 	fi
 
-        . /usr/local/share/git-core/contrib/completion/git-prompt.sh
-
 	# Put Homebrew stuff before Apple's stuff.
 	export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 

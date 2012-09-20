@@ -18,3 +18,5 @@
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 
 (global-set-key (kbd "C-c c") 'comment-dwim)
+
+(set-face-attribute 'default nil :height 140)
