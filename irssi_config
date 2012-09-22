@@ -40,7 +40,8 @@ channels = (
   { name = "#hadoop"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#hbase"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#cassandra"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#jenkins"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#jenkins"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#riak"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 hilights = ( { text = "mattyb"; nick = "yes"; word = "yes"; } );
