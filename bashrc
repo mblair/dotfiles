@@ -188,7 +188,7 @@ if [ "`uname`" == "Darwin" ]; then
 	export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
 	# I use Homebrew's Ruby and its gems.
-	export PATH="/usr/local/Cellar/ruby/1.9.3-p194/bin:$PATH"
+	export PATH="/usr/local/Cellar/ruby/1.9.3-p286/bin:$PATH"
 
 	alias g="cd $(ruby -r rubygems -e 'p Gem.path.first')/gems"
 
