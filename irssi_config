@@ -44,7 +44,8 @@ channels = (
   { name = "#riemann"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#storm-user"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#librarian-puppet"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#riak"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#riak"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#monitoringlove"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 hilights = ( { text = "mattyb"; nick = "yes"; word = "yes"; } );
