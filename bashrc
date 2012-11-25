@@ -1,3 +1,5 @@
+#!/usr/bin/env bash # because emacs is a little stupid sometimes
+
 # This makes Ctrl-S (forward-search-history) work.
 stty stop undef
 
@@ -187,8 +189,14 @@ if [ "`uname`" == "Darwin" ]; then
 	# Put Homebrew stuff before Apple's stuff.
 	export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
-	# I use Homebrew's Ruby and its gems.
-	export PATH="/usr/local/Cellar/ruby/1.9.3-p286/bin:$PATH"
+	# I used to use Homebrew's Ruby and its gems.
+	# export PATH="/usr/local/Cellar/ruby/HEAD/bin:$PATH"
+
+        # rbenv++
+        eval "$(rbenv init -)"
+
+        # Node binaries.
+        export PATH="/usr/local/share/npm/bin:$PATH"
 
 	alias g="cd $(ruby -r rubygems -e 'p Gem.path.first')/gems"
 
@@ -245,4 +253,6 @@ if [ "`uname`" == "Linux" ]; then
 	fi
 fi
 
-. /Users/mblair/my_src/personal/flip_bash
+if [[ -f /Users/mblair/my_src/personal/flip_bash ]]; then
+    . /Users/mblair/my_src/personal/flip_bash
+fi
