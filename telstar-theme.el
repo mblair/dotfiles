@@ -13,7 +13,6 @@
 	 `(cursor  ((t (:background, "#b8b8b8"))))
 	 `(region  ((t (:foreground, "#ffffff" :background, foreground))))
 	 `(highlight  ((t (:background, "#000000"))))
-	 ;; (border-color . "#000000")
 	 `(fringe ((t (:background, background))))
 	 `(mode-line ((t (:foreground "#000000" :background "#a1a2a0"))))
 	 `(minibuffer-prompt ((t (:foreground "#729fcf" :bold t))))
@@ -27,7 +26,7 @@
 
 	 `(font-lock-string-face ((t (:foreground "#999999"))))
 	 `(font-lock-constant-face ((t (:foreground "#85a1ef"))))
-	 `(font-lock-variable-name-face ((t (:foreground "#eeeeec"))))
+	 `(font-lock-variable-name-face ((t (:foreground "#eeeeee"))))
 	 `(font-lock-warning-face ((t (:foreground "red" :bold t))))))
 
 (provide-theme 'telstar)
