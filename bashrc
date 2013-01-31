@@ -256,3 +256,7 @@ fi
 if [[ -f /Users/mblair/my_src/personal/flip_bash ]]; then
     . /Users/mblair/my_src/personal/flip_bash
 fi
+
+if [[ -f ~/.maven_bash_completion.bash ]]; then
+    . ~/.maven_bash_completion.bash
+fi
