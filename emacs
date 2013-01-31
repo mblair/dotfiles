@@ -21,9 +21,6 @@
 (setq auto-mode-alist (cons '("\\.gemspec" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.ru" . ruby-mode) auto-mode-alist))
 
-;; cool thing to enable
-(show-paren-mode 1)
-
 ;; better defaults
 (setq-default tab-width 2)
 (setq-default standard-indent 2)
