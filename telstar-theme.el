@@ -12,6 +12,7 @@
 	 `(default ((t (:foreground, foreground :background, background))))
 	 `(cursor  ((t (:background, "#b8b8b8"))))
 	 `(region  ((t (:foreground, "#ffffff" :background, foreground))))
+	 `(highlight  ((t (:background, "#000000"))))
 	 ;; (border-color . "#000000")
 	 `(fringe ((t (:background, background))))
 	 `(mode-line ((t (:foreground "#000000" :background "#a1a2a0"))))
