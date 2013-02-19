@@ -33,6 +33,12 @@
 
 (setq inhibit-startup-message t)
 
+;; Yes! Source: http://news.ycombinator.com/item?id=5197828
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+
 ;; For later.
 ;;(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 ;;(add-to-list 'auto-mode-alist '("riemann.config$" . clojure-mode))
