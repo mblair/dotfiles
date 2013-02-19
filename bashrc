@@ -192,13 +192,13 @@ if [ "`uname`" == "Darwin" ]; then
 	# I used to use Homebrew's Ruby and its gems.
 	# export PATH="/usr/local/Cellar/ruby/HEAD/bin:$PATH"
 
-        # rbenv++
-        eval "$(rbenv init -)"
+  # rbenv++
+  eval "$(rbenv init -)"
 
-        # Node binaries.
-        export PATH="/usr/local/share/npm/bin:$PATH"
+  alias g="cd $(ruby -r rubygems -e 'p Gem.path.select { |p| File.exists?(p) }.first')/gems"
 
-	alias g="cd $(ruby -r rubygems -e 'p Gem.path.first')/gems"
+  # Node binaries.
+  export PATH="/usr/local/share/npm/bin:$PATH"
 
 	if [ -d "$HOME/.cabal/bin" ]; then
 		export PATH="$HOME/.cabal/bin:$PATH"
