@@ -189,11 +189,11 @@ if [ "`uname`" == "Darwin" ]; then
 	# Put Homebrew stuff before Apple's stuff.
 	export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
-	# I used to use Homebrew's Ruby and its gems.
-	# export PATH="/usr/local/Cellar/ruby/HEAD/bin:$PATH"
+  # Homebrew Ruby.
+  export PATH="/usr/local/opt/ruby/bin:$PATH"
 
-  # rbenv++
-  eval "$(rbenv init -)"
+  # rbenv Ruby.
+  # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
   alias g="cd $(ruby -r rubygems -e 'p Gem.path.select { |p| File.exists?(p) }.first')/gems"
 
