@@ -43,3 +43,6 @@
 ;;(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 ;;(add-to-list 'auto-mode-alist '("riemann.config$" . clojure-mode))
 ;;(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+
+(add-to-list 'load-path "~/hg_src/go/misc/emacs" t)
+(require 'go-mode-load)
