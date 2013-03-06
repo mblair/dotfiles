@@ -190,10 +190,10 @@ if [ "`uname`" == "Darwin" ]; then
 	export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
   # Homebrew Ruby.
-  export PATH="/usr/local/opt/ruby/bin:$PATH"
+  # export PATH="/usr/local/opt/ruby/bin:$PATH"
 
   # rbenv Ruby.
-  # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
   alias g="cd $(ruby -r rubygems -e 'p Gem.path.select { |p| File.exists?(p) }.first')/gems"
 
