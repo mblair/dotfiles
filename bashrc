@@ -212,8 +212,8 @@ if [ "`uname`" == "Darwin" ]; then
 	# https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
 	export PATH="/usr/local/share/python:$PATH"
 
-    source /Users/mblair/venv/bin/activate
-    export PATH="/Users/mblair/venv/bin:$PATH"
+  source /Users/mblair/venv/bin/activate
+  export PATH="/Users/mblair/venv/bin:$PATH"
 
 	# Colors + slash after directory names.
 	alias ls='ls -pG'
