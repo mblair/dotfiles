@@ -39,6 +39,8 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+
 ;; For later.
 ;;(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 ;;(add-to-list 'auto-mode-alist '("riemann.config$" . clojure-mode))
