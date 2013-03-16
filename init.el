@@ -49,6 +49,8 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 (setq inhibit-startup-message t)
+(setq-default make-backup-files nil)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Yes! Source: http://news.ycombinator.com/item?id=5197828
 (setq mac-option-key-is-meta nil)
@@ -57,8 +59,11 @@
 (setq mac-option-modifier nil)
 
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.ronn" . markdwon-mode))
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec" . ruby-mode))
 
 (add-to-list 'load-path "~/git_src/go-mode.el/" t)
 (require 'go-mode)
