@@ -2,15 +2,32 @@
 (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
 (load-theme 'telstar t)
 
+(require 'package)
+
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
+(package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar my-packages '(starter-kit
+                      starter-kit-lisp
+                      markdown-mode
+                      yaml-mode
+                      puppet-mode
+                      clojure-mode
+                      clojure-test-mode
+                      nrepl))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+  (package-install p)))
 
 ;; better defaults
 (setq-default visible-bell nil)
 
 (global-linum-mode 1)
-
 (global-set-key (kbd "C-c c") 'comment-dwim)
 
 (set-face-attribute 'default nil :height 140)
@@ -40,10 +57,8 @@
 (setq mac-option-modifier nil)
 
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
-
-;; For later.
-;;(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
-;;(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
 (add-to-list 'load-path "~/git_src/go-mode.el/" t)
 (require 'go-mode)
