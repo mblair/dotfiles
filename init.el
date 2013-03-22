@@ -16,6 +16,8 @@
                       markdown-mode
                       yaml-mode
                       puppet-mode
+                      rainbow-delimiters
+                      rainbow-mode
                       clojure-mode
                       clojure-test-mode
                       nrepl))
