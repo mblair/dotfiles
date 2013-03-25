@@ -19,7 +19,6 @@
 	tool = vimdiff
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = vim -f
 	pager = less
 	whitespace = trailing-space,space-before-tab
 [color]
