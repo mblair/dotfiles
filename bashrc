@@ -147,7 +147,7 @@ alias f='find . | grep -i' # useful for finding files within the
                            # current directory.
 alias p='ping google.com'
 
-alias es='/Applications/Emacs.app/Contents/MacOS/Emacs --daemon'
+alias es='/usr/local/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs --daemon'
 export EDITOR='/usr/local/bin/emacsclient -ct'
 
 alias emacs='/usr/local/bin/emacsclient -c -n'

@@ -32,7 +32,10 @@
 (global-linum-mode 1)
 (global-set-key (kbd "C-c c") 'comment-dwim)
 
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 160)
+
+(setq x-select-enable-clipboard t)
+(global-set-key (kbd "M-c") 'kill-ring-save)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
