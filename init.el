@@ -69,6 +69,10 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Cakefile$" . coffee-mode))
 
 (add-to-list 'load-path "~/git_src/go-mode.el/" t)
 (require 'go-mode)
+
+(add-to-list 'load-path "~/git_src/coffee-mode/" t)
+(require 'coffee-mode)
