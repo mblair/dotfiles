@@ -1,7 +1,3 @@
-;; colors
-(add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
-(load-theme 'telstar t)
-
 (require 'package)
 
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
@@ -76,3 +72,12 @@
 
 (add-to-list 'load-path "~/git_src/coffee-mode/" t)
 (require 'coffee-mode)
+
+;; telstar
+;; (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
+;; (load-theme 'telstar t)
+
+;; solarized
+;; TODO: Figure out why Carbon Emacs doesn't like this on startup.
+(add-to-list 'custom-theme-load-path "~/git_src/emacs-color-theme-solarized/")
+(load-theme 'solarized-dark t)
