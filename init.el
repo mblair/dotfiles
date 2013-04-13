@@ -76,6 +76,9 @@
 (add-to-list 'load-path "~/git_src/coffee-mode/" t)
 (require 'coffee-mode)
 
+(add-to-list 'load-path "~/svn_src/js2-mode/" t)
+(require 'js2-mode)
+
 ;; telstar
 ;; (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
 ;; (load-theme 'telstar t)
