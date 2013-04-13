@@ -28,6 +28,8 @@
 (global-linum-mode 1)
 (global-set-key (kbd "C-c c") 'comment-dwim)
 
+(global-set-key (kbd "M-l") 'goto-line)
+
 (set-face-attribute 'default nil :height 160)
 
 (setq x-select-enable-clipboard t)
