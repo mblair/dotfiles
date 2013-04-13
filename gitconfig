@@ -18,6 +18,7 @@
 [merge]
 	tool = vimdiff
 [core]
+  editor = mvim -f
 	excludesfile = ~/.gitignore_global
 	pager = less
 	whitespace = trailing-space,space-before-tab
