@@ -9,13 +9,19 @@
 
 (defvar my-packages '(starter-kit
                       starter-kit-lisp
+                      go-mode
+                      color-theme-sanityinc-solarized
                       markdown-mode
+                      coffee-mode
+                      js2-mode
                       yaml-mode
                       puppet-mode
                       rainbow-delimiters
                       rainbow-mode
                       clojure-mode
                       clojure-test-mode
+                      auto-complete
+                      ac-nrepl
                       nrepl))
 
 (dolist (p my-packages)
@@ -30,10 +36,10 @@
 
 (global-set-key (kbd "M-l") 'goto-line)
 
-(set-face-attribute 'default nil :height 160)
-
 (setq x-select-enable-clipboard t)
 (global-set-key (kbd "M-c") 'kill-ring-save)
+
+(set-face-attribute 'default nil :height 160)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -70,20 +76,12 @@
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Cakefile$" . coffee-mode))
 
-(add-to-list 'load-path "~/git_src/go-mode.el/" t)
-(require 'go-mode)
-
-(add-to-list 'load-path "~/git_src/coffee-mode/" t)
-(require 'coffee-mode)
-
-(add-to-list 'load-path "~/svn_src/js2-mode/" t)
-(require 'js2-mode)
-
-;; telstar
+;; for telstar:
 ;; (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
 ;; (load-theme 'telstar t)
 
-;; solarized
-;; TODO: Figure out why Carbon Emacs doesn't like this on startup.
-(add-to-list 'custom-theme-load-path "~/git_src/emacs-color-theme-solarized/")
-(load-theme 'solarized-dark t)
+;; (add-to-list 'custom-theme-load-path "~/external_src/color-theme-sanityinc-solarized")
+(load-theme 'sanityinc-solarized-dark t)
+
+(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :family "Ubuntu Mono")
