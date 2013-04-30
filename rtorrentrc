@@ -1,4 +1,13 @@
-#schedule = watch_directory_2,10,10,"load_start=~/Dropbox/Torrents/Current/*.torrent,d.set_directory=~/rtorrent/stuff/"
-schedule = watch_directory_2,10,10,"load_start=~/Dropbox/Torrents/new_current/*.torrent,d.set_directory=~/rtorrent/stuff/"
 session = ~/rtorrent/session
+
+# turn off for non-TL torrents
+#max_peers = 10
+
+schedule = watch_directory_2,10,10,"load_start=~/Dropbox/Torrents/new_current/*.torrent,d.set_directory=~/rtorrent/stuff/"
 system.method.set_key = event.download.finished,move_complete,"execute=mv,-n,$d.get_base_path=,~/Desktop/;d.set_directory=~/Desktop/"
+
+dht = auto
+peer_exchange = yes
+
+view.sort_new = main,less=d.state_changed=
+view.sort_new = started,less=d.down.rate=
