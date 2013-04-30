@@ -146,14 +146,6 @@ alias less='less -N' # show line numbers when I invoke `less` myself, but not fo
 alias f='find . | grep -i' # useful for finding files within the
                            # current directory.
 alias p='ping google.com'
-
-alias es='/usr/local/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs --daemon'
-export EDITOR='/usr/local/bin/emacsclient -ct'
-
-alias emacs='/usr/local/bin/emacsclient -c -n'
-alias E='/usr/local/bin/emacsclient -c -n'
-export VISUAL='/usr/local/bin/emacsclient -c -n'
-
 alias m='make'
 alias v='vagrant'
 alias c='clear'
@@ -177,8 +169,16 @@ alias grep='grep --color=always -HI'
 export PATH="$HOME/dotfiles/bin:$PATH"
 
 export NODE_PATH="/usr/local/lib/node_modules"
+export GOPATH="$HOME/golang"
+
+alias es='env emacs --daemon'
+export EDITOR='emacsclient -ct'
 
 if [ "`uname`" == "Darwin" ]; then
+  alias emacs='emacsclient -c -n'
+  alias E='/usr/local/bin/emacsclient -c -n'
+  export VISUAL='/usr/local/bin/emacsclient -c -n'
+
 	export JAVA_HOME="$(/usr/libexec/java_home)"
 
 	if [ -f "`brew --prefix`/Library/Contributions/brew_bash_completion.sh" ]; then
@@ -226,6 +226,7 @@ if [ "`uname`" == "Darwin" ]; then
 fi
 
 if [ "`uname`" == "Linux" ]; then
+  alias emacs='emacsclient -ct'
 	PAGER=less
 
 	# LESS man page colors
@@ -262,4 +263,8 @@ fi
 
 if [[ -f ~/.maven_bash_completion.bash ]]; then
     . ~/.maven_bash_completion.bash
+fi
+
+if [[ -d ~/my_src/riemann ]]; then
+    alias riemann-sync='cd ~/my_src/riemann; git stash; git pull origin master; git stash pop; lein clean; lein fatdeb; ssh mattyb "export DEBIAN_FRONTEND=interactive; rm riemann_*.deb; invoke-rc.d riemann stop; apt-get -y purge riemann openjdk-7-jre-headless"; scp target/riemann_*.deb mattyb:~; ssh mattyb "export DEBIAN_FRONTEND=noninteractive; dpkg -i riemann_*.deb; invoke-rc.d riemann start; invoke-rc.d riemann status; apt-get -y install openjdk-7-jre-headless; invoke-rc.d riemann start; invoke-rc.d riemann status"'
 fi
