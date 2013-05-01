@@ -20,6 +20,15 @@ servers = (
     ssl_verify = "yes";
     ssl_capath = "/etc/ssl/certs";
     autoconnect = "yes";
+  },
+  {
+    address = "irc.mozilla.org";
+    chatnet = "mozilla";
+    port = "6667";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    ssl_capath = "/etc/ssl/certs";
+    autoconnect = "yes";
   }
 );
 
@@ -31,7 +40,11 @@ chatnets = {
 };
 
 channels = (
+  { name = "#heka"; chatnet = "mozilla"; autojoin = "yes"; },
   { name = "#riemann"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#go-nuts"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#riak"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#juju"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#graphite"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#monitoringlove"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#logstash"; chatnet = "freenode"; autojoin = "yes"; },
@@ -40,9 +53,6 @@ channels = (
   { name = "##infra-talk"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#cassandra"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#jenkins"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#go-nuts"; chatnet = "freenode"; autojoin = "yes"; }
-  { name = "#riak"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#juju"; chatnet = "freenode"; autojoin = "yes"; },
 );
 
 hilights = ( { text = "mattyb"; nick = "yes"; word = "yes"; } );
