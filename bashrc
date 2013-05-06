@@ -108,7 +108,7 @@ update_prompt() {
 	# Basically, prepend the prompt with a green 0 if the last command returned 0, or prepend it with a red $error_code if not.
 	RET_VALUE="$(if [[ $RET == 0 ]]; then echo -ne "${bldgrn}$RET"; else echo -ne "${bldred}$RET"; fi;)"
 
-        # If I'm root, use a red prompt. Green otherwise.
+  # If I'm root, use a red prompt. Green otherwise.
 	if [[ ${EUID} == 0 ]]; then
 		_color="${bldred}"
 	else
@@ -151,7 +151,7 @@ alias v='vagrant'
 alias c='clear'
 alias x='clear' # what is this X you speak of?
 
-if [[ -f /usr/local/bin/hub ]]; then
+if [[ -f "/usr/local/bin/hub" ]]; then
 	alias git=hub
 fi
 
@@ -186,7 +186,7 @@ if [ "`uname`" == "Darwin" ]; then
 	fi
 
 	if [ -f "`brew --prefix`/etc/bash_completion" ]; then
-		. `brew --prefix`/etc/bash_completion
+		source `brew --prefix`/etc/bash_completion
 	fi
 
 	# Put Homebrew stuff before Apple's stuff.
@@ -215,8 +215,10 @@ if [ "`uname`" == "Darwin" ]; then
 	# https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
 	export PATH="/usr/local/share/python:$PATH"
 
-  source /Users/mblair/venv/bin/activate
-  export PATH="/Users/mblair/venv/bin:$PATH"
+  if [[ -x "/Users/mblair/venv/bin/activate" ]]; then
+      source /Users/mblair/venv/bin/activate
+      export PATH="/Users/mblair/venv/bin:$PATH"
+  fi
 
 	# Colors + slash after directory names.
 	alias ls='ls -pG'
