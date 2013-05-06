@@ -215,7 +215,7 @@ if [ "`uname`" == "Darwin" ]; then
 	# https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
 	export PATH="/usr/local/share/python:$PATH"
 
-  if [[ -x "/Users/mblair/venv/bin/activate" ]]; then
+  if [[ -f "/Users/mblair/venv/bin/activate" ]]; then
       source /Users/mblair/venv/bin/activate
       export PATH="/Users/mblair/venv/bin:$PATH"
   fi
