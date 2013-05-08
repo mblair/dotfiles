@@ -10,7 +10,6 @@
 (defvar my-packages '(starter-kit
                       starter-kit-lisp
                       go-mode
-                      color-theme-sanityinc-solarized
                       markdown-mode
                       coffee-mode
                       js2-mode
@@ -22,7 +21,10 @@
                       clojure-test-mode
                       auto-complete
                       ac-nrepl
-                      nrepl))
+                      nrepl
+                      color-theme-sanityinc-solarized
+                      zenburn-theme
+                      ))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -67,6 +69,9 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
+(require 'yaml-mode)
+
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.ronn" . markdwon-mode))
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
@@ -76,12 +81,20 @@
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Cakefile$" . coffee-mode))
 
+(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :family "Ubuntu Mono")
+
+;; Colors.
+(load-theme 'zenburn t)
+
 ;; for telstar:
 ;; (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
 ;; (load-theme 'telstar t)
 
+;; TODO: Find a better color scheme for use within a terminal, due to
+;; these:
+;; https://github.com/sellout/emacs-color-theme-solarized/pull/17
+;; https://github.com/sellout/emacs-color-theme-solarized/pull/80
+;; To use the latest from Git:
 ;; (add-to-list 'custom-theme-load-path "~/external_src/color-theme-sanityinc-solarized")
-(load-theme 'sanityinc-solarized-dark t)
-
-(set-face-attribute 'default nil :height 160)
-(set-face-attribute 'default nil :family "Ubuntu Mono")
+;; (load-theme 'sanityinc-solarized-dark t)
