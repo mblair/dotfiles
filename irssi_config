@@ -24,7 +24,7 @@ servers = (
   {
     address = "irc.mozilla.org";
     chatnet = "mozilla";
-    port = "6667";
+    port = "6697";
     use_ssl = "yes";
     ssl_verify = "yes";
     ssl_capath = "/etc/ssl/certs";
