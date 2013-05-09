@@ -90,8 +90,12 @@
 (set-face-attribute 'default nil :family "Ubuntu Mono")
 
 ;; Colors.
-(load-theme 'deep-thought t)
+(defun color-config (&optional frame)
+  (select-frame frame)
+  (if window-system (load-theme 'deep-thought t)
+    (load-theme 'zenburn t)))
 
+(add-hook 'after-make-frame-functions 'color-config)
 ;; for telstar:
 ;; (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
 ;; (load-theme 'telstar t)
