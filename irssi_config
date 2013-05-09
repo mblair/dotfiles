@@ -37,12 +37,13 @@ chatnets = {
     autosendcmd = "/msg nickserv identify not_my_password";
     type = "IRC";
   };
+  mozilla = { type = "IRC"; };
 };
 
 channels = (
   { name = "#heka"; chatnet = "mozilla"; autojoin = "yes"; },
   { name = "#riemann"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#go-nuts"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#go-nuts"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#riak"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#juju"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#graphite"; chatnet = "freenode"; autojoin = "yes"; },
@@ -52,7 +53,7 @@ channels = (
   { name = "#fpm"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##infra-talk"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#cassandra"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#jenkins"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#jenkins"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 hilights = ( { text = "mattyb"; nick = "yes"; word = "yes"; } );
