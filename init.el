@@ -89,21 +89,28 @@
 (set-face-attribute 'default nil :height 160)
 (set-face-attribute 'default nil :family "Ubuntu Mono")
 
-;; Colors.
+;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
   (if window-system (load-theme 'deep-thought t)
     (load-theme 'zenburn t)))
 
 (add-hook 'after-make-frame-functions 'color-config)
-;; for telstar:
+
+;; for git-sourced colors:
 ;; (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
 ;; (load-theme 'telstar t)
-
-;; TODO: Find a better color scheme for use within a terminal, due to
-;; these:
-;; https://github.com/sellout/emacs-color-theme-solarized/pull/17
-;; https://github.com/sellout/emacs-color-theme-solarized/pull/80
-;; To use the latest from Git:
 ;; (add-to-list 'custom-theme-load-path "~/external_src/color-theme-sanityinc-solarized")
 ;; (load-theme 'sanityinc-solarized-dark t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("787574e2eb71953390ed2fb65c3831849a195fd32dfdd94b8b623c04c7f753f0" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
