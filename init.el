@@ -22,8 +22,13 @@
                       auto-complete
                       ac-nrepl
                       nrepl
+                      ;; colors:
                       color-theme-sanityinc-solarized
+                      color-theme-sanityinc-tomorrow
                       zenburn-theme
+                      color-theme-heroku
+                      soothe-theme
+                      deep-thought-theme
                       ))
 
 (dolist (p my-packages)
@@ -85,7 +90,7 @@
 (set-face-attribute 'default nil :family "Ubuntu Mono")
 
 ;; Colors.
-(load-theme 'zenburn t)
+(load-theme 'deep-thought t)
 
 ;; for telstar:
 ;; (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
