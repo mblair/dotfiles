@@ -25,12 +25,14 @@ ln -s ~/my_src/dotfiles/gitignore_global ~/.gitignore
 ln -s ~/my_src/dotfiles/inputrc ~/.inputrc
 ln -s ~/my_src/dotfiles/tmux.conf ~/.tmux.conf
 
-mkdir .irssi
-ln -s ~/my_src/dotfiles/irssi_config ~/.irssi/config
-
 ln -s ~/my_src/dotfiles/hgrc ~/.hgrc
 
 if [[ $(uname -s) == "Darwin" ]]; then
   ln -s ~/my_src/dotfiles/osx ~/.osx
   ln -s ~/my_src/dotfiles/rtorrentrc ~/.rtorrent.rc
+fi
+
+if [[ ! -x /usr/bin/ec2metadata ]]; then
+    mkdir ~/.irssi
+    ln -s ~/my_src/dotfiles/irssi_config ~/.irssi/config
 fi
