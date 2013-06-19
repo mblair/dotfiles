@@ -175,7 +175,6 @@ export EDITOR='emacsclient -ct'
 
 if [ "`uname`" == "Darwin" ]; then
   alias es='env emacs --daemon'
-  alias emacs='emacsclient -c -n'
   alias E='/usr/local/bin/emacsclient -c -n'
   export VISUAL='/usr/local/bin/emacsclient -c -n'
 
@@ -229,7 +228,7 @@ fi
 
 if [ "`uname`" == "Linux" ]; then
   alias es="/usr/bin/emacs --daemon"
-  alias emacs='/usr/bin/emacsclient -ct'
+  alias E='/usr/bin/emacsclient -ct'
 	PAGER=less
 
 	# LESS man page colors

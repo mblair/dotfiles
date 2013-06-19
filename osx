@@ -1,5 +1,5 @@
-#Thanks jedahan!
-#https://github.com/jedahan/dotfiles/blob/master/.osx
-
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Turn off Exposé. If I ever want virtual desktops, I'll buy TotalSpaces.
+defaults write com.apple.dock mcx-expose-disabled -bool TRUE

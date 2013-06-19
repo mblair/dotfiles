@@ -13,6 +13,8 @@ else
   _EMACS=/usr/bin/emacs
 fi
 
+${_EMACS} --daemon
+
 if [[ $(uname -s) == "Darwin" ]]; then
   _BASH_RC=~/.bash_profile
 else
