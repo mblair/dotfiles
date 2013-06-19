@@ -95,10 +95,14 @@
   (if window-system (load-theme 'deep-thought t)
     (load-theme 'zenburn t)))
 
+;; for emacsclient:
 (add-hook 'after-make-frame-functions 'color-config)
+
+;; for regular emacs:
+(color-config (selected-frame))
 
 ;; for git-sourced colors:
 ;; (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
 ;; (load-theme 'telstar t)
-;; (add-to-list 'custom-theme-load-path "~/external_src/color-theme-sanityinc-solarized")
+;; (add-to-list 'custom-theme-load-path "~/elisp/color-theme-sanityinc-solarized")
 ;; (load-theme 'sanityinc-solarized-dark t)
