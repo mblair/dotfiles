@@ -228,7 +228,7 @@ fi
 
 if [ "`uname`" == "Linux" ]; then
   alias es="/usr/bin/emacs --daemon"
-  alias ek=/usr/bin/emacsclient --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))"
+  alias ek="/usr/bin/emacsclient --eval \"(progn (setq kill-emacs-hook 'nil) (kill-emacs))\""
   alias E='/usr/bin/emacsclient -ct'
 	PAGER=less
 
