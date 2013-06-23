@@ -37,7 +37,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 fi
 
 if [[ ! -x /usr/bin/ec2metadata ]]; then
-    mkdir ~/.irssi
+    mkdir -p ~/.irssi
     ln -sf ${_HERE}/irssi_config ~/.irssi/config
     ln -sf ${_HERE}/rtorrentrc ~/.rtorrent.rc
 fi
