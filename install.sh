@@ -24,19 +24,20 @@ else
 fi
 
 ln -sf ${_HERE}/bashrc ${_BASH_RC}
-ln -s ${_HERE}/gitconfig ~/.gitconfig
-ln -s ${_HERE}/gitignore_global ~/.gitignore
-ln -s ${_HERE}/inputrc ~/.inputrc
-ln -s ${_HERE}/tmux.conf ~/.tmux.conf
+ln -sf ${_HERE}/gitconfig ~/.gitconfig
+ln -sf ${_HERE}/gitignore_global ~/.gitignore
+ln -sf ${_HERE}/inputrc ~/.inputrc
+ln -sf ${_HERE}/tmux.conf ~/.tmux.conf
 
-ln -s ${_HERE}/hgrc ~/.hgrc
+ln -sf ${_HERE}/hgrc ~/.hgrc
 
 if [[ $(uname -s) == "Darwin" ]]; then
-  ln -s ${_HERE}/osx ~/.osx
-  ln -s ${_HERE}/rtorrentrc ~/.rtorrent.rc
+  ln -sf ${_HERE}/osx ~/.osx
+  ln -sf ${_HERE}/rtorrentrc ~/.rtorrent.rc
 fi
 
 if [[ ! -x /usr/bin/ec2metadata ]]; then
     mkdir ~/.irssi
-    ln -s ${_HERE}/irssi_config ~/.irssi/config
+    ln -sf ${_HERE}/irssi_config ~/.irssi/config
+    ln -sf ${_HERE}/rtorrentrc ~/.rtorrent.rc
 fi
