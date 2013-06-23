@@ -1,4 +1,4 @@
-#!/usr/bin/env bash # because emacs is a little stupid sometimes
+#!/usr/bin/env bash
 
 # This makes Ctrl-S (forward-search-history) work.
 stty stop undef
@@ -171,12 +171,22 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
 export GOPATH="$HOME/golang"
 
+if [[ $(uname -s) == "Darwin" ]]; then
+  _EMACS=/usr/local/bin/emacs
+  _EMACS_C="${_EMACS}client"
+else
+  _EMACS=/usr/bin/emacs
+  _EMACS_C="${_EMACS}client"
+fi
 export EDITOR='emacsclient -ct'
 
+alias es="${_EMACS} --daemon"
+alias ek="${_EMACS_C} --eval \"(progn (setq kill-emacs-hook 'nil) (kill-emacs))\""
+alias E="${_EMACS_C} -ct"
+
 if [ "`uname`" == "Darwin" ]; then
-  alias es='env emacs --daemon'
-  alias E='/usr/local/bin/emacsclient -c -n'
-  export VISUAL='/usr/local/bin/emacsclient -c -n'
+  export VISUAL="${_EMACS_C} -c -n"
+  alias E="${_EMACS_C} -c -n"
 
 	export JAVA_HOME="$(/usr/libexec/java_home)"
 
@@ -227,9 +237,6 @@ if [ "`uname`" == "Darwin" ]; then
 fi
 
 if [ "`uname`" == "Linux" ]; then
-  alias es="/usr/bin/emacs --daemon"
-  alias ek="/usr/bin/emacsclient --eval \"(progn (setq kill-emacs-hook 'nil) (kill-emacs))\""
-  alias E='/usr/bin/emacsclient -ct'
 	PAGER=less
 
 	# LESS man page colors

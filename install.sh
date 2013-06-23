@@ -11,8 +11,10 @@ ln -sf ${_HERE}/init.el ~/.emacs.d/init.el
 
 if [[ $(uname -s) == "Darwin" ]]; then
   _EMACS=/usr/local/bin/emacs
+  _EMACS_C="${_EMACS}client"
 else
   _EMACS=/usr/bin/emacs
+  _EMACS_C="${_EMACS}client"
 fi
 
 ${_EMACS} --daemon
