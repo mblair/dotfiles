@@ -3,6 +3,7 @@
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
+
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -12,7 +13,7 @@
                       go-mode
                       markdown-mode
                       coffee-mode
-                      js2-mode
+                      ;; js2-mode
                       yaml-mode
                       puppet-mode
                       rainbow-delimiters
