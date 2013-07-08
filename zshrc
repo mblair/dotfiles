@@ -42,8 +42,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		    export PATH="$HOME/.cabal/bin:$PATH"
 	  fi
 
-    export PATH="/usr/local/share/python:$PATH"
-
     if [[ -f "/Users/mblair/venv/bin/activate" ]]; then
         source /Users/mblair/venv/bin/activate
         export PATH="/Users/mblair/venv/bin:$PATH"
