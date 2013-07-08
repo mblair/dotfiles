@@ -58,6 +58,6 @@ alias c="clear"
 alias l="ls -lha"
 alias f="find . -type f | grep -i"
 
-if [[ -f "~/my_src/personal/flip_sh" ]]; then
-    . "~/my_src/personal/flip_sh"
+if [[ -f ~/my_src/personal/flip_sh ]]; then
+    . ~/my_src/personal/flip_sh
 fi
