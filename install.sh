@@ -26,6 +26,10 @@ else
 fi
 
 ln -sf ${_HERE}/bashrc ${_BASH_RC}
+ln -sf ${_HERE}/zshrc ~/.zshrc
+
+git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
+
 ln -sf ${_HERE}/gitconfig ~/.gitconfig
 ln -sf ${_HERE}/gitignore_global ~/.gitignore
 ln -sf ${_HERE}/inputrc ~/.inputrc

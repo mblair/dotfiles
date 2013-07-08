@@ -7,7 +7,7 @@ DISABLE_CORRECTION="true"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-plugins=(git osx brew golang tmux)
+plugins=(git osx brew golang tmux virtualenv)
 #github)
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -42,9 +42,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		    export PATH="$HOME/.cabal/bin:$PATH"
 	  fi
 
-    if [[ -f "/Users/mblair/venv/bin/activate" ]]; then
-        source /Users/mblair/venv/bin/activate
-        export PATH="/Users/mblair/venv/bin:$PATH"
+    if [[ -f "/Users/matt/venv/bin/activate" ]]; then
+        source /Users/matt/venv/bin/activate
+        export PATH="/Users/matt/venv/bin:$PATH"
     fi
 
 elif [[ $(uname -s) == "Linux" ]]; then
@@ -52,10 +52,12 @@ elif [[ $(uname -s) == "Linux" ]]; then
 fi
 
 export GOPATH="$HOME/golang"
-# rbenv Ruby.
+PATH="${GOPATH}/bin:${PATH}"
 
 alias c="clear"
 alias l="ls -lha"
 alias f="find . -type f | grep -i"
 
-. ~/my_src/personal/flip_sh
+if [[ -f "~/my_src/personal/flip_sh" ]]; then
+    . "~/my_src/personal/flip_sh"
+fi
