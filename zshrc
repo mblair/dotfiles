@@ -60,10 +60,6 @@ alias l="ls -lha"
 alias f="find . | grep -i"
 alias p="ping google.com"
 
-if [[ -f "/usr/local/bin/hub" ]]; then
-    alias git="hub"
-fi
-
 if [[ -f ~/my_src/personal/flip_sh ]]; then
     . ~/my_src/personal/flip_sh
 fi
