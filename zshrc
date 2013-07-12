@@ -55,8 +55,14 @@ export GOPATH="$HOME/golang"
 PATH="${GOPATH}/bin:${PATH}"
 
 alias c="clear"
+alias dc="cd"
 alias l="ls -lha"
-alias f="find . -type f | grep -i"
+alias f="find . | grep -i"
+alias p="ping google.com"
+
+if [[ -f "/usr/local/bin/hub" ]]; then
+    alias git="hub"
+fi
 
 if [[ -f ~/my_src/personal/flip_sh ]]; then
     . ~/my_src/personal/flip_sh
