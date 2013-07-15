@@ -168,6 +168,9 @@ alias grep='grep --color=always -HI'
 # formulae. I never use it, but why not.
 export PATH="$HOME/dotfiles/bin:$PATH"
 
+# For gitolite.
+export PATH="$HOME/bin:$PATH"
+
 export NODE_PATH="/usr/local/lib/node_modules"
 export GOPATH="$HOME/golang"
 

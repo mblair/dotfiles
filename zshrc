@@ -63,3 +63,6 @@ alias p="ping google.com"
 if [[ -f ~/my_src/personal/flip_sh ]]; then
     . ~/my_src/personal/flip_sh
 fi
+
+# For gitolite.
+export PATH="$HOME/bin:$PATH"
