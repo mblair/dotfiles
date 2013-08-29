@@ -173,6 +173,7 @@ export PATH="$HOME/bin:$PATH"
 
 export NODE_PATH="/usr/local/lib/node_modules"
 export GOPATH="$HOME/golang"
+export PATH="$GOPATH/bin:$PATH"
 
 if [[ $(uname -s) == "Darwin" ]]; then
   _EMACS=/usr/local/bin/emacs
