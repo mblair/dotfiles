@@ -39,3 +39,5 @@
 	default = tracking
 [web]
 	browser = open
+[pull]
+  rebase = true

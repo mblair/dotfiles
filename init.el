@@ -10,7 +10,6 @@
 
 (defvar my-packages '(starter-kit
                       starter-kit-lisp
-                      go-mode
                       markdown-mode
                       coffee-mode
                       ;; js2-mode
@@ -107,3 +106,8 @@
 ;; (load-theme 'telstar t)
 ;; (add-to-list 'custom-theme-load-path "~/elisp/color-theme-sanityinc-solarized")
 ;; (load-theme 'sanityinc-solarized-dark t)
+
+(add-to-list 'load-path "/opt/external/clones/go/misc/emacs/")
+(add-to-list 'load-path "~/rebuild_src/go/misc/emacs/")
+
+(require 'go-mode-load)
