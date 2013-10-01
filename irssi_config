@@ -43,10 +43,11 @@ chatnets = {
 channels = (
   { name = "#heka"; chatnet = "mozilla"; autojoin = "yes"; },
   { name = "#riemann"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#go-nuts"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#jepsen"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#riak"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#juju"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#graphite"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#go-nuts"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#juju"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#monitoringlove"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#logstash"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#puppet"; chatnet = "freenode"; autojoin = "yes"; },
