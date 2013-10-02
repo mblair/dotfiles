@@ -59,6 +59,8 @@ alias dc="cd"
 alias l="ls -lha"
 alias f="find . | grep -i"
 alias p="ping google.com"
+alias rscp='rsync -aP --no-whole-file --inplace'
+alias rsmv='rscp --remove-source-files'
 
 if [[ -f ~/my_src/personal/flip_sh ]]; then
     . ~/my_src/personal/flip_sh
