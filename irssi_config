@@ -44,6 +44,7 @@ channels = (
   { name = "#heka"; chatnet = "mozilla"; autojoin = "yes"; },
   { name = "#riemann"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#jepsen"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#mesos"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#riak"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#graphite"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#go-nuts"; chatnet = "freenode"; autojoin = "yes"; },
