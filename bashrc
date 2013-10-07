@@ -211,7 +211,7 @@ if [ "`uname`" == "Darwin" ]; then
     alias g="cd $(ruby -r rubygems -e 'p Gem.path.select { |p| File.exists?(p) }.first')/gems"
 
     # Node binaries.
-    export PATH="/usr/share/npm/bin:$PATH"
+    export PATH="/usr/local/share/npm/bin:$PATH"
 
 	  if [ -d "$HOME/.cabal/bin" ]; then
 		    export PATH="$HOME/.cabal/bin:$PATH"
