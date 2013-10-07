@@ -176,7 +176,7 @@ export GOPATH="$HOME/golang"
 export PATH="$GOPATH/bin:$PATH"
 
 if [[ $(uname -s) == "Darwin" ]]; then
-    _EMACS=/usr/local/bin/emacs
+    _EMACS="$(brew --prefix)/bin/emacs"
     _EMACS_C="${_EMACS}client"
 else
     _EMACS=/usr/bin/emacs
@@ -203,10 +203,7 @@ if [ "`uname`" == "Darwin" ]; then
 	  fi
 
 	  # Put Homebrew stuff before Apple's stuff.
-	  export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
-
-    # Homebrew Ruby.
-    # export PATH="/usr/local/opt/ruby/bin:$PATH"
+	  export PATH="$(brew --prefix)/sbin:$(brew --prefix)/bin:$PATH"
 
     # rbenv Ruby.
     if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -214,7 +211,7 @@ if [ "`uname`" == "Darwin" ]; then
     alias g="cd $(ruby -r rubygems -e 'p Gem.path.select { |p| File.exists?(p) }.first')/gems"
 
     # Node binaries.
-    export PATH="/usr/local/share/npm/bin:$PATH"
+    export PATH="/usr/share/npm/bin:$PATH"
 
 	  if [ -d "$HOME/.cabal/bin" ]; then
 		    export PATH="$HOME/.cabal/bin:$PATH"
@@ -226,7 +223,7 @@ if [ "`uname`" == "Darwin" ]; then
 	  fi
 
 	  # https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
-	  export PATH="/usr/local/share/python:$PATH"
+	  export PATH="$(brew --prefix)/share/python:$PATH"
 
     if [[ -f "/Users/mblair/venv/bin/activate" ]]; then
         source /Users/mblair/venv/bin/activate
