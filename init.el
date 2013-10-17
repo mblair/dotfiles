@@ -31,6 +31,7 @@
                       color-theme-heroku
                       soothe-theme
                       deep-thought-theme
+                      solarized-theme ;; this is the one from bbatsov
                       ))
 
 (dolist (p my-packages)
@@ -94,7 +95,7 @@
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'deep-thought t)
+  (if window-system (load-theme 'solarized-dark t)
     (load-theme 'zenburn t)))
 
 ;; for emacsclient:
@@ -109,7 +110,10 @@
 ;; (add-to-list 'custom-theme-load-path "~/elisp/color-theme-sanityinc-solarized")
 ;; (load-theme 'sanityinc-solarized-dark t)
 
-(add-to-list 'load-path "/opt/external/clones/go/misc/emacs/")
+;; ec2
+(add-to-list 'load-path "/mnt/external/clones/go/misc/emacs/")
+
+;; os x
 (add-to-list 'load-path "~/rebuild_src/go/misc/emacs/")
 
 (require 'go-mode-load)
