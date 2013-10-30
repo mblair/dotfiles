@@ -35,6 +35,10 @@ ln -sf ${_HERE}/gitignore_global ~/.gitignore
 ln -sf ${_HERE}/inputrc ~/.inputrc
 ln -sf ${_HERE}/tmux.conf ~/.tmux.conf
 
+cat > ~/.gemrc <<EOF
+install: --no-rdoc --no-ri
+EOF
+
 ln -sf ${_HERE}/hgrc ~/.hgrc
 
 if [[ $(uname -s) == "Darwin" ]]; then
