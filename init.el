@@ -23,7 +23,7 @@
                       clojure-test-mode
                       auto-complete
                       ac-nrepl
-                      nrepl
+                      cider
                       ;; colors:
                       color-theme-sanityinc-solarized
                       color-theme-sanityinc-tomorrow
