@@ -10,7 +10,9 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 plugins=(git osx brew golang tmux virtualenv)
 #github)
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv > /dev/null; then
+    eval "$(rbenv init -)"
+fi
 
 # ZSH_TMUX_AUTOSTART=true
 # ZSH_TMUX_ITERM2=true
@@ -69,7 +71,14 @@ if [[ -f ~/my_src/personal/flip_sh ]]; then
     . ~/my_src/personal/flip_sh
 fi
 
+cleanup() {
+	  ls | while read -r FILE
+		do
+		    mv -v "$FILE" `echo $FILE | tr ' ' '_' | tr -d '[{}(),\!]:"' | tr -d "\'" | tr '[A-Z]' '[a-z]' | tr '&' 'n' | sed 's/_-_/_/g'`
+		done
+}
+
 # For gitolite.
 export PATH="$HOME/bin:$PATH"
 
-export NODE_PATH=""/usr/local/lib/node_modules""
+export NODE_PATH="/usr/local/lib/node_modules"
