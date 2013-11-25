@@ -110,10 +110,10 @@
 ;; (add-to-list 'custom-theme-load-path "~/elisp/color-theme-sanityinc-solarized")
 ;; (load-theme 'sanityinc-solarized-dark t)
 
-;; ;; ec2
-;; (add-to-list 'load-path "/mnt/external/clones/go/misc/emacs/")
+;; ec2
+(add-to-list 'load-path "/mnt/external/clones/go/misc/emacs/")
 
-;; ;; os x
-;; (add-to-list 'load-path "~/rebuild_src/go/misc/emacs/")
+;; os x
+(add-to-list 'load-path "~/rebuild_src/go/misc/emacs/")
 
-;; (require 'go-mode-load)
+(require 'go-mode-load)
