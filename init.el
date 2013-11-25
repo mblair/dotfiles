@@ -24,7 +24,9 @@
                       auto-complete
                       ac-nrepl
                       cider
+
                       ;; colors:
+                      color-theme ;; http://www.nongnu.org/color-theme/
                       color-theme-sanityinc-solarized
                       color-theme-sanityinc-tomorrow
                       zenburn-theme
@@ -105,10 +107,10 @@
 (color-config (selected-frame))
 
 ;; for git-sourced colors:
-;; (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
+(add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
 ;; (load-theme 'telstar t)
-;; (add-to-list 'custom-theme-load-path "~/elisp/color-theme-sanityinc-solarized")
-;; (load-theme 'sanityinc-solarized-dark t)
+;; (add-to-list 'custom-theme-load-path "~/elisp/color-theme-heroku")
+;; (color-theme-heroku)
 
 ;; ec2
 (add-to-list 'load-path "/mnt/external/clones/go/misc/emacs/")
