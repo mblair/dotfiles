@@ -108,14 +108,17 @@
 
 ;; for git-sourced colors:
 (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
+(add-to-list 'custom-theme-load-path "~/mblair_src/dotfiles/")
 ;; (load-theme 'telstar t)
-;; (add-to-list 'custom-theme-load-path "~/elisp/color-theme-heroku")
+
+(add-to-list 'custom-theme-load-path "/mnt/external/clones/color-theme-heroku")
+(add-to-list 'custom-theme-load-path "/external_src/color-theme-heroku")
 ;; (color-theme-heroku)
 
-;; ec2
 (add-to-list 'load-path "/mnt/external/clones/go/misc/emacs/")
-
-;; os x
 (add-to-list 'load-path "~/rebuild_src/go/misc/emacs/")
 
 (require 'go-mode-load)
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
