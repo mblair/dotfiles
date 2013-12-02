@@ -13,7 +13,7 @@
                       starter-kit-lisp
                       markdown-mode
                       coffee-mode
-                      ;; js2-mode
+                      js2-mode
                       yaml-mode
                       puppet-mode
                       rainbow-delimiters
@@ -119,6 +119,10 @@
 (add-to-list 'load-path "~/rebuild_src/go/misc/emacs/")
 
 (require 'go-mode-load)
+
+(add-to-list 'load-path "/mnt/external/clones/gocode/emacs/")
+(add-to-list 'load-path "~/external_src/gocode/emacs")
+
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 (ac-config-default)
