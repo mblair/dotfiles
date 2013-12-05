@@ -3,20 +3,12 @@
 	email = me@matthewblair.net
 [alias]
 	co = checkout
-    cp = cherry-pick
-	discard = checkout --
-	branches = branch -a
-	create-branch = checkout -b
-	delete-branch = branch -d
+  cp = cherry-pick
 	wlog = log --color-words -p
-	glog = log --graph --all --abbrev-commit
 	wdiff = diff --color-words
 	st = status --ignore-submodules=untracked
 	br = branch
-    tags-sorted = !git for-each-ref --format='%(refname)' --sort=taggerdate refs/tags | cut -d'/' -f3
-	ignore = !echo "$@" >> .gitignore
-[merge]
-	tool = vimdiff
+  tags-sorted = !git for-each-ref --format='%(refname)' --sort=taggerdate refs/tags | cut -d'/' -f3
 [core]
   editor = emacsclient -c
 	excludesfile = ~/.gitignore_global
