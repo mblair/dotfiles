@@ -11,6 +11,8 @@
 
 (defvar my-packages '(starter-kit
                       starter-kit-lisp
+                      starter-kit-bindings
+                      starter-kit-eshell
                       markdown-mode
                       coffee-mode
                       js2-mode
@@ -45,6 +47,7 @@
 
 (global-linum-mode 1)
 (global-set-key (kbd "C-c c") 'comment-dwim)
+(global-set-key (kbd "C-c C-c") 'compile)
 
 (global-set-key (kbd "M-l") 'goto-line)
 
@@ -115,6 +118,7 @@
 (add-to-list 'custom-theme-load-path "/external_src/color-theme-heroku")
 ;; (color-theme-heroku)
 
+;; go stuff
 (add-to-list 'load-path "/mnt/external/clones/go/misc/emacs/")
 (add-to-list 'load-path "~/rebuild_src/go/misc/emacs/")
 
@@ -126,3 +130,14 @@
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 (ac-config-default)
+
+(defun my-go-mode-hook ()
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (if (not (string-match "go" compile-command))
+      (set (make-local-variable 'compile-command)
+           ;; "go vet && go test -cover -v && go build -v"))
+           "go vet && go build -v"))
+  (setq tab-width 8 indent-tabs-mode 1)
+  (local-set-key (kbd "M-.") 'godef-jump))
+
+(add-hook 'go-mode-hook 'my-go-mode-hook)
