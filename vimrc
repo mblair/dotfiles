@@ -2,8 +2,7 @@
 " This must be first, as it changes other options.
 set nocompatible
 
-call pathogen#runtime_append_all_bundles()
-" call pathogen#helptags() " I...guess. This makes my submodules dirty.
+call pathogen#infect()
 
 " Enable filetype detection, along with language-aware indentation.
 filetype plugin indent on
