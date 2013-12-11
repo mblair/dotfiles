@@ -17,6 +17,7 @@ else
   _EMACS_C="${_EMACS}client"
 fi
 
+${_EMACS_C} --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))" || true
 ${_EMACS} --daemon
 
 if [[ $(uname -s) == "Darwin" ]]; then
@@ -34,6 +35,18 @@ ln -sf ${_HERE}/gitconfig ~/.gitconfig
 ln -sf ${_HERE}/gitignore_global ~/.gitignore
 ln -sf ${_HERE}/inputrc ~/.inputrc
 ln -sf ${_HERE}/tmux.conf ~/.tmux.conf
+
+mkdir -p ${_HERE}/vim/autoload
+cd ${_HERE}/vim/autoload
+wget https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+
+if [[ ! -h ~/.vim ]]; then
+    ln -s ${_HERE}/vim ~/.vim
+fi
+
+ln -sf ${_HERE}/vimrc ~/.vimrc
+cd ${_HERE}
+git submodule update --init
 
 cat > ~/.gemrc <<EOF
 install: --no-rdoc --no-ri
