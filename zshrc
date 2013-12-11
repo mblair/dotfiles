@@ -59,6 +59,7 @@ fi
 export GOPATH="$HOME/golang"
 PATH="${GOPATH}/bin:${PATH}"
 
+alias git="hub"
 alias c="clear"
 alias dc="cd"
 alias l="ls -lha"
