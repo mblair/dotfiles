@@ -54,4 +54,7 @@ go get -u code.google.com/p/rog-go/exp/cmd/godef
 go get -u code.google.com/p/go.tools/cmd/godoc
 go get -u code.google.com/p/go.tools/cmd/vet
 
+rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d;
+/usr/local/bin/emacs --daemon
+
 brew outdated
