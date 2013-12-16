@@ -26,6 +26,7 @@
                       auto-complete
                       ac-nrepl
                       cider
+                      kill-ring-search
 
                       ;; colors:
                       color-theme ;; http://www.nongnu.org/color-theme/
@@ -141,3 +142,9 @@
   (local-set-key (kbd "M-.") 'godef-jump))
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+
+(autoload 'kill-ring-search "kill-ring-search"
+  "Search the kill ring in the minibuffer."
+  (interactive))
+
+(global-set-key "\M-\C-y" 'kill-ring-search)
