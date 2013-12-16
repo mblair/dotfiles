@@ -39,6 +39,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
     export VISUAL="${_EMACS_C} -c -n"
     alias E="${_EMACS_C} -c -n"
 
+    export PATH="/usr/local/bin:$PATH"
     export PATH="$(brew --prefix)/sbin:$(brew --prefix)/bin:$PATH"
 
 	  if [ -d "$HOME/.cabal/bin" ]; then
