@@ -27,6 +27,7 @@
                       ac-nrepl
                       cider
                       kill-ring-search
+                      expand-region
 
                       ;; colors:
                       color-theme ;; http://www.nongnu.org/color-theme/
@@ -148,3 +149,6 @@
   (interactive))
 
 (global-set-key "\M-\C-y" 'kill-ring-search)
+
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
