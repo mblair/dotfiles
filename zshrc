@@ -5,20 +5,6 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 DISABLE_CORRECTION="true"
 
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-plugins=(git osx brew golang tmux virtualenv)
-#github)
-
-if which rbenv > /dev/null; then
-    eval "$(rbenv init -)"
-fi
-
-# ZSH_TMUX_AUTOSTART=true
-# ZSH_TMUX_ITERM2=true
-
-source $ZSH/oh-my-zsh.sh
-
 # Everything after this line has been moved from my .bashrc, so it's portable.
 
 # Emacs stuff.
@@ -53,6 +39,10 @@ if [[ $(uname -s) == "Darwin" ]]; then
         export PATH="/Users/matt/venv/bin:$PATH"
     fi
 
+    if which rbenv >/dev/null; then
+        eval "$(rbenv init -)"
+    fi
+
 elif [[ $(uname -s) == "Linux" ]]; then
     alias E="${_EMACS_C} -ct"
 fi
@@ -80,7 +70,14 @@ cleanup() {
 		done
 }
 
-# For gitolite.
-export PATH="$HOME/bin:$PATH"
-
 export NODE_PATH="/usr/local/lib/node_modules"
+
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+plugins=(git osx brew golang virtualenv tmux)
+
+# ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_ITERM2=true
+
+source $ZSH/oh-my-zsh.sh
