@@ -39,20 +39,37 @@ git pull
 #     git merge --quiet origin/trunk && rbenv install --force 2.1.0-dev
 # )
 
-brew update
-
 cd ~/rebuild_src/go
 hg incoming && (
+    hg clean --all
+    hg checkout --clean tip
     hg pull -u
-    brew reinstall --HEAD go
+    export GOROOT_FINAL='/Users/matt/goroot'
+    cd src
+    bash make.bash --no-banner
+    rm -rf ~/goroot/
+    mkdir -p ~/goroot/
+    cd ~/rebuild_src/go
+    cp -R {bin,pkg,src} ~/goroot/
 )
 
-brew reinstall --HEAD etcd git-extras hub
+cd ~/external_src/go.tools
+hg incoming && (
+    hg clean --all
+    hg checkout --clean tip
+    hg pull -u
+)
 
+export GOROOT="$HOME/goroot"
+export GOPATH="$HOME/gopath"
 go get -u github.com/nsf/gocode
 go get -u code.google.com/p/rog-go/exp/cmd/godef
-go get -u code.google.com/p/go.tools/cmd/godoc
-go get -u code.google.com/p/go.tools/cmd/vet
+go get -u code.google.com/p/go.tools/cmd/{cover,godoc,oracle,vet}
+
+brew update
+
+brew reinstall --HEAD git-extras hub
+brew reinstall --HEAD --ignore-dependencies --fresh etcd
 
 rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d;
 /usr/local/bin/emacs --daemon
