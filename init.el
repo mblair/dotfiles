@@ -49,7 +49,6 @@
 
 (global-linum-mode 1)
 (global-set-key (kbd "C-c c") 'comment-dwim)
-(global-set-key (kbd "C-c C-c") 'compile)
 
 (global-set-key (kbd "M-l") 'goto-line)
 
@@ -144,6 +143,8 @@
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
+(global-set-key (kbd "C-c C-c") 'compile)
+
 (autoload 'kill-ring-search "kill-ring-search"
   "Search the kill ring in the minibuffer."
   (interactive))
@@ -152,3 +153,8 @@
 
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+
+;; Not ready yet.
+;; (load "~/external_src/go.tools/cmd/oracle/oracle")
+;; (require 'go-oracle)
+;; (setq go-oracle-command "~/gopath/bin/oracle")
