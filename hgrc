@@ -3,3 +3,6 @@ username = Matt Blair <me@matthewblair.net>
 
 [web]
 cacerts = /etc/hg-dummy-cert.pem
+
+[extensions]
+hgext.purge=
