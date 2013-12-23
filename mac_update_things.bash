@@ -31,12 +31,10 @@ git pull
 #     brew reinstall --HEAD --use-git-head --cocoa --srgb emacs
 # )
 
-# Not until RubyGems 2.2 is stable.
-# brew reinstall --HEAD ruby-build rbenv
 # cd ~/rebuild_src/ruby
 # git fetch
 # git diff trunk origin/trunk --exit-code || (
-#     git merge --quiet origin/trunk && rbenv install --force 2.1.0-dev
+#     git merge --quiet origin/trunk && rbenv install --force 2.2.0-dev
 # )
 
 cd ~/rebuild_src/go
@@ -66,10 +64,19 @@ go get -u github.com/nsf/gocode
 go get -u code.google.com/p/rog-go/exp/cmd/godef
 go get -u code.google.com/p/go.tools/cmd/{cover,godoc,oracle,vet}
 
-brew update
+cd ~/rebuild_src/etcd
+git fetch
+git diff master origin/master --exit-code || (
+    git clean -fdx
+    git reset --hard
+    git merge --quiet origin/master
+    export GOPATH=$(pwd)
+    ./build
+    mv etcd ~/bin/
+)
 
-brew reinstall --HEAD git-extras hub
-brew reinstall --HEAD --ignore-dependencies --fresh etcd
+brew update
+brew reinstall --HEAD git-extras hub rbenv ruby-build
 
 rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d;
 /usr/local/bin/emacs --daemon
