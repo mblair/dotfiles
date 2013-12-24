@@ -51,12 +51,18 @@ hg incoming && (
     cp -R {bin,pkg,src} ~/goroot/
 )
 
+# for oracle.el
 cd ~/external_src/go.tools
 hg incoming && (
     hg clean --all
     hg checkout --clean tip
     hg pull -u
 )
+
+cd ~/external_src/go-mode.el
+git clean -fdx
+git reset --hard
+git pull
 
 export GOROOT="$HOME/goroot"
 export GOPATH="$HOME/gopath"

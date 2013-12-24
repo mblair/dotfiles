@@ -119,11 +119,13 @@
 (add-to-list 'custom-theme-load-path "/external_src/color-theme-heroku")
 ;; (color-theme-heroku)
 
-;; go stuff
-(add-to-list 'load-path "/mnt/external/clones/go/misc/emacs/")
-(add-to-list 'load-path "~/rebuild_src/go/misc/emacs/")
+;; ;; go stuff
+;; (add-to-list 'load-path "/mnt/external/clones/go/misc/emacs/")
+;; (add-to-list 'load-path "~/rebuild_src/go/misc/emacs/")
 
-(require 'go-mode-load)
+(add-to-list 'load-path "~/external_src/go-mode.el/")
+
+(require 'go-mode)
 
 (add-to-list 'load-path "/mnt/external/clones/gocode/emacs/")
 (add-to-list 'load-path "~/external_src/gocode/emacs")
@@ -154,7 +156,6 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;; Not ready yet.
-;; (load "~/external_src/go.tools/cmd/oracle/oracle")
-;; (require 'go-oracle)
-;; (setq go-oracle-command "~/gopath/bin/oracle")
+(load "~/external_src/go.tools/cmd/oracle/oracle")
+(require 'go-oracle)
+(setq go-oracle-command "~/gopath/bin/oracle")
