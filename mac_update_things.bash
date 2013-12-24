@@ -60,8 +60,6 @@ hg incoming && (
 )
 
 cd ~/external_src/go-mode.el
-git clean -fdx
-git reset --hard
 git pull
 
 export GOROOT="$HOME/goroot"
@@ -74,6 +72,7 @@ cd ~/rebuild_src/etcd
 git fetch
 git diff master origin/master --exit-code || (
     git clean -fdx
+    git checkout master
     git reset --hard
     git merge --quiet origin/master
     export GOPATH=$(pwd)
