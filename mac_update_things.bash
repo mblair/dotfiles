@@ -8,7 +8,7 @@ gem update --system
 gem update
 gem cleanup --quiet
 
-pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | xargs pip install -U
+pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | env grep -v wsgiref | xargs pip install -U
 
 #cabal update
 #cabal install -v pandoc --upgrade-dependencies --dry-run

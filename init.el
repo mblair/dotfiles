@@ -156,6 +156,9 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
+;; TODO: Make all these loads work on Linux and OS X and not be
+;; onerous to maintain.
+
 (load "~/external_src/go.tools/cmd/oracle/oracle")
 (require 'go-oracle)
 (setq go-oracle-command "~/gopath/bin/oracle")
