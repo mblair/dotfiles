@@ -23,13 +23,6 @@ git pull
 # 	brew reinstall --HEAD macvim
 # )
 
-# Not until ~24.4 is stable.
-# cd ~/rebuild_src/emacs
-# git fetch
-# git diff master origin/master --exit-code || (
-#     git merge --quiet origin/master
-#     brew reinstall --HEAD --use-git-head --cocoa --srgb emacs
-# )
 
 # cd ~/rebuild_src/ruby
 # git fetch
@@ -82,6 +75,13 @@ git diff master origin/master --exit-code || (
 
 brew update
 brew reinstall --HEAD git-extras hub rbenv ruby-build
+
+cd ~/rebuild_src/emacs
+git fetch
+git diff master origin/master --exit-code || (
+    git merge --quiet origin/master
+    brew reinstall --HEAD --use-git-head --cocoa emacs
+)
 
 rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d;
 /usr/local/bin/emacs --daemon
