@@ -134,11 +134,11 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
+;; thanks, dustin
 (defun my-go-mode-hook ()
   (add-hook 'before-save-hook 'gofmt-before-save)
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
-           ;; "go vet && go test -cover -v && go build -v"))
            "go vet && go build -v"))
   (setq tab-width 8 indent-tabs-mode 1)
   (local-set-key (kbd "M-.") 'godef-jump))
@@ -156,8 +156,8 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;; TODO: Make all these loads work on Linux and OS X and not be
-;; onerous to maintain.
+;; TODO: learn some damned elisp and make these loads work on Linux
+;; and OS X and not be onerous to maintain.
 
 (load "~/external_src/go.tools/cmd/oracle/oracle")
 (require 'go-oracle)
