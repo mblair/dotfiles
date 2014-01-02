@@ -110,26 +110,26 @@
 ;; for regular emacs:
 (color-config (selected-frame))
 
-;; for git-sourced colors:
-(add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
-(add-to-list 'custom-theme-load-path "~/mblair_src/dotfiles/")
+(if (equal system-type 'darwin)
+    (progn
+      (setq prefix "~/external_src/")
+      (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
+      )
+  (progn
+    (setq prefix "/mnt/external/clones/")
+    (add-to-list 'custom-theme-load-path "~/mblair_src/dotfiles/")
+    ))
+
 ;; (load-theme 'telstar t)
 
-(add-to-list 'custom-theme-load-path "/mnt/external/clones/color-theme-heroku")
-(add-to-list 'custom-theme-load-path "/external_src/color-theme-heroku")
+(add-to-list 'custom-theme-load-path (concat prefix "color-theme-heroku"))
 ;; (color-theme-heroku)
 
-;; ;; go stuff
-;; (add-to-list 'load-path "/mnt/external/clones/go/misc/emacs/")
-;; (add-to-list 'load-path "~/rebuild_src/go/misc/emacs/")
-
-(add-to-list 'load-path "/mnt/external/clones/go-mode.el/")
-(add-to-list 'load-path "~/external_src/go-mode.el/")
+(add-to-list 'load-path (concat prefix "go-mode.el/"))
 
 (require 'go-mode)
 
-(add-to-list 'load-path "/mnt/external/clones/gocode/emacs/")
-(add-to-list 'load-path "~/external_src/gocode/emacs")
+(add-to-list 'load-path (concat prefix "gocode/emacs"))
 
 (require 'go-autocomplete)
 (require 'auto-complete-config)
@@ -157,12 +157,7 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;; TODO: learn some damned elisp and make these loads work on Linux
-;; and OS X and not be onerous to maintain.
+(load (concat prefix "go.tools/cmd/oracle/oracle"))
 
-(if (file-exists-p "~/external_src/go.tools/cmd/oracle/oracle.el")
-  (load "~/external_src/go.tools/cmd/oracle/oracle")
-  (load "/mnt/external/clones/go.tools/cmd/oracle/oracle")
-  )
 (require 'go-oracle)
 (setq go-oracle-command "~/gopath/bin/oracle")
