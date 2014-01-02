@@ -123,6 +123,7 @@
 ;; (add-to-list 'load-path "/mnt/external/clones/go/misc/emacs/")
 ;; (add-to-list 'load-path "~/rebuild_src/go/misc/emacs/")
 
+(add-to-list 'load-path "/mnt/external/clones/go-mode.el/")
 (add-to-list 'load-path "~/external_src/go-mode.el/")
 
 (require 'go-mode)
