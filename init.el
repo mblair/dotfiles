@@ -160,6 +160,9 @@
 ;; TODO: learn some damned elisp and make these loads work on Linux
 ;; and OS X and not be onerous to maintain.
 
-(load "~/external_src/go.tools/cmd/oracle/oracle")
+(if (file-exists-p "~/external_src/go.tools/cmd/oracle/oracle.el")
+  (load "~/external_src/go.tools/cmd/oracle/oracle")
+  (load "/mnt/external/clones/go.tools/cmd/oracle/oracle")
+  )
 (require 'go-oracle)
 (setq go-oracle-command "~/gopath/bin/oracle")
