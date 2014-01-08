@@ -28,6 +28,11 @@ if [[ $(uname -s) == "Darwin" ]]; then
     # For etcd.
     export PATH="$HOME/bin:$PATH"
 
+    # http://tug.org/mactex/faq/
+	  if [ -d "/usr/texbin" ]; then
+		    export PATH="/usr/texbin:$PATH"
+	  fi
+
     # So we can find Homebrew.
     export PATH="/usr/local/bin:$PATH"
 

@@ -21,6 +21,7 @@
                       rainbow-delimiters
                       rainbow-mode
                       scala-mode2
+                      rust-mode
                       clojure-mode
                       clojure-test-mode
                       auto-complete
