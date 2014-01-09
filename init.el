@@ -114,10 +114,12 @@
 (if (equal system-type 'darwin)
     (progn
       (setq prefix "~/external_src/")
+      (setq go-location "~/rebuild_src/go/")
       (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
       )
   (progn
     (setq prefix "/mnt/external/clones/")
+    (setq go-location (concat prefix "go"))
     (add-to-list 'custom-theme-load-path "~/mblair_src/dotfiles/")
     ))
 
@@ -126,9 +128,12 @@
 (add-to-list 'custom-theme-load-path (concat prefix "color-theme-heroku"))
 ;; (color-theme-heroku)
 
-(add-to-list 'load-path (concat prefix "go-mode.el/"))
+(add-to-list 'load-path (concat go-location "misc/emacs"))
+(require 'go-mode-load)
 
-(require 'go-mode)
+(load (concat prefix "go.tools/cmd/oracle/oracle"))
+(require 'go-oracle)
+(setq go-oracle-command "~/gopath/bin/oracle")
 
 (add-to-list 'load-path (concat prefix "gocode/emacs"))
 
@@ -136,8 +141,9 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-;; thanks, dustin
+;; thanks, dustin + bradfitz
 (defun my-go-mode-hook ()
+  (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
@@ -157,8 +163,3 @@
 
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
-
-(load (concat prefix "go.tools/cmd/oracle/oracle"))
-
-(require 'go-oracle)
-(setq go-oracle-command "~/gopath/bin/oracle")

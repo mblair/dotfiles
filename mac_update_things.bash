@@ -59,7 +59,7 @@ export GOROOT="$HOME/goroot"
 export GOPATH="$HOME/gopath"
 go get -u github.com/nsf/gocode
 go get -u code.google.com/p/rog-go/exp/cmd/godef
-go get -u code.google.com/p/go.tools/cmd/{cover,godoc,oracle,vet}
+go get -u code.google.com/p/go.tools/cmd/{cover,godoc,goimports,oracle,vet}
 
 cd ~/rebuild_src/etcd
 git fetch
