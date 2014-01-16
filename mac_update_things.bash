@@ -78,7 +78,7 @@ cd ~/rebuild_src/emacs
 git fetch
 git diff master origin/master --exit-code || (
     git merge --quiet origin/master
-    brew reinstall --HEAD --use-git-head emacs
+    brew reinstall --HEAD --use-git-head --cocoa emacs
     tic -o ~/.terminfo etc/e/eterm-color.ti
 )
 
