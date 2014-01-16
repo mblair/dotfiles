@@ -10,9 +10,6 @@ gem cleanup --quiet
 
 pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | env grep -v wsgiref | xargs pip install -U
 
-#cabal update
-#cabal install -v pandoc --upgrade-dependencies --dry-run
-
 cd ~/.oh-my-zsh
 git pull
 
@@ -38,9 +35,10 @@ hg incoming && (
     export GOROOT_FINAL='/Users/matt/goroot'
     cd src
     bash make.bash --no-banner
-    rm -rf ~/goroot/
-    mkdir -p ~/goroot/
     cd ~/rebuild_src/go
+
+    # TODO: rsync?
+    rm -rf ~/goroot/*
     cp -R {bin,pkg,src} ~/goroot/
 )
 
@@ -80,12 +78,17 @@ cd ~/rebuild_src/emacs
 git fetch
 git diff master origin/master --exit-code || (
     git merge --quiet origin/master
-    brew reinstall --HEAD --use-git-head --cocoa emacs
+    brew reinstall --HEAD --use-git-head emacs
+    tic -o ~/.terminfo etc/e/eterm-color.ti
 )
 
 rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d;
 /usr/local/bin/emacs --daemon
 
 npm update -g groc bower
+
+cabal update
+cabal install pandoc
+#cabal install -v pandoc --upgrade-dependencies --dry-run
 
 brew outdated

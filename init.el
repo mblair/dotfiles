@@ -29,6 +29,7 @@
                       cider
                       kill-ring-search
                       expand-region
+                      ;; multi-term
 
                       ;; colors:
                       color-theme ;; http://www.nongnu.org/color-theme/
@@ -163,3 +164,24 @@
 
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+
+;; basically all of this multi-term customization is from here:
+;; http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
+
+;; (require 'multi-term)
+
+;; todo: fix this on linux
+;; (setq multi-term-program "/usr/local/bin/zsh")
+
+;; (add-hook 'term-mode-hook
+;;           (lambda ()
+;;             (setq term-buffer-maximum-size 10000)))
+
+;; (add-hook 'term-mode-hook
+;;           (lambda ()
+;;             (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+;;             (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
+
+;; (add-hook 'term-mode-hook
+;;           (lambda ()
+;;             (define-key term-raw-map (kbd "C-y") 'term-paste)))
