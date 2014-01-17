@@ -87,6 +87,9 @@ rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emac
 
 npm update -g groc bower
 
+cd
+bower update
+
 cabal update
 cabal install pandoc
 #cabal install -v pandoc --upgrade-dependencies --dry-run
