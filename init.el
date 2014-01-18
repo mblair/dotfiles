@@ -36,7 +36,6 @@
                       color-theme-sanityinc-solarized
                       color-theme-sanityinc-tomorrow
                       zenburn-theme
-                      color-theme-heroku
                       soothe-theme
                       deep-thought-theme
                       solarized-theme ;; this is the one from bbatsov
@@ -100,17 +99,17 @@
 (set-face-attribute 'default nil :height 160)
 (set-face-attribute 'default nil :family "Ubuntu Mono")
 
-;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
-(defun color-config (&optional frame)
-  (select-frame frame)
-  (if window-system (load-theme 'solarized-dark t)
-    (load-theme 'zenburn t)))
+;; ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
+;; (defun color-config (&optional frame)
+;;   (select-frame frame)
+;;   (if window-system (load-theme 'solarized-dark t)
+;;     (load-theme 'zenburn t)))
 
-;; for emacsclient:
-(add-hook 'after-make-frame-functions 'color-config)
+;; ;; for emacsclient:
+;; (add-hook 'after-make-frame-functions 'color-config)
 
-;; for regular emacs:
-(color-config (selected-frame))
+;; ;; for regular emacs:
+;; (color-config (selected-frame))
 
 (if (equal system-type 'darwin)
     (progn
@@ -125,9 +124,7 @@
     ))
 
 ;; (load-theme 'telstar t)
-
-(add-to-list 'custom-theme-load-path (concat prefix "color-theme-heroku"))
-;; (color-theme-heroku)
+(load-theme 'zenburn t)
 
 (add-to-list 'load-path (concat go-location "misc/emacs"))
 (require 'go-mode-load)
@@ -185,3 +182,5 @@
 ;; (add-hook 'term-mode-hook
 ;;           (lambda ()
 ;;             (define-key term-raw-map (kbd "C-y") 'term-paste)))
+
+;; TODO: Turn off auto-fill-mode only when in certain paths (like ~/flipboard_src)
