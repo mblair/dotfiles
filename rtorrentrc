@@ -1,8 +1,5 @@
 session = ~/rtorrent/session
 
-# turn off for non-TL torrents
-#max_peers = 10
-
 schedule = watch_directory_2,10,10,"load_start=~/Dropbox/Torrents/current/*.torrent,d.set_directory=~/rtorrent/stuff/"
 system.method.set_key = event.download.finished,move_complete,"execute=mv,-n,$d.get_base_path=,~/Desktop/;d.set_directory=~/Desktop/"
 
