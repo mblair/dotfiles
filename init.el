@@ -1,9 +1,8 @@
 (require 'package)
 
-(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-			 ("melpa" . "http://melpa.milkbox.net/packages/")))
+(setq package-archives '(
+                         ("melpa" . "http://melpa.milkbox.net/packages/")
+                         ))
 
 (package-initialize)
 (when (not package-archive-contents)
@@ -19,7 +18,7 @@
                       yaml-mode
                       puppet-mode
                       rainbow-delimiters
-                      rainbow-mode
+                      ;; rainbow-mode
                       scala-mode2
                       rust-mode
                       clojure-mode
@@ -29,7 +28,7 @@
                       cider
                       kill-ring-search
                       expand-region
-                      ;; multi-term
+                      multi-term
 
                       ;; colors:
                       color-theme ;; http://www.nongnu.org/color-theme/
@@ -37,13 +36,13 @@
                       color-theme-sanityinc-tomorrow
                       zenburn-theme
                       soothe-theme
-                      deep-thought-theme
+                      ;; deep-thought-theme
                       solarized-theme ;; this is the one from bbatsov
-                      ))
+                      ))		;
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
-  (package-install p)))
+    (package-install p)))
 
 ;; better defaults
 (setq-default visible-bell nil)
@@ -99,17 +98,19 @@
 (set-face-attribute 'default nil :height 160)
 (set-face-attribute 'default nil :family "Ubuntu Mono")
 
-;; ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
-;; (defun color-config (&optional frame)
-;;   (select-frame frame)
-;;   (if window-system (load-theme 'solarized-dark t)
-;;     (load-theme 'zenburn t)))
+;; (load-theme 'zenburn t)
 
-;; ;; for emacsclient:
-;; (add-hook 'after-make-frame-functions 'color-config)
+;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
+(defun color-config (&optional frame)
+  (select-frame frame)
+  (if window-system (load-theme 'solarized-dark t)
+    (load-theme 'zenburn t)))
 
-;; ;; for regular emacs:
-;; (color-config (selected-frame))
+;; for emacsclient:
+(add-hook 'after-make-frame-functions 'color-config)
+
+;; for regular emacs:
+(color-config (selected-frame))
 
 (if (equal system-type 'darwin)
     (progn
@@ -123,8 +124,7 @@
     (add-to-list 'custom-theme-load-path "~/mblair_src/dotfiles/")
     ))
 
-;; (load-theme 'telstar t)
-(load-theme 'zenburn t)
+(load-theme 'telstar t)
 
 (add-to-list 'load-path (concat go-location "misc/emacs"))
 (require 'go-mode-load)
@@ -165,22 +165,22 @@
 ;; basically all of this multi-term customization is from here:
 ;; http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
 
-;; (require 'multi-term)
+(require 'multi-term)
 
 ;; todo: fix this on linux
-;; (setq multi-term-program "/usr/local/bin/zsh")
+(setq multi-term-program "/usr/local/bin/zsh")
 
-;; (add-hook 'term-mode-hook
-;;           (lambda ()
-;;             (setq term-buffer-maximum-size 10000)))
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq term-buffer-maximum-size 10000)))
 
-;; (add-hook 'term-mode-hook
-;;           (lambda ()
-;;             (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
-;;             (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
+(add-hook 'term-mode-hook
+          (lambda ()
+            (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+            (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
 
-;; (add-hook 'term-mode-hook
-;;           (lambda ()
-;;             (define-key term-raw-map (kbd "C-y") 'term-paste)))
+(add-hook 'term-mode-hook
+          (lambda ()
+            (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
 ;; TODO: Turn off auto-fill-mode only when in certain paths (like ~/flipboard_src)
