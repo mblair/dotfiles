@@ -10,20 +10,38 @@ mkdir -p ~/.emacs.d
 ln -sf ${_HERE}/init.el ~/.emacs.d/init.el
 
 if [[ $(uname -s) == "Darwin" ]]; then
-  _EMACS=/usr/local/bin/emacs
-  _EMACS_C="${_EMACS}client"
+    _PREFIX=~/external_src
+    _EMACS=/usr/local/bin/emacs
+    _EMACS_C="${_EMACS}client"
 else
-  _EMACS=/usr/bin/emacs
-  _EMACS_C="${_EMACS}client"
+    _PREFIX=/mnt/external/clones
+    _EMACS=/usr/bin/emacs
+    _EMACS_C="${_EMACS}client"
 fi
 
 ${_EMACS_C} --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))" || true
+
+if [[ ! -d "${_PREFIX}/emacs-color-themes/.git" ]]; then
+    cd ${_PREFIX}
+    git clone https://github.com/owainlewis/emacs-color-themes
+fi
+
+if [[ ! -d "${_PREFIX}/emacs-deep-thought-theme/.git" ]]; then
+    cd ${_PREFIX}
+    git clone https://github.com/emacsfodder/emacs-deep-thought-theme
+fi
+
+if [[ ! -d "${_PREFIX}/phoenix-dark-pink/.git" ]]; then
+    cd ${_PREFIX}
+    git clone https://github.com/j0ni/phoenix-dark-pink
+fi
+
 ${_EMACS} --daemon
 
 if [[ $(uname -s) == "Darwin" ]]; then
-  _BASH_RC=~/.bash_profile
+    _BASH_RC=~/.bash_profile
 else
-  _BASH_RC=~/.bashrc
+    _BASH_RC=~/.bashrc
 fi
 
 ln -sf ${_HERE}/bashrc ${_BASH_RC}
@@ -55,8 +73,8 @@ EOF
 ln -sf ${_HERE}/hgrc ~/.hgrc
 
 if [[ $(uname -s) == "Darwin" ]]; then
-  ln -sf ${_HERE}/osx ~/.osx
-  ln -sf ${_HERE}/rtorrentrc ~/.rtorrent.rc
+    ln -sf ${_HERE}/osx ~/.osx
+    ln -sf ${_HERE}/rtorrentrc ~/.rtorrent.rc
 fi
 
 if [[ ! -x /usr/bin/ec2metadata ]]; then
