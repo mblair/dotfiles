@@ -36,6 +36,11 @@ if [[ ! -d "${_PREFIX}/phoenix-dark-pink/.git" ]]; then
     git clone https://github.com/j0ni/phoenix-dark-pink
 fi
 
+if [[ ! -d "${_PREFIX}/emacs-powerline/.git" ]]; then
+    cd ${_PREFIX}
+    git clone https://github.com/jonathanchu/emacs-powerline
+fi
+
 ${_EMACS} --daemon
 
 if [[ $(uname -s) == "Darwin" ]]; then

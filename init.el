@@ -128,6 +128,9 @@
 
 (load-theme 'fogus t)
 
+(add-to-list 'load-path (concat prefix "emacs-powerline"))
+(require 'powerline)
+
 (add-to-list 'load-path (concat go-location "misc/emacs"))
 (require 'go-mode-load)
 
