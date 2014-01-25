@@ -36,9 +36,8 @@
                       color-theme-sanityinc-tomorrow
                       zenburn-theme
                       soothe-theme
-                      ;; deep-thought-theme
                       solarized-theme ;; this is the one from bbatsov
-                      ))		;
+                      ))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
