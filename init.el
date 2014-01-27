@@ -117,7 +117,7 @@
       )
   (progn
     (setq prefix "/mnt/external/clones/")
-    (setq go-location (concat prefix "go"))
+    (setq go-location (concat prefix "go/"))
     (add-to-list 'custom-theme-load-path "~/mblair_src/dotfiles/")
     ))
 
