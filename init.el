@@ -29,6 +29,7 @@
                       kill-ring-search
                       expand-region
                       multi-term
+                      anzu
 
                       ;; colors:
                       color-theme ;; http://www.nongnu.org/color-theme/
@@ -188,3 +189,6 @@
             (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
 ;; TODO: Turn off auto-fill-mode only when in certain paths (like ~/flipboard_src)
+
+(require 'anzu)
+;; (global-anzu-mode +1)
