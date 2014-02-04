@@ -77,3 +77,6 @@ if [[ ! -x /usr/bin/ec2metadata ]]; then
     ln -sf ${_HERE}/irssi_config ~/.irssi/config
     ln -sf ${_HERE}/rtorrentrc ~/.rtorrent.rc
 fi
+
+mkdir -p ~/.lein
+ln -s ${_HERE}/lein_profiles.clj ~/.lein/profiles.clj
