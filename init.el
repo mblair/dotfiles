@@ -126,7 +126,7 @@
 (add-to-list 'custom-theme-load-path (concat prefix "phoenix-dark-pink"))
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-deep-thought-theme"))
 
-(load-theme 'fogus t)
+(load-theme 'zenburn t)
 
 (add-to-list 'load-path (concat prefix "emacs-powerline"))
 (require 'powerline)
@@ -192,3 +192,7 @@
 
 (require 'anzu)
 ;; (global-anzu-mode +1)
+
+(setq cider-repl-popup-stacktraces t)
+
+(global-rainbow-delimiters-mode)
