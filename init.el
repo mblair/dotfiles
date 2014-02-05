@@ -196,3 +196,24 @@
 (setq cider-repl-popup-stacktraces t)
 
 (global-rainbow-delimiters-mode)
+
+;; Don't `C-x o` to a Cider REPL.
+;; That's what `C-c C-z` is for.
+;; Source:
+;; http://stackoverflow.com/questions/4941960/how-do-i-make-emacs-other-window-command-ignore-terminal-windows/4948239#4948239
+(require 'cl)
+(defvar avoid-window-regexp "^\*cider\-repl")
+(defun my-other-window ()
+  "Similar to 'other-window, only try to avoid windows whose buffers match avoid-window-regexp"
+  (interactive)
+  (let* ((window-list (delq (selected-window) (window-list)))
+         (filtered-window-list (remove-if
+                                (lambda (w)
+                                  (string-match-p avoid-window-regexp (buffer-name (window-buffer w))))
+                                window-list)))
+    (if filtered-window-list
+        (select-window (car filtered-window-list))
+      (and window-list
+           (select-window (car window-list))))))
+
+(global-set-key (kbd "C-x o") 'my-other-window)
