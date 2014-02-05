@@ -61,7 +61,7 @@ export GOROOT="$HOME/goroot"
 export GOPATH="$HOME/gopath"
 PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
 
-alias git="hub"
+# alias git="hub"
 alias c="clear"
 alias dc="cd"
 alias l="ls -lha"

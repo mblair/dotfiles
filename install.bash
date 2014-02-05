@@ -79,4 +79,4 @@ if [[ ! -x /usr/bin/ec2metadata ]]; then
 fi
 
 mkdir -p ~/.lein
-ln -s ${_HERE}/lein_profiles.clj ~/.lein/profiles.clj
+ln -sf ${_HERE}/lein_profiles.clj ~/.lein/profiles.clj
