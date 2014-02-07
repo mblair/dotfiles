@@ -217,3 +217,5 @@
            (select-window (car window-list))))))
 
 (global-set-key (kbd "C-x o") 'my-other-window)
+
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
