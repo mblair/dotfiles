@@ -13,6 +13,18 @@ pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | env grep -v wsgiref 
 cd ~/.oh-my-zsh
 git pull
 
+cd ~/clj_src
+for _inner in $(ls -1); do
+    cd "~/clj_src/${_inner}"
+    if git diff-index --quiet HEAD; then
+        git pull
+    else
+        git stash
+        git pull
+        git stash pop
+    fi
+done
+
 # cd ~/rebuild_src/macvim
 # git fetch
 # git diff master origin/master --exit-code || (
@@ -27,49 +39,49 @@ git pull
 #     git merge --quiet origin/trunk && rbenv install --force 2.2.0-dev
 # )
 
-cd ~/rebuild_src/go
-hg incoming && (
-    hg clean --all
-    hg checkout --clean tip
-    hg pull -u
-    export GOROOT_FINAL='/Users/matt/goroot'
-    cd src
-    bash make.bash --no-banner
-    cd ~/rebuild_src/go
+# cd ~/rebuild_src/go
+# hg incoming && (
+#     hg clean --all
+#     hg checkout --clean tip
+#     hg pull -u
+#     export GOROOT_FINAL='/Users/matt/goroot'
+#     cd src
+#     bash make.bash --no-banner
+#     cd ~/rebuild_src/go
 
-    # TODO: rsync?
-    rm -rf ~/goroot/*
-    cp -R {bin,pkg,src} ~/goroot/
-)
+#     # TODO: rsync?
+#     rm -rf ~/goroot/*
+#     cp -R {bin,pkg,src} ~/goroot/
+# )
 
-# for oracle.el
-cd ~/external_src/go.tools
-hg incoming && (
-    hg clean --all
-    hg checkout --clean tip
-    hg pull -u
-)
+# # for oracle.el
+# cd ~/external_src/go.tools
+# hg incoming && (
+#     hg clean --all
+#     hg checkout --clean tip
+#     hg pull -u
+# )
 
-cd ~/external_src/go-mode.el
-git pull
+# cd ~/external_src/go-mode.el
+# git pull
 
-export GOROOT="$HOME/goroot"
-export GOPATH="$HOME/gopath"
-go get -u github.com/nsf/gocode
-go get -u code.google.com/p/rog-go/exp/cmd/godef
-go get -u code.google.com/p/go.tools/cmd/{cover,godoc,goimports,oracle,vet}
+# export GOROOT="$HOME/goroot"
+# export GOPATH="$HOME/gopath"
+# go get -u github.com/nsf/gocode
+# go get -u code.google.com/p/rog-go/exp/cmd/godef
+# go get -u code.google.com/p/go.tools/cmd/{cover,godoc,goimports,oracle,vet}
 
-cd ~/rebuild_src/etcd
-git fetch
-git diff master origin/master --exit-code || (
-    git clean -fdx
-    git checkout master
-    git reset --hard
-    git merge --quiet origin/master
-    export GOPATH=$(pwd)
-    ./build
-    mv etcd ~/bin/
-)
+# cd ~/rebuild_src/etcd
+# git fetch
+# git diff master origin/master --exit-code || (
+#     git clean -fdx
+#     git checkout master
+#     git reset --hard
+#     git merge --quiet origin/master
+#     export GOPATH=$(pwd)
+#     ./build
+#     mv etcd ~/bin/
+# )
 
 brew update
 brew reinstall --HEAD git-extras hub rbenv ruby-build
