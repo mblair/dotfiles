@@ -57,10 +57,6 @@ elif [[ $(uname -s) == "Linux" ]]; then
     alias E="${_EMACS_C} -ct"
 fi
 
-export GOROOT="$HOME/goroot"
-export GOPATH="$HOME/gopath"
-PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
-
 # alias git="hub"
 alias c="clear"
 alias dc="cd"
