@@ -15,7 +15,7 @@ git pull
 
 cd ~/clj_src
 for _inner in $(ls -1); do
-    cd "~/clj_src/${_inner}"
+    cd ~/clj_src/${_inner}
     if git diff-index --quiet HEAD; then
         git pull
     else
