@@ -33,10 +33,14 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		    export PATH="/usr/texbin:$PATH"
 	  fi
 
+    export PATH="$PATH:/usr/local/Cellar/go/1.2/libexec/bin"
+    export GOPATH="$HOME/gopath"
+    export PATH="$GOPATH/bin:$PATH"
+
     # So we can find Homebrew.
     export PATH="/usr/local/bin:$PATH"
 
-    export PATH="$(brew --prefix)/sbin:$(brew --prefix)/bin:$PATH"
+    export PATH="$(brew --prefix)/sbin:$PATH"
 
 	  if [ -d "$HOME/.cabal/bin" ]; then
 		    export PATH="$HOME/.cabal/bin:$PATH"

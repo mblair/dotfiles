@@ -25,13 +25,12 @@ for _inner in $(ls -1); do
     fi
 done
 
-# cd ~/rebuild_src/macvim
-# git fetch
-# git diff master origin/master --exit-code || (
-# 	git merge --quiet origin/master
-# 	brew reinstall --HEAD macvim
-# )
-
+cd ~/rebuild_src/macvim
+git fetch
+git diff master origin/master --exit-code || (
+	git merge --quiet origin/master
+    brew reinstall --HEAD macvim
+)
 
 # cd ~/rebuild_src/ruby
 # git fetch
@@ -54,22 +53,22 @@ done
 #     cp -R {bin,pkg,src} ~/goroot/
 # )
 
-# # for oracle.el
-# cd ~/external_src/go.tools
-# hg incoming && (
-#     hg clean --all
-#     hg checkout --clean tip
-#     hg pull -u
-# )
+# for oracle.el
+cd ~/external_src/go.tools
+hg incoming && (
+    hg clean --all
+    hg checkout --clean tip
+    hg pull -u
+)
 
-# cd ~/external_src/go-mode.el
-# git pull
+cd ~/external_src/go-mode.el
+git pull
 
 # export GOROOT="$HOME/goroot"
-# export GOPATH="$HOME/gopath"
-# go get -u github.com/nsf/gocode
-# go get -u code.google.com/p/rog-go/exp/cmd/godef
-# go get -u code.google.com/p/go.tools/cmd/{cover,godoc,goimports,oracle,vet}
+export GOPATH="$HOME/gopath"
+go get -u github.com/nsf/gocode
+go get -u code.google.com/p/rog-go/exp/cmd/godef
+go get -u code.google.com/p/go.tools/cmd/{cover,godoc,goimports,oracle,vet}
 
 # cd ~/rebuild_src/etcd
 # git fetch
@@ -84,7 +83,7 @@ done
 # )
 
 brew update
-brew reinstall --HEAD git-extras hub rbenv ruby-build
+brew reinstall --HEAD git-extras hub rbenv ruby-build etcd etcdctl
 
 cd ~/rebuild_src/emacs
 git fetch
