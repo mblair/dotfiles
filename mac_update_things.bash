@@ -99,7 +99,7 @@ rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emac
 npm update -g groc bower
 
 cd
-bower update
+bower update angular bootstrap d3 jquery rickshaw
 
 cabal update
 cabal install pandoc
