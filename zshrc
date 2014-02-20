@@ -46,6 +46,8 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		    export PATH="$HOME/.cabal/bin:$PATH"
 	  fi
 
+    [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
 	  export JAVA_HOME="$(/usr/libexec/java_home)"
 
     if [[ -f "/Users/matt/venv/bin/activate" ]]; then
