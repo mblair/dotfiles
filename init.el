@@ -32,6 +32,7 @@
                       anzu
 
                       ;; colors:
+                      subatomic-theme
                       color-theme ;; http://www.nongnu.org/color-theme/
                       color-theme-sanityinc-solarized
                       color-theme-sanityinc-tomorrow
@@ -126,7 +127,7 @@
 (add-to-list 'custom-theme-load-path (concat prefix "phoenix-dark-pink"))
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-deep-thought-theme"))
 
-(load-theme 'zenburn t)
+(load-theme 'subatomic t)
 
 (add-to-list 'load-path (concat prefix "emacs-powerline"))
 (require 'powerline)
