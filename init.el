@@ -30,6 +30,8 @@
                       expand-region
                       multi-term
                       anzu
+                      fiplr
+                      ido-vertical-mode
 
                       ;; colors:
                       subatomic-theme
@@ -220,3 +222,11 @@
 (global-set-key (kbd "C-x o") 'my-other-window)
 
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
+
+(savehist-mode 1)
+
+(global-set-key (kbd "C-x f") 'fiplr-find-file)
+
+(require 'ido-vertical-mode)
+(ido-mode 1)
+(ido-vertical-mode 1)
