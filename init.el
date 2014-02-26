@@ -193,7 +193,8 @@
 
 ;; TODO: Turn off auto-fill-mode only when in certain paths (like ~/flipboard_src)
 
-(require 'anzu)
+;; TODO Find out why this is screwing up the bg color on linum-mode.
+;; (require 'anzu)
 ;; (global-anzu-mode +1)
 
 (setq cider-repl-popup-stacktraces t)
