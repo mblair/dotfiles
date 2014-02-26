@@ -1,13 +1,10 @@
 # -*- mode: shell-script -*-
 
-# Path to your oh-my-zsh configuration.
+_HERE=$(cd $(dirname $(readlink ~/.zshrc)); pwd)
+
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 DISABLE_CORRECTION="true"
-
-# Everything after this line has been moved from my .bashrc, so it's portable.
-
-# Emacs stuff.
 
 if [[ $(uname -s) == "Darwin" ]]; then
     _EMACS=/usr/local/bin/emacs
@@ -21,6 +18,8 @@ export EDITOR='emacsclient -ct'
 
 alias es="${_EMACS} --daemon"
 alias ek="${_EMACS_C} --eval \"(progn (setq kill-emacs-hook 'nil) (kill-emacs))\""
+alias eclean="rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d/"
+
 if [[ $(uname -s) == "Darwin" ]]; then
     export VISUAL="${_EMACS_C} -c -n"
     alias E="${_EMACS_C} -c -n"
