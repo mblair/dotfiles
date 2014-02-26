@@ -16,12 +16,18 @@ git pull
 cd ~/clj_src
 for _inner in $(ls -1); do
     cd ~/clj_src/${_inner}
-    if git diff-index --quiet HEAD; then
-        git pull
+    if ls -1 .git/ 2>&1 >/dev/null; then
+        if git diff-index --quiet HEAD; then
+            git pull
+        else
+            git stash
+            git pull
+            git stash pop
+        fi
+    elif ls -1 .hg/ 2>&1 >/dev/null; then
+        hg pull -u
     else
-        git stash
-        git pull
-        git stash pop
+        : # lmao
     fi
 done
 
