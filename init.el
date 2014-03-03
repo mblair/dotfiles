@@ -47,6 +47,8 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+(require 'cl)
+
 ;; better defaults
 (setq-default visible-bell nil)
 
@@ -205,7 +207,6 @@
 ;; That's what `C-c C-z` is for.
 ;; Source:
 ;; http://stackoverflow.com/questions/4941960/how-do-i-make-emacs-other-window-command-ignore-terminal-windows/4948239#4948239
-(require 'cl)
 (defvar avoid-window-regexp "^\*cider\-repl")
 (defun my-other-window ()
   "Similar to 'other-window, only try to avoid windows whose buffers match avoid-window-regexp"
@@ -231,3 +232,15 @@
 (require 'ido-vertical-mode)
 (ido-mode 1)
 (ido-vertical-mode 1)
+
+; http://www.emacswiki.org/emacs/TransparentEmacs
+(set-frame-parameter (selected-frame) 'alpha '(85 50))
+(add-to-list 'default-frame-alist '(alpha 85 50))
+(defun toggle-transparency ()
+  (interactive)
+  (if (/=
+       (cadr (frame-parameter nil 'alpha))
+       100)
+      (set-frame-parameter nil 'alpha '(100 100))
+    (set-frame-parameter nil 'alpha '(85 50))))
+(global-set-key (kbd "C-c t") 'toggle-transparency)
