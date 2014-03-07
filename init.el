@@ -225,6 +225,11 @@
 
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
+;; C-c C-z to access it.
+(setq cider-repl-pop-to-buffer-on-connect nil)
+
+(setq cider-popup-stacktraces nil)
+
 (savehist-mode 1)
 
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
