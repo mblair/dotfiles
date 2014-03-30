@@ -32,6 +32,7 @@
                       anzu
                       fiplr
                       ido-vertical-mode
+                      latest-clojure-libraries
 
                       ;; colors:
                       subatomic-theme
@@ -41,6 +42,7 @@
                       zenburn-theme
                       soothe-theme
                       solarized-theme ;; this is the one from bbatsov
+                      planet-theme
                       ))
 
 (dolist (p my-packages)
@@ -101,7 +103,7 @@
 (add-to-list 'auto-mode-alist '("Cakefile$" . coffee-mode))
 
 (set-face-attribute 'default nil :height 160)
-(set-face-attribute 'default nil :family "Ubuntu Mono")
+(set-face-attribute 'default nil :family "Inconsolata")
 
 ;; ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 ;; (defun color-config (&optional frame)
@@ -131,7 +133,7 @@
 (add-to-list 'custom-theme-load-path (concat prefix "phoenix-dark-pink"))
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-deep-thought-theme"))
 
-(load-theme 'subatomic t)
+(load-theme 'planet t)
 
 (add-to-list 'load-path (concat prefix "emacs-powerline"))
 (require 'powerline)
@@ -239,8 +241,6 @@
 (ido-vertical-mode 1)
 
 ; http://www.emacswiki.org/emacs/TransparentEmacs
-(set-frame-parameter (selected-frame) 'alpha '(85 50))
-(add-to-list 'default-frame-alist '(alpha 85 50))
 (defun toggle-transparency ()
   (interactive)
   (if (/=
@@ -248,4 +248,13 @@
        100)
       (set-frame-parameter nil 'alpha '(100 100))
     (set-frame-parameter nil 'alpha '(85 50))))
+
 (global-set-key (kbd "C-c t") 'toggle-transparency)
+
+;; (defun cider-namespace-refresh ()
+;;   (interactive)
+;;   (cider-interactive-eval
+;;    "(require 'clojure.tools.namespace.repl)
+;;     (clojure.tools.namespace.repl/refresh)"))
+
+;; (define-key clojure-mode-map (kbd "M-r") 'cider-namespace-refresh)
