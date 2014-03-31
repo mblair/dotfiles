@@ -114,17 +114,17 @@
 (set-face-attribute 'default nil :height 160)
 (set-face-attribute 'default nil :family "Inconsolata")
 
-;; ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
-;; (defun color-config (&optional frame)
-;;   (select-frame frame)
-;;   (if window-system (load-theme 'solarized-dark t)
-;;     (load-theme 'zenburn t)))
+;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
+(defun color-config (&optional frame)
+  (select-frame frame)
+  (if window-system (load-theme 'solarized-dark t)
+    (load-theme 'zenburn t)))
 
-;; ;; for emacsclient:
-;; (add-hook 'after-make-frame-functions 'color-config)
+;; for emacsclient:
+(add-hook 'after-make-frame-functions 'color-config)
 
-;; ;; for regular emacs:
-;; (color-config (selected-frame))
+;; for regular emacs:
+(color-config (selected-frame))
 
 (if (equal system-type 'darwin)
     (progn
@@ -138,8 +138,6 @@
 
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-color-themes/themes"))
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-deep-thought-theme"))
-
-(load-theme 'planet t)
 
 (add-to-list 'load-path (concat prefix "emacs-powerline"))
 (require 'powerline)
