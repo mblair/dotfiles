@@ -43,6 +43,14 @@
                       soothe-theme
                       solarized-theme ;; this is the one from bbatsov
                       planet-theme
+                      niflheim-theme
+                      distinguished-theme
+                      colorsarenice-theme
+                      noctilux-theme
+                      darkburn-theme
+                      clues-theme
+                      gruber-darker-theme
+                      ample-theme
                       ))
 
 (dolist (p my-packages)
