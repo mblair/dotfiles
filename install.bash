@@ -26,6 +26,11 @@ if [[ ! -d "${_PREFIX}/emacs-color-themes/.git" ]]; then
     git clone https://github.com/owainlewis/emacs-color-themes
 fi
 
+if [[ ! -d "${_PREFIX}/emacs-deep-thought-theme/.git" ]]; then
+    cd ${_PREFIX}
+    git clone https://github.com/emacsfodder/emacs-deep-thought-theme
+fi
+
 if [[ ! -d "${_PREFIX}/emacs-powerline/.git" ]]; then
     cd ${_PREFIX}
     git clone https://github.com/jonathanchu/emacs-powerline

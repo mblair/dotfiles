@@ -51,6 +51,7 @@
                       clues-theme
                       gruber-darker-theme
                       ample-theme
+                      phoenix-dark-pink-theme
                       ))
 
 (dolist (p my-packages)
@@ -138,7 +139,6 @@
     ))
 
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-color-themes/themes"))
-(add-to-list 'custom-theme-load-path (concat prefix "phoenix-dark-pink"))
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-deep-thought-theme"))
 
 (load-theme 'planet t)
