@@ -9,6 +9,7 @@
   st = status --ignore-submodules=untracked
   br = branch
   tags-sorted = !git for-each-ref --format='%(refname)' --sort=taggerdate refs/tags | cut -d'/' -f3
+  addnw = !sh -c 'git diff -w --no-color "$@" | git apply --cached --ignore-whitespace' -
 [core]
   editor = emacsclient -c
   excludesfile = ~/.gitignore_global
