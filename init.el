@@ -142,6 +142,10 @@
 (add-to-list 'load-path (concat prefix "emacs-powerline"))
 (require 'powerline)
 
+(load (concat prefix "auto-fill-mode-inhibit"))
+(require 'auto-fill-inhibit)
+(add-to-list 'auto-fill-inhibit-list "flipboard_src/ops")
+
 (global-set-key (kbd "C-c C-c") 'compile)
 
 (autoload 'kill-ring-search "kill-ring-search"
@@ -173,8 +177,6 @@
 (add-hook 'term-mode-hook
           (lambda ()
             (define-key term-raw-map (kbd "C-y") 'term-paste)))
-
-;; TODO: Turn off auto-fill-mode only when in certain paths (like ~/flipboard_src)
 
 ;; TODO Find out why this is screwing up the bg color on linum-mode.
 ;; (require 'anzu)
