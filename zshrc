@@ -4,7 +4,9 @@ _HERE=$(cd $(dirname $(readlink ~/.zshrc)); pwd)
 
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
-DISABLE_CORRECTION="true"
+DISABLE_CORRECTION=true
+DISABLE_UPDATE_PROMPT=true
+DISABLE_AUTO_UPDATE=true
 
 if [[ $(uname -s) == "Darwin" ]]; then
     _EMACS=/usr/local/bin/emacs
