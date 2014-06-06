@@ -66,37 +66,6 @@ cleanup() {
 		done
 }
 
-# Thanks Gary Bernhardt.
-minutes_since_last_commit() {
-	  now=`date +%s`
-	  last_commit=`git log --pretty=format:'%at' -1`
-	  seconds_since_last_commit=$((now - last_commit))
-	  minutes_since_last_commit=$((seconds_since_last_commit / 60))
-	  echo $minutes_since_last_commit
-}
-
-git_prompt() {
-    local g="$(__gitdir)"
-	  if [ -n "$g" ]; then
-		    local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
-		    if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
-			      local COLOR=${bldred}
-		    elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
-			      local COLOR=${bldylw}
-		    else
-			      local COLOR=${bldgrn}
-		    fi
-		    local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${txtrst}"
-		    # __git_ps1 is from the Git source tree's contrib/completion/git-completion.bash
-		    local GIT_PROMPT=`__git_ps1 "${txtrst}(${bldgrn}%s${txtrst}|${SINCE_LAST_COMMIT}${txtrst})"`
-		    echo ${GIT_PROMPT}
-	  fi
-}
-
-# If you don't have an SSD, setting this to 1 will noticeably slow down
-# operations within that directory (including `cd`), so be careful.
-GIT_PS1_SHOWDIRTYSTATE=1
-
 update_prompt() {
 	  RET=$?;
 
@@ -123,7 +92,7 @@ update_prompt() {
 		    PS1="${_color}\u${bldblu}@${_color}\h "
 		    PS1="${PS1}${bldblu}[${txtrst}\w${bldblu}]"
 	  fi
-	  PS1="$PS1$(git_prompt) "
+	  PS1="$PS1"
 
 	  #http://www.fileformat.info/info/unicode/char/26a1/index.htm
 	  PS1="$PS1${bldblu}⚡ ${txtrst}"
@@ -184,8 +153,11 @@ else
 fi
 export EDITOR='emacsclient -ct'
 
+_HERE=$(cd $(dirname $(readlink ~/.bash_profile)); pwd)
+
 alias es="${_EMACS} --daemon"
 alias ek="${_EMACS_C} --eval \"(progn (setq kill-emacs-hook 'nil) (kill-emacs))\""
+alias eclean="rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d/"
 alias E="${_EMACS_C} -ct"
 
 if [ "`uname`" == "Darwin" ]; then
