@@ -23,6 +23,7 @@
                       rust-mode
                       clojure-mode
                       clojure-test-mode
+                      coffee-mode
                       auto-complete
                       ac-nrepl
                       cider
