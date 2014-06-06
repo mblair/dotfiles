@@ -111,4 +111,6 @@ cabal update
 cabal install pandoc
 #cabal install -v pandoc --upgrade-dependencies --dry-run
 
+lein ancient upgrade-profiles
+
 brew outdated
