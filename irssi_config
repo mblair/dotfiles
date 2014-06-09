@@ -43,6 +43,7 @@ chatnets = {
 channels = (
   { name = "#heka"; chatnet = "mozilla"; autojoin = "yes"; },
   { name = "#riemann"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#hbase"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#leiningen"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#jepsen"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#mesos"; chatnet = "freenode"; autojoin = "yes"; },
