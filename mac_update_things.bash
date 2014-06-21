@@ -102,13 +102,10 @@ git diff master origin/master --exit-code || (
 rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d;
 /usr/local/bin/emacs --daemon
 
-npm update -g groc bower
+npm update -g groc bower yo grunt-cli generator-angular
 
-cd
-bower update angular bootstrap d3 jquery rickshaw
-
-cabal update
-cabal install pandoc
+#cabal update
+#cabal install pandoc
 #cabal install -v pandoc --upgrade-dependencies --dry-run
 
 lein ancient upgrade-profiles
