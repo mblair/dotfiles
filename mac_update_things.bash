@@ -13,24 +13,6 @@ pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | env grep -v wsgiref 
 cd ~/.oh-my-zsh
 git pull
 
-cd ~/clj_src
-for _inner in $(ls -1); do
-    cd ~/clj_src/${_inner}
-    if ls -1 .git/ 2>&1 >/dev/null; then
-        if git diff-index --quiet HEAD; then
-            git pull
-        else
-            git stash
-            git pull
-            git stash pop
-        fi
-    elif ls -1 .hg/ 2>&1 >/dev/null; then
-        hg pull -u
-    else
-        : # lmao
-    fi
-done
-
 cd ~/rebuild_src/macvim
 git fetch
 git diff master origin/master --exit-code || (
@@ -44,7 +26,9 @@ git diff master origin/master --exit-code || (
 #     git merge --quiet origin/trunk && rbenv install --force 2.2.0-dev
 # )
 
-# cd ~/rebuild_src/go
+cd ~/rebuild_src/go
+hg pull -u
+
 # hg incoming && (
 #     hg clean --all
 #     hg checkout --clean tip
@@ -99,8 +83,8 @@ git diff master origin/master --exit-code || (
     tic -o ~/.terminfo etc/e/eterm-color.ti
 )
 
-#rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d;
-rm -r ~/.emacs.d; cd ~/external_src/prelude && git pull; ln -s ~/external_src/prelude ~/.emacs.d
+rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d;
+#rm -r ~/.emacs.d; cd ~/external_src/prelude && git pull; ln -s ~/external_src/prelude ~/.emacs.d
 /usr/local/bin/emacs --daemon
 
 npm update -g groc bower yo grunt-cli generator-angular
