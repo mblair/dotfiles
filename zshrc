@@ -34,9 +34,10 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		    export PATH="/usr/texbin:$PATH"
 	  fi
 
-    export PATH="$PATH:/usr/local/Cellar/go/1.2/libexec/bin"
     export GOPATH="$HOME/gopath"
-    export PATH="$GOPATH/bin:$PATH"
+    export PATH="$PATH:$GOPATH/bin"
+    _goroot_bin="$(go env | grep GOROOT | perl -pe 's/^.*=\"(.*)\"/${1}/')/bin"
+    export PATH="$PATH:${_goroot_bin}"
 
     # So we can find Homebrew.
     export PATH="/usr/local/bin:$PATH"
