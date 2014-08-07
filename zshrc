@@ -20,6 +20,7 @@ export EDITOR='emacsclient -ct'
 
 alias es="${_EMACS} --daemon"
 alias ek="${_EMACS_C} --eval \"(progn (setq kill-emacs-hook 'nil) (kill-emacs))\""
+alias ekk="kill -9 `ps -Ao 'pid,command' | grep '[e]macs' | awk '{print $1}'`"
 alias eclean="rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d/"
 
 if [[ $(uname -s) == "Darwin" ]]; then
