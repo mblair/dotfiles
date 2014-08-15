@@ -58,6 +58,7 @@ git pull
 export GOPATH="$HOME/gopath"
 go get -u github.com/nsf/gocode
 go get -u code.google.com/p/rog-go/exp/cmd/godef
+go get -u github.com/golang/lint/golint
 go get -u code.google.com/p/go.tools/cmd/{cover,godoc,goimports,oracle,vet}
 
 # cd ~/rebuild_src/etcd
