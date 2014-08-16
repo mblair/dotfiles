@@ -153,7 +153,11 @@ else
 fi
 export EDITOR='emacsclient -ct'
 
-_HERE=$(cd $(dirname $(readlink ~/.bash_profile)); pwd)
+if [[ -f ~/.bash_profile ]]; then
+    _HERE=$(cd $(dirname $(readlink ~/.bash_profile)); pwd)
+elif [[ -f ~/.bashrc ]]; then
+    _HERE=$(cd $(dirname $(readlink ~/.bashrc)); pwd)
+fi
 
 alias es="${_EMACS} --daemon"
 alias ek="${_EMACS_C} --eval \"(progn (setq kill-emacs-hook 'nil) (kill-emacs))\""
