@@ -90,6 +90,7 @@ rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emac
 /usr/local/bin/emacs --daemon
 
 npm update -g groc bower yo grunt-cli generator-angular
+npm install -g npm@"<2.0.0"
 
 #cabal update
 #cabal install pandoc
