@@ -76,14 +76,14 @@ go get -u code.google.com/p/go.tools/cmd/{cover,godoc,goimports,oracle,vet}
 brew update
 brew reinstall --HEAD git-extras hub rbenv ruby-build etcd etcdctl
 
-# trunk emacs (as of 8/22) is broken
-#cd ~/rebuild_src/emacs
-#git fetch
-#git diff master origin/master --exit-code || (
-#    git merge --quiet origin/master
-#    brew reinstall --HEAD --use-git-head --cocoa emacs
-#    tic -o ~/.terminfo etc/e/eterm-color.ti
-#)
+# trunk emacs (as of 8/27) is broken
+# cd ~/rebuild_src/emacs
+# git fetch
+# git diff master origin/master --exit-code || (
+#     git merge --quiet origin/master
+#     brew reinstall --HEAD --use-git-head --cocoa emacs
+#     tic -o ~/.terminfo etc/e/eterm-color.ti
+# )
 
 rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d;
 #rm -r ~/.emacs.d; cd ~/external_src/prelude && git pull; ln -s ~/external_src/prelude ~/.emacs.d
