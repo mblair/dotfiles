@@ -267,3 +267,6 @@
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (global-set-key (kbd "C-c C-c") 'compile)
+
+(custom-set-variables
+ '(js-indent-level 2))
