@@ -112,13 +112,13 @@
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Cakefile$" . coffee-mode))
 
-(set-face-attribute 'default nil :height 160)
-(set-face-attribute 'default nil :family "Inconsolata")
+(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :family "Ubuntu Mono")
 
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'solarized-dark t)
+  (if window-system (load-theme 'subatomic t)
     (load-theme 'zenburn t)))
 
 ;; for emacsclient:
@@ -267,6 +267,3 @@
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (global-set-key (kbd "C-c C-c") 'compile)
-
-(custom-set-variables
- '(js-indent-level 2))
