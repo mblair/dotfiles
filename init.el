@@ -34,6 +34,8 @@
                       fiplr
                       ido-vertical-mode
                       latest-clojure-libraries
+                      py-autopep8
+                      py-isort
 
                       ;; colors:
                       subatomic-theme
@@ -267,3 +269,6 @@
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (global-set-key (kbd "C-c C-c") 'compile)
+
+;; (add-hook 'before-save-hook 'py-autopep8-before-save)
+;; (add-hook 'before-save-hook 'py-isort-before-save)
