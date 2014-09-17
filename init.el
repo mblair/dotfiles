@@ -22,19 +22,19 @@
                       ;; rainbow-mode
                       scala-mode2
                       rust-mode
-                      clojure-mode
-                      clojure-test-mode
+                      ;; clojure-mode
+                      ;; clojure-test-mode
                       coffee-mode
                       auto-complete
-                      ac-nrepl
-                      cider
+                      ;; ac-nrepl
+                      ;; cider
                       kill-ring-search
                       expand-region
                       multi-term
                       anzu
                       fiplr
                       ido-vertical-mode
-                      latest-clojure-libraries
+                      ;; latest-clojure-libraries
                       py-autopep8
                       py-isort
 
@@ -271,5 +271,5 @@
 
 (global-set-key (kbd "C-c C-c") 'compile)
 
-;; (add-hook 'before-save-hook 'py-autopep8-before-save)
-;; (add-hook 'before-save-hook 'py-isort-before-save)
+(setq py-autopep8-options '("--max-line-length=100"))
+(add-hook 'before-save-hook 'py-autopep8-before-save)
