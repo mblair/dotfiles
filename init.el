@@ -22,12 +22,12 @@
                       ;; rainbow-mode
                       scala-mode2
                       rust-mode
-                      ;; clojure-mode
-                      ;; clojure-test-mode
+                      clojure-mode
+                      clojure-test-mode
                       coffee-mode
                       auto-complete
                       ;; ac-nrepl
-                      ;; cider
+                      cider
                       kill-ring-search
                       expand-region
                       multi-term
