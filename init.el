@@ -37,6 +37,7 @@
                       ;; latest-clojure-libraries
                       py-autopep8
                       py-isort
+                      go-eldoc
 
                       ;; colors:
                       subatomic-theme
@@ -268,6 +269,7 @@
   (local-set-key (kbd "M-.") 'godef-jump))
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+(add-hook 'go-mode-hook 'go-eldoc-setup)
 
 (global-set-key (kbd "C-c C-c") 'compile)
 
