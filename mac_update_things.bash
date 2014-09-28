@@ -76,7 +76,7 @@ go get -u code.google.com/p/go.tools/cmd/{cover,godoc,goimports,oracle,vet}
 # )
 
 brew update
-brew reinstall --HEAD git-extras hub rbenv ruby-build etcdctl
+brew reinstall --HEAD hub rbenv ruby-build etcdctl
 
 # trunk emacs (as of 8/27) is broken
 # cd ~/rebuild_src/emacs
