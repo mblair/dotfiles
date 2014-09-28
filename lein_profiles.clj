@@ -1,5 +1,5 @@
 {:user {:plugins [
-                  [lein-ring "0.8.11"]
+                  [lein-ring "0.8.12"]
                   [lein-ancient "0.5.5"]
                   [jonase/eastwood "0.1.4"]
                   [cider/cider-nrepl "0.7.0"]
