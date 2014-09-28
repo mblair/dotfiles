@@ -2,7 +2,7 @@
 
 (setq package-archives '(
                          ("melpa" . "http://melpa.milkbox.net/packages/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
+                         ;; ("gnu" . "https://elpa.gnu.org/packages/")
                          ))
 
 (package-initialize)
@@ -22,12 +22,12 @@
                       ;; rainbow-mode
                       scala-mode2
                       rust-mode
-                      clojure-mode
-                      clojure-test-mode
+                      ;; clojure-mode
+                      ;; clojure-test-mode
                       coffee-mode
                       auto-complete
                       ;; ac-nrepl
-                      cider
+                      ;; cider
                       kill-ring-search
                       expand-region
                       multi-term
