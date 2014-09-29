@@ -275,3 +275,13 @@
 
 (setq py-autopep8-options '("--max-line-length=100"))
 (add-hook 'before-save-hook 'py-autopep8-before-save)
+
+;; http://www.emacswiki.org/emacs/DeletingWhitespace
+(defun my-delete-leading-whitespace (start end)
+  "Delete whitespace at the beginning of each line in region."
+  (interactive "*r")
+  (save-excursion
+    (if (not (bolp)) (forward-line 1))
+    (delete-whitespace-rectangle (point) end nil)))
+
+(global-set-key (kbd "C-x C-h") 'my-delete-leading-whitespace)
