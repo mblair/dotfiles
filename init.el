@@ -122,7 +122,7 @@
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'zenburn t)
+  (if window-system (load-theme 'subatomic t)
     (load-theme 'zenburn t)))
 
 ;; for emacsclient:
@@ -285,3 +285,15 @@
     (delete-whitespace-rectangle (point) end nil)))
 
 (global-set-key (kbd "C-x C-h") 'my-delete-leading-whitespace)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("572caef0c27b100a404db8d540fd5b31397f90ab660ef5539ff0863ff9bee26a" "0744f61189c62ed6d1f8fa69f6883d5772fe8577310b09e623c62c040f208cd4" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
