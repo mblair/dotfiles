@@ -93,7 +93,7 @@ rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emac
 npm update -g groc bower yo grunt-cli generator-angular npm
 
 cd
-bower install rickshaw d3 jquery bootstrap
+bower install rickshaw d3 jquery bootstrap react
 
 #cabal update
 #cabal install pandoc
