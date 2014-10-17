@@ -18,7 +18,7 @@
                       js2-mode
                       yaml-mode
                       puppet-mode
-                      rainbow-delimiters
+                      ;; rainbow-delimiters
                       ;; rainbow-mode
                       scala-mode2
                       rust-mode
@@ -187,7 +187,7 @@
 
 (setq cider-repl-popup-stacktraces t)
 
-(global-rainbow-delimiters-mode)
+;; (global-rainbow-delimiters-mode)
 
 ;; Don't `C-x o` to a Cider REPL.
 ;; That's what `C-c C-z` is for.
