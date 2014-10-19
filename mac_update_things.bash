@@ -90,7 +90,7 @@ rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emac
 #rm -r ~/.emacs.d; cd ~/external_src/prelude && git pull; ln -s ~/external_src/prelude ~/.emacs.d
 /usr/local/bin/emacs --daemon
 
-npm update -g groc bower yo grunt-cli generator-angular npm
+npm update -g groc bower yo grunt-cli generator-angular npm chartjs
 
 cd
 bower install rickshaw d3 jquery bootstrap react
