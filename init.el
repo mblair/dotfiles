@@ -2,7 +2,7 @@
 
 (setq package-archives '(
                          ("melpa" . "http://melpa.milkbox.net/packages/")
-                         ;; ("gnu" . "https://elpa.gnu.org/packages/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")
                          ))
 
 (package-initialize)
@@ -18,16 +18,13 @@
                       js2-mode
                       yaml-mode
                       puppet-mode
-                      ;; rainbow-delimiters
-                      ;; rainbow-mode
                       scala-mode2
                       rust-mode
-                      ;; clojure-mode
-                      ;; clojure-test-mode
+                      clojure-mode
                       coffee-mode
                       auto-complete
-                      ;; ac-nrepl
-                      ;; cider
+                      ac-cider
+                      cider
                       kill-ring-search
                       expand-region
                       multi-term
@@ -187,8 +184,6 @@
 
 (setq cider-repl-popup-stacktraces t)
 
-;; (global-rainbow-delimiters-mode)
-
 ;; Don't `C-x o` to a Cider REPL.
 ;; That's what `C-c C-z` is for.
 ;; Source:
@@ -285,15 +280,16 @@
     (delete-whitespace-rectangle (point) end nil)))
 
 (global-set-key (kbd "C-x C-h") 'my-delete-leading-whitespace)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("572caef0c27b100a404db8d540fd5b31397f90ab660ef5539ff0863ff9bee26a" "0744f61189c62ed6d1f8fa69f6883d5772fe8577310b09e623c62c040f208cd4" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+(require 'ac-cider)
+(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+(add-hook 'cider-mode-hook 'ac-cider-setup)
+(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+(eval-after-load "auto-complete"
+  '(add-to-list 'ac-modes 'cider-mode))
+
+(defun set-auto-complete-as-completion-at-point-function ()
+  (setq completion-at-point-functions '(auto-complete)))
+
+(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
