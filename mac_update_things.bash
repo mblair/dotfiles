@@ -78,8 +78,8 @@ go get -u code.google.com/p/go.tools/cmd/{cover,godoc,goimports,oracle,vet}
 brew update
 brew reinstall --HEAD hub rbenv ruby-build etcdctl
 
-cd ~/rebuild_src/emacs
-git fetch
+# cd ~/rebuild_src/emacs
+# git fetch
 # git diff master origin/master --exit-code || (
 #     git merge --quiet origin/master
 #     brew reinstall --HEAD --use-git-head --cocoa emacs
@@ -90,7 +90,8 @@ rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emac
 #rm -r ~/.emacs.d; cd ~/external_src/prelude && git pull; ln -s ~/external_src/prelude ~/.emacs.d
 /usr/local/bin/emacs --daemon
 
-npm update -g groc bower yo grunt-cli generator-angular npm chartjs
+npm install -g npm@2.0.2
+npm update -g groc bower yo grunt-cli generator-angular chartjs
 
 cd
 bower install rickshaw d3 jquery bootstrap react
