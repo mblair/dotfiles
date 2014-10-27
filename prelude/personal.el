@@ -1,5 +1,5 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
+(setq prelude-whitespace nil)
 
-(prelude-require-package 'solarized-dark)
-(setq prelude-theme 'solarized-dark)
+(setq prelude-theme 'deeper-blue)
