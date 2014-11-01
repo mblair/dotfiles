@@ -86,7 +86,7 @@ brew reinstall --HEAD hub rbenv ruby-build etcdctl
 #     tic -o ~/.terminfo etc/e/eterm-color.ti
 # )
 
-rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d;
+rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d; /usr/local/bin/emacs --daemon
 #rm -r ~/.emacs.d; cd ~/external_src/prelude; git clean -fdx; git pull; ln -s ~/external_src/prelude ~/.emacs.d; cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/; echo "(require 'prelude-go)" >> ~/.emacs.d/prelude-modules.el; echo "(require 'prelude-clojure)" >> ~/.emacs.d/prelude-modules.el; ln -s ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal; /usr/local/bin/emacs --daemon
 
 npm install -g npm@2.0.2
