@@ -90,10 +90,10 @@ rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emac
 #rm -r ~/.emacs.d; cd ~/external_src/prelude; git clean -fdx; git pull; ln -s ~/external_src/prelude ~/.emacs.d; cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/; echo "(require 'prelude-go)" >> ~/.emacs.d/prelude-modules.el; echo "(require 'prelude-clojure)" >> ~/.emacs.d/prelude-modules.el; ln -s ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal; /usr/local/bin/emacs --daemon
 
 npm install -g npm@2.0.2
-npm update -g groc bower yo grunt-cli generator-angular chartjs
+npm update -g groc bower yo grunt-cli generator-angular
 
 cd
-bower install rickshaw d3 jquery bootstrap react
+bower install rickshaw d3 jquery bootstrap react chartjs
 
 #cabal update
 #cabal install pandoc
