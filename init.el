@@ -73,8 +73,6 @@
 (setq x-select-enable-clipboard t)
 (global-set-key (kbd "M-c") 'kill-ring-save)
 
-(set-face-attribute 'default nil :height 160)
-
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (show-paren-mode 1)
@@ -113,8 +111,8 @@
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Cakefile$" . coffee-mode))
 
-(set-face-attribute 'default nil :height 140)
-(set-face-attribute 'default nil :family "Ubuntu Mono")
+(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :family "Monaco")
 
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
