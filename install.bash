@@ -11,6 +11,7 @@ ln -sf ${_HERE}/init.el ~/.emacs.d/init.el
 
 if [[ $(uname -s) == "Darwin" ]]; then
     _PREFIX=~/external_src
+    mkdir -p ${_PREFIX}
     _EMACS=/usr/local/bin/emacs
     _EMACS_C="${_EMACS}client"
 else
@@ -18,6 +19,8 @@ else
     _EMACS=/usr/bin/emacs
     _EMACS_C="${_EMACS}client"
 fi
+
+brew install wget
 
 ${_EMACS_C} --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))" || true
 
