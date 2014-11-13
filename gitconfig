@@ -15,6 +15,7 @@
   excludesfile = ~/.gitignore_global
   pager = less
   whitespace = trailing-space,space-before-tab
+	autocrlf = input
 [color]
   ui = auto
   diff = auto
@@ -29,7 +30,7 @@
 [github]
   user = mblair
 [push]
-  default = tracking
+	default = simple
 [web]
   browser = open
 [pull]
