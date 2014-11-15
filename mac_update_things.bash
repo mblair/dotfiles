@@ -61,6 +61,7 @@ go get -u code.google.com/p/rog-go/exp/cmd/godef
 go get -u github.com/golang/lint/golint
 go get -u github.com/kisielk/errcheck
 go get -u github.com/3rf/go-unused-funcs
+go get -u github.com/tools/godep
 go get -u code.google.com/p/go.tools/cmd/{cover,godoc,goimports,oracle,vet}
 
 # cd ~/rebuild_src/etcd
