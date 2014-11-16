@@ -6,7 +6,3 @@
 
 (global-linum-mode 1)
 (global-set-key (kbd "M-l") 'goto-line)
-
-(if (not (string-match "go" compile-command))
-    (set (make-local-variable 'compile-command)
-         "make"))
