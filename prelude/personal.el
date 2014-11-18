@@ -7,3 +7,4 @@
 (global-linum-mode 1)
 (global-set-key (kbd "M-l") 'goto-line)
 (global-set-key "\M-c" 'clipboard-kill-ring-save)
+(global-set-key "\M-v" 'clipboard-yank)
