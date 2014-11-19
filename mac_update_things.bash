@@ -99,17 +99,17 @@ fi
 
 
 rm -rf ~/.emacs.d
-#mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
+mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
 
-ln -s ~/external_src/prelude ~/.emacs.d
-cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
-cat >> ~/.emacs.d/prelude-modules.el <<EOF
-(require 'prelude-helm)
-(require 'prelude-helm-everywhere)
-(require 'prelude-go)
-(require 'prelude-clojure)
-EOF
-ln -s ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
+# ln -s ~/external_src/prelude ~/.emacs.d
+# cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
+# cat >> ~/.emacs.d/prelude-modules.el <<EOF
+# (require 'prelude-helm)
+# (require 'prelude-helm-everywhere)
+# (require 'prelude-go)
+# (require 'prelude-clojure)
+# EOF
+# ln -s ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
 /usr/local/bin/emacs --daemon
 
