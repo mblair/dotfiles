@@ -16,7 +16,7 @@ git pull
 cd ~/rebuild_src/macvim
 git fetch
 git diff master origin/master --exit-code || (
-	git merge --quiet origin/master
+    git merge --quiet origin/master
     brew reinstall --HEAD macvim
 )
 
