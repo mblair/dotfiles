@@ -20,6 +20,8 @@ else
     _EMACS_C="${_EMACS}client"
 fi
 
+mkdir -p ${_PREFIX}
+
 if [[ $(uname -s) == "Darwin" ]]; then
     brew install wget
 fi
