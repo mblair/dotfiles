@@ -20,7 +20,9 @@ else
     _EMACS_C="${_EMACS}client"
 fi
 
-brew install wget
+if [[ $(uname -s) == "Darwin" ]]; then
+    brew install wget
+fi
 
 ${_EMACS_C} --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))" || true
 
