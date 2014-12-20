@@ -121,7 +121,7 @@
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'bubbleberry t)
+  (if window-system (load-theme 'planet t)
     (load-theme 'zenburn t)))
 
 ;; for emacsclient:

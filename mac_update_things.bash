@@ -125,4 +125,6 @@ bower install rickshaw d3 jquery bootstrap react chartjs
 
 lein ancient upgrade-profiles
 
+vagrant up; vagrant ssh -c 'sudo apt-get update; sudo apt-get -y dist-upgrade'; vagrant suspend
+
 brew outdated
