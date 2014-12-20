@@ -113,7 +113,7 @@ mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
 
 /usr/local/bin/emacs --daemon
 
-npm install -g npm@2.0.2
+npm install -g npm
 npm update -g groc bower yo grunt-cli generator-angular
 
 cd
