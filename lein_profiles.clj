@@ -2,7 +2,7 @@
                   [lein-ring "0.8.13"]
                   [lein-ancient "0.5.5"]
                   [jonase/eastwood "0.2.0"]
-                  [cider/cider-nrepl "0.8.1"]
+                  [cider/cider-nrepl "0.8.2"]
                   ]}}
 {:dev {:dependencies
        [[com.cemerick/pomegranate "0.3.0"]]
