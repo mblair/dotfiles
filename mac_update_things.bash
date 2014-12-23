@@ -26,30 +26,9 @@ git diff master origin/master --exit-code || (
 #     git merge --quiet origin/trunk && rbenv install --force 2.2.0-dev
 # )
 
-cd ~/rebuild_src/go
-hg pull -u
-
-# hg incoming && (
-#     hg clean --all
-#     hg checkout --clean tip
-#     hg pull -u
-#     export GOROOT_FINAL='/Users/matt/goroot'
-#     cd src
-#     bash make.bash --no-banner
-#     cd ~/rebuild_src/go
-
-#     # TODO: rsync?
-#     rm -rf ~/goroot/*
-#     cp -R {bin,pkg,src} ~/goroot/
-# )
-
 # for oracle.el
-cd ~/external_src/go.tools
-hg incoming && (
-    hg clean --all
-    hg checkout --clean tip
-    hg pull -u
-)
+cd ~/external_src/tools
+git pull
 
 cd ~/external_src/go-mode.el
 git pull
@@ -62,8 +41,7 @@ go get -u github.com/golang/lint/golint
 go get -u github.com/kisielk/errcheck
 go get -u github.com/3rf/go-unused-funcs
 go get -u github.com/tools/godep
-go get -u code.google.com/p/go.tools/cmd/{goimports,oracle}
-go get -u golang.org/x/tools/cmd/{cover,godoc,vet}
+go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,oracle,vet}
 
 # cd ~/rebuild_src/etcd
 # git fetch

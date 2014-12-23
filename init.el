@@ -245,7 +245,7 @@
 (add-to-list 'load-path (concat prefix "go-mode.el"))
 (require 'go-mode)
 
-(load (concat prefix "go.tools/cmd/oracle/oracle"))
+(load (concat prefix "tools/cmd/oracle/oracle"))
 (require 'go-oracle)
 (setq go-oracle-command "~/gopath/bin/oracle")
 
