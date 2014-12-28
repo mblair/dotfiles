@@ -105,4 +105,6 @@ lein ancient upgrade-profiles
 
 vagrant up; vagrant ssh -c 'sudo apt-get update; sudo apt-get -y dist-upgrade'; vagrant suspend
 
+heroku update
+
 brew outdated
