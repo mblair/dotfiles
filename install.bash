@@ -89,11 +89,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
     ln -sf ${_HERE}/rtorrentrc ~/.rtorrent.rc
 fi
 
-if [[ ! -x /usr/bin/ec2metadata ]]; then
-    mkdir -p ~/.irssi
-    ln -sf ${_HERE}/irssi_config ~/.irssi/config
-    ln -sf ${_HERE}/rtorrentrc ~/.rtorrent.rc
-fi
+mkdir -p ~/.irssi
+ln -sf ${_HERE}/irssi_config ~/.irssi/config
+ln -sf ${_HERE}/rtorrentrc ~/.rtorrent.rc
 
 mkdir -p ~/.lein
 ln -sf ${_HERE}/lein_profiles.clj ~/.lein/profiles.clj
