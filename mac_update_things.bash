@@ -36,7 +36,7 @@ git pull
 # export GOROOT="$HOME/goroot"
 export GOPATH="$HOME/gopath"
 go get -u github.com/nsf/gocode
-go get -u code.google.com/p/rog-go/exp/cmd/godef
+go get -u github.com/rogpeppe/godef
 go get -u github.com/golang/lint/golint
 go get -u github.com/kisielk/errcheck
 go get -u github.com/3rf/go-unused-funcs
