@@ -15,6 +15,7 @@
                       starter-kit-eshell
                       markdown-mode
                       coffee-mode
+                      less-css-mode
                       js2-mode
                       yaml-mode
                       puppet-mode
