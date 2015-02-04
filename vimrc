@@ -121,9 +121,6 @@ if v:version >= 703
 	set undofile
 endif
 
-" TODO: Document this.
-set viminfo=%,'100,<1000,f100,n~/Dropbox/viminfo
-
 " Show trailing whitespace, but don't highlight as I type.
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 highlight ExtraWhitespace guibg=Red
@@ -297,12 +294,6 @@ function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
-
-" Read and write sessions.
-" TODO: Figure out why this messes with manpageview.vim
-" TODO: Figure out if you care that this messes with manpageview.vim
-nnoremap <F9> :source ~/Dropbox/session.vim<CR>
-nnoremap <F10> :mksession! ~/Dropbox/session.vim<CR>
 
 " readline keybindings. thanks rtomayko!
 imap <C-a> <C-o>0
