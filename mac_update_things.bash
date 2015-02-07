@@ -8,6 +8,7 @@ gem update --system
 gem update
 gem cleanup --quiet
 
+easy_install -U setuptools
 pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | env grep -v wsgiref | xargs pip install -U
 
 cd ~/.oh-my-zsh
