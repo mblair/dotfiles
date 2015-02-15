@@ -39,6 +39,7 @@
 
                       ;; colors:
                       subatomic-theme
+                      warm-night-theme
                       color-theme ;; http://www.nongnu.org/color-theme/
                       color-theme-sanityinc-solarized
                       color-theme-sanityinc-tomorrow
@@ -122,7 +123,7 @@
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'planet t)
+  (if window-system (load-theme 'warm-night t)
     (load-theme 'zenburn t)))
 
 ;; for emacsclient:
