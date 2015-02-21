@@ -104,7 +104,7 @@ bower install rickshaw d3 jquery bootstrap react chartjs
 
 lein ancient upgrade-profiles
 
-vagrant up; vagrant ssh -c 'sudo apt-get update; sudo apt-get -y dist-upgrade; sudo apt-get -y autoremove'; vagrant suspend
+vagrant up; vagrant ssh -c 'sudo apt-get update; sudo apt-get -y dist-upgrade; sudo apt-get -y install lxc-docker; sudo apt-get -y autoremove; sudo apt-get -y autoclean'; vagrant suspend
 
 heroku update
 
