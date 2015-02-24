@@ -28,6 +28,8 @@ if [[ $(uname -s) == "Darwin" ]]; then
     export VISUAL="${_EMACS_C} -c -n"
     alias E="${_EMACS_C} -c -n"
 
+    export GIT_EDITOR='mvim -f'
+
     # For etcd.
     export PATH="$HOME/bin:$PATH"
 
