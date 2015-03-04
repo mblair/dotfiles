@@ -12,19 +12,6 @@ pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | env grep -v wsgiref 
 cd ~/.oh-my-zsh
 git pull
 
-cd ~/rebuild_src/macvim
-git fetch
-git diff master origin/master --exit-code || (
-    git merge --quiet origin/master
-    brew reinstall --HEAD macvim
-)
-
-# cd ~/rebuild_src/ruby
-# git fetch
-# git diff trunk origin/trunk --exit-code || (
-#     git merge --quiet origin/trunk && rbenv install --force 2.2.0-dev
-# )
-
 # for oracle.el
 cd ~/external_src/tools
 git pull
@@ -38,7 +25,7 @@ go get -u github.com/nsf/gocode
 go get -u github.com/rogpeppe/godef
 go get -u github.com/golang/lint/golint
 go get -u github.com/kisielk/errcheck
-go get -u github.com/3rf/go-unused-funcs
+#go get -u github.com/3rf/go-unused-funcs
 go get -u github.com/tools/godep
 go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,oracle,vet}
 
@@ -56,14 +43,6 @@ go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,oracle,vet}
 
 brew update
 brew reinstall --HEAD hub rbenv ruby-build etcdctl
-
-# cd ~/rebuild_src/emacs
-# git fetch
-# git diff master origin/master --exit-code || (
-#     git merge --quiet origin/master
-#     brew reinstall --HEAD --use-git-head --cocoa emacs
-#     tic -o ~/.terminfo etc/e/eterm-color.ti
-# )
 
 if [[ -d ~/external_src/prelude ]]; then
     cd ~/external_src/prelude
