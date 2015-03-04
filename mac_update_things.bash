@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-set -o nounset
-set -o xtrace
-set -o nounset
+set -xueo pipefail
 
 gem update --system
 gem update
