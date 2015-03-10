@@ -86,6 +86,7 @@
 
 (setq-default tab-width 2)
 (setq-default standard-indent 2)
+(custom-set-variables '(coffee-tab-width 4))
 (setq-default initial-buffer-choice t)
 (setq-default initial-scratch-message "")
 (setq-default show-trailing-whitespace t)
