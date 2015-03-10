@@ -2,9 +2,7 @@
 
 _HERE=$(cd $(dirname "$0"); pwd)
 
-set -o errexit
-set -o xtrace
-set -o nounset
+set -xueo pipefail
 
 mkdir -p ~/.emacs.d
 ln -sf ${_HERE}/init.el ~/.emacs.d/init.el
