@@ -28,20 +28,10 @@ go get -u github.com/kisielk/errcheck
 go get -u github.com/tools/godep
 go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,oracle,vet}
 
-# cd ~/rebuild_src/etcd
-# git fetch
-# git diff master origin/master --exit-code || (
-#     git clean -fdx
-#     git checkout master
-#     git reset --hard
-#     git merge --quiet origin/master
-#     export GOPATH=$(pwd)
-#     ./build
-#     mv etcd ~/bin/
-# )
-
 brew update
-brew reinstall --HEAD hub rbenv ruby-build etcdctl
+brew reinstall --HEAD hub rbenv ruby-build
+
+go get -u github.com/coreos/etcd/etcdctl
 
 if [[ -d ~/external_src/prelude ]]; then
     cd ~/external_src/prelude
