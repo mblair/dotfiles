@@ -4,6 +4,7 @@ _HERE=$(cd $(dirname "$0"); pwd)
 
 set -xueo pipefail
 
+# TODO: move the emacs cleaning code into a function that's sourced here, in the mac updater, and in zshrc
 mkdir -p ~/.emacs.d
 ln -sf ${_HERE}/init.el ~/.emacs.d/init.el
 
