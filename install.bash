@@ -21,10 +21,32 @@ fi
 mkdir -p ${_PREFIX}
 
 if [[ $(uname -s) == "Darwin" ]]; then
-    brew install wget
+    if ! brew list -1 | grep wget; then
+        brew install wget
+    fi
 fi
 
 ${_EMACS_C} --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))" || true
+
+if [[ ! -d "${_PREFIX}/gocode/.git" ]]; then
+    cd ${_PREFIX}
+    git clone https://github.com/nsf/gocode
+fi
+
+if [[ ! -d "${_PREFIX}/tools/.git" ]]; then
+    cd ${_PREFIX}
+    git clone https://go.googlesource.com/tools
+fi
+
+if [[ ! -d "${_PREFIX}/go-mode.el/.git" ]]; then
+    cd ${_PREFIX}
+    git clone https://github.com/dominikh/go-mode.el
+fi
+
+if [[ ! -d "${_PREFIX}/prelude/.git" ]]; then
+    cd ${_PREFIX}
+    git clone https://github.com/bbatsov/prelude
+fi
 
 if [[ ! -d "${_PREFIX}/emacs-color-themes/.git" ]]; then
     cd ${_PREFIX}
@@ -39,6 +61,11 @@ fi
 if [[ ! -d "${_PREFIX}/emacs-powerline/.git" ]]; then
     cd ${_PREFIX}
     git clone https://github.com/jonathanchu/emacs-powerline
+fi
+
+if [[ ! -d "${_PREFIX}/ocean-terminal/.git" ]]; then
+    cd ${_PREFIX}
+    git clone https://github.com/mdo/ocean-terminal
 fi
 
 if [[ ! -f "${_PREFIX}/auto-fill-inhibit.el" ]]; then
