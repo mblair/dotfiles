@@ -72,7 +72,7 @@ elif [[ $(uname -s) == "Linux" ]]; then
     alias E="${_EMACS_C} -ct"
 fi
 
-# alias git="hub"
+alias git="hub"
 alias c="clear"
 alias dc="cd"
 alias l="ls -lha"
