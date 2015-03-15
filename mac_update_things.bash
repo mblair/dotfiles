@@ -48,8 +48,6 @@ cat >> ~/.emacs.d/prelude-modules.el <<EOF
 EOF
 ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
-/usr/local/bin/emacs --daemon
-
 npm install -g npm@2.0.2
 npm update -g groc bower yo grunt-cli generator-angular
 
@@ -63,6 +61,10 @@ bower install rickshaw d3 jquery bootstrap react chartjs
 lein ancient upgrade-profiles
 
 vagrant up; vagrant ssh -c 'sudo apt-get update; sudo apt-get -y dist-upgrade; sudo apt-get -y install lxc-docker; sudo apt-get -y autoremove; sudo apt-get -y autoclean'; vagrant suspend
+
+~/my_src/dotfiles/install.bash
+
+/usr/local/bin/emacs --daemon
 
 heroku update
 
