@@ -4,19 +4,11 @@ _HERE=$(cd $(dirname "$0"); pwd)
 
 set -xueo pipefail
 
-# TODO: move the emacs cleaning code into a function that's sourced here, in the mac updater, and in zshrc
-mkdir -p ~/.emacs.d
-ln -sf ${_HERE}/init.el ~/.emacs.d/init.el
-
 if [[ $(uname -s) == "Darwin" ]]; then
     _PREFIX=~/external_src
     mkdir -p ${_PREFIX}
-    _EMACS=/usr/local/bin/emacs
-    _EMACS_C="${_EMACS}client"
 else
     _PREFIX=/mnt/external/clones
-    _EMACS=/usr/bin/emacs
-    _EMACS_C="${_EMACS}client"
 fi
 
 mkdir -p ${_PREFIX}
@@ -26,8 +18,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
         brew install wget
     fi
 fi
-
-${_EMACS_C} --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))" || true
 
 if [[ ! -d "${_PREFIX}/gocode/.git" ]]; then
     cd ${_PREFIX}
@@ -74,8 +64,6 @@ if [[ ! -f "${_PREFIX}/auto-fill-inhibit.el" ]]; then
     curl -Lskf 'https://alioth.debian.org/scm/viewvc.php/*checkout*/emacs-goodies-el/elisp/emacs-goodies-el/auto-fill-inhibit.el?root=pkg-goodies-el' > auto-fill-mode-inhibit.el
 fi
 
-${_EMACS} --daemon
-
 if [[ $(uname -s) == "Darwin" ]]; then
     _BASH_RC=~/.bash_profile
 else
@@ -84,6 +72,10 @@ fi
 
 ln -sf ${_HERE}/bashrc ${_BASH_RC}
 ln -sf ${_HERE}/zshrc ~/.zshrc
+
+if [[ -d ~/my_src/personal ]]; then
+    ~/my_src/personal/install.bash
+fi
 
 git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
 
