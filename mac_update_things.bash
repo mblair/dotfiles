@@ -33,20 +33,20 @@ brew reinstall --HEAD hub rbenv ruby-build
 go get -u github.com/coreos/etcd/etcdctl
 
 rm -rf ~/.emacs.d
-# mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
+mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
 
-cd ~/external_src/prelude
-git clean -fdx
-git pull
-ln -s ~/external_src/prelude ~/.emacs.d
-cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
-cat >> ~/.emacs.d/prelude-modules.el <<EOF
-(require 'prelude-helm)
-(require 'prelude-helm-everywhere)
-(require 'prelude-go)
-(require 'prelude-clojure)
-EOF
-ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
+# cd ~/external_src/prelude
+# git clean -fdx
+# git pull
+# ln -s ~/external_src/prelude ~/.emacs.d
+# cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
+# cat >> ~/.emacs.d/prelude-modules.el <<EOF
+# (require 'prelude-helm)
+# (require 'prelude-helm-everywhere)
+# (require 'prelude-go)
+# (require 'prelude-clojure)
+# EOF
+# ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
 npm install -g npm@2.0.2
 npm update -g groc bower yo grunt-cli generator-angular
