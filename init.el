@@ -38,6 +38,8 @@
                       go-eldoc
 
                       ;; colors:
+                      darktooth-theme
+                      gruvbox-theme
                       base16-theme
                       subatomic-theme
                       warm-night-theme
