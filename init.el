@@ -38,6 +38,7 @@
                       go-eldoc
 
                       ;; colors:
+                      material-theme
                       darktooth-theme
                       gruvbox-theme
                       base16-theme
