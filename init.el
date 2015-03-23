@@ -128,7 +128,7 @@
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'base16-ocean t)
+  (if window-system (load-theme 'planet t)
     (load-theme 'zenburn t)))
 
 ;; for emacsclient:
@@ -155,7 +155,9 @@
 
 (load (concat prefix "auto-fill-mode-inhibit"))
 (require 'auto-fill-inhibit)
-(add-to-list 'auto-fill-inhibit-list "flipboard_src/ops")
+
+;; TODO: make this damned thing work
+;;(add-to-list 'auto-fill-inhibit-list "flipboard_src/ops")
 
 (autoload 'kill-ring-search "kill-ring-search"
   "Search the kill ring in the minibuffer."
