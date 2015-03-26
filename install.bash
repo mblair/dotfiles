@@ -59,7 +59,7 @@ if [[ ! -d "${_PREFIX}/ocean-terminal/.git" ]]; then
     git clone https://github.com/mdo/ocean-terminal
 fi
 
-if [[ ! -f "${_PREFIX}/auto-fill-inhibit.el" ]]; then
+if [[ ! -f "${_PREFIX}/auto-fill-mode-inhibit.el" ]]; then
     cd ${_PREFIX}
     curl -Lskf 'https://alioth.debian.org/scm/viewvc.php/*checkout*/emacs-goodies-el/elisp/emacs-goodies-el/auto-fill-inhibit.el?root=pkg-goodies-el' > auto-fill-mode-inhibit.el
 fi
