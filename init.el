@@ -36,6 +36,7 @@
                       py-autopep8
                       py-isort
                       go-eldoc
+                      dockerfile-mode
 
                       ;; colors:
                       apropospriate-theme
@@ -112,7 +113,9 @@
 (setq mac-option-modifier nil)
 
 (require 'yaml-mode)
+(require 'dockerfile-mode)
 
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.ronn" . markdwon-mode))
