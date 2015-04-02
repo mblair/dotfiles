@@ -48,7 +48,7 @@ mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
 # EOF
 # ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
-npm install -g npm@2.0.2
+npm install -g npm@latest
 npm update -g groc bower yo grunt-cli generator-angular
 
 cd
