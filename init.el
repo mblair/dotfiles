@@ -39,6 +39,7 @@
                       dockerfile-mode
 
                       ;; colors:
+                      cycle-themes
                       apropospriate-theme
                       material-theme
                       darktooth-theme
@@ -328,3 +329,6 @@
   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
       (message "Opening file...")
     (message "Aborting")))
+
+(require 'cycle-themes)
+(cycle-themes-mode)
