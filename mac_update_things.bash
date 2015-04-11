@@ -7,6 +7,7 @@ gem update
 gem cleanup --quiet
 
 easy_install -U setuptools
+pip install -U pip
 pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | env grep -v wsgiref | xargs pip install -U
 
 cd ~/.oh-my-zsh
@@ -67,5 +68,6 @@ vagrant up; vagrant ssh -c 'sudo apt-get update; sudo apt-get -y dist-upgrade; s
 /usr/local/bin/emacs --daemon
 
 heroku update
+vagrant version
 
 brew outdated
