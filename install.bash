@@ -97,7 +97,7 @@ cd ${_HERE}
 git submodule update --init
 
 cat > ~/.gemrc <<EOF
-install: --no-rdoc --no-ri
+install: --no-rdoc --no-ri --no-document
 EOF
 
 ln -sf ${_HERE}/hgrc ~/.hgrc
