@@ -26,6 +26,7 @@ go get -u github.com/rogpeppe/godef
 go get -u github.com/golang/lint/golint
 go get -u github.com/kisielk/errcheck
 go get -u github.com/tools/godep
+go get -u rsc.io/grind
 go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,oracle,vet}
 
 brew update
