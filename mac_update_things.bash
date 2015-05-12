@@ -51,7 +51,7 @@ mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
 # ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
 npm install -g npm@latest
-npm update -g groc bower yo grunt-cli generator-angular
+npm update -g groc bower yo grunt-cli generator-angular redis-dump
 
 cd
 bower install rickshaw d3 jquery bootstrap react chartjs
