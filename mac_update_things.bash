@@ -30,7 +30,7 @@ go get -u rsc.io/grind
 go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,oracle,vet}
 
 brew update
-brew reinstall --HEAD hub rbenv ruby-build
+brew reinstall --HEAD hub rbenv ruby-build jq
 
 go get -u github.com/coreos/etcd/etcdctl
 
