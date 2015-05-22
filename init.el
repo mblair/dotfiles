@@ -37,6 +37,7 @@
                       py-isort
                       go-eldoc
                       dockerfile-mode
+                      magit-gh-pulls
 
                       ;; colors:
                       cycle-themes
@@ -329,3 +330,6 @@
   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
       (message "Opening file...")
     (message "Aborting")))
+
+(require 'magit-gh-pulls)
+(add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
