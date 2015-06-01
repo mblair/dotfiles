@@ -32,8 +32,6 @@ go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,oracle,vet}
 brew update
 brew reinstall --HEAD hub rbenv ruby-build jq
 
-go get -u github.com/coreos/etcd/etcdctl
-
 rm -rf ~/.emacs.d
 mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
 
