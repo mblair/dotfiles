@@ -28,6 +28,7 @@ go get -u github.com/kisielk/errcheck
 go get -u github.com/tools/godep
 go get -u rsc.io/grind
 go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,oracle,vet}
+go get -u github.com/ChimeraCoder/gojson
 
 brew update
 brew reinstall --HEAD hub rbenv ruby-build jq
