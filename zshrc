@@ -69,14 +69,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
         eval "$(rbenv init -)"
     fi
 
-    if which rustc >/dev/null && [[ -d ~/external_src/rust ]]; then
-        _rust_ver=$(brew info --json=v1 rust | jq -r '.[0].installed[0].version')
-        cd ~/external_src/rust
-        git reset --hard ${_rust_ver}
-        export RUST_SRC_PATH=~/external_src/rust/src
-        cd $OLDPWD
-    fi
-
 elif [[ $(uname -s) == "Linux" ]]; then
     alias E="${_EMACS_C} -ct"
 fi
