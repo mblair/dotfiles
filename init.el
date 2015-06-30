@@ -129,7 +129,7 @@
 (add-to-list 'auto-mode-alist '("Cakefile$" . coffee-mode))
 
 (set-face-attribute 'default nil :height 120)
-(set-face-attribute 'default nil :family "Monaco")
+(set-face-attribute 'default nil :family "Roboto Mono")
 
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
