@@ -12,7 +12,7 @@ if [[ -d "${_current_employer_gopath}" ]]; then
     cd "${_current_employer_gopath}"
     for _inner in ./*; do
         if [[ -d "${_inner}" ]]; then
-            cd ~/gopath/src/github.com/Flipboard/"${_inner}"
+            cd "${_current_employer_gopath}/${_inner}"
             if [[ $(git log --branches --not --remotes) != "" ]] || ! git diff --quiet HEAD; then
                 mv "${_current_employer_gopath}/${_inner}" /tmp
                 _dirty_repos+=${_inner}
