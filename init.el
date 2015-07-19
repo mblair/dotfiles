@@ -260,10 +260,6 @@
 (add-to-list 'load-path (concat prefix "go-mode.el"))
 (require 'go-mode)
 
-(load (concat prefix "tools/cmd/oracle/oracle"))
-(require 'go-oracle)
-(setq go-oracle-command "~/gopath/bin/oracle")
-
 (add-to-list 'load-path (concat prefix "gocode/emacs"))
 
 (require 'go-autocomplete)
