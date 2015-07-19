@@ -2,6 +2,8 @@
 
 set -xueo pipefail
 
+_HERE=$(dirname $0)
+
 gem update --system
 gem update
 gem cleanup --quiet
@@ -13,22 +15,8 @@ pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | env grep -v wsgiref 
 cd ~/.oh-my-zsh
 git pull
 
-# for oracle.el
-cd ~/external_src/tools
-git pull
-
 cd ~/external_src/go-mode.el
 git pull
-
-export GOPATH="$HOME/gopath"
-go get -u github.com/nsf/gocode
-go get -u github.com/rogpeppe/godef
-go get -u github.com/golang/lint/golint
-go get -u github.com/kisielk/errcheck
-go get -u github.com/tools/godep
-#go get -u rsc.io/grind
-go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,oracle,vet}
-go get -u github.com/ChimeraCoder/gojson
 
 brew update
 brew reinstall --HEAD hub rbenv ruby-build jq
@@ -66,6 +54,8 @@ vagrant up; vagrant ssh -c 'sudo apt-get update; sudo apt-get -y dist-upgrade; s
 ~/my_src/dotfiles/install.bash
 
 /usr/local/bin/emacs --daemon
+
+${_HERE}/go_clean.bash
 
 heroku update
 vagrant version
