@@ -33,7 +33,7 @@ go get -u github.com/golang/lint/golint
 go get -u github.com/kisielk/errcheck
 go get -u github.com/tools/godep
 go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,oracle,vet}
-go get -u github.com/ChimeraCoder/gojson
+go get -u github.com/ChimeraCoder/gojson/gojson
 
 # https://github.com/3rf/codecoroner/issues/5
 #go get -u github.com/3rf/codecoroner
