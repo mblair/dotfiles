@@ -56,7 +56,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
     [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 	  export JAVA_HOME="$(/usr/libexec/java_home)"
-    alias jdk7="export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)"
     alias jdk8="export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)"
 
     if [[ -f "/Users/matt/venv/bin/activate" ]]; then
