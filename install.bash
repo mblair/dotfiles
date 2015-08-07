@@ -4,6 +4,8 @@ _HERE=$(cd $(dirname "$0"); pwd)
 
 set -xueo pipefail
 
+_HUB_VER="2.2.1"
+
 if [[ $(uname -s) == "Darwin" ]]; then
     _PREFIX=~/external_src
     mkdir -p ${_PREFIX}
@@ -106,3 +108,12 @@ ln -sf ${_HERE}/irssi_config ~/.irssi/config
 
 mkdir -p ~/.lein
 ln -sf ${_HERE}/lein_profiles.clj ~/.lein/profiles.clj
+
+if [[ $(uname -s) == "Linux" ]]; then
+    cd
+    wget "https://github.com/github/hub/releases/download/v${_HUB_VER}/hub-linux-amd64-${_HUB_VER}.tar.gz"
+    tar xf "hub-linux-amd64-${_HUB_VER}.tar.gz"
+    rm "hub-linux-amd64-${_HUB_VER}.tar.gz"
+    mv "hub-linux-amd64-${_HUB_VER}/hub" /usr/local/bin
+    rm -r "hub-linux-amd64-${_HUB_VER}"
+fi
