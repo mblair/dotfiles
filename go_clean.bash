@@ -8,11 +8,13 @@ _current_employer_gopath="${GOPATH}/src/github.com/${_current_employer_github_or
 _unpushed_changes=0
 _dirty_repos=()
 _to_clone=()
+
 if [[ -d "${_current_employer_gopath}" ]]; then
     cd "${_current_employer_gopath}"
-    for _inner in ./*; do
+    for _inner in ${_current_employer_gopath}/*; do
+        echo "${_inner}"
         if [[ -d "${_inner}" ]]; then
-            cd "${_current_employer_gopath}/${_inner}"
+            cd "${_inner}"
             if [[ $(git log --branches --not --remotes) != "" ]] || ! git diff --quiet HEAD; then
                 mv "${_current_employer_gopath}/${_inner}" /tmp
                 _dirty_repos+=${_inner}
