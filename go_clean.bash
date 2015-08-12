@@ -37,9 +37,6 @@ go get -u github.com/tools/godep
 go get -u golang.org/x/tools/cmd/{cover,goimports,oracle}
 go get -u github.com/ChimeraCoder/gojson/gojson
 
-# https://github.com/3rf/codecoroner/issues/5
-#go get -u github.com/3rf/codecoroner
-
 if [[ ${_unpushed_changes} == 1 ]]; then
     mkdir -p "${_current_employer_gopath}"
     cd "${_current_employer_gopath}"
