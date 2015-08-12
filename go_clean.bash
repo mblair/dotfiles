@@ -18,7 +18,7 @@ if [[ -d "${_current_employer_gopath}" ]]; then
                 _dirty_repos+=${_inner}
                 _unpushed_changes=1
             else
-                _to_clone+=$(git remote -v show origin | grep Fetch | cut -d":" -f2- | tr -d '[:space:]')
+                _to_clone+=($(git remote -v show origin | grep Fetch | cut -d":" -f2- | tr -d '[:space:]'))
             fi
         fi
     done
