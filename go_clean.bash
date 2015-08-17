@@ -15,7 +15,7 @@ if [[ -d "${_current_employer_gopath}" ]]; then
         echo "${_inner}"
         if [[ -d "${_inner}" ]]; then
             cd "${_inner}"
-            if [[ $(git log --branches --not --remotes) != "" ]] || ! git diff --quiet HEAD; then
+            if [[ $(git log --branches --not --remotes) != "" ]] || ! git diff --quiet HEAD || test -n "$(git ls-files --exclude-standard --others)"; then
                 mv "${_current_employer_gopath}/${_inner}" /tmp
                 _dirty_repos+=${_inner}
                 _unpushed_changes=1
