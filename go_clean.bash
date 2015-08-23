@@ -16,8 +16,8 @@ if [[ -d "${_current_employer_gopath}" ]]; then
         if [[ -d "${_inner}" ]]; then
             cd "${_inner}"
             if [[ $(git log --branches --not --remotes) != "" ]] || ! git diff --quiet HEAD || test -n "$(git ls-files --others)"; then
-                mv "${_current_employer_gopath}/${_inner}" /tmp
-                _dirty_repos+=${_inner}
+                mv "${_inner}" /tmp
+                _dirty_repos+=$(basename ${_inner})
                 _unpushed_changes=1
             else
                 _to_clone+=($(git remote -v show origin | grep Fetch | cut -d":" -f2- | tr -d '[:space:]'))
