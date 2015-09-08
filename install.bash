@@ -120,7 +120,7 @@ if [[ $(uname -s) == "Linux" ]]; then
     mv "hub-linux-amd64-${_HUB_VER}/hub" /usr/local/bin
     rm -r "hub-linux-amd64-${_HUB_VER}"
 
-    if ! [[ $(go version) =~ ^go version go${_GO_VER}\ .*$ ]]; then
+    if ! [[ $(go version) =~ ^go\ version\ go${_GO_VER}.*$ ]]; then
         cd
         wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz
         tar xf godeb-amd64.tar.gz
