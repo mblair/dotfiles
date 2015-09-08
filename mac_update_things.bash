@@ -4,10 +4,12 @@ set -xueo pipefail
 
 _HERE=$(dirname $0)
 
+# check to make sure we're using rbenv's gem here
 gem update --system
 gem update
 gem cleanup --quiet
 
+# check to make sure we're using the virtualenv python here
 easy_install -U setuptools
 pip install -U pip
 pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | env grep -v wsgiref | xargs pip install -U
@@ -37,6 +39,7 @@ mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
 # EOF
 # ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
+# if npm isn't found, install node first
 npm install -g npm@latest
 npm update -g groc bower yo grunt-cli generator-angular redis-dump
 
