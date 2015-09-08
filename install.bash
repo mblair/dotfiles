@@ -5,6 +5,7 @@ _HERE=$(cd $(dirname "$0"); pwd)
 set -xueo pipefail
 
 _HUB_VER="2.2.1"
+_GO_VER="1.5"
 
 if [[ $(uname -s) == "Darwin" ]]; then
     _PREFIX=~/external_src
@@ -19,6 +20,8 @@ if [[ $(uname -s) == "Darwin" ]]; then
     if ! brew list -1 | grep wget; then
         brew install wget
     fi
+else
+    apt-get -y autojump silversearcher-ag install git zsh emacs24-nox vim-nox tmux htop curl wget
 fi
 
 if [[ ! -d "${_PREFIX}/gocode/.git" ]]; then
@@ -116,4 +119,13 @@ if [[ $(uname -s) == "Linux" ]]; then
     rm "hub-linux-amd64-${_HUB_VER}.tar.gz"
     mv "hub-linux-amd64-${_HUB_VER}/hub" /usr/local/bin
     rm -r "hub-linux-amd64-${_HUB_VER}"
+
+    if ! [[ $(go version) =~ "^go version go${_GO_VER}\ .*$"; then
+        cd
+        wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz
+        tar xf godeb-amd64.tar.gz
+        mv godeb /usr/local/bin
+        godeb install ${_GO_VER}
+        rm godeb-amd64.tar.gz
+    fi
 fi
