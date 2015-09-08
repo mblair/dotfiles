@@ -34,6 +34,7 @@ go get -u github.com/rogpeppe/godef
 go get -u github.com/golang/lint/golint
 go get -u github.com/kisielk/errcheck
 go get -u github.com/tools/godep
+go get -u github.com/FiloSottile/gvt
 go get -u golang.org/x/tools/cmd/{cover,goimports,oracle}
 go get -u github.com/ChimeraCoder/gojson/gojson
 
