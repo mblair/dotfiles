@@ -21,7 +21,6 @@ cd ~/external_src/go-mode.el
 git pull
 
 brew update
-brew reinstall --HEAD hub rbenv ruby-build jq
 
 rm -rf ~/.emacs.d
 mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
@@ -41,18 +40,23 @@ mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
 
 # if npm isn't found, install node first
 npm install -g npm@latest
-npm update -g groc bower yo grunt-cli generator-angular redis-dump
+npm update -g bower grunt-cli redis-dump
 
 cd
-bower install rickshaw d3 jquery bootstrap react chartjs
+bower install rickshaw d3 jquery bootstrap react
 
 #cabal update
 #cabal install pandoc
 #cabal install -v pandoc --upgrade-dependencies --dry-run
 
-lein ancient upgrade-profiles
+# make sure leiningen is installed
+# lein ancient upgrade-profiles
 
-vagrant up; vagrant ssh -c 'sudo apt-get update; sudo apt-get -y dist-upgrade; sudo apt-get -y install lxc-docker; sudo apt-get -y autoremove; sudo apt-get -y autoclean'; vagrant halt
+vagrant up; vagrant ssh -c 'sudo apt-get update; sudo apt-get -y dist-upgrade; sudo apt-get -y autoremove; sudo apt-get -y autoclean'; vagrant halt
+
+if ! -x /usr/local/bin/emacs; then
+  brew install --with-cocoa emacs
+fi
 
 ~/my_src/dotfiles/install.bash
 
@@ -60,7 +64,10 @@ vagrant up; vagrant ssh -c 'sudo apt-get update; sudo apt-get -y dist-upgrade; s
 
 ${_HERE}/go_clean.bash
 
-heroku update
+if which heroku; then
+  heroku update
+fi
+
 vagrant version
 
 brew outdated
