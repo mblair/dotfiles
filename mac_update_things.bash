@@ -52,8 +52,6 @@ bower install rickshaw d3 jquery bootstrap react
 # make sure leiningen is installed
 # lein ancient upgrade-profiles
 
-vagrant up; vagrant ssh -c 'sudo apt-get update; sudo apt-get -y dist-upgrade; sudo apt-get -y autoremove; sudo apt-get -y autoclean'; vagrant halt
-
 if ! -x /usr/local/bin/emacs; then
   brew install --with-cocoa emacs
 fi
