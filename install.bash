@@ -88,8 +88,11 @@ ln -sf ${_HERE}/inputrc ~/.inputrc
 ln -sf ${_HERE}/tmux.conf ~/.tmux.conf
 
 mkdir -p ${_HERE}/vim/autoload
-cd ${_HERE}/vim/autoload
-wget https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+
+if [[ -f ${_HERE}/vim/autoload/pathogen.vim ]]; then
+    cd ${_HERE}/vim/autoload
+    wget https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+fi
 
 if [[ ! -h ~/.vim ]]; then
     ln -s ${_HERE}/vim ~/.vim
