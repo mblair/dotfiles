@@ -105,3 +105,7 @@ plugins=(git osx brew golang virtualenv tmux vagrant)
 source $ZSH/oh-my-zsh.sh
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+if [[ -d $HOME/bin ]]; then
+    export PATH="$HOME/bin:${PATH}"
+fi
