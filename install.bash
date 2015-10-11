@@ -131,4 +131,6 @@ if [[ $(uname -s) == "Linux" ]]; then
         godeb install ${_GO_VER}
         rm godeb-amd64.tar.gz
     fi
+
+    cp /usr/share/zoneinfo/UTC /etc/localtime
 fi
