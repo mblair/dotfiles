@@ -121,8 +121,8 @@ ln -sf ${_HERE}/lein_profiles.clj ~/.lein/profiles.clj
 if [[ $(uname -s) == "Linux" ]]; then
     cd
     wget "https://github.com/github/hub/releases/download/v${_HUB_VER}/hub-linux-amd64-${_HUB_VER}.tgz"
-    tar xf "hub-linux-amd64-${_HUB_VER}.tar.gz"
-    rm "hub-linux-amd64-${_HUB_VER}.tar.gz"
+    tar xf "hub-linux-amd64-${_HUB_VER}.tgz"
+    rm "hub-linux-amd64-${_HUB_VER}.tgz"
     mv "hub-linux-amd64-${_HUB_VER}/hub" /usr/local/bin
     rm -r "hub-linux-amd64-${_HUB_VER}"
 
