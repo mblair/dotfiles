@@ -123,7 +123,7 @@ if [[ $(uname -s) == "Linux" ]]; then
     wget "https://github.com/github/hub/releases/download/v${_HUB_VER}/hub-linux-amd64-${_HUB_VER}.tgz"
     tar xf "hub-linux-amd64-${_HUB_VER}.tgz"
     rm "hub-linux-amd64-${_HUB_VER}.tgz"
-    mv "hub-linux-amd64-${_HUB_VER}/hub" /usr/local/bin
+    mv "hub-linux-amd64-${_HUB_VER}/bin/hub" /usr/local/bin
     rm -r "hub-linux-amd64-${_HUB_VER}"
 
     if ! [[ $(go version) =~ ^go\ version\ go${_GO_VER}.*$ ]]; then
