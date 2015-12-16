@@ -39,7 +39,6 @@ mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
 # ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
 # if npm isn't found, install node first
-npm install -g npm@latest
 npm update -g bower grunt-cli redis-dump
 
 cd
