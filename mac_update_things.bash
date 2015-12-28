@@ -48,14 +48,15 @@ bower install rickshaw d3 jquery bootstrap react
 #cabal install pandoc
 #cabal install -v pandoc --upgrade-dependencies --dry-run
 
-# make sure leiningen is installed
-# lein ancient upgrade-profiles
-
 if ! -x /usr/local/bin/emacs; then
   brew install --with-cocoa emacs
 fi
 
 ~/my_src/dotfiles/install.bash
+
+if which lein; then
+    lein ancient upgrade-profiles
+fi
 
 /usr/local/bin/emacs --daemon
 
