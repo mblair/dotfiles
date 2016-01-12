@@ -9,11 +9,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit
-                      starter-kit-lisp
-                      starter-kit-bindings
-                      starter-kit-eshell
-                      markdown-mode
+(defvar my-packages '(markdown-mode
                       coffee-mode
                       less-css-mode
                       js2-mode
@@ -38,6 +34,7 @@
                       go-eldoc
                       dockerfile-mode
                       magit-gh-pulls
+                      paredit
 
                       ;; colors:
                       cycle-themes
