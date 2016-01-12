@@ -1,4 +1,6 @@
 {:user {:plugins [
+                  [lein-cljfmt "0.3.0" :exclusions [org.clojure/clojure]]
+                  [lein-ancient "0.6.8" :exclusions [org.clojure/clojure]]
                   [lein-ring "0.9.7"]
                   [lein-ancient "0.6.8"]
                   [jonase/eastwood "0.2.3"]
