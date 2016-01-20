@@ -11,7 +11,7 @@ gem cleanup --quiet
 
 # check to make sure we're using the virtualenv python here
 easy_install -U setuptools
-pip install -U pip
+#pip install -U pip
 pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | env grep -v wsgiref | xargs pip install -U
 
 cd ~/.oh-my-zsh
