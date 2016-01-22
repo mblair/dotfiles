@@ -38,6 +38,7 @@
 
                       ;; colors:
                       cycle-themes
+                      cyberpunk-theme
                       apropospriate-theme
                       material-theme
                       darktooth-theme
