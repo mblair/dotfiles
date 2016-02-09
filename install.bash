@@ -52,11 +52,6 @@ if [[ ! -d "${_PREFIX}/emacs-deep-thought-theme/.git" ]]; then
     git clone https://github.com/emacsfodder/emacs-deep-thought-theme
 fi
 
-if [[ ! -d "${_PREFIX}/emacs-powerline/.git" ]]; then
-    cd ${_PREFIX}
-    git clone https://github.com/jonathanchu/emacs-powerline
-fi
-
 if [[ ! -d "${_PREFIX}/ocean-terminal/.git" ]]; then
     cd ${_PREFIX}
     git clone https://github.com/mdo/ocean-terminal
