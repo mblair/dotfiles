@@ -7,6 +7,7 @@ _HERE=$(dirname $0)
 # check to make sure we're using rbenv's gem here
 gem update --system
 gem update
+gem install showoff exifr rethinkdb riemann-tools riemann-client pry
 gem cleanup --quiet
 
 # check to make sure we're using the virtualenv python here
