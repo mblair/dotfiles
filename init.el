@@ -35,6 +35,8 @@
                       dockerfile-mode
                       magit-gh-pulls
                       paredit
+                      powerline
+                      rainbow-delimiters
 
                       ;; colors:
                       cycle-themes
@@ -90,6 +92,7 @@
 (show-paren-mode 1)
 
 (setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
 (setq-default standard-indent 2)
 (custom-set-variables '(coffee-tab-width 4))
 (setq-default initial-buffer-choice t)
@@ -154,8 +157,8 @@
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-color-themes/themes"))
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-deep-thought-theme"))
 
-(add-to-list 'load-path (concat prefix "emacs-powerline"))
 (require 'powerline)
+(powerline-default-theme)
 
 (load (concat prefix "auto-fill-mode-inhibit"))
 (require 'auto-fill-inhibit)
@@ -219,7 +222,10 @@
 
 (global-set-key (kbd "C-x o") 'my-other-window)
 
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook #'paredit-mode)
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
 
 ;; C-c C-z to access it.
 (setq cider-repl-pop-to-buffer-on-connect nil)
@@ -234,7 +240,7 @@
 (ido-mode 1)
 (ido-vertical-mode 1)
 
-; http://www.emacswiki.org/emacs/TransparentEmacs
+;; http://www.emacswiki.org/emacs/TransparentEmacs
 (defun toggle-transparency ()
   (interactive)
   (if (/=
@@ -254,7 +260,6 @@
 ;; (define-key clojure-mode-map (kbd "M-r") 'cider-namespace-refresh)
 
 ;; go stuff
-
 (add-to-list 'load-path (concat prefix "go-mode.el"))
 (require 'go-mode)
 
@@ -315,7 +320,7 @@
 ;; enable recent files mode.
 (recentf-mode t)
 
-; 50 files ought to be enough.
+;; 50 files ought to be enough.
 (setq recentf-max-saved-items 50)
 
 (defun ido-recentf-open ()
