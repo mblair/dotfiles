@@ -47,7 +47,7 @@ npm update -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3
 #cabal install pandoc
 #cabal install -v pandoc --upgrade-dependencies --dry-run
 
-if ! -x /usr/local/bin/emacs; then
+if [[ ! -x /usr/local/bin/emacs ]]; then
   brew install --with-cocoa emacs
 fi
 
