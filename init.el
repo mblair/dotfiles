@@ -37,6 +37,7 @@
                       paredit
                       powerline
                       rainbow-delimiters
+                      jsfmt
 
                       ;; colors:
                       cycle-themes
@@ -282,7 +283,12 @@
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
-(global-set-key (kbd "C-c C-c") 'compile)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+(defun my-js-hook ()
+  (add-hook 'before-save-hook 'jsfmt-before-save))
+
+(add-hook 'js2-mode-hook 'my-js-hook)
 
 (setq py-autopep8-options '("--max-line-length=100"))
 (add-hook 'before-save-hook 'py-autopep8-before-save)
