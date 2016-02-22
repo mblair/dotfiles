@@ -41,7 +41,7 @@ brew update
 #ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
 # if npm isn't found, install node first
-npm update -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script torrent js-yaml
+npm update -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script torrent js-yaml how2
 
 #cabal update
 #cabal install pandoc
