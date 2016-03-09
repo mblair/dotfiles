@@ -4,7 +4,6 @@ set -xueo pipefail
 
 _HERE=$(dirname $0)
 
-# check to make sure we're using rbenv's gem here
 gem update --system
 gem update
 gem install showoff exifr rethinkdb riemann-tools riemann-client pry
@@ -24,9 +23,6 @@ git pull
 
 brew update
 
-# rm -rf ~/.emacs.d
-# mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
-
 #cd ~/external_src/prelude
 #git clean -fdx
 #git pull
@@ -40,7 +36,9 @@ brew update
 #EOF
 #ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
-# if npm isn't found, install node first
+if [[ ! -x /usr/local/bin/npm ]]; then
+    brew install node
+fi
 npm update -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script torrent js-yaml how2
 
 #cabal update
@@ -57,6 +55,8 @@ if which lein; then
     lein ancient upgrade-profiles
 fi
 
+rm -rf ~/.emacs.d
+mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
 /usr/local/bin/emacs --daemon
 
 ${_HERE}/go_clean.bash
