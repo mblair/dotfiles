@@ -2,7 +2,7 @@
 
 set -xueo pipefail
 
-_HERE=$(dirname $0)
+_HERE=$(cd $(dirname $0); pwd)
 
 gem update --system
 gem update
@@ -49,14 +49,14 @@ if [[ ! -x /usr/local/bin/emacs ]]; then
   brew install --with-cocoa emacs
 fi
 
-~/my_src/dotfiles/install.bash
+${_HERE}/install.bash
 
 if which lein; then
     lein ancient upgrade-profiles
 fi
 
 rm -rf ~/.emacs.d
-mkdir -p ~/.emacs.d/; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d
+mkdir -p ~/.emacs.d/; ln -s ${_HERE}/dotfiles/init.el ~/.emacs.d
 /usr/local/bin/emacs --daemon
 
 ${_HERE}/go_clean.bash
