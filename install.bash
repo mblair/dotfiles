@@ -78,7 +78,7 @@ fi
 git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
 
 ln -sf ${_HERE}/gitconfig ~/.gitconfig
-ln -sf ${_HERE}/gitignore_global ~/.gitignore
+ln -sf ${_HERE}/gitignore_global ~/.gitignore_global
 ln -sf ${_HERE}/inputrc ~/.inputrc
 ln -sf ${_HERE}/tmux.conf ~/.tmux.conf
 
