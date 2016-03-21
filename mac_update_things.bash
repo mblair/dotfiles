@@ -56,7 +56,7 @@ if which lein; then
 fi
 
 rm -rf ~/.emacs.d
-mkdir -p ~/.emacs.d/; ln -s ${_HERE}/dotfiles/init.el ~/.emacs.d
+mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 /usr/local/bin/emacs --daemon
 
 ${_HERE}/go_clean.bash
