@@ -38,6 +38,8 @@ go get -u github.com/FiloSottile/gvt
 go get -u golang.org/x/tools/cmd/{cover,goimports,oracle}
 go get -u github.com/ChimeraCoder/gojson/gojson
 go get -u github.com/jstemmer/gotags
+go get -u github.com/alecthomas/gometalinter
+gometalinter --install --update
 
 if [[ ${_unpushed_changes} == 1 ]]; then
     mkdir -p "${_current_employer_gopath}"
