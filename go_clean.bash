@@ -35,7 +35,7 @@ go get -u github.com/golang/lint/golint
 go get -u github.com/kisielk/errcheck
 go get -u github.com/tools/godep
 go get -u github.com/FiloSottile/gvt
-go get -u golang.org/x/tools/cmd/{cover,goimports,oracle}
+go get -u golang.org/x/tools/cmd/{cover,goimports,gorename,oracle}
 go get -u github.com/ChimeraCoder/gojson/gojson
 go get -u github.com/jstemmer/gotags
 go get -u github.com/alecthomas/gometalinter
