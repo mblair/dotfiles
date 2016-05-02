@@ -9,11 +9,11 @@ gem update
 gem install showoff exifr rethinkdb riemann-tools riemann-client pry lunchy puppet puppet-lint
 gem cleanup --quiet
 
-# check to make sure we're using the virtualenv python here
-easy_install -U setuptools
+# TODO: check to make sure we're using the virtualenv python here
+easy_install-3.5 -U setuptools
 pip install -U pip
-pip install -U s3cmd autopep8 virtualenv howdoi
-pip freeze | cut -d= -f1 | env grep -v git-remote-helpers | env grep -v wsgiref | xargs pip install -U
+pip install -U autopep8 virtualenv howdoi ramlfications
+pip freeze | cut -d= -f1 | xargs pip install -U
 
 cd ~/.oh-my-zsh
 git pull
