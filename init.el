@@ -122,6 +122,7 @@
 
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.raml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.ronn" . markdwon-mode))
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
