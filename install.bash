@@ -101,8 +101,6 @@ cat > ~/.gemrc <<EOF
 install: --no-rdoc --no-ri --no-document
 EOF
 
-ln -sf ${_HERE}/hgrc ~/.hgrc
-
 if [[ $(uname -s) == "Darwin" ]]; then
     ln -sf ${_HERE}/osx ~/.osx
 fi
