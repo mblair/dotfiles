@@ -32,8 +32,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
     export GIT_EDITOR='mvim -f'
 
-    # For etcd.
-    export PATH="$HOME/bin:$PATH"
+    export PATH="$HOME/.cargo/bin:$PATH"
 
     # http://tug.org/mactex/faq/
 	  if [ -d "/usr/texbin" ]; then
