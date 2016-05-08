@@ -17,6 +17,7 @@
                       puppet-mode
                       scala-mode2
                       rust-mode
+                      racer
                       clojure-mode
                       coffee-mode
                       auto-complete
@@ -38,6 +39,9 @@
                       powerline
                       rainbow-delimiters
                       jsfmt
+                      company
+                      flycheck
+                      flycheck-rust
 
                       ;; colors:
                       omtose-phellack-theme
@@ -340,3 +344,18 @@
 
 (require 'magit-gh-pulls)
 (add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
+
+(setq racer-cmd "/Users/matt/.cargo/bin/racer")
+(setq racer-rust-src-path "/Users/matt/external_src/rust/src/")
+
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'racer-mode-hook #'company-mode)
+
+(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
+
+(global-flycheck-mode)
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
