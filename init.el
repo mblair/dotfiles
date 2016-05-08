@@ -42,6 +42,7 @@
                       company
                       flycheck
                       flycheck-rust
+                      gitconfig-mode
 
                       ;; colors:
                       omtose-phellack-theme
