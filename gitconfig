@@ -1,6 +1,7 @@
 [user]
   name = Matt Blair
   email = me@matthewblair.net
+	signingkey = 68B34D56
 [alias]
   co = checkout
   cp = cherry-pick
