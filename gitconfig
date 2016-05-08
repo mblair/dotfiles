@@ -1,41 +1,41 @@
 [user]
-  name = Matt Blair
-  email = me@matthewblair.net
+	name = Matt Blair
+	email = me@matthewblair.net
 	signingkey = 68B34D56
 [alias]
-  co = checkout
-  cp = cherry-pick
-  wlog = log --color-words -p
-  wdiff = diff --color-words
-  st = status --ignore-submodules=untracked
-  br = branch
-  tags-sorted = !git tag --sort=creatordate
-  addnw = !sh -c 'git diff -w --no-color "$@" | git apply --cached --ignore-whitespace' -
+	co = checkout
+	cp = cherry-pick
+	wlog = log --color-words -p
+	wdiff = diff --color-words
+	st = status --ignore-submodules=untracked
+	br = branch
+	tags-sorted = !git tag --sort=creatordate
+	addnw = !sh -c 'git diff -w --no-color "$@" | git apply --cached --ignore-whitespace' -
 [core]
-  editor = emacsclient -c
-  excludesfile = ~/.gitignore_global
-  pager = less
-  whitespace = trailing-space,space-before-tab
+	editor = emacsclient -c
+	excludesfile = ~/.gitignore_global
+	pager = less
+	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 [color]
-  ui = auto
-  diff = auto
-  interactive = auto
-  branch = auto
+	ui = auto
+	diff = auto
+	interactive = auto
+	branch = auto
 [color "status"]
-  changed = yellow
-  added = green
-  untracked = red
+	changed = yellow
+	added = green
+	untracked = red
 [branch]
-  autosetuprebase = always
+	autosetuprebase = always
 [github]
-  user = mblair
+	user = mblair
 [push]
 	default = simple
 [web]
-  browser = open
+	browser = open
 [pull]
-  rebase = true
+	rebase = true
 [filter "media"]
 	required = true
 	clean = git media clean %f
