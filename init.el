@@ -43,6 +43,7 @@
                       flycheck
                       flycheck-rust
                       gitconfig-mode
+                      toml-mode
 
                       ;; colors:
                       omtose-phellack-theme
@@ -101,7 +102,15 @@
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (setq-default standard-indent 2)
-(custom-set-variables '(coffee-tab-width 4))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 4)
+ '(custom-safe-themes
+   (quote
+    ("50e7f9d112e821e42bd2b8410d50de966c35c7434dec12ddea99cb05dd368dd8" default))))
 (setq-default initial-buffer-choice t)
 (setq-default initial-scratch-message "")
 (setq-default show-trailing-whitespace t)
@@ -143,8 +152,8 @@
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'omtose-phellack t)
-    (load-theme 'omtose-phellack t)))
+  (if window-system (load-theme 'base16-ocean-dark t)
+    (load-theme 'base16-ocean-dark t)))
 
 ;; for emacsclient:
 (add-hook 'after-make-frame-functions 'color-config)
@@ -167,12 +176,6 @@
 
 (require 'powerline)
 (powerline-default-theme)
-
-(load (concat prefix "auto-fill-mode-inhibit"))
-(require 'auto-fill-inhibit)
-
-;; TODO: make this damned thing work
-;;(add-to-list 'auto-fill-inhibit-list "flipboard_src/ops")
 
 (autoload 'kill-ring-search "kill-ring-search"
   "Search the kill ring in the minibuffer."
@@ -360,3 +363,5 @@
 
 (global-flycheck-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
+(rust-enable-format-on-save)
