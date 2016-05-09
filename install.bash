@@ -65,6 +65,8 @@ fi
 
 ln -sf ${_HERE}/bashrc ${_BASH_RC}
 ln -sf ${_HERE}/zshrc ~/.zshrc
+mkdir -p ~/.gnupg
+ln -sf ${_HERE}/gpg.conf ~/.gnupg/
 
 if [[ -d ~/my_src/personal ]]; then
     ~/my_src/personal/install.bash
