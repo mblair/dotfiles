@@ -15,7 +15,6 @@
                       js2-mode
                       yaml-mode
                       puppet-mode
-                      scala-mode2
                       rust-mode
                       racer
                       clojure-mode
@@ -102,15 +101,6 @@
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (setq-default standard-indent 2)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(coffee-tab-width 4)
- '(custom-safe-themes
-   (quote
-    ("50e7f9d112e821e42bd2b8410d50de966c35c7434dec12ddea99cb05dd368dd8" default))))
 (setq-default initial-buffer-choice t)
 (setq-default initial-scratch-message "")
 (setq-default show-trailing-whitespace t)
@@ -363,5 +353,3 @@
 
 (global-flycheck-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-
-(rust-enable-format-on-save)
