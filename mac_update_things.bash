@@ -39,7 +39,7 @@ brew update
 if [[ ! -x /usr/local/bin/npm ]]; then
     brew install node
 fi
-npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script torrent js-yaml how2 jsfmt
+npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script torrent js-yaml how2 jsfmt eslint
 
 #cabal update
 #cabal install pandoc

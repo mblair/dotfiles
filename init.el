@@ -163,6 +163,7 @@
 
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-color-themes/themes"))
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-deep-thought-theme"))
+(add-to-list 'custom-theme-load-path (concat prefix "forest-blue-emacs"))
 
 (require 'powerline)
 (powerline-default-theme)
