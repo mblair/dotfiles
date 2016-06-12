@@ -17,6 +17,7 @@
                       puppet-mode
                       rust-mode
                       racer
+                      systemd
                       clojure-mode
                       coffee-mode
                       auto-complete
@@ -130,6 +131,7 @@
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.ronn" . markdwon-mode))
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+(add-to-list 'auto-mode-alist '("\\.service$" . systemd-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec" . ruby-mode))
@@ -354,3 +356,17 @@
 
 (global-flycheck-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (cherry-blossom-theme bubbleberry-theme purple-haze-theme underwater-theme phoenix-dark-pink-theme ample-theme gruber-darker-theme clues-theme darkburn-theme noctilux-theme colorsarenice-theme distinguished-theme niflheim-theme planet-theme solarized-theme soothe-theme zenburn-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-theme warm-night-theme subatomic-theme base16-theme gruvbox-theme darktooth-theme material-theme apropospriate-theme cyberpunk-theme cycle-themes omtose-phellack-theme toml-mode gitconfig-mode flycheck-rust flycheck company jsfmt rainbow-delimiters powerline paredit magit-gh-pulls dockerfile-mode go-eldoc py-isort py-autopep8 latest-clojure-libraries ido-vertical-mode fiplr anzu multi-term expand-region kill-ring-search ac-cider auto-complete clojure-mode systemd racer rust-mode puppet-mode yaml-mode js2-mode less-css-mode coffee-mode markdown-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
