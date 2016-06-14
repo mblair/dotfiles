@@ -48,3 +48,5 @@
 	required = true
 [commit]
 	gpgsign = true
+[diff]
+    compactionHeuristic = true
