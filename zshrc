@@ -1,5 +1,3 @@
-# -*- mode: shell-script -*-
-
 _HERE=$(cd $(dirname $(readlink ~/.zshrc)); pwd)
 
 ZSH=$HOME/.oh-my-zsh
@@ -41,8 +39,10 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
     export GOPATH="$HOME/gopath"
     export PATH="$PATH:$GOPATH/bin"
-    _goroot_bin="$(go env | grep GOROOT | perl -pe 's/^.*=\"(.*)\"/${1}/')/bin"
-    export PATH="$PATH:${_goroot_bin}"
+    if which go; then
+        _goroot_bin="$(go env | grep GOROOT | perl -pe 's/^.*=\"(.*)\"/${1}/')/bin"
+        export PATH="$PATH:${_goroot_bin}"
+    fi
 
     # So we can find Homebrew.
     export PATH="/usr/local/bin:$PATH"

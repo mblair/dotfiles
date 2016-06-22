@@ -247,11 +247,3 @@ fi
 if [[ -f /Users/mblair/my_src/personal/flip_bash ]]; then
     . /Users/mblair/my_src/personal/flip_bash
 fi
-
-if [[ -f ~/.maven_bash_completion.bash ]]; then
-    . ~/.maven_bash_completion.bash
-fi
-
-if [[ -d ~/my_src/riemann ]]; then
-    alias riemann-sync='cd ~/my_src/riemann; git stash; git pull origin master; git stash pop; lein clean; lein fatdeb; ssh mattyb "export DEBIAN_FRONTEND=interactive; rm riemann_*.deb; invoke-rc.d riemann stop; apt-get -y purge riemann openjdk-7-jre-headless"; scp target/riemann_*.deb mattyb:~; ssh mattyb "export DEBIAN_FRONTEND=noninteractive; dpkg -i riemann_*.deb; invoke-rc.d riemann start; invoke-rc.d riemann status; apt-get -y install openjdk-7-jre-headless; invoke-rc.d riemann start; invoke-rc.d riemann status"'
-fi

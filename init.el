@@ -356,3 +356,20 @@
 
 (global-flycheck-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("6d8d8af130783e4e91bfcda284ad3271e598e9e78374f5ad406ab63243e75982" "5a0eee1070a4fc64268f008a4c7abfda32d912118e080e18c3c865ef864d1bea" "70f5a47eb08fe7a4ccb88e2550d377ce085fedce81cf30c56e3077f95a2909f2" default)))
+ '(package-selected-packages
+   (quote
+    (cherry-blossom-theme bubbleberry-theme purple-haze-theme underwater-theme phoenix-dark-pink-theme ample-theme gruber-darker-theme clues-theme darkburn-theme noctilux-theme colorsarenice-theme distinguished-theme niflheim-theme planet-theme solarized-theme soothe-theme zenburn-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-theme warm-night-theme subatomic-theme base16-theme gruvbox-theme darktooth-theme material-theme apropospriate-theme cyberpunk-theme cycle-themes omtose-phellack-theme toml-mode gitconfig-mode flycheck-rust flycheck company jsfmt rainbow-delimiters powerline paredit magit-gh-pulls dockerfile-mode go-eldoc py-isort py-autopep8 latest-clojure-libraries ido-vertical-mode fiplr anzu multi-term expand-region kill-ring-search ac-cider auto-complete clojure-mode systemd racer rust-mode puppet-mode yaml-mode js2-mode less-css-mode coffee-mode markdown-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

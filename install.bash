@@ -5,7 +5,7 @@ _HERE=$(cd $(dirname "$0"); pwd)
 set -xueo pipefail
 
 _HUB_VER="2.2.3"
-_GO_VER="1.6"
+_GO_VER="1.6.2"
 
 if [[ $(uname -s) == "Darwin" ]]; then
     _PREFIX=~/external_src

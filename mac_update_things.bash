@@ -6,7 +6,7 @@ _HERE=$(cd $(dirname $0); pwd)
 
 gem update --system
 gem update
-gem install showoff exifr rethinkdb riemann-tools riemann-client pry lunchy puppet puppet-lint
+gem install showoff exifr rethinkdb pry lunchy puppet puppet-lint
 gem cleanup --quiet
 
 # TODO: check to make sure we're using the virtualenv python here
