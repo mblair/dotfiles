@@ -39,7 +39,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
     export GOPATH="$HOME/gopath"
     export PATH="$PATH:$GOPATH/bin"
-    if which go; then
+    if which go >/dev/null; then
         _goroot_bin="$(go env | grep GOROOT | perl -pe 's/^.*=\"(.*)\"/${1}/')/bin"
         export PATH="$PATH:${_goroot_bin}"
     fi
