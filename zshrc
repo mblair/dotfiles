@@ -79,6 +79,7 @@ alias f="find . | grep -i"
 alias p="ping google.com"
 alias rscp='rsync -aP --no-whole-file --inplace'
 alias rsmv='rscp --remove-source-files'
+alias myip="curl -s https://api.ipify.org\?format\=json | jq -r '.ip'"
 
 if [[ -f ~/my_src/personal/flip_sh ]]; then
     . ~/my_src/personal/flip_sh
