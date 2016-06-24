@@ -38,7 +38,6 @@
                       paredit
                       powerline
                       rainbow-delimiters
-                      jsfmt
                       company
                       flycheck
                       flycheck-rust
@@ -288,13 +287,9 @@
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(setq js2-basic-offset 2)
+(setq js2-strict-missing-semi-warning nil)
 
-(defun my-js-hook ()
-  (add-hook 'before-save-hook 'jsfmt-before-save))
-
-(add-hook 'js2-mode-hook 'my-js-hook)
-
-(setq py-autopep8-options '("--max-line-length=100"))
 (add-hook 'before-save-hook 'py-autopep8-before-save)
 
 ;; http://www.emacswiki.org/emacs/DeletingWhitespace
