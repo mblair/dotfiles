@@ -46,6 +46,7 @@
                       terraform-mode
 
                       ;; colors:
+                      forest-blue-theme
                       omtose-phellack-theme
                       cycle-themes
                       cyberpunk-theme
@@ -144,7 +145,7 @@
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'omtose-phellack t)
+  (if window-system (load-theme 'forest-blue t)
     (load-theme 'base16-ocean-dark t)))
 
 ;; for emacsclient:
@@ -165,7 +166,6 @@
 
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-color-themes/themes"))
 (add-to-list 'custom-theme-load-path (concat prefix "emacs-deep-thought-theme"))
-(add-to-list 'custom-theme-load-path (concat prefix "forest-blue-emacs"))
 
 (require 'powerline)
 (powerline-default-theme)
