@@ -44,7 +44,7 @@ go get -u github.com/lukehoban/go-outline
 go get -u github.com/tpng/gopkgs
 go get -u github.com/sqs/goreturns
 go get -u github.com/alecthomas/gometalinter
-gometalinter --install --update
+gometalinter --install
 
 if [[ ${_unpushed_changes} == 1 ]]; then
     mkdir -p "${_current_employer_gopath}"

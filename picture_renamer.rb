@@ -47,3 +47,6 @@ end
 Dir.glob("*.MOV").each do |f|
   File.rename(f, "#{File.mtime(f).utc.strftime(DATE_FORMAT)}.mov")
 end
+
+# TODO: port to ES2015
+# TODO: add MP4/THM support

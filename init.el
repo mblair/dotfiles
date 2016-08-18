@@ -47,7 +47,6 @@
 
                       ;; colors:
                       forest-blue-theme
-                      omtose-phellack-theme
                       cycle-themes
                       cyberpunk-theme
                       apropospriate-theme
@@ -55,7 +54,7 @@
                       darktooth-theme
                       gruvbox-theme
                       base16-theme
-                      subatomic-theme
+                      subatomic256-theme
                       warm-night-theme
                       color-theme ;; http://www.nongnu.org/color-theme/
                       color-theme-sanityinc-solarized
@@ -145,7 +144,7 @@
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'forest-blue t)
+  (if window-system (load-theme 'zenburn t)
     (load-theme 'base16-ocean-dark t)))
 
 ;; for emacsclient:
@@ -286,9 +285,10 @@
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+(require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(setq js2-basic-offset 2)
-(setq js2-strict-missing-semi-warning nil)
+(setq-default js2-basic-offset 2)
+(setq-default js2-strict-missing-semi-warning nil)
 
 (add-hook 'before-save-hook 'py-autopep8-before-save)
 
@@ -352,3 +352,4 @@
 
 (global-flycheck-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+(setq-default flycheck-disabled-checkers '(javascript-eslint javascript-jshint javascript-gjshint))
