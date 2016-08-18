@@ -41,10 +41,6 @@ if [[ ! -x /usr/local/bin/npm ]]; then
 fi
 npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 jsfmt eslint bower create-react-app parsimmon exif hyperblue
 
-#cabal update
-#cabal install pandoc
-#cabal install -v pandoc --upgrade-dependencies --dry-run
-
 #if [[ ! -x /usr/local/bin/emacs ]]; then
 #  brew install --with-cocoa emacs
 #fi
@@ -59,7 +55,7 @@ fi
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 #/usr/local/bin/emacs --daemon
 
-#${_HERE}/go_clean.bash
+${_HERE}/go_clean.bash
 
 multirust update nightly
 
