@@ -141,7 +141,7 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 export NODE_PATH="/usr/local/lib/node_modules"
-export GOPATH="$HOME/golang"
+export GOPATH="$HOME/gopath"
 export PATH="$GOPATH/bin:$PATH"
 
 if [[ $(uname -s) == "Darwin" ]]; then

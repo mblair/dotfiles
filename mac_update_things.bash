@@ -47,10 +47,6 @@ npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d
 
 ${_HERE}/install.bash
 
-if which lein; then
-    lein ancient upgrade-profiles
-fi
-
 #rm -rf ~/.emacs.d
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 #/usr/local/bin/emacs --daemon
@@ -63,6 +59,8 @@ if which heroku; then
   heroku update
 fi
 
-vagrant version
+if which vagrant; then
+    vagrant version
+fi
 
 brew outdated
