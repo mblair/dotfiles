@@ -99,7 +99,7 @@ export NODE_PATH="/usr/local/lib/node_modules"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-plugins=(git osx brew golang virtualenv tmux vagrant)
+plugins=(git osx brew golang virtualenv tmux vagrant github)
 
 # ZSH_TMUX_AUTOSTART=true
 # ZSH_TMUX_ITERM2=true
