@@ -6,20 +6,20 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-if [[ $(uname -s) == "Darwin" ]]; then
-    _EMACS=/usr/local/bin/emacs
-    _EMACS_C="${_EMACS}client"
-else
-    _EMACS=/usr/bin/emacs
-    _EMACS_C="${_EMACS}client"
-fi
+#if [[ $(uname -s) == "Darwin" ]]; then
+    #_EMACS=/usr/local/bin/emacs
+    #_EMACS_C="${_EMACS}client"
+#else
+    #_EMACS=/usr/bin/emacs
+    #_EMACS_C="${_EMACS}client"
+#fi
 
-export EDITOR='emacsclient -ct'
+#export EDITOR='emacsclient -ct'
 
-alias es="${_EMACS} --daemon"
-alias ek="${_EMACS_C} --eval \"(progn (setq kill-emacs-hook 'nil) (kill-emacs))\""
-alias ekk="kill -9 `ps -Ao 'pid,command' | grep '[e]macs' | awk '{print $1}'`"
-alias eclean="rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d/init.el"
+#alias es="${_EMACS} --daemon"
+#alias ek="${_EMACS_C} --eval \"(progn (setq kill-emacs-hook 'nil) (kill-emacs))\""
+#alias ekk="kill -9 `ps -Ao 'pid,command' | grep '[e]macs' | awk '{print $1}'`"
+#alias eclean="rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d; ln -s ~/my_src/dotfiles/init.el ~/.emacs.d/init.el"
 #alias eclean="rm -r ~/.emacs.d; (cd ~/external_src/prelude && git clean -fdx && git pull); ln -s ~/external_src/prelude ~/.emacs.d; cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/; echo \"(require 'prelude-helm)\" >> ~/.emacs.d/prelude-modules.el; echo \"(require 'prelude-helm-everywhere)\" >> ~/.emacs.d/prelude-modules.el; echo \"(require 'prelude-go)\" >> ~/.emacs.d/prelude-modules.el; echo \"(require 'prelude-clojure)\" >> ~/.emacs.d/prelude-modules.el; ln -s ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal"
 #alias eclean="rm -r ~/.emacs.d; (cd ~/external_src/prelude && git clean -fdx && git pull); ln -s ~/external_src/prelude ~/.emacs.d"
 
@@ -27,7 +27,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
     alias v="vagrant"
     export VISUAL="${_EMACS_C} -c -n"
     #alias E="${_EMACS_C} -c -n"
-    alias E='open -a /Applications/Emacs.app'
+    #alias E='open -a /Applications/Emacs.app'
 
     export GIT_EDITOR='mvim -f'
 
@@ -68,9 +68,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
         eval "$(rbenv init -)"
     fi
 
-elif [[ $(uname -s) == "Linux" ]]; then
-    alias E="${_EMACS_C} -ct"
-fi
+#elif [[ $(uname -s) == "Linux" ]]; then
+    #alias E="${_EMACS_C} -ct"
+#fi
 
 alias b="brew"
 alias git="hub"
