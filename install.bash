@@ -95,6 +95,7 @@ cd ${_HERE}
 git submodule update --init
 
 cat > ~/.gemrc <<EOF
+gem: --no-ri --no-rdoc
 install: --no-rdoc --no-ri --no-document
 EOF
 
