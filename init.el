@@ -139,13 +139,13 @@
 (add-to-list 'auto-mode-alist '("Cakefile$" . coffee-mode))
 
 (set-face-attribute 'default nil :height 140)
-(set-face-attribute 'default nil :family "Office Code Pro")
+(set-face-attribute 'default nil :family "Menlo")
 
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'zenburn t)
-    (load-theme 'base16-ocean-dark t)))
+  (if window-system (load-theme 'apropospriate-dark t)
+    (load-theme 'zenburn t)))
 
 ;; for emacsclient:
 (add-hook 'after-make-frame-functions 'color-config)
