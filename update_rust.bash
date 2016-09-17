@@ -6,6 +6,9 @@ multirust update nightly
 multirust default nightly
 
 for _pkg in racer rustfmt; do
-    cargo uninstall "${_pkg}"
+    if which ${_pkg}; then
+        cargo uninstall "${_pkg}"
+    fi
+
     cargo install "${_pkg}"
 done
