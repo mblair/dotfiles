@@ -14,8 +14,6 @@ else
     _EMACS_C="${_EMACS}client"
 fi
 
-export EDITOR='mvim -f'
-
 alias es="${_EMACS} --daemon"
 alias ek="${_EMACS_C} --eval \"(progn (setq kill-emacs-hook 'nil) (kill-emacs))\""
 alias ekk="kill -9 `ps -Ao 'pid,command' | grep '[e]macs' | awk '{print $1}'`"
@@ -30,6 +28,8 @@ if [[ $(uname -s) == "Darwin" ]]; then
     alias E='open -a /Applications/Emacs.app'
 
     export GIT_EDITOR='mvim -f'
+    export EDITOR='mvim -f'
+    export HOMEBREW_EDITOR='mvim -f'
 
     export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -96,7 +96,6 @@ cleanup() {
 
 export NODE_PATH="/usr/local/lib/node_modules"
 
-
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 plugins=(git osx brew golang virtualenv tmux vagrant github)
@@ -107,6 +106,8 @@ plugins=(git osx brew golang virtualenv tmux vagrant github)
 source $ZSH/oh-my-zsh.sh
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export PATH="$HOME/.multirust/toolchains/nightly/cargo/bin:${PATH}"
 
 if [[ -d $HOME/bin ]]; then
     export PATH="$HOME/bin:${PATH}"

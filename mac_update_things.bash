@@ -53,7 +53,7 @@ ${_HERE}/install.bash
 
 ${_HERE}/go_clean.bash
 
-multirust update nightly
+${_HERE}/update_rust.bash
 
 if which heroku; then
   heroku update
