@@ -39,7 +39,8 @@ brew update
 if [[ ! -x /usr/local/bin/npm ]]; then
     brew install node
 fi
-npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 jsfmt eslint bower create-react-app parsimmon exif hyperblue
+
+npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 jsfmt eslint bower create-react-app parsimmon exif standard standard-format
 
 #if [[ ! -x /usr/local/bin/emacs ]]; then
 #  brew install --with-cocoa emacs
