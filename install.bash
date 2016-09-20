@@ -21,10 +21,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
         brew install wget
     fi
 else
-    apt-get -y install autojump silversearcher-ag git zsh emacs24-nox vim-nox htop curl wget
-    if ! which tmux; then
-        apt-get -y install tmux
-    fi
+    apt-get -y install autojump silversearcher-ag git zsh emacs24-nox vim-nox htop curl wget tmux jq ruby python
 fi
 
 if [[ ! -d "${_PREFIX}/gocode/.git" ]]; then
