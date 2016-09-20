@@ -12,7 +12,7 @@ gem cleanup --quiet
 # TODO: check to make sure we're using the virtualenv python here
 easy_install-3.5 -U setuptools
 pip install -U pip
-pip install -U autopep8 virtualenv howdoi ramlfications
+pip install -U autopep8 virtualenv howdoi ramlfications pockyt
 pip freeze | cut -d= -f1 | xargs pip install -U
 
 cd ~/.oh-my-zsh
@@ -64,4 +64,5 @@ if which vagrant; then
     vagrant version
 fi
 
+brew install autojump bash cloc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust node python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis packer phantomjs pup vault wget
 brew outdated

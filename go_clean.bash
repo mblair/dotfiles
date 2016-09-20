@@ -21,4 +21,5 @@ go get -u github.com/lukehoban/go-outline
 go get -u github.com/tpng/gopkgs
 go get -u github.com/sqs/goreturns
 go get -u github.com/alecthomas/gometalinter
+go get -u github.com/motemen/go-pocket/...
 gometalinter --install
