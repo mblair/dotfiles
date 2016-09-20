@@ -46,6 +46,7 @@
                       terraform-mode
 
                       ;; colors:
+                      doom-themes
                       forest-blue-theme
                       cycle-themes
                       cyberpunk-theme
@@ -144,7 +145,7 @@
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'base16-ocean t)
+  (if window-system (load-theme 'doom-one t)
     (load-theme 'zenburn t)))
 
 ;; for emacsclient:
