@@ -124,3 +124,12 @@ fi
 if which "gpg-agent" >"/dev/null" 2>"/dev/null" && ! gpg-agent >/dev/null 2>&1; then
     eval "$(gpg-agent --daemon --disable-scdaemon --write-env-file "$HOME/.gpg-agent-info")"
 fi
+
+# from @ryankaplan
+# -r 10 reduces frame rate from 25 to 10
+# -s 600 x 400 tells max width and height
+# --delay=3 means 30ms between each gif
+# --optimize=3 says use slowest optimization for best file size
+gif() {
+    ffmpeg -i $1 -pix_fmt rgb24 -r 20 -f gif - | gifsicle --optimize=3 --delay=3 > $2
+}
