@@ -44,6 +44,7 @@
                       gitconfig-mode
                       toml-mode
                       terraform-mode
+                      typescript-mode
 
                       ;; colors:
                       doom-themes
@@ -139,13 +140,15 @@
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Cakefile$" . coffee-mode))
 
+(add-to-list 'magic-mode-alist '("#!/usr/bin/env bundle exec ruby" . ruby-mode))
+
 (set-face-attribute 'default nil :height 140)
 (set-face-attribute 'default nil :family "Menlo")
 
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
   (select-frame frame)
-  (if window-system (load-theme 'doom-one t)
+  (if window-system (load-theme 'planet t)
     (load-theme 'zenburn t)))
 
 ;; for emacsclient:
