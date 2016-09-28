@@ -94,6 +94,8 @@
 
 (global-set-key (kbd "M-l") 'goto-line)
 
+(global-set-key (kbd "C-x C-a") 'ag)
+
 (setq x-select-enable-clipboard t)
 (global-set-key (kbd "M-c") 'kill-ring-save)
 
