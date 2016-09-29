@@ -2,11 +2,13 @@
 
 set -xueo pipefail
 
+_EMPLOYER="figma"
+
 _HERE=$(cd $(dirname $0); pwd)
 
 gem update --system
 gem update
-gem install showoff exifr rethinkdb pry lunchy puppet puppet-lint pygments.rb
+gem install showoff exifr rethinkdb pry lunchy pygments.rb
 gem cleanup --quiet
 
 # TODO: check to make sure we're using the virtualenv python here
@@ -54,16 +56,17 @@ ${_HERE}/install.bash
 
 ${_HERE}/go_clean.bash
 
-${_HERE}/update_rust.bash
-
-if which heroku; then
-  heroku update
-fi
+#${_HERE}/update_rust.bash
 
 if which vagrant; then
     vagrant version
 fi
 
-brew install autojump bash cloc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust node python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis packer phantomjs pup vault wget terraform httpdiff gifsicle
+brew install autojump bash cloc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust node python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget terraform httpdiff gifsicle heroku
 brew install curl --with-nghttp2
+
+if [[ -f ~/my_src/personal/${_EMPLOYER}_updater.bash ]]; then
+    . ~/my_src/personal/${_EMPLOYER}_updater.bash
+fi
+
 brew outdated

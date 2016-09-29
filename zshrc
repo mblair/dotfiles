@@ -1,5 +1,7 @@
 _HERE=$(cd $(dirname $(readlink ~/.zshrc)); pwd)
 
+_EMPLOYER="figma"
+
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 DISABLE_CORRECTION=true
@@ -83,8 +85,8 @@ alias rscp='rsync -aP --no-whole-file --inplace'
 alias rsmv='rscp --remove-source-files'
 alias myip="curl -s https://api.ipify.org\?format\=json | jq -r '.ip'"
 
-if [[ -f ~/my_src/personal/figma_sh ]]; then
-    . ~/my_src/personal/figma_sh
+if [[ -f ~/my_src/personal/${_EMPLOYER}_rc ]]; then
+    . ~/my_src/personal/${_EMPLOYER}_rc
 fi
 
 cleanup() {
