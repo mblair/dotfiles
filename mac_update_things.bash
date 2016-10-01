@@ -50,8 +50,8 @@ npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d
 
 ${_HERE}/install.bash
 
-#rm -rf ~/.emacs.d
-#mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
+rm -rf ~/.emacs.d
+mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 #/usr/local/bin/emacs --daemon
 
 ${_HERE}/go_clean.bash
