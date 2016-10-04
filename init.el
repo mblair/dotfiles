@@ -45,6 +45,7 @@
                       toml-mode
                       terraform-mode
                       typescript-mode
+                      dumb-jump
 
                       ;; colors:
                       doom-themes
@@ -359,3 +360,5 @@
 (global-flycheck-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 (setq-default flycheck-disabled-checkers '(javascript-eslint javascript-jshint javascript-gjshint))
+
+(require 'dumb-jump)

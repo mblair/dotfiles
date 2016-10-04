@@ -135,3 +135,5 @@ fi
 gif() {
     ffmpeg -i $1 -pix_fmt rgb24 -r 20 -f gif - | gifsicle --optimize=3 --delay=3 > $2
 }
+
+alias gpgclean='killall -9 pinentry gpg-agent'
