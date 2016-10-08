@@ -62,7 +62,7 @@ if which vagrant; then
     vagrant version
 fi
 
-brew install autojump bash cloc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust node python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget terraform httpdiff gifsicle heroku
+brew install autojump bash cloc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust node python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku
 brew install curl --with-nghttp2
 
 if [[ -f ~/my_src/personal/${_EMPLOYER}_updater.bash ]]; then
