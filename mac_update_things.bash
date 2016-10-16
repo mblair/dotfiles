@@ -42,7 +42,6 @@ if [[ ! -x /usr/local/bin/npm ]]; then
     brew install node
 fi
 
-npm install -g yarn
 yarn global add grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 jsfmt eslint bower create-react-app parsimmon exif standard standard-format
 
 #if [[ ! -x /usr/local/bin/emacs ]]; then
@@ -63,7 +62,7 @@ if which vagrant; then
     vagrant version
 fi
 
-brew install autojump bash cloc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust node python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku
+brew install autojump bash cloc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust node python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn
 brew install curl --with-nghttp2
 
 if [[ -f ~/my_src/personal/${_EMPLOYER}_updater.bash ]]; then
