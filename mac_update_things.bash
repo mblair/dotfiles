@@ -28,18 +28,17 @@ git pull
 
 brew update
 
-#cd ~/external_src/prelude
-#git clean -fdx
-#git pull
-#ln -sf ~/external_src/prelude ~/.emacs.d
-#cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
-#cat >> ~/.emacs.d/prelude-modules.el <<EOF
-#  (require 'prelude-helm)
-#  (require 'prelude-helm-everywhere)
-#  (require 'prelude-go)
-#  (require 'prelude-clojure)
-#EOF
-#ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
+cd ~/external_src/prelude
+git clean -fdx
+git pull
+ln -sf ~/external_src/prelude ~/.emacs.d
+ ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
+cat >> ~/.emacs.d/prelude-modules.el <<EOF
+  (require 'prelude-helm)
+  (require 'prelude-helm-everywhere)
+  (require 'prelude-go)
+EOF
+ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
 if [[ ! -x /usr/local/bin/npm ]]; then
     brew install node
@@ -53,8 +52,8 @@ yarn global add grunt-cli redis-dump rickshaw jquery bootstrap react underscore 
 
 ${_HERE}/install.bash
 
-rm -rf ~/.emacs.d
-mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
+#rm -rf ~/.emacs.d
+#mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 #/usr/local/bin/emacs --daemon
 
 ${_HERE}/go_clean.bash
