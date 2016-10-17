@@ -11,11 +11,14 @@ gem update
 gem install showoff exifr rethinkdb pry lunchy pygments.rb
 gem cleanup --quiet
 
-# TODO: check to make sure we're using the virtualenv python here
+# TODO: figure out how to check to make sure we're using the virtualenv python here
 easy_install-3.5 -U setuptools
 pip install -U pip
 pip install -U autopep8 virtualenv howdoi ramlfications pockyt
 pip freeze | cut -d= -f1 | xargs pip install -U
+
+pip3 install -U pip
+pip3 install gitsome
 
 cd ~/.oh-my-zsh
 git pull
