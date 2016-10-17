@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+_EMPLOYER="figma"
+
 # This makes Ctrl-S (forward-search-history) work.
 stty stop undef
 
@@ -244,6 +246,6 @@ if [ "`uname`" == "Linux" ]; then
 	  fi
 fi
 
-if [[ -f /Users/mblair/my_src/personal/flip_bash ]]; then
-    . /Users/mblair/my_src/personal/flip_bash
+if [[ -f /Users/mblair/my_src/private/${_EMPLOYER}_rc ]]; then
+    . /Users/mblair/my_src/private/${_EMPLOYER}_rc
 fi

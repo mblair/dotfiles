@@ -65,8 +65,8 @@ ln -sf ${_HERE}/zshrc ~/.zshrc
 mkdir -p ~/.gnupg
 ln -sf ${_HERE}/gpg.conf ~/.gnupg/
 
-if [[ -d ~/my_src/personal ]]; then
-    ~/my_src/personal/install.bash
+if [[ -d ~/my_src/private ]]; then
+    ~/my_src/private/install.bash
 fi
 
 git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
