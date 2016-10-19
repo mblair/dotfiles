@@ -96,8 +96,6 @@ cleanup() {
 		done
 }
 
-export NODE_PATH="/usr/local/lib/node_modules"
-
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 plugins=(git osx brew golang virtualenv tmux vagrant github)
@@ -108,6 +106,8 @@ plugins=(git osx brew golang virtualenv tmux vagrant github)
 source $ZSH/oh-my-zsh.sh
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export PATH="$HOME/.yarn-cache/.global/node_modules/.bin:$PATH"
 
 export PATH="$HOME/.multirust/toolchains/nightly/cargo/bin:${PATH}"
 
