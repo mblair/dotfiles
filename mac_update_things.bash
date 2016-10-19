@@ -31,7 +31,7 @@ brew update
 cd ~/external_src/prelude
 git clean -fdx
 git pull
-rm -rf ~/.emacs.d/
+rm -rf ~/.emacs.d
 ln -sf ~/external_src/prelude ~/.emacs.d
 cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
 cat >> ~/.emacs.d/prelude-modules.el <<EOF
