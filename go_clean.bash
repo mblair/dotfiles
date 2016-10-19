@@ -19,7 +19,7 @@ go get -u github.com/jstemmer/gotags
 go get -u github.com/newhook/go-symbols
 go get -u github.com/lukehoban/go-outline
 go get -u github.com/tpng/gopkgs
-go get -u github.com/sqs/goreturns
+#go get -u github.com/sqs/goreturns
 go get -u github.com/alecthomas/gometalinter
 go get -u github.com/motemen/go-pocket/...
 go get -u github.com/davecheney/httpstat
