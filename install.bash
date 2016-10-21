@@ -20,6 +20,8 @@ if [[ $(uname -s) == "Darwin" ]]; then
     if ! brew list -1 | grep wget; then
         brew install wget
     fi
+
+    cp /Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Versions/A/Resources/fonts/* $HOME/Library/Fonts/
 else
     apt-get -y install autojump silversearcher-ag git zsh emacs24-nox vim-nox htop curl wget tmux jq ruby python build-essential
 fi

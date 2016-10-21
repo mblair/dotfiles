@@ -8,5 +8,8 @@
 (global-set-key "\M-v" 'clipboard-yank)
 (global-set-key "\C-c c" 'comment-dwim)
 (set-face-attribute 'default nil :height 140)
+
+;; http://sourcefoundry.org/hack/
+(set-face-attribute 'default nil :family "Hack")
 (prelude-require-package 'planet-theme)
 (load-theme 'planet t)
