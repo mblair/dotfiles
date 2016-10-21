@@ -49,3 +49,18 @@ go get -u github.com/alecthomas/gometalinter
 go get -u github.com/motemen/go-pocket/...
 go get -u github.com/davecheney/httpstat
 gometalinter --install
+
+if [[ ${_unpushed_changes} == 1 ]]; then
+    mkdir -p "${_current_employer_gopath}"
+    cd "${_current_employer_gopath}"
+    for _repo in ${_dirty_repos[*]}; do
+        mv /tmp/"${_repo}" .
+    done
+fi
+
+if [[ ${#_to_clone[*]} -gt 0 ]]; then
+    for _url in ${_to_clone[*]}; do
+        cd "${_current_employer_gopath}"
+        git clone "${_url}"
+    done
+fi
