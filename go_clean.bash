@@ -3,7 +3,32 @@
 set -xueo pipefail
 
 export GOPATH="$HOME/gopath"
+
+_current_employer_github_org=figma
+_current_employer_gopath="${GOPATH}/src/github.com/${_current_employer_github_org}"
+_unpushed_changes=0
+_dirty_repos=()
+_to_clone=()
+
+if [[ -d "${_current_employer_gopath}" ]]; then
+    cd "${_current_employer_gopath}"
+    for _inner in ${_current_employer_gopath}/*; do
+        echo "${_inner}"
+        if [[ -d "${_inner}" ]]; then
+            cd "${_inner}"
+            if [[ $(git log --branches --not --remotes) != "" ]] || ! git diff --quiet HEAD || test -n "$(git ls-files --others)"; then
+                mv "${_inner}" /tmp
+                _dirty_repos+=$(basename ${_inner})
+                _unpushed_changes=1
+            else
+                _to_clone+=($(git remote -v show origin | grep Fetch | cut -d":" -f2- | tr -d '[:space:]'))
+            fi
+        fi
+    done
+fi
+
 rm -rf "$GOPATH"
+mkdir -p "${_current_employer_gopath}"
 
 cd
 go get -u github.com/nsf/gocode
@@ -19,7 +44,7 @@ go get -u github.com/jstemmer/gotags
 go get -u github.com/newhook/go-symbols
 go get -u github.com/lukehoban/go-outline
 go get -u github.com/tpng/gopkgs
-#go get -u github.com/sqs/goreturns
+go get -u github.com/sqs/goreturns
 go get -u github.com/alecthomas/gometalinter
 go get -u github.com/motemen/go-pocket/...
 go get -u github.com/davecheney/httpstat

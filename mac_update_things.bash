@@ -30,6 +30,7 @@ brew update
 
 cd ~/external_src/prelude
 git clean -fdx
+git checkout init.el
 git pull
 rm -rf ~/.emacs.d
 ln -sf ~/external_src/prelude ~/.emacs.d
@@ -59,7 +60,7 @@ ${_HERE}/install.bash
 
 ${_HERE}/go_clean.bash
 
-#${_HERE}/update_rust.bash
+${_HERE}/update_rust.bash
 
 if which vagrant; then
     vagrant version
