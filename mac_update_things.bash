@@ -14,7 +14,7 @@ gem cleanup --quiet
 # TODO: figure out how to check to make sure we're using the virtualenv python here
 easy_install-3.5 -U setuptools
 pip install -U pip
-pip install -U autopep8 virtualenv howdoi ramlfications pockyt
+pip install -U autopep8 virtualenv howdoi ramlfications pockyt proselint
 pip freeze | cut -d= -f1 | xargs pip install -U
 
 pip3 install -U pip
@@ -46,7 +46,7 @@ if [[ ! -x /usr/local/bin/npm ]]; then
     brew install node
 fi
 
-yarn global add grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 jsfmt eslint bower create-react-app parsimmon exif standard standard-format
+npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 jsfmt eslint bower create-react-app parsimmon exif standard standard-format write-good
 
 #if [[ ! -x /usr/local/bin/emacs ]]; then
 #  brew install --with-cocoa emacs
@@ -66,7 +66,7 @@ if which vagrant; then
     vagrant version
 fi
 
-brew install autojump bash cloc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust node python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn
+brew install autojump bash cloc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust node python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn zsh-completions
 brew install curl --with-nghttp2
 
 if [[ -f ~/my_src/private/${_EMPLOYER}_updater.bash ]]; then

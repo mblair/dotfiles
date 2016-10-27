@@ -2,7 +2,9 @@
 
 set -xueo pipefail
 
-export GOPATH="$HOME/gopath"
+if [[ -z ${GOPATH:-} ]]; then
+    export GOPATH="$HOME/gopath"
+fi
 
 _current_employer_github_org=figma
 _current_employer_gopath="${GOPATH}/src/github.com/${_current_employer_github_org}"
@@ -45,9 +47,11 @@ go get -u github.com/newhook/go-symbols
 go get -u github.com/lukehoban/go-outline
 go get -u github.com/tpng/gopkgs
 go get -u github.com/sqs/goreturns
-go get -u github.com/alecthomas/gometalinter
 go get -u github.com/motemen/go-pocket/...
 go get -u github.com/davecheney/httpstat
+
+# in case i missed any
+go get -u github.com/alecthomas/gometalinter
 gometalinter --install
 
 if [[ ${_unpushed_changes} == 1 ]]; then
