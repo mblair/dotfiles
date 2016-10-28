@@ -4,7 +4,7 @@ _HERE=$(cd $(dirname "$0"); pwd)
 
 set -xueo pipefail
 
-_HUB_VER="2.2.8"
+_HUB_VER="2.2.9"
 _GO_VER="1.7.3"
 
 if [[ $(uname -s) == "Darwin" ]]; then
@@ -101,6 +101,7 @@ EOF
 
 if [[ $(uname -s) == "Darwin" ]]; then
     ln -sf ${_HERE}/osx ~/.osx
+    ln -sf ${_HERE}/hyper.js ~/.hyper.js
 fi
 
 mkdir -p ~/.irssi

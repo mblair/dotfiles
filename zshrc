@@ -4,10 +4,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
     _EMACS=/usr/local/bin/emacs
     _EMACS_C="${_EMACS}client"
 
-    if [[ -f "/Users/matt/venv/bin/activate" ]]; then
-        source /Users/matt/venv/bin/activate
-        export PATH="/Users/matt/venv/bin:$PATH"
-    fi
 else
     _EMACS=/usr/bin/emacs
     _EMACS_C="${_EMACS}client"
@@ -48,11 +44,16 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	export PATH="/usr/texbin:$PATH"
     fi
 
-    export GOPATH="$HOME/gopath"
+    export GOPATH="$HOME/go"
     export PATH="$PATH:$GOPATH/bin"
 
     # So we can find Homebrew.
     export PATH="/usr/local/bin:$PATH"
+
+    if [[ -f "/Users/matt/venv/bin/activate" ]]; then
+        source /Users/matt/venv/bin/activate
+        export PATH="/Users/matt/venv/bin:$PATH"
+    fi
 
     export PATH="$(brew --prefix)/sbin:$PATH"
 

@@ -3,7 +3,7 @@
 set -xueo pipefail
 
 if [[ -z ${GOPATH:-} ]]; then
-    export GOPATH="$HOME/gopath"
+    export GOPATH="$HOME/go"
 fi
 
 _current_employer_github_org=figma
@@ -49,6 +49,8 @@ go get -u github.com/tpng/gopkgs
 go get -u github.com/sqs/goreturns
 go get -u github.com/motemen/go-pocket/...
 go get -u github.com/davecheney/httpstat
+go get -u github.com/axw/gocov/gocov
+go get -u gopkg.in/matm/v1/gocov-html
 
 # in case i missed any
 go get -u github.com/alecthomas/gometalinter
