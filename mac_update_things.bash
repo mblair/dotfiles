@@ -60,7 +60,7 @@ ${_HERE}/install.bash
 
 ${_HERE}/go_clean.bash
 
-${_HERE}/update_rust.bash
+#${_HERE}/update_rust.bash
 
 if which vagrant; then
     vagrant version
