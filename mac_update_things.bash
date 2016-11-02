@@ -8,7 +8,7 @@ _HERE=$(cd $(dirname $0); pwd)
 
 gem update --system
 gem update
-gem install showoff exifr rethinkdb pry lunchy pygments.rb
+gem install showoff exifr rethinkdb pry lunchy pygments.rb lolcat
 gem cleanup --quiet
 
 # TODO: figure out how to check to make sure we're using the virtualenv python here
@@ -66,7 +66,7 @@ if which vagrant; then
     vagrant version
 fi
 
-brew install autojump bash cloc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust node python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn zsh-completions wifi-password
+brew install autojump bash cloc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust node python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn zsh-completions wifi-password cowsay
 brew install curl --with-nghttp2
 
 if [[ -f ~/my_src/private/${_EMPLOYER}_updater.bash ]]; then
