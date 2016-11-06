@@ -15,9 +15,8 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git osx github zsh-completions virtualenv)
+plugins=(git osx github virtualenv)
 fpath=(/usr/local/share/zsh-completions $fpath)
-
 source $ZSH/oh-my-zsh.sh
 
 alias es="${_EMACS} --daemon"
