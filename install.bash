@@ -64,7 +64,6 @@ else
 fi
 
 ln -sf ${_HERE}/bashrc ${_BASH_RC}
-ln -sf ${_HERE}/zshrc ~/.zshrc
 mkdir -p ~/.gnupg
 ln -sf ${_HERE}/gpg.conf ~/.gnupg/
 
@@ -73,6 +72,8 @@ if [[ -d ~/my_src/private ]]; then
 fi
 
 git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
+ln -sf ${_HERE}/zshrc ~/.zshrc
+#ln -sf ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 ln -sf ${_HERE}/gitconfig ~/.gitconfig
 ln -sf ${_HERE}/gitignore_global ~/.gitignore_global
