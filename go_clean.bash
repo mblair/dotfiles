@@ -51,6 +51,7 @@ go get -u github.com/motemen/go-pocket/...
 go get -u github.com/davecheney/httpstat
 go get -u github.com/axw/gocov/gocov
 go get -u gopkg.in/matm/v1/gocov-html
+go get -u github.com/mvdan/sh/cmd/shfmt
 
 # in case i missed any
 go get -u github.com/alecthomas/gometalinter
