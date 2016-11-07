@@ -27,7 +27,6 @@ alias ekk="kill -9 `ps -Ao 'pid,command' | grep '[e]macs' | awk '{print $1}'`"
 #alias eclean="rm -r ~/.emacs.d; (cd ~/external_src/prelude && git clean -fdx && git pull); ln -s ~/external_src/prelude ~/.emacs.d"
 
 if [[ $(uname -s) == "Darwin" ]]; then
-    alias v="vagrant"
     export VISUAL="${_EMACS_C} -c -n"
     alias E="${_EMACS_C} -c -n"
     #alias E='open -a /Applications/Emacs.app'

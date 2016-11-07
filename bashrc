@@ -118,7 +118,6 @@ alias f='find . | grep -i' # useful for finding files within the
 # current directory.
 alias p='ping google.com'
 alias m='make'
-alias v='vagrant'
 alias c='clear'
 alias x='clear' # what is this X you speak of?
 
