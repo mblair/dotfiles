@@ -8,7 +8,7 @@ _HERE=$(cd $(dirname $0); pwd)
 
 gem update --system
 gem update
-gem install showoff exifr rethinkdb pry lunchy pygments.rb lolcat bundler
+gem install showoff exifr rethinkdb pry pygments.rb lolcat bundler
 gem cleanup --quiet
 
 # TODO: figure out how to check to make sure we're using the virtualenv python here
