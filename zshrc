@@ -122,3 +122,5 @@ alias gpgclean='killall -9 pinentry gpg-agent'
 gif() {
     ffmpeg -i $1 -pix_fmt rgb24 -r 20 -f gif - | gifsicle --optimize=3 --delay=3 > $2
 }
+
+export RUST_SRC_PATH=~/external_src/rust/src
