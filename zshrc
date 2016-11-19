@@ -97,9 +97,7 @@ cleanup() {
 }
 
 export PATH="/usr/local/heroku/bin:$PATH"
-
-export NODE_PATH="/usr/local/lib/node_modules"
-
+export PATH="$HOME/.config/yarn/global/node_modules/.bin:${PATH}"
 export PATH="$HOME/.multirust/toolchains/nightly/cargo/bin:${PATH}"
 
 export GPG_TTY="$(tty)"
