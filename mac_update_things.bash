@@ -62,7 +62,7 @@ ${_HERE}/go_clean.bash
 
 ${_HERE}/update_rust.bash
 
-brew install autojump bash loc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust python python3 rbenv s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn zsh-completions wifi-password cowsay node
+brew install autojump bash loc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn zsh-completions wifi-password cowsay node
 brew install curl --with-nghttp2
 
 if [[ -f ~/my_src/private/${_EMPLOYER}_updater.bash ]]; then
