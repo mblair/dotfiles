@@ -71,4 +71,5 @@ fi
 
 ~/Dropbox/experiments/update_external.sh
 
+brew prune
 brew outdated

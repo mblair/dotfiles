@@ -46,6 +46,7 @@ go get -u github.com/axw/gocov/gocov
 go get -u gopkg.in/matm/v1/gocov-html
 go get -u github.com/mvdan/sh/cmd/shfmt
 go get -u github.com/shurcooL/markdownfmt
+go get -u honnef.co/go/staticcheck/cmd/staticcheck
 
 # in case i missed any
 go get -u github.com/alecthomas/gometalinter
