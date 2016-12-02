@@ -41,7 +41,7 @@ go get -u github.com/govend/govend
 go get -u golang.org/x/tools/cmd/{cover,goimports,gorename,guru}
 go get -u github.com/ChimeraCoder/gojson/gojson
 go get -u github.com/motemen/go-pocket/...
-go get -u github.com/davecheney/httpstat
+#go get -u github.com/davecheney/httpstat
 go get -u github.com/axw/gocov/gocov
 go get -u gopkg.in/matm/v1/gocov-html
 go get -u github.com/mvdan/sh/cmd/shfmt
