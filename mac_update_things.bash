@@ -58,6 +58,8 @@ ${_HERE}/install.bash
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 #/usr/local/bin/emacs --daemon
 
+brew install --devel go
+
 ${_HERE}/go_clean.bash
 
 ${_HERE}/update_rust.bash
