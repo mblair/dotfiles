@@ -8,7 +8,7 @@ _HERE=$(cd $(dirname $0); pwd)
 
 gem update --system
 gem update
-gem install showoff exifr rethinkdb pry pygments.rb lolcat bundler
+gem install showoff exifr pry pygments.rb lolcat bundler
 gem cleanup --quiet
 
 # TODO: figure out how to check to make sure we're using the virtualenv python here
@@ -58,15 +58,14 @@ ${_HERE}/install.bash
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 #/usr/local/bin/emacs --daemon
 
-brew install --devel go
+brew install autojump bash loc ffmpeg git git-extras gnu-sed gnupg irssi jq macvim multirust python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn zsh-completions wifi-password cowsay node
+brew install --devel go hub
+brew install curl --with-nghttp2
+brew cask install hab hyper kap emacs
 
 ${_HERE}/go_clean.bash
 
 ${_HERE}/update_rust.bash
-
-brew install autojump bash loc ffmpeg git git-extras gnu-sed gnupg hub irssi jq macvim multirust python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn zsh-completions wifi-password cowsay node
-brew install curl --with-nghttp2
-brew cask install hab hyper kap emacs
 
 if [[ -f ~/my_src/private/${_EMPLOYER}_updater.bash ]]; then
     . ~/my_src/private/${_EMPLOYER}_updater.bash
