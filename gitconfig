@@ -50,3 +50,5 @@
 	gpgsign = true
 [diff]
     compactionHeuristic = true
+[fetch]
+	prune = true

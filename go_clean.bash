@@ -57,7 +57,10 @@ if [[ ${_unpushed_changes} == 1 ]]; then
     mkdir -p "${_current_employer_gopath}"
     cd "${_current_employer_gopath}"
     for _repo in ${_dirty_repos[*]}; do
+        cd "${_current_employer_gopath}"
         mv /tmp/"${_repo}" .
+        cd ${_repo}
+        git remote prune origin
     done
 fi
 
