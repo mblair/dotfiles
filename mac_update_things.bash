@@ -4,7 +4,10 @@ set -xueo pipefail
 
 _EMPLOYER="figma"
 
-_HERE=$(cd $(dirname $0); pwd)
+_HERE=$(
+	cd $(dirname $0)
+	pwd
+)
 
 gem update --system
 gem update
@@ -35,7 +38,7 @@ git pull
 rm -rf ~/.emacs.d
 ln -sf ~/external_src/prelude ~/.emacs.d
 cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
-cat >> ~/.emacs.d/prelude-modules.el <<EOF
+cat >>~/.emacs.d/prelude-modules.el <<EOF
   (require 'prelude-helm)
   (require 'prelude-helm-everywhere)
   (require 'prelude-go)
@@ -43,7 +46,7 @@ EOF
 ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
 if [[ ! -x /usr/local/bin/npm ]]; then
-    brew install node
+	brew install node
 fi
 
 yarn global add grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 jsfmt eslint bower create-react-app parsimmon exif standard standard-format write-good fast-cli
@@ -69,7 +72,7 @@ ${_HERE}/go_clean.bash
 ${_HERE}/update_rust.bash
 
 if [[ -f ~/my_src/private/${_EMPLOYER}_updater.bash ]]; then
-    . ~/my_src/private/${_EMPLOYER}_updater.bash
+	. ~/my_src/private/${_EMPLOYER}_updater.bash
 fi
 
 ~/Dropbox/experiments/update_external.sh

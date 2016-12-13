@@ -3,7 +3,7 @@
 set -xueo pipefail
 
 if [[ -z ${GOPATH:-} ]]; then
-    export GOPATH="$HOME/go"
+	export GOPATH="$HOME/go"
 fi
 
 _current_employer_github_org=figma
@@ -13,20 +13,20 @@ _dirty_repos=()
 _to_clone=()
 
 if [[ -d "${_current_employer_gopath}" ]]; then
-    cd "${_current_employer_gopath}"
-    for _inner in ${_current_employer_gopath}/*; do
-        echo "${_inner}"
-        if [[ -d "${_inner}" ]]; then
-            cd "${_inner}"
-            if [[ $(git log --branches --not --remotes) != "" ]] || ! git diff --quiet HEAD || test -n "$(git ls-files --others)"; then
-                mv "${_inner}" /tmp
-                _dirty_repos+=$(basename ${_inner})
-                _unpushed_changes=1
-            else
-                _to_clone+=($(git remote -v show origin | grep Fetch | cut -d":" -f2- | tr -d '[:space:]'))
-            fi
-        fi
-    done
+	cd "${_current_employer_gopath}"
+	for _inner in ${_current_employer_gopath}/*; do
+		echo "${_inner}"
+		if [[ -d "${_inner}" ]]; then
+			cd "${_inner}"
+			if [[ $(git log --branches --not --remotes) != "" ]] || ! git diff --quiet HEAD || test -n "$(git ls-files --others)"; then
+				mv "${_inner}" /tmp
+				_dirty_repos+=$(basename ${_inner})
+				_unpushed_changes=1
+			else
+				_to_clone+=($(git remote -v show origin | grep Fetch | cut -d":" -f2- | tr -d '[:space:]'))
+			fi
+		fi
+	done
 fi
 
 rm -rf "$GOPATH"
@@ -53,19 +53,19 @@ go get -u github.com/alecthomas/gometalinter
 gometalinter --install
 
 if [[ ${_unpushed_changes} == 1 ]]; then
-    mkdir -p "${_current_employer_gopath}"
-    cd "${_current_employer_gopath}"
-    for _repo in ${_dirty_repos[*]}; do
-        cd "${_current_employer_gopath}"
-        mv /tmp/"${_repo}" .
-        cd ${_repo}
-        git remote prune origin
-    done
+	mkdir -p "${_current_employer_gopath}"
+	cd "${_current_employer_gopath}"
+	for _repo in ${_dirty_repos[*]}; do
+		cd "${_current_employer_gopath}"
+		mv /tmp/"${_repo}" .
+		cd ${_repo}
+		git remote prune origin
+	done
 fi
 
 if [[ ${#_to_clone[*]} -gt 0 ]]; then
-    for _url in ${_to_clone[*]}; do
-        cd "${_current_employer_gopath}"
-        git clone "${_url}"
-    done
+	for _url in ${_to_clone[*]}; do
+		cd "${_current_employer_gopath}"
+		git clone "${_url}"
+	done
 fi
