@@ -62,7 +62,8 @@ ${_HERE}/install.bash
 #/usr/local/bin/emacs --daemon
 
 brew install autojump bash loc ffmpeg git git-extras gnu-sed gnupg irssi jq macvim multirust python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn zsh-completions wifi-password cowsay node folly jid ripgrep
-brew install --devel go hub
+brew install --devel go
+brew install --HEAD hub
 brew install --with-toolchain llvm
 brew install curl --with-nghttp2
 brew cask install hab hyper kap emacs
