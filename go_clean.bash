@@ -68,3 +68,11 @@ go get -u github.com/mvdan/sh/cmd/shfmt
 go get -u github.com/shurcooL/markdownfmt
 go get -u honnef.co/go/staticcheck/cmd/staticcheck
 go get -u honnef.co/go/unused/cmd/unused
+
+# vs code wants these
+go get -u github.com/zmb3/gogetdoc
+go get -u github.com/lukehoban/go-outline
+go get -u sourcegraph.com/sqs/goreturns
+go get -u github.com/tpng/gopkgs
+go get -u github.com/newhook/go-symbols
+go get -u github.com/cweill/gotests/...

@@ -67,6 +67,7 @@ brew install --HEAD hub
 brew install --with-toolchain llvm
 brew install curl --with-nghttp2
 brew cask install hab hyper kap emacs
+brew install go-delve/delve/delve
 
 ${_HERE}/go_clean.bash
 
