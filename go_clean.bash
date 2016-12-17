@@ -32,26 +32,6 @@ fi
 rm -rf "$GOPATH"
 mkdir -p "${_current_employer_gopath}"
 
-cd
-go get -u github.com/nsf/gocode
-go get -u github.com/rogpeppe/godef
-go get -u github.com/golang/lint/golint
-go get -u github.com/kisielk/errcheck
-go get -u github.com/govend/govend
-go get -u golang.org/x/tools/cmd/{cover,goimports,gorename,guru}
-go get -u github.com/ChimeraCoder/gojson/gojson
-go get -u github.com/motemen/go-pocket/...
-#go get -u github.com/davecheney/httpstat
-go get -u github.com/axw/gocov/gocov
-go get -u gopkg.in/matm/v1/gocov-html
-go get -u github.com/mvdan/sh/cmd/shfmt
-go get -u github.com/shurcooL/markdownfmt
-go get -u honnef.co/go/staticcheck/cmd/staticcheck
-
-# in case i missed any
-go get -u github.com/alecthomas/gometalinter
-gometalinter --install
-
 if [[ ${_unpushed_changes} == 1 ]]; then
 	mkdir -p "${_current_employer_gopath}"
 	cd "${_current_employer_gopath}"
@@ -69,3 +49,22 @@ if [[ ${#_to_clone[*]} -gt 0 ]]; then
 		git clone "${_url}"
 	done
 fi
+
+go get -u github.com/alecthomas/gometalinter
+gometalinter --install
+
+go get -u github.com/nsf/gocode
+go get -u github.com/rogpeppe/godef
+go get -u github.com/golang/lint/golint
+go get -u github.com/kisielk/errcheck
+go get -u github.com/govend/govend
+go get -u golang.org/x/tools/cmd/{cover,goimports,gorename,guru}
+go get -u github.com/ChimeraCoder/gojson/gojson
+go get -u github.com/motemen/go-pocket/...
+#go get -u github.com/davecheney/httpstat
+go get -u github.com/axw/gocov/gocov
+go get -u gopkg.in/matm/v1/gocov-html
+go get -u github.com/mvdan/sh/cmd/shfmt
+go get -u github.com/shurcooL/markdownfmt
+go get -u honnef.co/go/staticcheck/cmd/staticcheck
+go get -u honnef.co/go/unused/cmd/unused
