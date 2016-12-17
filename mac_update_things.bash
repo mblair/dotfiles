@@ -76,7 +76,7 @@ if [[ -f ~/my_src/private/${_EMPLOYER}_updater.bash ]]; then
 	. ~/my_src/private/${_EMPLOYER}_updater.bash
 fi
 
-~/Dropbox/experiments/update_external.sh
+~/Dropbox\ \(Personal\)/experiments/update_external.sh
 
 brew prune
 brew outdated

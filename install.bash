@@ -25,7 +25,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	fi
 
 	cp /Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Versions/A/Resources/fonts/* $HOME/Library/Fonts/
-	cp $HOME/Dropbox/fonts/Hack-v*/* $HOME/Library/Fonts/
+    cp $HOME/Dropbox\ \(Personal\)/fonts/Hack-v*/* $HOME/Library/Fonts/
 else
 	apt-get -y install autojump silversearcher-ag git zsh emacs24-nox vim-nox htop curl wget tmux jq ruby python build-essential
 fi
