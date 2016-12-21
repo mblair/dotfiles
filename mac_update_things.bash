@@ -55,7 +55,7 @@ yarn global add grunt-cli redis-dump rickshaw jquery bootstrap react underscore 
 #  brew install --with-cocoa emacs
 #fi
 
-${_HERE}/install.bash
+${_HERE}/install.sh
 
 #rm -rf ~/.emacs.d
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d

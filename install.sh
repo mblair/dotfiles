@@ -7,8 +7,8 @@ _HERE=$(
 
 set -xueo pipefail
 
-_HUB_VER="2.2.9"
-_GO_VER="1.7.3"
+_HUB_VER="2.3.0-pre8"
+_GO_VER="1.8beta2"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	_PREFIX=~/external_src
@@ -25,14 +25,13 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	fi
 
 	cp /Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Versions/A/Resources/fonts/* $HOME/Library/Fonts/
-    cp $HOME/Dropbox\ \(Personal\)/fonts/Hack-v*/* $HOME/Library/Fonts/
+	cp $HOME/Dropbox\ \(Personal\)/fonts/Hack-v*/* $HOME/Library/Fonts/
 else
+	curl -sSL https://get.docker.com/ | sh
+	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | sudo bash
+	apt-get update
+	apt-get -y dist-upgrade
 	apt-get -y install autojump silversearcher-ag git zsh emacs24-nox vim-nox htop curl wget tmux jq ruby python build-essential
-fi
-
-if [[ ! -d "${_PREFIX}/gocode/.git" ]]; then
-	cd ${_PREFIX}
-	git clone https://github.com/nsf/gocode
 fi
 
 if [[ ! -d "${_PREFIX}/go-mode.el/.git" ]]; then
@@ -131,5 +130,5 @@ if [[ $(uname -s) == "Linux" ]]; then
 		rm godeb-amd64.tar.gz
 	fi
 
-	cp /usr/share/zoneinfo/UTC /etc/localtime
+	cp /usr/share/zoneinfo/UTC /etc/localtime || true
 fi
