@@ -130,5 +130,7 @@ if [[ $(uname -s) == "Linux" ]]; then
 		rm godeb-amd64.tar.gz
 	fi
 
+    curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
+
 	cp /usr/share/zoneinfo/UTC /etc/localtime || true
 fi
