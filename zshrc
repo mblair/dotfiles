@@ -95,7 +95,6 @@ cleanup() {
 
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:${PATH}"
-export PATH="$HOME/.multirust/toolchains/nightly/cargo/bin:${PATH}"
 
 export GPG_TTY="$(tty)"
 
@@ -121,3 +120,7 @@ gif() {
 }
 
 export RUST_SRC_PATH=~/external_src/rust/src
+
+if [[ -d $HOME/.cargo/bin ]]; then
+    export PATH=$PATH:$HOME/.cargo/bin
+fi

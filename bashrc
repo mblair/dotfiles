@@ -253,3 +253,7 @@ fi
 if [[ -f /Users/mblair/my_src/private/${_EMPLOYER}_rc ]]; then
 	. /Users/mblair/my_src/private/${_EMPLOYER}_rc
 fi
+
+if [[ -d $HOME/.cargo/bin ]]; then
+    export PATH=$PATH:$HOME/.cargo/bin
+fi

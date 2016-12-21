@@ -70,7 +70,7 @@ mkdir -p ~/.gnupg
 ln -sf ${_HERE}/gpg.conf ~/.gnupg/
 
 if [[ -d ~/my_src/private ]]; then
-	~/my_src/private/install.bash
+	~/my_src/private/install.sh
 fi
 
 git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
@@ -130,7 +130,7 @@ if [[ $(uname -s) == "Linux" ]]; then
 		rm godeb-amd64.tar.gz
 	fi
 
-    curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
-
 	cp /usr/share/zoneinfo/UTC /etc/localtime || true
 fi
+
+curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v

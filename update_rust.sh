@@ -2,8 +2,7 @@
 
 set -xueo pipefail
 
-multirust update nightly
-multirust default nightly
+rustup update
 
 # for _pkg in racer rustfmt; do
 #     if which ${_pkg}; then

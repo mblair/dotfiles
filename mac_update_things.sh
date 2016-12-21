@@ -61,7 +61,7 @@ ${_HERE}/install.sh
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 #/usr/local/bin/emacs --daemon
 
-brew install autojump bash loc ffmpeg git git-extras gnu-sed gnupg irssi jq macvim multirust python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn zsh-completions wifi-password cowsay node folly jid ripgrep ruby unrar mtr
+brew install autojump bash loc ffmpeg git git-extras gnu-sed gnupg irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn zsh-completions wifi-password cowsay node folly jid ripgrep ruby unrar mtr
 brew install --devel go
 brew install --HEAD hub
 brew install --with-toolchain llvm
@@ -69,12 +69,12 @@ brew install curl --with-nghttp2
 brew cask install hab hyper kap emacs
 brew install go-delve/delve/delve
 
-${_HERE}/go_clean.bash
+${_HERE}/go_clean.sh
 
-${_HERE}/update_rust.bash
+${_HERE}/update_rust.sh
 
-if [[ -f ~/my_src/private/${_EMPLOYER}_updater.bash ]]; then
-	. ~/my_src/private/${_EMPLOYER}_updater.bash
+if [[ -f ~/my_src/private/${_EMPLOYER}_updater.sh ]]; then
+	. ~/my_src/private/${_EMPLOYER}_updater.sh
 fi
 
 ~/Dropbox\ \(Personal\)/experiments/update_external.sh
