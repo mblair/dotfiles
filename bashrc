@@ -86,9 +86,7 @@ update_prompt() {
 	fi
 
 	# On a Mac (read: my workstation), just show the return value and working directory.
-	if [[ $(uname -s) == "Darwin" ]]; then
-		PS1="${bldblu}[${txtrst}\w${bldblu}]"
-	else
+	if [[ $(uname -s) == "Linux" ]]; then
 		# On Linux, show the user and hostname too.
 		PS1="${_color}\u${bldblu}@${_color}\h "
 		PS1="${PS1}${bldblu}[${txtrst}\w${bldblu}]"
@@ -106,15 +104,14 @@ update_prompt() {
 
 PROMPT_COMMAND=update_prompt
 
-alias :w='echo "idiot"'
+alias :w='echo "lol"'
 
 #http://www.debianadmin.com/pv-pipe-viewer-shell-pipeline-element-to-meter-data-passing-through.html/comment-page-1#comment-3739
 alias rscp='rsync -aP --no-whole-file --inplace'
 alias rsmv='rscp --remove-source-files'
 
 alias less='less -N'       # show line numbers when I invoke `less` myself, but not for `man`.
-alias f='find . | grep -i' # useful for finding files within the
-# current directory.
+alias f='find . | grep -i' # useful for finding files within the current directory.
 alias p='ping google.com'
 alias m='make'
 alias c='clear'
@@ -140,18 +137,8 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 # For gitolite.
 export PATH="$HOME/bin:$PATH"
 
-export NODE_PATH="/usr/local/lib/node_modules"
-export GOPATH="$HOME/gopath"
+export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
-
-if [[ $(uname -s) == "Darwin" ]]; then
-	_EMACS="$(brew --prefix)/bin/emacs"
-	_EMACS_C="${_EMACS}client"
-else
-	_EMACS=/usr/bin/emacs
-	_EMACS_C="${_EMACS}client"
-fi
-export EDITOR='emacsclient -ct'
 
 if [[ -f ~/.bash_profile ]]; then
 	_HERE=$(
@@ -165,61 +152,7 @@ elif [[ -f ~/.bashrc ]]; then
 	)
 fi
 
-alias es="${_EMACS} --daemon"
-alias ek="${_EMACS_C} --eval \"(progn (setq kill-emacs-hook 'nil) (kill-emacs))\""
-alias eclean="rm -rf ~/.emacs.d; mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d/"
-alias E="${_EMACS_C} -ct"
-
-if [ "$(uname)" == "Darwin" ]; then
-	export VISUAL="${_EMACS_C} -c -n"
-	alias E="${_EMACS_C} -c -n"
-
-	export JAVA_HOME="$(/usr/libexec/java_home)"
-
-	if [ -f "$(brew --prefix)/Library/Contributions/brew_bash_completion.sh" ]; then
-		source $(brew --prefix)/Library/Contributions/brew_bash_completion.sh
-	fi
-
-	if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-		source $(brew --prefix)/etc/bash_completion
-	fi
-
-	# Put Homebrew stuff before Apple's stuff.
-	export PATH="$(brew --prefix)/sbin:$(brew --prefix)/bin:$PATH"
-
-	# rbenv Ruby.
-	if which rbenv >/dev/null; then eval "$(rbenv init -)"; fi
-
-	alias g="cd $(ruby -r rubygems -e 'p Gem.path.select { |p| File.exists?(p) }.first')/gems"
-
-	# Node binaries.
-	export PATH="/usr/local/share/npm/bin:$PATH"
-
-	if [ -d "$HOME/.cabal/bin" ]; then
-		export PATH="$HOME/.cabal/bin:$PATH"
-	fi
-
-	# http://tug.org/mactex/faq/
-	if [ -d "/usr/texbin" ]; then
-		export PATH="/usr/texbin:$PATH"
-	fi
-
-	# https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
-	export PATH="$(brew --prefix)/share/python:$PATH"
-
-	if [[ -f "/Users/mblair/venv/bin/activate" ]]; then
-		source /Users/mblair/venv/bin/activate
-		export PATH="/Users/mblair/venv/bin:$PATH"
-	fi
-
-	# Colors + slash after directory names.
-	alias ls='ls -pG'
-
-	# Document this.
-	export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-fi
-
-if [ "$(uname)" == "Linux" ]; then
+if [[ "$(uname)" == "Linux" ]]; then
 	PAGER=less
 
 	# LESS man page colors
@@ -231,15 +164,8 @@ if [ "$(uname)" == "Linux" ]; then
 	export LESS_TERMCAP_ue=$'\E[0m'
 	export LESS_TERMCAP_us=$'\E[01;32m'
 
-	if [ -f /etc/bash_completion ]; then
+	if [[ -f /etc/bash_completion ]]; then
 		. /etc/bash_completion
-	fi
-
-	# Only source this if we installed Git from source. If we
-	# didn't, it's installed already.
-	# TODO: Put this file somewhere else.
-	if [[ -f ~/.git-completion.bash ]]; then
-		. ~/.git-completion.bash
 	fi
 
 	alias ls='ls --color=auto -p --group-directories-first'
@@ -250,10 +176,10 @@ if [ "$(uname)" == "Linux" ]; then
 	fi
 fi
 
-if [[ -f /Users/mblair/my_src/private/${_EMPLOYER}_rc ]]; then
-	. /Users/mblair/my_src/private/${_EMPLOYER}_rc
+if [[ -f $HOME/my_src/private/${_EMPLOYER}_rc ]]; then
+	. $HOME/my_src/private/${_EMPLOYER}_rc
 fi
 
 if [[ -d $HOME/.cargo/bin ]]; then
-    export PATH=$PATH:$HOME/.cargo/bin
+	export PATH=$PATH:$HOME/.cargo/bin
 fi

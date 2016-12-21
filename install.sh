@@ -11,15 +11,6 @@ _HUB_VER="2.3.0-pre8"
 _GO_VER="1.8beta2"
 
 if [[ $(uname -s) == "Darwin" ]]; then
-	_PREFIX=~/external_src
-	mkdir -p ${_PREFIX}
-else
-	_PREFIX=/mnt/external/clones
-fi
-
-mkdir -p ${_PREFIX}
-
-if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list -1 | grep wget; then
 		brew install wget
 	fi
@@ -28,35 +19,10 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	cp $HOME/Dropbox\ \(Personal\)/fonts/Hack-v*/* $HOME/Library/Fonts/
 else
 	curl -sSL https://get.docker.com/ | sh
-	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | sudo bash
+	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
 	apt-get update
 	apt-get -y dist-upgrade
 	apt-get -y install autojump silversearcher-ag git zsh emacs24-nox vim-nox htop curl wget tmux jq ruby python build-essential
-fi
-
-if [[ ! -d "${_PREFIX}/go-mode.el/.git" ]]; then
-	cd ${_PREFIX}
-	git clone https://github.com/dominikh/go-mode.el
-fi
-
-if [[ ! -d "${_PREFIX}/prelude/.git" ]]; then
-	cd ${_PREFIX}
-	git clone https://github.com/bbatsov/prelude
-fi
-
-if [[ ! -d "${_PREFIX}/emacs-color-themes/.git" ]]; then
-	cd ${_PREFIX}
-	git clone https://github.com/owainlewis/emacs-color-themes
-fi
-
-if [[ ! -d "${_PREFIX}/emacs-deep-thought-theme/.git" ]]; then
-	cd ${_PREFIX}
-	git clone https://github.com/emacsfodder/emacs-deep-thought-theme
-fi
-
-if [[ ! -d "${_PREFIX}/ocean-terminal/.git" ]]; then
-	cd ${_PREFIX}
-	git clone https://github.com/mdo/ocean-terminal
 fi
 
 if [[ $(uname -s) == "Darwin" ]]; then
@@ -75,7 +41,6 @@ fi
 
 git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
 ln -sf ${_HERE}/zshrc ~/.zshrc
-#ln -sf ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 ln -sf ${_HERE}/gitconfig ~/.gitconfig
 ln -sf ${_HERE}/gitignore_global ~/.gitignore_global
@@ -107,13 +72,10 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	ln -sf ${_HERE}/hyper.js ~/.hyper.js
 fi
 
-mkdir -p ~/.irssi
-ln -sf ${_HERE}/irssi_config ~/.irssi/config
-
-mkdir -p ~/.lein
-ln -sf ${_HERE}/lein_profiles.clj ~/.lein/profiles.clj
-
 if [[ $(uname -s) == "Linux" ]]; then
+	mkdir -p ~/.irssi
+	ln -sf ${_HERE}/irssi_config ~/.irssi/config
+
 	cd
 	wget "https://github.com/github/hub/releases/download/v${_HUB_VER}/hub-linux-amd64-${_HUB_VER}.tgz"
 	tar xf "hub-linux-amd64-${_HUB_VER}.tgz"
@@ -127,13 +89,13 @@ if [[ $(uname -s) == "Linux" ]]; then
 		tar xf godeb-amd64.tar.gz
 		mv godeb /usr/local/bin
 		godeb install ${_GO_VER}
-		rm godeb-amd64.tar.gz
+		rm godeb-amd64.tar.gz go*.deb
 	fi
 
 	cp /usr/share/zoneinfo/UTC /etc/localtime || true
 
-    systemctl disable snapd
-    systemctl stop snapd
+	systemctl disable snapd
+	systemctl stop snapd
 fi
 
 curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
