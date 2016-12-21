@@ -55,10 +55,8 @@ gometalinter --install
 
 go get -u github.com/nsf/gocode
 go get -u github.com/rogpeppe/godef
-go get -u github.com/golang/lint/golint
-go get -u github.com/kisielk/errcheck
 go get -u github.com/govend/govend
-go get -u golang.org/x/tools/cmd/{cover,goimports,gorename,guru}
+go get -u golang.org/x/tools/cmd/{cover,gorename,guru}
 go get -u github.com/ChimeraCoder/gojson/gojson
 go get -u github.com/motemen/go-pocket/...
 #go get -u github.com/davecheney/httpstat
@@ -66,8 +64,6 @@ go get -u github.com/axw/gocov/gocov
 go get -u gopkg.in/matm/v1/gocov-html
 go get -u github.com/mvdan/sh/cmd/shfmt
 go get -u github.com/shurcooL/markdownfmt
-go get -u honnef.co/go/staticcheck/cmd/staticcheck
-go get -u honnef.co/go/unused/cmd/unused
 
 # vs code wants these
 go get -u github.com/zmb3/gogetdoc
