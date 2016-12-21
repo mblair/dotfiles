@@ -131,6 +131,9 @@ if [[ $(uname -s) == "Linux" ]]; then
 	fi
 
 	cp /usr/share/zoneinfo/UTC /etc/localtime || true
+
+    systemctl disable snapd
+    systemctl stop snapd
 fi
 
 curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
