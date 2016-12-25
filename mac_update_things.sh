@@ -15,13 +15,10 @@ gem install showoff exifr pry pygments.rb lolcat bundler
 gem cleanup --quiet
 
 # TODO: figure out how to check to make sure we're using the virtualenv python here
-easy_install-3.5 -U setuptools
+easy_install -U setuptools
 pip install -U pip
 pip install -U autopep8 virtualenv howdoi ramlfications pockyt proselint
 pip freeze | cut -d= -f1 | xargs pip install -U
-
-pip3 install -U pip
-pip3 install gitsome
 
 cd ~/.oh-my-zsh
 git pull
@@ -64,7 +61,7 @@ ${_HERE}/install.sh
 brew install autojump bash loc ffmpeg git git-extras gnu-sed gnupg irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle heroku yarn zsh-completions wifi-password cowsay node folly jid ripgrep ruby unrar mtr
 brew install --devel go
 brew install --HEAD hub
-brew install --with-toolchain llvm
+brew install --with-toolchain --with-all-targets llvm
 brew install curl --with-nghttp2
 brew cask install hab hyper kap emacs
 brew install go-delve/delve/delve
