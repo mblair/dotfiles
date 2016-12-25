@@ -23,9 +23,6 @@ pip freeze | cut -d= -f1 | xargs pip install -U
 cd ~/.oh-my-zsh
 git pull
 
-cd ~/external_src/go-mode.el
-git pull
-
 brew update
 
 cd ~/external_src/prelude
