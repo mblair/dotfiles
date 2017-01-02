@@ -1,9 +1,10 @@
 _EMPLOYER="figma"
 
 if [[ $(uname -s) == "Darwin" ]]; then
-	_EMACS=/usr/local/bin/emacs
-	_EMACS_C="${_EMACS}client"
-
+	# _EMACS=/usr/local/bin/emacs
+	# _EMACS_C="${_EMACS}client"
+	_EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
+	_EMACS_C="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 else
 	_EMACS=/usr/bin/emacs
 	_EMACS_C="${_EMACS}client"
@@ -29,7 +30,6 @@ alias ekk="kill -9 $(ps -Ao 'pid,command' | grep '[e]macs' | awk '{print $1}')"
 if [[ $(uname -s) == "Darwin" ]]; then
 	export VISUAL="${_EMACS_C} -c -n"
 	alias E="${_EMACS_C} -c -n"
-	#alias E='open -a /Applications/Emacs.app'
 
 	export GIT_EDITOR='mvim -f'
 	export EDITOR='mvim -f'
@@ -122,5 +122,5 @@ gif() {
 export RUST_SRC_PATH=~/external_src/rust/src
 
 if [[ -d $HOME/.cargo/bin ]]; then
-    export PATH=$PATH:$HOME/.cargo/bin
+	export PATH=$PATH:$HOME/.cargo/bin
 fi

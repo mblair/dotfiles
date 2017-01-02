@@ -8,5 +8,5 @@
 (prelude-require-package 'ag)
 (load-theme 'planet t)
 (set-face-attribute 'default nil :height 140)
-(set-face-attribute 'default nil :family "Droid Sans Mono")
+(set-face-attribute 'default nil :family "Hack")
 (setq whitespace-style (remove'lines-tail whitespace-style))
