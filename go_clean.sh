@@ -67,6 +67,7 @@ go get -u github.com/axw/gocov/gocov
 go get -u gopkg.in/matm/v1/gocov-html
 go get -u github.com/mvdan/sh/cmd/shfmt
 go get -u github.com/shurcooL/markdownfmt
+go get -u github.com/cespare/deplist
 
 # vs code wants these
 go get -u github.com/zmb3/gogetdoc
