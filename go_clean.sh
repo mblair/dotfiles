@@ -56,6 +56,14 @@ fi
 go get -u github.com/alecthomas/gometalinter
 gometalinter --install
 
+# vs code wants these
+go get -u github.com/zmb3/gogetdoc
+go get -u github.com/lukehoban/go-outline
+go get -u sourcegraph.com/sqs/goreturns
+go get -u github.com/tpng/gopkgs
+go get -u github.com/newhook/go-symbols
+go get -u github.com/cweill/gotests/...
+
 go get -u github.com/nsf/gocode
 go get -u github.com/rogpeppe/godef
 go get -u github.com/govend/govend
@@ -68,11 +76,4 @@ go get -u gopkg.in/matm/v1/gocov-html
 go get -u github.com/mvdan/sh/cmd/shfmt
 go get -u github.com/shurcooL/markdownfmt
 go get -u github.com/cespare/deplist
-
-# vs code wants these
-go get -u github.com/zmb3/gogetdoc
-go get -u github.com/lukehoban/go-outline
-go get -u sourcegraph.com/sqs/goreturns
-go get -u github.com/tpng/gopkgs
-go get -u github.com/newhook/go-symbols
-go get -u github.com/cweill/gotests/...
+go get -u github.com/spf13/cobra/cobra
