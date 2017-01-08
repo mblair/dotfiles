@@ -93,7 +93,6 @@ cleanup() {
 	done
 }
 
-export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:${PATH}"
 
 export GPG_TTY="$(tty)"
