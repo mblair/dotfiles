@@ -18,7 +18,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	cp /Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Versions/A/Resources/fonts/* $HOME/Library/Fonts/
 	cp $HOME/Dropbox\ \(Personal\)/fonts/Hack-v*/* $HOME/Library/Fonts/
 else
-	curl -sSL https://get.docker.com/ | sh
+    if ! which docker; then
+        curl -sSL https://get.docker.com/ | sh
+    fi
 	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
 	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
