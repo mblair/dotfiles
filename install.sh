@@ -20,9 +20,12 @@ if [[ $(uname -s) == "Darwin" ]]; then
 else
 	curl -sSL https://get.docker.com/ | sh
 	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
+	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 	apt-get update
 	apt-get -y dist-upgrade
-	apt-get -y install autojump silversearcher-ag git zsh emacs24-nox vim-nox htop curl wget tmux jq ruby python build-essential
+	apt-get -y install autojump silversearcher-ag git zsh emacs24-nox vim-nox htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump yarn shellcheck mtr traceroute
+	yarn global add js-beautify
 fi
 
 if [[ $(uname -s) == "Darwin" ]]; then
@@ -99,3 +102,16 @@ if [[ $(uname -s) == "Linux" ]]; then
 fi
 
 curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
+rustup update
+for _pkg in racer rustfmt; do
+	${_pkg} --version || {
+		cargo install ${_pkg}
+		break
+	}
+	_installed_version=$(${_pkg} --version | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
+	_latest_version=$(cargo search ${_pkg} | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
+	if [[ $_installed_version < $_latest_version ]]; then
+		cargo uninstall "${_pkg}"
+		cargo install "${_pkg}"
+	fi
+done
