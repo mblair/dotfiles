@@ -43,8 +43,8 @@ if [[ -d ~/my_src/private ]]; then
 fi
 
 if [[ $(uname -s) == "Darwin" ]]; then
-    git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
-    ln -sf ${_HERE}/zshrc ~/.zshrc
+	git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
+	ln -sf ${_HERE}/zshrc ~/.zshrc
 fi
 
 ln -sf ${_HERE}/gitconfig ~/.gitconfig
@@ -81,12 +81,15 @@ if [[ $(uname -s) == "Linux" ]]; then
 	mkdir -p ~/.irssi
 	ln -sf ${_HERE}/irssi_config ~/.irssi/config
 
-	cd
-	wget "https://github.com/github/hub/releases/download/v${_HUB_VER}/hub-linux-amd64-${_HUB_VER}.tgz"
-	tar xf "hub-linux-amd64-${_HUB_VER}.tgz"
-	rm "hub-linux-amd64-${_HUB_VER}.tgz"
-	mv "hub-linux-amd64-${_HUB_VER}/bin/hub" /usr/local/bin
-	rm -r "hub-linux-amd64-${_HUB_VER}"
+	_installed_hub_ver=$(hub --version 2>&1 | /bin/grep hub | cut -d" " -f3)
+	if [[ ${_installed_hub_ver} != ${_HUB_VER} ]]; then
+		cd
+		wget "https://github.com/github/hub/releases/download/v${_HUB_VER}/hub-linux-amd64-${_HUB_VER}.tgz"
+		tar xf "hub-linux-amd64-${_HUB_VER}.tgz"
+		rm "hub-linux-amd64-${_HUB_VER}.tgz"
+		mv "hub-linux-amd64-${_HUB_VER}/bin/hub" /usr/local/bin
+		rm -r "hub-linux-amd64-${_HUB_VER}"
+	fi
 
 	if ! [[ $(go version) =~ go${_GO_VER} ]]; then
 		cd
