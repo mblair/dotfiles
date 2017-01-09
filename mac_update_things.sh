@@ -60,7 +60,7 @@ brew install --devel go
 brew install --HEAD hub
 brew install --with-toolchain --with-all-targets llvm
 brew install curl --with-nghttp2
-brew cask install hab hyper kap emacs
+brew cask install hab hyper emacs
 brew install go-delve/delve/delve
 
 ${_HERE}/go_clean.sh
