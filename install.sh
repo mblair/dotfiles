@@ -24,7 +24,7 @@ else
 	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 	apt-get update
 	apt-get -y dist-upgrade
-	apt-get -y install autojump silversearcher-ag git zsh emacs24-nox vim-nox htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump yarn shellcheck mtr traceroute
+	apt-get -y install autojump silversearcher-ag git emacs24-nox vim-nox htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump yarn shellcheck mtr traceroute
 	yarn global add js-beautify
 fi
 
@@ -42,8 +42,10 @@ if [[ -d ~/my_src/private ]]; then
 	~/my_src/private/install.sh
 fi
 
-git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
-ln -sf ${_HERE}/zshrc ~/.zshrc
+if [[ $(uname -s) == "Darwin" ]]; then
+    git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
+    ln -sf ${_HERE}/zshrc ~/.zshrc
+fi
 
 ln -sf ${_HERE}/gitconfig ~/.gitconfig
 ln -sf ${_HERE}/gitignore_global ~/.gitignore_global
