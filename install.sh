@@ -39,6 +39,7 @@ fi
 ln -sf ${_HERE}/bashrc ${_BASH_RC}
 mkdir -p ~/.gnupg
 ln -sf ${_HERE}/gpg.conf ~/.gnupg/
+ln -sf ${_HERE}/gpg-agent.conf ~/.gnupg/
 
 if [[ -d ~/my_src/private ]]; then
 	~/my_src/private/install.sh
