@@ -108,30 +108,3 @@ if [[ $(uname -s) == "Linux" ]]; then
 	systemctl disable snapd
 	systemctl stop snapd
 fi
-
-curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
-rustup update
-for _pkg in racer rustfmt; do
-	${_pkg} --version || {
-		cargo install ${_pkg}
-		break
-	}
-	_installed_version=$(${_pkg} --version | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
-	_latest_version=$(cargo search ${_pkg} | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
-	if [[ $_installed_version < $_latest_version ]]; then
-		cargo uninstall "${_pkg}"
-		cargo install "${_pkg}"
-	fi
-done
-
-if ! command -v loc; then
-    cargo install loc
-    exit
-fi
-
-_installed_loc=$(find $HOME/.cargo/registry/src -type d -name loc-* | perl -pe 's/^.*loc-(.*)/${1}/')
-_latest_loc=$(cargo search loc | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
-if [[ $_installed_loc < $_latest_loc ]]; then
-    cargo uninstall loc
-    cargo install loc
-fi
