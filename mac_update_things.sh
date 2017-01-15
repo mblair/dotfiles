@@ -55,7 +55,7 @@ ${_HERE}/install.sh
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 #/usr/local/bin/emacs --daemon
 
-brew install autojump bash loc ffmpeg git git-extras gnu-sed gnupg irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle yarn zsh-completions wifi-password cowsay node jid ripgrep unrar mtr ccat watch
+brew install autojump bash loc ffmpeg git git-extras gnu-sed gnupg2 irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle yarn zsh-completions wifi-password cowsay node jid ripgrep unrar mtr ccat watch
 brew install --devel go
 brew install --HEAD hub
 brew install curl --with-nghttp2
