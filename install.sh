@@ -123,3 +123,15 @@ for _pkg in racer rustfmt; do
 		cargo install "${_pkg}"
 	fi
 done
+
+if ! command -v loc; then
+    cargo install loc
+    exit
+fi
+
+_installed_loc=$(find $HOME/.cargo/registry/src -type d -name loc-* | perl -pe 's/^.*loc-(.*)/${1}/')
+_latest_loc=$(cargo search loc | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
+if [[ $_installed_loc < $_latest_loc ]]; then
+    cargo uninstall loc
+    cargo install loc
+fi
