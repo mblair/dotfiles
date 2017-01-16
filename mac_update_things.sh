@@ -55,12 +55,20 @@ ${_HERE}/install.sh
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 #/usr/local/bin/emacs --daemon
 
-brew install autojump bash ffmpeg git git-extras gnu-sed gnupg2 irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle yarn zsh-completions wifi-password cowsay node jid unrar mtr ccat watch
-brew install --devel go
-brew install --HEAD hub
-brew install curl --with-nghttp2
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg2 irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle yarn zsh-completions wifi-password cowsay node jid unrar mtr ccat watch go hub go-delve/delve/delve; do
+    _install_flags=""
+    if [[ ${_pkg} == "go" ]]; then
+        _install_flags="--devel"
+    elif [[ ${_pkg} == "hub" ]]; then
+        _install_flags="--HEAD"
+    elif [[ ${_pkg} == "curl" ]]; then
+        _install_flags="--with-nghttp2"
+    fi
+
+    brew install ${_install_flags} ${_pkg} || brew upgrade ${_pkg}
+done
+
 brew cask install hab emacs java
-brew install go-delve/delve/delve
 
 ${_HERE}/go_clean.sh
 
