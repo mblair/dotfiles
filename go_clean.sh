@@ -69,11 +69,15 @@ go get -u github.com/rogpeppe/godef
 go get -u github.com/govend/govend
 go get -u golang.org/x/tools/cmd/{cover,gorename,guru}
 go get -u github.com/ChimeraCoder/gojson/gojson
+go get -u github.com/ChimeraCoder/goxml
 go get -u github.com/motemen/go-pocket/...
 #go get -u github.com/davecheney/httpstat
 go get -u github.com/axw/gocov/gocov
 go get -u gopkg.in/matm/v1/gocov-html
+go get -u github.com/AlekSi/gocov-xml
 go get -u github.com/mvdan/sh/cmd/shfmt
 go get -u github.com/shurcooL/markdownfmt
 go get -u github.com/cespare/deplist
 go get -u github.com/spf13/cobra/cobra
+go get -u github.com/c4milo/licentia
+go get -u honnef.co/go/tools/...
