@@ -66,7 +66,7 @@ for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg2 irssi jq macvim p
 	brew install ${_install_flags} ${_pkg} || brew upgrade ${_pkg}
 done
 
-brew cask install hab emacs java
+brew cask install emacs java
 
 ${_HERE}/go_clean.sh
 
