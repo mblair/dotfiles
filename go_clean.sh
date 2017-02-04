@@ -66,7 +66,7 @@ go get -u github.com/cweill/gotests/...
 
 go get -u github.com/nsf/gocode
 go get -u github.com/rogpeppe/godef
-go get -u github.com/govend/govend
+go get -u github.com/kardianos/govendor
 go get -u golang.org/x/tools/cmd/{cover,gorename,guru}
 go get -u github.com/ChimeraCoder/gojson/gojson
 go get -u github.com/ChimeraCoder/goxml
