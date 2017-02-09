@@ -52,3 +52,7 @@
     compactionHeuristic = true
 [fetch]
 	prune = true
+# :-(
+# https://github.com/niemeyer/gopkg/issues/50
+[http "https://gopkg.in"]
+	followRedirects = true
