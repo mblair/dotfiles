@@ -8,7 +8,7 @@ _HERE=$(
 set -xueo pipefail
 
 _HUB_VER="2.3.0-pre8"
-_GO_VER="1.7.5"
+_GO_VER="1.8rc3"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list -1 | grep wget; then
