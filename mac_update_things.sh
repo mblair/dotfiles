@@ -61,8 +61,8 @@ for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg2 irssi jq macvim p
 		_install_flags="--devel"
 	elif [[ ${_pkg} == "curl" ]]; then
 		_install_flags="--with-nghttp2"
-    elif [[ ${_pkg} == "emacs" ]]; then
-        _install_flags="--devel --with-cocoa"
+	elif [[ ${_pkg} == "emacs" ]]; then
+		_install_flags="--devel --with-cocoa"
 	fi
 
 	brew install ${_install_flags} ${_pkg} || brew upgrade ${_pkg}
