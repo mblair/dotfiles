@@ -55,18 +55,20 @@ ${_HERE}/install.sh
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 #/usr/local/bin/emacs --daemon
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg2 irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi keybase nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle yarn zsh-completions wifi-password cowsay node jid unrar mtr ccat watch go hub heroku go-delve/delve/delve; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg2 irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle yarn zsh-completions wifi-password cowsay node jid unrar mtr ccat watch go hub heroku emacs go-delve/delve/delve; do
 	_install_flags=""
 	if [[ ${_pkg} == "hub" ]] || [[ ${_pkg} == "go" ]]; then
 		_install_flags="--devel"
 	elif [[ ${_pkg} == "curl" ]]; then
 		_install_flags="--with-nghttp2"
+    elif [[ ${_pkg} == "emacs" ]]; then
+        _install_flags="--devel --with-cocoa"
 	fi
 
 	brew install ${_install_flags} ${_pkg} || brew upgrade ${_pkg}
 done
 
-brew cask install emacs java
+brew cask install java keybase
 
 ${_HERE}/go_clean.sh
 
