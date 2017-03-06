@@ -55,6 +55,7 @@ ${_HERE}/install.sh
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
 #/usr/local/bin/emacs --daemon
 
+brew tap caskroom/fonts
 for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg2 irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle yarn zsh-completions wifi-password cowsay node jid unrar mtr ccat watch go hub heroku emacs httpstat go-delve/delve/delve; do
 	_install_flags=""
 	if [[ ${_pkg} == "hub" ]]; then
@@ -68,7 +69,7 @@ for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg2 irssi jq macvim p
 	brew install ${_install_flags} ${_pkg} || brew upgrade ${_pkg}
 done
 
-brew cask install java
+brew cask install java font-hack-nerd-font
 
 ${_HERE}/go_clean.sh
 
