@@ -68,6 +68,7 @@ go get -u github.com/nsf/gocode
 go get -u github.com/rogpeppe/godef
 go get -u github.com/kardianos/govendor
 go get -u golang.org/x/tools/cmd/{cover,gorename,guru}
+go get -u github.com/mvdan/unparam
 go get -u github.com/ChimeraCoder/gojson/gojson
 go get -u github.com/ChimeraCoder/goxml
 go get -u github.com/motemen/go-pocket/...
@@ -79,4 +80,5 @@ go get -u github.com/shurcooL/markdownfmt
 go get -u github.com/cespare/deplist
 go get -u github.com/spf13/cobra/cobra
 go get -u github.com/c4milo/licentia
+go get -u github.com/KyleBanks/depth/cmd/depth
 go get -u honnef.co/go/tools/...
