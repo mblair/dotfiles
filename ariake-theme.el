@@ -16,7 +16,7 @@
       (str     "#9deee9")
       (type    "#7c83d8")
       (var     "#85b3dd")
-      (warning "#ff0000")
+      (warning "#ff00ff")
       (warning2 "#ff8800"))
   (custom-theme-set-faces
    'ariake
