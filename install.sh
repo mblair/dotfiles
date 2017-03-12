@@ -8,6 +8,7 @@ _HERE=$(
 set -xueo pipefail
 
 _HUB_VER="2.3.0-pre9"
+_CTOP_VER="0.4.1"
 _GO_VER="1.8"
 
 if [[ $(uname -s) == "Darwin" ]]; then
@@ -114,4 +115,6 @@ if [[ $(uname -s) == "Linux" ]]; then
 
 	systemctl disable snapd
 	systemctl stop snapd
+
+    wget https://github.com/bcicen/ctop/releases/download/v${_CTOP_VER}/ctop-${_CTOP_VER}-linux-amd64 -O /usr/local/bin/ctop
 fi
