@@ -117,4 +117,5 @@ if [[ $(uname -s) == "Linux" ]]; then
 	systemctl stop snapd
 
     wget https://github.com/bcicen/ctop/releases/download/v${_CTOP_VER}/ctop-${_CTOP_VER}-linux-amd64 -O /usr/local/bin/ctop
+    chmod +x /usr/local/bin/ctop
 fi
