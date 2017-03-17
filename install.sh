@@ -27,7 +27,7 @@ else
 	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 	apt-get update
 	apt-get -y dist-upgrade
-	apt-get -y install autojump silversearcher-ag git emacs24-nox vim-nox htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump yarn shellcheck mtr traceroute
+	apt-get -y install autojump silversearcher-ag git emacs24-nox vim-nox htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump yarn shellcheck mtr traceroute iftop
 	yarn global add js-beautify
 fi
 
