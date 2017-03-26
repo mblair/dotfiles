@@ -28,6 +28,7 @@ else
 	apt-get update
 	apt-get -y dist-upgrade
 	apt-get -y install autojump silversearcher-ag git emacs24-nox vim-nox htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump yarn shellcheck mtr traceroute iftop
+	apt-get -y purge unattended-upgrades
 	yarn global add js-beautify
 fi
 
@@ -116,6 +117,6 @@ if [[ $(uname -s) == "Linux" ]]; then
 	systemctl disable snapd
 	systemctl stop snapd
 
-    wget https://github.com/bcicen/ctop/releases/download/v${_CTOP_VER}/ctop-${_CTOP_VER}-linux-amd64 -O /usr/local/bin/ctop
-    chmod +x /usr/local/bin/ctop
+	wget https://github.com/bcicen/ctop/releases/download/v${_CTOP_VER}/ctop-${_CTOP_VER}-linux-amd64 -O /usr/local/bin/ctop
+	chmod +x /usr/local/bin/ctop
 fi
