@@ -13,5 +13,5 @@
 (add-to-list 'custom-theme-load-path "~/my_src/dotfiles/")
 (load-theme 'ariake t)
 (set-face-attribute 'default nil :height 140)
-(set-face-attribute 'default nil :family "Menlo")
+(set-face-attribute 'default nil :family "Fira Code")
 (setq whitespace-style (remove'lines-tail whitespace-style))
