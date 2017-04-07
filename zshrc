@@ -104,7 +104,7 @@ if [[ -f "$HOME/.gpg-agent-info" ]]; then
 fi
 
 if which "gpg-agent" >"/dev/null" 2>"/dev/null" && ! gpg-agent >/dev/null 2>&1; then
-	eval "$(gpg-agent --daemon --disable-scdaemon --write-env-file "$HOME/.gpg-agent-info")"
+	eval "$(gpg-agent --daemon --disable-scdaemon)"
 fi
 
 alias gpgclean='killall -9 pinentry gpg-agent'
