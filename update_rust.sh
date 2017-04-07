@@ -25,16 +25,20 @@ for _pkg in racer rustfmt; do
 	fi
 done
 
-for _cmd in loc ripgrep; do
+for _pkg in loc ripgrep; do
+	_cmd=$_pkg
+	if [[ $_pkg == "ripgrep" ]]; then
+		_cmd="rg"
+	fi
 	if ! command -v ${_cmd}; then
-		cargo install ${_cmd} || true # ripgrep's binary is rg
+		cargo install ${_pkg} || true # ripgrep's binary is rg
 		continue
 	else
-		_installed_ver=$(find "$HOME"/.cargo/registry/src -type d -name "${_cmd}-*" | perl -pe "s/^.*${_cmd}-(.*)/\${1}/")
-		_latest_ver=$(cargo search ${_cmd} | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
+		_installed_ver=$(find "$HOME"/.cargo/registry/src -type d -name "${_pkg}-*" | perl -pe "s/^.*${_pkg}-(.*)/\${1}/")
+		_latest_ver=$(cargo search ${_pkg} | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
 		if [[ $_installed_ver < $_latest_ver ]]; then
-			cargo uninstall ${_cmd}
-			cargo install ${_cmd}
+			cargo uninstall ${_pkg}
+			cargo install ${_pkg}
 		fi
 	fi
 done
