@@ -114,8 +114,10 @@ if [[ $(uname -s) == "Linux" ]]; then
 
 	cp /usr/share/zoneinfo/UTC /etc/localtime || true
 
-	systemctl disable snapd
-	systemctl stop snapd
+	if pgrep snapd >/dev/null 2>&1; then
+		systemctl disable snapd
+		systemctl stop snapd
+	fi
 
 	wget https://github.com/bcicen/ctop/releases/download/v${_CTOP_VER}/ctop-${_CTOP_VER}-linux-amd64 -O /usr/local/bin/ctop
 	chmod +x /usr/local/bin/ctop
