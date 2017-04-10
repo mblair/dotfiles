@@ -12,6 +12,7 @@ rustup update
 rustup target add asmjs-unknown-emscripten
 rustup target add wasm32-unknown-emscripten
 
+#TODO: unify these
 for _pkg in racer rustfmt; do
 	${_pkg} --version || {
 		cargo install ${_pkg}
@@ -25,6 +26,7 @@ for _pkg in racer rustfmt; do
 	fi
 done
 
+#TODO: rg --version works now
 for _pkg in loc ripgrep; do
 	_cmd=$_pkg
 	if [[ $_pkg == "ripgrep" ]]; then
@@ -34,8 +36,8 @@ for _pkg in loc ripgrep; do
 		cargo install ${_pkg} || true # ripgrep's binary is rg
 		continue
 	else
-		_installed_ver=$(find "$HOME"/.cargo/registry/src -type d -name "${_pkg}-*" | perl -pe "s/^.*${_pkg}-(.*)/\${1}/")
-		_latest_ver=$(cargo search ${_pkg} | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
+		_installed_ver=$(find "$HOME"/.cargo/registry/src -type d -name "${_pkg}-*" | tail -1 | perl -pe "s/^.*${_pkg}-(.*)/\${1}/")
+		_latest_ver=$(cargo search ${_pkg} 2>/dev/null | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
 		if [[ $_installed_ver < $_latest_ver ]]; then
 			cargo uninstall ${_pkg}
 			cargo install ${_pkg}
