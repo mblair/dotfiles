@@ -57,17 +57,21 @@ go get -u github.com/alecthomas/gometalinter
 gometalinter --install
 
 # vs code wants these
-go get -u github.com/zmb3/gogetdoc
-go get -u github.com/lukehoban/go-outline
-go get -u sourcegraph.com/sqs/goreturns
-go get -u github.com/tpng/gopkgs
-go get -u github.com/newhook/go-symbols
+go get -u github.com/acroca/go-symbols
 go get -u github.com/cweill/gotests/...
-
+go get -u github.com/fatih/gomodifytags
+go get -u github.com/golang/lint/golint
+go get -u github.com/lukehoban/go-outline
+go get -u github.com/newhook/go-symbols
 go get -u github.com/nsf/gocode
 go get -u github.com/rogpeppe/godef
+go get -u github.com/tpng/gopkgs
+go get -u github.com/zmb3/gogetdoc
+go get -u sourcegraph.com/sqs/goreturns
+go get -u github.com/sourcegraph/go-langserver
+
 go get -u github.com/kardianos/govendor
-go get -u golang.org/x/tools/cmd/{cover,gorename,guru}
+go get -u golang.org/x/tools/cmd/{cover,godoc,gorename,guru}
 go get -u github.com/mvdan/unparam
 go get -u github.com/ChimeraCoder/gojson/gojson
 go get -u github.com/ChimeraCoder/goxml
@@ -85,3 +89,4 @@ go get -u honnef.co/go/tools/...
 go get -u github.com/golang/dep/cmd/dep
 go get -u github.com/ascarter/conductor
 go get -u github.com/square/certigo
+go get -u github.com/govend/govend
