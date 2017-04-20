@@ -90,3 +90,4 @@ go get -u github.com/golang/dep/cmd/dep
 go get -u github.com/ascarter/conductor
 go get -u github.com/square/certigo
 go get -u github.com/govend/govend
+go get -u github.com/kyoh86/scopelint
