@@ -43,7 +43,7 @@ if [[ ! -x /usr/local/bin/npm ]]; then
 	brew install node
 fi
 
-yarn global add grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 jsfmt eslint bower create-react-app parsimmon exif standard standard-format write-good fast-cli js-beautify prettier
+yarn global add grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 jsfmt eslint bower create-react-app parsimmon exif standard standard-format write-good fast-cli prettier
 
 #if [[ ! -x /usr/local/bin/emacs ]]; then
 #  brew install --with-cocoa emacs

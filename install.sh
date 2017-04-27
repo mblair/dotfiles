@@ -29,7 +29,7 @@ else
 	apt-get -y dist-upgrade
 	apt-get -y install autojump silversearcher-ag git emacs24-nox vim htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump yarn shellcheck mtr traceroute iftop
 	apt-get -y purge unattended-upgrades lxd snapd lxcfs
-	yarn global add js-beautify
+	yarn global add prettier
 fi
 
 if [[ $(uname -s) == "Darwin" ]]; then
