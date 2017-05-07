@@ -112,6 +112,8 @@ alias gpgclean='killall -9 pinentry gpg-agent'
 alias yt='youtube-dl -o "%(title)s-%(id)s.%(ext)s"'
 alias yta='youtube-dl -o "%(title)s-%(id)s.%(ext)s" --extract-audio'
 
+alias cca='ccat -C=always'
+
 #from @ryankaplan
 #-r 10 reduces frame rate from 25 to 10
 #-s 600 x 400 tells max width and height
