@@ -61,7 +61,7 @@ go get -u github.com/acroca/go-symbols
 go get -u github.com/cweill/gotests/...
 go get -u github.com/fatih/gomodifytags
 go get -u github.com/golang/lint/golint
-go get -u github.com/lukehoban/go-outline
+go get -u github.com/ramya-rao-a/go-outline
 go get -u github.com/newhook/go-symbols
 go get -u github.com/nsf/gocode
 go get -u github.com/rogpeppe/godef
