@@ -27,9 +27,24 @@ else
 	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 	apt-get update
 	apt-get -y dist-upgrade
-	apt-get -y install autojump silversearcher-ag git emacs24-nox vim htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump yarn shellcheck mtr traceroute iftop
+	apt-get -y install autojump silversearcher-ag git emacs24-nox vim htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump yarn shellcheck mtr traceroute iftop auditd
 	apt-get -y purge unattended-upgrades lxd snapd lxcfs
 	yarn global add prettier
+
+    if ! sudo grep -q execve /etc/audit/audit.rules; then
+        echo "-a exit,always -F arch=b64 -S execve" | sudo tee --append /etc/audit/audit.rules
+        echo "-a exit,always -F arch=b32 -S execve" | sudo tee --append /etc/audit/audit.rules
+        _AUDITD_RESTART=1
+    fi
+
+    if ! sudo grep -q 'active = yes' /etc/audisp/plugins.d/syslog.conf; then
+        sudo sed -i '/active/ s/no/yes/' /etc/audisp/plugins.d/syslog.conf
+        _AUDITD_RESTART=1
+    fi
+
+    if [[ $_AUDITD_RESTART -eq 1 ]]; then
+        sudo service auditd restart
+    fi
 fi
 
 if [[ $(uname -s) == "Darwin" ]]; then
