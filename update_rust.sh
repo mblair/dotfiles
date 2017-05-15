@@ -17,7 +17,7 @@ rustup target add asmjs-unknown-emscripten
 rustup target add wasm32-unknown-emscripten
 
 #TODO: unify these
-for _pkg in racer rustfmt; do
+for _pkg in racer rustfmt watchexec; do
 	${_pkg} --version || {
 		cargo install ${_pkg}
 		break
