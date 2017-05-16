@@ -11,7 +11,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modif
 rustup update
 # http://www.jonathanturner.org/2017/04/rls-now-in-nightly.md.html
 for _component in rls rust-analysis rust-src; do
-    rustup component add ${_component}
+	rustup component add ${_component}
 done
 rustup target add asmjs-unknown-emscripten
 rustup target add wasm32-unknown-emscripten
