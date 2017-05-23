@@ -17,7 +17,7 @@ gem cleanup --quiet
 # TODO: figure out how to check to make sure we're using the virtualenv python here
 easy_install -U setuptools
 pip install -U pip
-pip install -U autopep8 virtualenv howdoi ramlfications pockyt proselint
+pip install -U autopep8 virtualenv howdoi ramlfications pockyt proselint tensorflow
 pip freeze | cut -d= -f1 | xargs pip install -U
 
 cd ~/.oh-my-zsh
