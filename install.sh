@@ -9,15 +9,20 @@ set -xueo pipefail
 
 _HUB_VER="2.3.0-pre9"
 _CTOP_VER="0.5.1"
-_GO_VER="1.8.1"
+_GO_VER="1.8.3"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list -1 | grep wget; then
 		brew install wget
 	fi
 
-	cp /Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Versions/A/Resources/fonts/* $HOME/Library/Fonts/
-	cp $HOME/Dropbox\ \(Personal\)/fonts/Hack-v*/* $HOME/Library/Fonts/
+	if [[ -d /Applications/Xcode.app ]]; then
+		cp /Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Versions/A/Resources/fonts/* $HOME/Library/Fonts/
+	fi
+
+	if [[ -d $HOME/Dropbox\ \(Persona\)/fonts/ ]]; then
+		cp $HOME/Dropbox\ \(Personal\)/fonts/Hack-v*/* $HOME/Library/Fonts/
+	fi
 else
 	if ! which docker; then
 		curl -sSL https://get.docker.com/ | sh
