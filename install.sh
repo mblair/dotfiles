@@ -24,6 +24,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		cp $HOME/Dropbox\ \(Personal\)/fonts/Hack-v*/* $HOME/Library/Fonts/
 	fi
 else
+	curl https://sh.rustup.rs -sSf | sh
 	if ! which docker; then
 		curl -sSL https://get.docker.com/ | sh
 	fi

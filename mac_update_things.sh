@@ -26,13 +26,13 @@ git pull
 brew update
 
 if [[ -d ~/external_src/prelude ]]; then
-    cd ~/external_src/prelude
-    git clean -fdx
-    git checkout init.el
-    git pull
+	cd ~/external_src/prelude
+	git clean -fdx
+	git checkout init.el
+	git pull
 else
-    mkdir -p ~/external_src/prelude
-    git clone https://github.com/bbatsov/prelude ~/external_src/prelude
+	mkdir -p ~/external_src/prelude
+	git clone https://github.com/bbatsov/prelude ~/external_src/prelude
 fi
 
 rm -rf ~/.emacs.d
