@@ -62,7 +62,7 @@ ${_HERE}/install.sh
 #/usr/local/bin/emacs --daemon
 
 brew tap caskroom/fonts
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle yarn zsh-completions wifi-password cowsay node jid unrar mtr ccat watch go hub heroku emacs httpstat clang-format ctop certbot pngcheck pandoc curl git-lfs go-delve/delve/delve; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle yarn zsh-completions wifi-password cowsay node jid unrar mtr ccat watch go hub heroku emacs httpstat clang-format ctop certbot pngcheck pandoc curl git-lfs docker-machine-driver-xhyve go-delve/delve/delve; do
 	_install_flags=""
 	if [[ ${_pkg} == "hub" ]]; then
 		_install_flags="--HEAD"
@@ -75,7 +75,7 @@ for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq macvim py
 	brew install ${_install_flags} ${_pkg} || brew upgrade ${_pkg}
 done
 
-brew cask install java font-hack-nerd-font
+brew cask install java font-hack-nerd-font minikube
 
 ${_HERE}/go_clean.sh
 
