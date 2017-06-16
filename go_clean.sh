@@ -83,7 +83,6 @@ go get -u github.com/mvdan/sh/cmd/shfmt
 go get -u github.com/shurcooL/markdownfmt
 go get -u github.com/cespare/deplist
 go get -u github.com/spf13/cobra/cobra
-go get -u github.com/c4milo/licentia
 go get -u github.com/KyleBanks/depth/cmd/depth
 go get -u honnef.co/go/tools/...
 go get -u github.com/golang/dep/cmd/dep
