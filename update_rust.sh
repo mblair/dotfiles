@@ -48,3 +48,5 @@ for _pkg in loc ripgrep; do
 		fi
 	fi
 done
+
+cargo install --git https://github.com/sharkdp/fd || true
