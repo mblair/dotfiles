@@ -8,7 +8,7 @@ _HERE=$(
 set -xueo pipefail
 
 _HUB_VER="2.3.0-pre9"
-_CTOP_VER="0.5.1"
+_CTOP_VER="0.6.0"
 _GO_VER="1.8.3"
 
 if [[ $(uname -s) == "Darwin" ]]; then
