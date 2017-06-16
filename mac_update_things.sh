@@ -66,6 +66,8 @@ for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq macvim py
 	_install_flags=""
 	if [[ ${_pkg} == "hub" ]]; then
 		_install_flags="--HEAD"
+	elif [[ ${_pkg} == "go" ]]; then
+		_install_flags="--devel"
 	elif [[ ${_pkg} == "curl" ]]; then
 		_install_flags="--with-nghttp2"
 	elif [[ ${_pkg} == "emacs" ]]; then
