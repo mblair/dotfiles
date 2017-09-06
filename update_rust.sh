@@ -40,17 +40,17 @@ for _pkg in loc ripgrep; do
 		cargo install ${_pkg} || true # ripgrep's binary is rg
 		continue
 	else
-        if [[ ! -d "$HOME/.cargo/registry/src" ]]; then
-            cargo uninstall ${_pkg}
-            cargo install ${_pkg}
-        else
-            _installed_ver=$(find "$HOME"/.cargo/registry/src -type d -name "${_pkg}-*" | tail -1 | perl -pe "s/^.*${_pkg}-(.*)/\${1}/")
-            _latest_ver=$(cargo search ${_pkg} 2>/dev/null | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
-            if [[ $_installed_ver < $_latest_ver ]]; then
-                cargo uninstall ${_pkg}
-                cargo install ${_pkg}
-            fi
-        fi
+		if [[ ! -d "$HOME/.cargo/registry/src" ]]; then
+			cargo uninstall ${_pkg}
+			cargo install ${_pkg}
+		else
+			_installed_ver=$(find "$HOME"/.cargo/registry/src -type d -name "${_pkg}-*" | tail -1 | perl -pe "s/^.*${_pkg}-(.*)/\${1}/")
+			_latest_ver=$(cargo search ${_pkg} 2>/dev/null | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
+			if [[ $_installed_ver < $_latest_ver ]]; then
+				cargo uninstall ${_pkg}
+				cargo install ${_pkg}
+			fi
+		fi
 	fi
 done
 
