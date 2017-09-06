@@ -54,4 +54,6 @@ for _pkg in loc ripgrep; do
 	fi
 done
 
-cargo install --git https://github.com/sharkdp/fd || true
+if which docker; then
+	docker pull rustlang/rust:nightly
+fi
