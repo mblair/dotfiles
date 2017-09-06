@@ -9,7 +9,7 @@ set -xueo pipefail
 
 _HUB_VER="2.3.0-pre10"
 _CTOP_VER="0.6.1"
-_GO_VER="1.9rc1"
+_GO_VER="1.9"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list -1 | grep wget; then
@@ -127,6 +127,7 @@ if [[ $(uname -s) == "Linux" ]]; then
 	fi
 
 	if ! [[ $(go version) =~ go${_GO_VER} ]]; then
+        # TODO: use https://github.com/golang/tools/tree/master/cmd/getgo
 		cd
 		wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz
 		tar xf godeb-amd64.tar.gz
