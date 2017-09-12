@@ -38,10 +38,13 @@ fi
 rm -rf ~/.emacs.d
 ln -sf ~/external_src/prelude ~/.emacs.d
 cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
-cat >>~/.emacs.d/prelude-modules.el <<EOF
-  (require 'prelude-helm)
-  (require 'prelude-helm-everywhere)
+cat >>~/.emacs.d/prelude-modules.el <<'EOF'
+  ;;(require 'prelude-helm)
+  ;;(require 'prelude-helm-everywhere)
+  (require 'prelude-company)
+  (require 'prelude-ido)
   (require 'prelude-go)
+  (require 'prelude-rust)
 EOF
 ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
