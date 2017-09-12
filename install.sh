@@ -127,7 +127,7 @@ if [[ $(uname -s) == "Linux" ]]; then
 	fi
 
 	if ! [[ $(go version) =~ go${_GO_VER} ]]; then
-        # TODO: use https://github.com/golang/tools/tree/master/cmd/getgo
+		# TODO: use https://github.com/golang/tools/tree/master/cmd/getgo
 		cd
 		wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz
 		tar xf godeb-amd64.tar.gz
