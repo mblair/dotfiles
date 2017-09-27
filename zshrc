@@ -68,6 +68,11 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		eval "$(rbenv init -)"
 	fi
 
+        if which node >/dev/null; then
+            _NODE_VERSION=$(node --version | tr -d 'A-Za-z')
+            export PATH="/usr/local/Cellar/node/${_NODE_VERSION}/bin:$PATH"
+        fi
+
 elif [[ $(uname -s) == "Linux" ]]; then
 	alias E="${_EMACS_C} -ct"
 fi
