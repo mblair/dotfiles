@@ -98,8 +98,6 @@ cleanup() {
 	done
 }
 
-export PATH="$HOME/.config/yarn/global/node_modules/.bin:${PATH}"
-
 export GPG_TTY="$(tty)"
 
 if [[ -f "$HOME/.gpg-agent-info" ]]; then
