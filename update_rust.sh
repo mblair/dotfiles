@@ -6,6 +6,9 @@ if command -v brew; then
 	brew uninstall multirust || true
 fi
 
+_HERE=$(dirname "$0")
+source "${_HERE}/vcs.bash"
+
 rm -rf ~/.multirust
 curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
 rustup update
@@ -13,13 +16,29 @@ for _component in rls rust-analysis rust-src; do
 	rustup component add ${_component}
 done
 
+if [[ ! -d $HOME/external_src ]]; then
+	mkdir -p "$HOME/external_src"
+fi
+
+cd "$HOME/external_src/"
+for _repo in rust-lang/book rust-lang-nursery/rust-by-example; do
+	_dir=$HOME/external_src/${_repo##*/}
+
+	if [[ ! -d ${_dir} ]]; then
+		git clone https://github.com/"${_repo}"
+	else
+		cd "${_dir}"
+		git_update
+	fi
+done
+
 #TODO: unify these somehow
 for _pkg in racer rustfmt watchexec cargo-watch rg mdbook fd; do
 	_crate=$_pkg
 	if [[ $_pkg == "ripgrep" ]]; then
 		_crate="ripgrep"
-    elif [[ $_pkg == "fd" ]]; then
-        _crate="fd-find"
+	elif [[ $_pkg == "fd" ]]; then
+		_crate="fd-find"
 	fi
 	${_pkg} --version || {
 		cargo install ${_crate}
