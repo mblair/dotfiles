@@ -9,24 +9,27 @@ fi
 rm -rf ~/.multirust
 curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
 rustup update
-# http://www.jonathanturner.org/2017/04/rls-now-in-nightly.md.html
 for _component in rls rust-analysis rust-src; do
 	rustup component add ${_component}
 done
-rustup target add asmjs-unknown-emscripten
-rustup target add wasm32-unknown-emscripten
 
-#TODO: unify these
-for _pkg in racer rustfmt watchexec; do
+#TODO: unify these somehow
+for _pkg in racer rustfmt watchexec cargo-watch rg mdbook fd; do
+	_crate=$_pkg
+	if [[ $_pkg == "ripgrep" ]]; then
+		_crate="ripgrep"
+    elif [[ $_pkg == "fd" ]]; then
+        _crate="fd-find"
+	fi
 	${_pkg} --version || {
-		cargo install ${_pkg}
+		cargo install ${_crate}
 		break
 	}
 	_installed_version=$(${_pkg} --version | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
-	_latest_version=$(cargo search ${_pkg} | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
+	_latest_version=$(cargo search ${_crate} | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
 	if [[ $_installed_version < $_latest_version ]]; then
-		cargo uninstall "${_pkg}"
-		cargo install "${_pkg}"
+		cargo uninstall "${_crate}"
+		cargo install "${_crate}"
 	fi
 done
 
