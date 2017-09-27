@@ -29,14 +29,12 @@ else
 		curl -sSL https://get.docker.com/ | sh
 	fi
 	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
-	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 	apt-get update
 	apt-get -y dist-upgrade
 	# TODO: install a newer node from nodesource
-	apt-get -y install autojump silversearcher-ag git emacs24-nox vim htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump yarn shellcheck mtr traceroute iftop auditd reptyr
+	apt-get -y install autojump silversearcher-ag git emacs24-nox vim htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr
 	apt-get -y purge unattended-upgrades lxd snapd lxcfs
-	yarn global add prettier
+	npm install -g prettier
 
 	_AUDITD_RESTART=0
 	if ! sudo grep -q execve /etc/audit/audit.rules; then
