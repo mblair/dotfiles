@@ -82,7 +82,7 @@ for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq macvim py
 	brew install ${_install_flags} ${_pkg} || brew upgrade ${_pkg}
 done
 
-brew cask install java font-hack-nerd-font minikube
+brew cask install java font-hack-nerd-font minikube keybase
 
 ${_HERE}/go_clean.sh
 
