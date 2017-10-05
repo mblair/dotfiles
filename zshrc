@@ -30,6 +30,7 @@ alias eclean="rm -r ~/.emacs.d; (cd ~/external_src/prelude && git clean -fdx && 
 if [[ $(uname -s) == "Darwin" ]]; then
 	export VISUAL="${_EMACS_C} -c -n"
 	alias E="${_EMACS_C} -c -n"
+	alias e="${_EMACS_C} -ct"
 
 	export GIT_EDITOR='mvim -f'
 	export EDITOR='mvim -f'
