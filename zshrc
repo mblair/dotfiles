@@ -1,8 +1,8 @@
 _EMPLOYER="figma"
 
 if [[ $(uname -s) == "Darwin" ]]; then
-    _EMACS=/usr/local/bin/emacs
-    _EMACS_C="${_EMACS}client"
+	_EMACS=/usr/local/bin/emacs
+	_EMACS_C="${_EMACS}client"
 	#_EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
 	#_EMACS_C="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 else
@@ -68,10 +68,10 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		eval "$(rbenv init -)"
 	fi
 
-        if which node >/dev/null; then
-            _NODE_VERSION=$(node --version | tr -d 'A-Za-z')
-            export PATH="/usr/local/Cellar/node/${_NODE_VERSION}/bin:$PATH"
-        fi
+	if which node >/dev/null; then
+		_NODE_VERSION=$(node --version | tr -d 'A-Za-z')
+		export PATH="/usr/local/Cellar/node/${_NODE_VERSION}/bin:$PATH"
+	fi
 
 elif [[ $(uname -s) == "Linux" ]]; then
 	alias E="${_EMACS_C} -ct"
