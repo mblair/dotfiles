@@ -55,7 +55,7 @@ if [[ ! -x /usr/local/bin/npm ]]; then
 	n latest
 fi
 
-npm install -g npm@latest
+npm install -g npm@next
 npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp
 
 #if [[ ! -x /usr/local/bin/emacs ]]; then
