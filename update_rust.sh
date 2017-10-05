@@ -21,7 +21,7 @@ if [[ ! -d $HOME/external_src ]]; then
 fi
 
 cd "$HOME/external_src/"
-for _repo in rust-lang/book rust-lang-nursery/rust-by-example; do
+for _repo in rust-lang/book rust-lang-nursery/rust-by-example SergioBenitez/Rocket; do
 	_dir=$HOME/external_src/${_repo##*/}
 
 	if [[ ! -d ${_dir} ]]; then
