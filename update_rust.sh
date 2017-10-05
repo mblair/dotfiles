@@ -12,7 +12,7 @@ source "${_HERE}/vcs.bash"
 rm -rf ~/.multirust
 curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
 rustup update
-for _component in rls rust-analysis rust-src; do
+for _component in rls-preview rust-analysis rust-src; do
 	rustup component add ${_component}
 done
 
