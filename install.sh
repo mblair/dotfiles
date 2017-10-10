@@ -9,7 +9,7 @@ set -xueo pipefail
 
 _HUB_VER="2.3.0-pre10"
 _CTOP_VER="0.6.1"
-_GO_VER="1.9"
+_GO_VER="1.9.1"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list -1 | grep wget; then
