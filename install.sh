@@ -32,7 +32,7 @@ else
 	apt-get update
 	apt-get -y dist-upgrade
 	# TODO: install a newer node from nodesource
-	apt-get -y install autojump silversearcher-ag git emacs24-nox vim htop curl wget tmux jq ruby python build-essential nodejs-legacy strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr
+	apt-get -y install autojump silversearcher-ag git emacs24-nox vim htop curl wget tmux jq ruby python build-essential nodejs npm strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr
 	apt-get -y purge unattended-upgrades lxd snapd lxcfs
 	npm install -g prettier
 
