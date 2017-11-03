@@ -35,7 +35,7 @@ done
 #TODO: unify these somehow
 for _pkg in racer rustfmt watchexec cargo-watch rg mdbook fd; do
 	_crate=$_pkg
-	if [[ $_pkg == "ripgrep" ]]; then
+	if [[ $_pkg == "rg" ]]; then
 		_crate="ripgrep"
 	elif [[ $_pkg == "fd" ]]; then
 		_crate="fd-find"
@@ -66,7 +66,7 @@ for _pkg in loc ripgrep; do
 			cargo uninstall ${_pkg}
 			cargo install ${_pkg}
 		else
-			_installed_ver=$(find "$HOME"/.cargo/registry/src -type d -name "${_pkg}-*" | tail -1 | perl -pe "s/^.*${_pkg}-(.*)/\${1}/")
+			_installed_ver=$(find "$HOME"/.cargo/registry/src -type d -name "${_pkg}-*" | sort | tail -1 | perl -pe "s/^.*${_pkg}-(.*)/\${1}/")
 			_latest_ver=$(cargo search ${_pkg} 2>/dev/null | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
 			if [[ $_installed_ver < $_latest_ver ]]; then
 				cargo uninstall ${_pkg}

@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
+set -xueo pipefail
+
 _HERE=$(
-	cd $(dirname "$0")
+	cd $(dirname $0)
 	pwd
 )
 
-set -xueo pipefail
+source ${_HERE}/vcs.bash
 
 _HUB_VER="2.3.0-pre10"
 _CTOP_VER="0.6.1"
-_GO_VER="1.9.1"
+_GO_VER="1.9.2"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list -1 | grep wget; then
@@ -28,13 +30,15 @@ else
 	if ! which docker; then
 		curl -sSL https://get.docker.com/ | sh
 	fi
+	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+	apt-get -y install nodejs
 	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
 	apt-get update
 	apt-get -y dist-upgrade
-	# TODO: install a newer node from nodesource
-	apt-get -y install autojump silversearcher-ag git emacs24-nox vim htop curl wget tmux jq ruby python build-essential nodejs npm strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr
+	apt-get -y install autojump silversearcher-ag git emacs24-nox vim htop curl wget tmux jq ruby python build-essential strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr zsh whois
+    chsh -s /bin/zsh
 	apt-get -y purge unattended-upgrades lxd snapd lxcfs
-	npm install -g prettier
+	npm install -g prettier fast-cli
 
 	_AUDITD_RESTART=0
 	if ! sudo grep -q execve /etc/audit/audit.rules; then
@@ -68,12 +72,10 @@ if [[ -d ~/my_src/private ]]; then
 	~/my_src/private/install.sh
 fi
 
-if [[ $(uname -s) == "Darwin" ]]; then
-	git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
-	ln -sf ${_HERE}/zshrc ~/.zshrc
-fi
-
+git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
+ln -sf ${_HERE}/zshrc ~/.zshrc
 ln -sf ${_HERE}/gitconfig ~/.gitconfig
+ln -sf ${_HERE}/npmrc ~/.npmrc
 ln -sf ${_HERE}/gitignore_global ~/.gitignore_global
 ln -sf ${_HERE}/inputrc ~/.inputrc
 ln -sf ${_HERE}/tmux.conf ~/.tmux.conf
@@ -143,4 +145,16 @@ if [[ $(uname -s) == "Linux" ]]; then
 
 	wget https://github.com/bcicen/ctop/releases/download/v${_CTOP_VER}/ctop-${_CTOP_VER}-linux-amd64 -O /usr/local/bin/ctop
 	chmod +x /usr/local/bin/ctop
+
+	cd
+	export GOPATH=$HOME/go
+	mkdir -p go/src/github.com/mblair
+	if [[ ! -d go/src/github.com/mblair/matthewblair.net ]]; then
+		git clone https://github.com/mblair/matthewblair.net go/src/github.com/mblair
+		cd go/src/github.com/mblair/matthewblair.net
+	else
+		cd go/src/github.com/mblair/matthewblair.net
+		git_update
+	fi
+	make restart
 fi

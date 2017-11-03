@@ -56,7 +56,7 @@ if [[ ! -x /usr/local/bin/npm ]]; then
 fi
 
 npm install -g npm@next
-npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp
+npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline
 
 #if [[ ! -x /usr/local/bin/emacs ]]; then
 #  brew install --with-cocoa emacs
@@ -69,7 +69,7 @@ ${_HERE}/install.sh
 #/usr/local/bin/emacs --daemon
 
 brew tap caskroom/fonts
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay n jid unrar mtr ccat watch go hub emacs httpstat clang-format ctop certbot pngcheck pandoc curl git-lfs exa docker-machine-driver-xhyve telnet azure-cli heroku go-delve/delve/delve; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay n jid unrar mtr ccat watch go hub emacs httpstat clang-format ctop certbot pngcheck pandoc curl git-lfs exa docker-machine-driver-xhyve telnet azure-cli heroku pgformatter go-delve/delve/delve; do
 	_install_flags=""
 	if [[ ${_pkg} == "hub" ]]; then
 		_install_flags="--HEAD"

@@ -83,7 +83,6 @@ alias git="hub"
 alias c="clear"
 alias dc="cd"
 alias l="ls -lha"
-alias f="find . | grep -i"
 alias p="ping google.com"
 alias rscp='rsync -aP --no-whole-file --inplace'
 alias rsmv='rscp --remove-source-files'
@@ -134,5 +133,9 @@ if [[ -d $HOME/.cargo/bin ]]; then
 fi
 
 ff() {
-    ffmpeg -i $1 -b:a 320k ${1%%.*}.mp3
+	ffmpeg -i "$1" -b:a 320k "${1%.*}".mp3
+}
+
+npmu() {
+	npm ls -depth 0 --json | jq ".dependencies | keys" | jq -r '@sh' | tr -d "'" | tr " " "\n" | xargs -I__ npm i --save __@latest
 }
