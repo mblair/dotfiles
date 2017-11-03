@@ -89,3 +89,5 @@ go get -u github.com/ascarter/conductor
 go get -u github.com/square/certigo
 go get -u github.com/govend/govend
 go get -u github.com/kyoh86/scopelint
+go get -u github.com/davecheney/httpstat
+go get -u github.com/uudashr/gopkgs/cmd/gopkgs
