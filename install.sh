@@ -74,7 +74,12 @@ if [[ -d ~/my_src/private ]]; then
 fi
 
 git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
-ln -sf ${_HERE}/zshrc ~/.zshrc
+if [[ $(uname -s) == "Darwin" ]]; then
+	ln -sf ${_HERE}/zshrc ~/.zshrc
+else
+	ln -sf ${_HERE}/zshrc /etc/zsh/zshrc
+fi
+
 ln -sf ${_HERE}/gitconfig ~/.gitconfig
 ln -sf ${_HERE}/npmrc ~/.npmrc
 ln -sf ${_HERE}/gitignore_global ~/.gitignore_global
