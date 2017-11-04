@@ -27,6 +27,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	fi
 else
 	curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
+	${_HERE}/update_rust.sh
 	if ! which docker; then
 		curl -sSL https://get.docker.com/ | sh
 	fi
@@ -36,9 +37,9 @@ else
 	apt-get update
 	apt-get -y dist-upgrade
 	apt-get -y install autojump silversearcher-ag git emacs24-nox vim htop curl wget tmux jq ruby python build-essential strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr zsh whois
-    chsh -s /bin/zsh
+	chsh -s /bin/zsh
 	apt-get -y purge unattended-upgrades lxd snapd lxcfs
-	npm install -g prettier fast-cli
+	npm install -g prettier
 
 	_AUDITD_RESTART=0
 	if ! sudo grep -q execve /etc/audit/audit.rules; then
@@ -126,14 +127,13 @@ if [[ $(uname -s) == "Linux" ]]; then
 		fi
 	fi
 
+	if [[ -d $HOME/.go/bin ]]; then
+		export PATH=$HOME/.go/bin:$PATH
+	fi
+
 	if ! [[ $(go version) =~ go${_GO_VER} ]]; then
-		# TODO: use https://github.com/golang/tools/tree/master/cmd/getgo
 		cd
-		wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz
-		tar xf godeb-amd64.tar.gz
-		mv godeb /usr/local/bin
-		godeb install ${_GO_VER}
-		rm godeb-amd64.tar.gz go*.deb
+		curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer
 	fi
 
 	cp /usr/share/zoneinfo/UTC /etc/localtime || true

@@ -132,6 +132,10 @@ if [[ -d $HOME/.cargo/bin ]]; then
 	export PATH=$PATH:$HOME/.cargo/bin
 fi
 
+if [[ -d $HOME/.go/bin ]]; then
+	export PATH=$PATH:$HOME/.go/bin
+fi
+
 ff() {
 	ffmpeg -i "$1" -b:a 320k "${1%.*}".mp3
 }
