@@ -26,7 +26,7 @@
                       kill-ring-search
                       expand-region
                       multi-term
-                      anzu
+                      ;; anzu
                       fiplr
                       ido-vertical-mode
                       latest-clojure-libraries

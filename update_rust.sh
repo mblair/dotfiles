@@ -13,7 +13,7 @@ rm -rf ~/.multirust
 curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
 rustup update
 for _component in rls-preview rust-analysis rust-src; do
-	rustup component add ${_component}
+	rustup component add ${_component} || true # sometimes rls fails to build and isn't available
 done
 
 if [[ ! -d $HOME/external_src ]]; then

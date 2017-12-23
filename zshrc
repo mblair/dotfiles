@@ -16,7 +16,7 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git osx github virtualenv)
+plugins=(git osx github virtualenv docker)
 fpath=(/usr/local/share/zsh-completions $fpath)
 source $ZSH/oh-my-zsh.sh
 
@@ -82,8 +82,11 @@ alias b="brew"
 alias git="hub"
 alias c="clear"
 alias dc="cd"
+alias f="fd"
 alias l="ls -lha"
 alias p="ping google.com"
+alias pw="prettier --write --print-width=110"
+alias update-packages="make -f ~/Dropbox/experiments/Makefile update-packages"
 alias rscp='rsync -aP --no-whole-file --inplace'
 alias rsmv='rscp --remove-source-files'
 alias myip="curl -s https://api.ipify.org\?format\=json | jq -r '.ip'"
