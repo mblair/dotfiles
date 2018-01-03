@@ -11,16 +11,20 @@ _HERE=$(
 
 #TODO: break these all up into functions, make them individually addressable
 
-gem update --system
-gem update
-gem install showoff exifr pry pygments.rb lolcat bundler
-gem cleanup --quiet
+export PATH=/usr/local/bin:$PATH
+if [[ $(which gem) == "$HOME/.rbenv/shims/gem" ]]; then
+    gem update --system
+    gem update
+    gem install showoff exifr pry pygments.rb lolcat bundler
+    gem cleanup --quiet
+fi
 
-# TODO: make sure we're using the virtualenv python here
-easy_install-2.7 -U setuptools
-pip2 install -U pip
-pip2 install -U autopep8 virtualenv howdoi ramlfications pockyt proselint
-pip2 freeze | cut -d= -f1 | xargs pip2 install -U
+if [[ $(which pip2) == "$HOME/venv/bin/pip2" ]]; then
+    easy_install-2.7 -U setuptools
+    pip2 install -U pip
+    pip2 install -U autopep8 virtualenv howdoi ramlfications pockyt proselint
+    pip2 freeze | cut -d= -f1 | xargs pip2 install -U
+fi
 
 cd ~/.oh-my-zsh
 git pull
