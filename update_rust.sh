@@ -12,7 +12,7 @@ source "${_HERE}/vcs.bash"
 rm -rf ~/.multirust
 curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
 rustup update
-for _component in rls-preview rust-analysis rust-src; do
+for _component in rls-preview rust-analysis rust-src rustfmt-preview; do
 	rustup component add ${_component} || true # sometimes rls fails to build and isn't available
 done
 
@@ -20,11 +20,11 @@ if [[ ! -d $HOME/external_src ]]; then
 	mkdir -p "$HOME/external_src"
 fi
 
-cd "$HOME/external_src/"
 for _repo in rust-lang/book rust-lang/rust-by-example SergioBenitez/Rocket; do
 	_dir=$HOME/external_src/${_repo##*/}
 
 	if [[ ! -d ${_dir} ]]; then
+        cd "$HOME/external_src/"
 		git clone https://github.com/"${_repo}"
 	else
 		cd "${_dir}"
@@ -33,7 +33,7 @@ for _repo in rust-lang/book rust-lang/rust-by-example SergioBenitez/Rocket; do
 done
 
 #TODO: unify these somehow
-for _pkg in racer rustfmt watchexec cargo-watch rg mdbook fd; do
+for _pkg in racer watchexec cargo-watch rg mdbook fd; do
 	_crate=$_pkg
 	if [[ $_pkg == "rg" ]]; then
 		_crate="ripgrep"
