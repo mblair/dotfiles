@@ -91,3 +91,4 @@ go get -u github.com/govend/govend
 go get -u github.com/kyoh86/scopelint
 go get -u github.com/davecheney/httpstat
 go get -u github.com/uudashr/gopkgs/cmd/gopkgs
+go get -u github.com/GoogleChromeLabs/simplehttp2server
