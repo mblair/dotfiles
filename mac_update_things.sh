@@ -61,10 +61,6 @@ fi
 npm install -g npm@next
 npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline
 
-#if [[ ! -x /usr/local/bin/emacs ]]; then
-#  brew install --with-cocoa emacs
-#fi
-
 ${_HERE}/install.sh
 
 #rm -rf ~/.emacs.d
@@ -79,7 +75,7 @@ for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq macvim py
 	elif [[ ${_pkg} == "curl" ]]; then
 		_install_flags="--with-nghttp2"
 	elif [[ ${_pkg} == "emacs" ]]; then
-		_install_flags="--with-cocoa"
+		_install_flags="--with-cocoa --HEAD"
 	elif [[ ${_pkg} == "go" ]]; then
 		_install_flags="--devel"
 	fi
