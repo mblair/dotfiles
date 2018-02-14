@@ -24,7 +24,7 @@ for _repo in rust-lang/book rust-lang/rust-by-example SergioBenitez/Rocket; do
 	_dir=$HOME/external_src/${_repo##*/}
 
 	if [[ ! -d ${_dir} ]]; then
-        cd "$HOME/external_src/"
+		cd "$HOME/external_src/"
 		git clone https://github.com/"${_repo}"
 	else
 		cd "${_dir}"
