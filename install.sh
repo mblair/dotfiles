@@ -36,7 +36,7 @@ else
 	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
 	apt-get update
 	apt-get -y dist-upgrade
-	apt-get -y install autojump silversearcher-ag git emacs24-nox vim htop curl wget tmux jq ruby python build-essential strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr zsh whois
+	apt-get -y install autojump silversearcher-ag git emacs25-nox vim htop curl wget tmux jq ruby python build-essential strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr zsh whois
 	chsh -s /bin/zsh
 	apt-get -y purge unattended-upgrades lxd snapd lxcfs
 	npm install -g prettier
