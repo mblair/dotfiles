@@ -157,13 +157,14 @@ if [[ $(uname -s) == "Linux" ]]; then
 
 	cd
 	export GOPATH=$HOME/go
-	mkdir -p go/src/github.com/mblair
-	if [[ ! -d go/src/github.com/mblair/matthewblair.net ]]; then
-		git clone https://github.com/mblair/matthewblair.net go/src/github.com/mblair
+	mkdir -p go/src/github.com/mblair/matthewblair.net
+	if [[ ! -d go/src/github.com/mblair/matthewblair.net/.git ]]; then
+		git clone https://github.com/mblair/matthewblair.net go/src/github.com/mblair/matthewblair.net
 		cd go/src/github.com/mblair/matthewblair.net
+		make run
 	else
 		cd go/src/github.com/mblair/matthewblair.net
 		git_update
+		make restart
 	fi
-	make restart
 fi
