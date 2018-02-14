@@ -2,6 +2,12 @@
 
 set -xueo pipefail
 
+export PATH="$PATH:$HOME/.cargo/bin"
+
+if command -v apt-get; then
+	apt-get -y install build-essential ruby
+fi
+
 if command -v brew; then
 	brew uninstall multirust || true
 fi
@@ -42,7 +48,7 @@ for _pkg in racer watchexec cargo-watch rg mdbook fd; do
 	fi
 	${_pkg} --version || {
 		cargo install ${_crate}
-		break
+		continue
 	}
 	_installed_version=$(${_pkg} --version | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
 	_latest_version=$(cargo search ${_crate} | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
