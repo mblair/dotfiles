@@ -16,7 +16,7 @@ _HERE=$(dirname "$0")
 source "${_HERE}/vcs.bash"
 
 rm -rf ~/.multirust
-curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
+curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --no-modify-path -y -v
 rustup update
 for _component in rls-preview rust-analysis rust-src rustfmt-preview; do
 	rustup component add ${_component} || true # sometimes rls fails to build and isn't available
@@ -83,5 +83,5 @@ for _pkg in loc ripgrep; do
 done
 
 if which docker; then
-	docker pull rustlang/rust:nightly
+	docker pull rust
 fi
