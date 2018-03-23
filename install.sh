@@ -10,8 +10,8 @@ _HERE=$(
 source ${_HERE}/vcs.bash
 
 _HUB_VER="2.3.0-pre10"
-_CTOP_VER="0.7"
-_GO_VER="1.9.4"
+_CTOP_VER="0.7.1"
+_GO_VER="1.10"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list -1 | grep wget; then
