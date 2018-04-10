@@ -16,7 +16,13 @@ _HERE=$(dirname "$0")
 source "${_HERE}/vcs.bash"
 
 rm -rf ~/.multirust
-curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --no-modify-path -y -v
+if command -v brew; then
+    brew install rustup-init
+    rustup-init --no-modify-path -y --default-toolchain stable
+else
+    curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable
+fi
+
 rustup update
 for _component in rls-preview rust-analysis rust-src rustfmt-preview; do
 	rustup component add ${_component} || true # sometimes rls fails to build and isn't available
