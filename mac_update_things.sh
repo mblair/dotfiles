@@ -19,12 +19,10 @@ if [[ $(which gem) == "$HOME/.rbenv/shims/gem" ]]; then
 	gem cleanup --quiet
 fi
 
-if [[ $(which pip2) == "$HOME/venv/bin/pip2" ]]; then
-	easy_install-2.7 -U setuptools
-	pip2 install -U pip
-	pip2 install -U autopep8 virtualenv howdoi ramlfications pockyt proselint
-	pip2 freeze | cut -d= -f1 | xargs pip2 install -U
-fi
+easy_install -U setuptools
+pip install -U pip
+pip install -U autopep8 virtualenv howdoi ramlfications pockyt proselint
+pip freeze | cut -d= -f1 | xargs pip install -U
 
 cd ~/.oh-my-zsh
 git pull
@@ -68,14 +66,16 @@ ${_HERE}/install.sh
 #/usr/local/bin/emacs --daemon
 
 brew tap caskroom/fonts
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq macvim python python3 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay n jid unrar mtr ccat watch go hub emacs httpstat clang-format ctop certbot pngcheck pandoc curl git-lfs exa docker-machine-driver-xhyve telnet azure-cli heroku pgformatter swiftformat go-delve/delve/delve Nonchalant/appicon/appicon; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq python@2 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay n jid unrar mtr ccat watch go hub emacs httpstat clang-format ctop pngcheck pandoc curl git-lfs exa telnet heroku pgformatter swiftformat macvim go-delve/delve/delve Nonchalant/appicon/appicon; do
 	_install_flags=""
 	if [[ ${_pkg} == "hub" ]]; then
 		_install_flags="--HEAD"
 	elif [[ ${_pkg} == "curl" ]]; then
 		_install_flags="--with-nghttp2"
 	elif [[ ${_pkg} == "emacs" ]]; then
-		_install_flags="--with-cocoa --HEAD"
+		_install_flags="--with-cocoa"
+    elif [[ ${_pkg} == "macvim" ]]; then
+        _install_flags="--with-python@2 --without-python"
 	fi
 
 	brew install ${_install_flags} ${_pkg} || brew upgrade ${_pkg}
