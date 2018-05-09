@@ -87,6 +87,7 @@ alias l="ls -lha"
 alias p="ping google.com"
 alias pw="prettier --write --print-width=110"
 alias update-packages="make -f ~/Dropbox/experiments/Makefile update-packages"
+alias cifmt='find . -type f -name "ci.sh" | xargs -I__ shfmt -i 2 -w __'
 alias rscp='rsync -aP --no-whole-file --inplace'
 alias rsmv='rscp --remove-source-files'
 alias myip="curl -s https://api.ipify.org\?format\=json | jq -r '.ip'"
@@ -129,10 +130,18 @@ gif() {
 	ffmpeg -i $1 -pix_fmt rgb24 -r 20 -f gif - | gifsicle --optimize=3 --delay=3 >$2
 }
 
-export RUST_SRC_PATH=~/external_src/rust/src
-
 if [[ -d $HOME/.cargo/bin ]]; then
 	export PATH=$PATH:$HOME/.cargo/bin
+
+fi
+
+if [[ -d $HOME/.rustup ]]; then
+	if [[ $(uname -s) == "Darwin" ]]; then
+		rust_arch="apple-darwin"
+	else
+		rust_arch="unknown-linux-gnu"
+	fi
+	export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-${rust_arch}/lib/rustlib/src
 fi
 
 if [[ -d $HOME/.go/bin ]]; then

@@ -66,7 +66,7 @@ ${_HERE}/install.sh
 #/usr/local/bin/emacs --daemon
 
 brew tap caskroom/fonts
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq python@2 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay n jid unrar mtr ccat watch go hub emacs httpstat clang-format ctop pngcheck pandoc curl git-lfs exa telnet heroku pgformatter swiftformat macvim go-delve/delve/delve Nonchalant/appicon/appicon; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq python@2 s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay n jid unrar mtr ccat watch go hub emacs httpstat clang-format ctop pngcheck pandoc curl git-lfs exa telnet heroku pgformatter swiftformat macvim go-delve/delve/delve Nonchalant/appicon/appicon moreutils; do
 	_install_flags=""
 	if [[ ${_pkg} == "hub" ]]; then
 		_install_flags="--HEAD"
@@ -74,8 +74,8 @@ for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq python@2 
 		_install_flags="--with-nghttp2"
 	elif [[ ${_pkg} == "emacs" ]]; then
 		_install_flags="--devel --with-cocoa"
-    elif [[ ${_pkg} == "macvim" ]]; then
-        _install_flags="--with-python@2 --without-python"
+	elif [[ ${_pkg} == "macvim" ]]; then
+		_install_flags="--with-python@2 --without-python"
 	fi
 
 	brew install ${_install_flags} ${_pkg} || brew upgrade ${_pkg}

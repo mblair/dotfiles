@@ -12,8 +12,6 @@
 (prelude-require-package 'ag)
 (prelude-require-package 'nord-theme)
 (prelude-require-package 'markdown-mode)
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
 ;;(load-theme 'darktooth t)
 ;;(load-theme 'warm-night t)
 (load-theme 'ariake t)
@@ -22,3 +20,9 @@
 (setq whitespace-style (remove'lines-tail whitespace-style))
 (add-to-list 'auto-mode-alist '("Jakefile$" . js2-mode))
 (setq rust-format-on-save t)
+(defun my/setup-go-mode-gofmt-hook ()
+  ;; Use goimports instead of go-fmt
+  (setq gofmt-command "goimports")
+  ;; Call Gofmt before saving
+  (add-hook 'before-save-hook 'gofmt-before-save))
+(add-hook 'go-mode-hook 'my/setup-go-mode-gofmt-hook)

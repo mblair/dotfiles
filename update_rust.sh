@@ -17,10 +17,10 @@ source "${_HERE}/vcs.bash"
 
 rm -rf ~/.multirust
 if command -v brew; then
-    brew install rustup-init
-    rustup-init --no-modify-path -y --default-toolchain stable
+	brew install rustup-init
+	rustup-init --no-modify-path -y --default-toolchain stable
 else
-    curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable
+	curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y --default-toolchain stable
 fi
 
 rustup update
