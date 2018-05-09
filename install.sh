@@ -28,15 +28,15 @@ if [[ $(uname -s) == "Darwin" ]]; then
 else
 	curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y -v
 	${_HERE}/update_rust.sh
-	if ! which docker; then
-		curl -sSL https://get.docker.com/ | sh
-	fi
-	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+	#if ! which docker; then
+	#	curl -sSL https://get.docker.com/ | sh
+	#fi
+	#curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 	apt-get -y install nodejs
 	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
 	apt-get update
 	apt-get -y dist-upgrade
-	apt-get -y install autojump silversearcher-ag git emacs25-nox vim htop curl wget tmux jq ruby python build-essential strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr zsh whois
+	apt-get -y install autojump silversearcher-ag git emacs25-nox vim htop curl wget tmux jq ruby python build-essential strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr zsh whois moreutils
 	chsh -s /bin/zsh
 	apt-get -y purge unattended-upgrades lxd snapd lxcfs
 	npm install -g prettier
