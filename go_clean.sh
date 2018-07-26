@@ -70,7 +70,6 @@ go get -u github.com/zmb3/gogetdoc
 go get -u sourcegraph.com/sqs/goreturns
 go get -u github.com/sourcegraph/go-langserver
 
-go get -u github.com/kardianos/govendor
 go get -u golang.org/x/tools/cmd/{cover,godoc,gorename,guru}
 go get -u mvdan.cc/{unparam,sh/cmd/shfmt}
 go get -u github.com/ChimeraCoder/gojson/gojson
@@ -84,7 +83,6 @@ go get -u github.com/cespare/deplist
 go get -u github.com/spf13/cobra/cobra
 go get -u github.com/KyleBanks/depth/cmd/depth
 go get -u honnef.co/go/tools/...
-go get -u github.com/golang/dep/cmd/dep
 go get -u github.com/ascarter/conductor
 go get -u github.com/square/certigo
 go get -u github.com/govend/govend
@@ -92,3 +90,12 @@ go get -u github.com/kyoh86/scopelint
 go get -u github.com/davecheney/httpstat
 go get -u github.com/uudashr/gopkgs/cmd/gopkgs
 go get -u github.com/GoogleChromeLabs/simplehttp2server
+go get -u golang.org/x/vgo
+go get -u github.com/genuinetools/weather
+go get -u github.com/kubernetes/kompose
+go get -u github.com/GoogleContainerTools/skaffold/cmd/skaffold
+go get -u github.com/FiloSottile/mkcert
+
+if [[ $(uname -s) == "Linux" ]]; then
+	go get -u github.com/golang/dep/cmd/dep
+fi

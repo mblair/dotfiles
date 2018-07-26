@@ -16,7 +16,7 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git osx github virtualenv docker)
+plugins=(git osx github virtualenv docker cargo)
 fpath=(/usr/local/share/zsh-completions $fpath)
 source $ZSH/oh-my-zsh.sh
 
@@ -32,9 +32,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	alias E="${_EMACS_C} -c -n"
 	alias e="${_EMACS_C} -ct"
 
-	export GIT_EDITOR='mvim -f'
-	export EDITOR='mvim -f'
-	export HOMEBREW_EDITOR='mvim -f'
+	export GIT_EDITOR='vim -f'
+	export EDITOR='vim -f'
+	export HOMEBREW_EDITOR='vim -f'
 
 	# http://tug.org/mactex/faq/
 	if [[ -d "/usr/texbin" ]]; then
@@ -45,7 +45,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	export PATH="$PATH:$GOPATH/bin"
 
 	# So we can find Homebrew.
-	export PATH="/usr/local/bin:$PATH"
+	#export PATH="/usr/local/bin:$PATH"
 
 	if [[ -f "/Users/matt/venv/bin/activate" ]]; then
 		source /Users/matt/venv/bin/activate
@@ -141,7 +141,7 @@ if [[ -d $HOME/.rustup ]]; then
 	else
 		rust_arch="unknown-linux-gnu"
 	fi
-	export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-${rust_arch}/lib/rustlib/src
+	export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-${rust_arch}/lib/rustlib/src/rust/src
 fi
 
 if [[ -d $HOME/.go/bin ]]; then

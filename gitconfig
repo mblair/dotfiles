@@ -47,8 +47,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	clean = git-lfs clean -- %f
-[commit]
-	gpgsign = true
 [diff]
     compactionHeuristic = true
 [fetch]

@@ -8,21 +8,12 @@ if command -v apt-get; then
 	apt-get -y install build-essential ruby
 fi
 
-if command -v brew; then
-	brew uninstall multirust || true
-fi
-
 _HERE=$(dirname "$0")
 source "${_HERE}/vcs.bash"
 
-rm -rf ~/.multirust
-if command -v brew; then
-	brew install rustup-init
-	rustup-init --no-modify-path -y --default-toolchain stable
-else
-	curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y --default-toolchain stable
-fi
+curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y --default-toolchain nightly
 
+rustup default nightly
 rustup update
 for _component in rls-preview rust-analysis rust-src rustfmt-preview; do
 	rustup component add ${_component} || true # sometimes rls fails to build and isn't available
@@ -90,4 +81,5 @@ done
 
 if which docker; then
 	docker pull rust
+	docker pull rustlang/rust:nightly
 fi
