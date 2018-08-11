@@ -83,7 +83,7 @@ go get -u github.com/cespare/deplist
 go get -u github.com/spf13/cobra/cobra
 go get -u github.com/KyleBanks/depth/cmd/depth
 go get -u honnef.co/go/tools/...
-go get -u github.com/ascarter/conductor
+#go get -u github.com/ascarter/conductor
 go get -u github.com/square/certigo
 go get -u github.com/govend/govend
 go get -u github.com/kyoh86/scopelint
