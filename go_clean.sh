@@ -95,7 +95,5 @@ go get -u github.com/genuinetools/weather
 go get -u github.com/kubernetes/kompose
 go get -u github.com/GoogleContainerTools/skaffold/cmd/skaffold
 go get -u github.com/FiloSottile/mkcert
-
-if [[ $(uname -s) == "Linux" ]]; then
-	go get -u github.com/golang/dep/cmd/dep
-fi
+go get -u github.com/golang/dep/cmd/dep
+go get -u github.com/derekparker/delve/cmd/dlv
