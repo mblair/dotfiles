@@ -71,18 +71,11 @@ ${_HERE}/install.sh
 
 #brew tap caskroom/fonts
 
-# NOTE: this is currently broken on Mojave.
-#brew install macvim
-
 brew install swiftformat python python@2 kubernetes-cli
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay n jid unrar mtr ccat watch go hub dep emacs httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter vim go-delve/delve/delve Nonchalant/appicon/appicon moreutils azure-cli; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay n jid unrar mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter vim Nonchalant/appicon/appicon moreutils azure-cli macvim annie; do
 	_install_flags=""
 	if [[ ${_pkg} == "curl" ]]; then
 		_install_flags="--with-nghttp2"
-	elif [[ ${_pkg} == "emacs" ]]; then
-		_install_flags="--with-cocoa"
-	elif [[ ${_pkg} == "vim" ]]; then
-		_install_flags="--without-python"
 		#elif [[ ${_pkg} == "macvim" ]]; then
 		#	_install_flags="--with-python@2 --without-python"
 	fi
@@ -91,7 +84,7 @@ for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd she
 done
 
 #brew cask install java font-hack-nerd-font minikube keybase
-brew cask install google-cloud-sdk
+brew cask install google-cloud-sdk emacs
 
 ${_HERE}/go_clean.sh
 
