@@ -57,10 +57,14 @@ for _pkg in racer watchexec cargo-watch rg mdbook fd; do
 done
 
 #TODO: rg --version works now
-for _pkg in loc ripgrep; do
+for _pkg in loc ripgrep diesel_cli; do
 	_cmd=$_pkg
+	_install_flags=''
 	if [[ $_pkg == "ripgrep" ]]; then
 		_cmd="rg"
+	elif [[ $_pkg == "diesel_cli" ]]; then
+		_cmd="diesel"
+		_install_flags='-no-default-features --features "postgres sqlite"'
 	fi
 	if ! command -v ${_cmd}; then
 		cargo install ${_pkg} || true # ripgrep's binary is rg
@@ -74,7 +78,7 @@ for _pkg in loc ripgrep; do
 			_latest_ver=$(cargo search ${_pkg} 2>/dev/null | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
 			if [[ $_installed_ver < $_latest_ver ]]; then
 				cargo uninstall ${_pkg}
-				cargo install ${_pkg}
+				cargo install ${_pkg} ${_install_flags}
 			fi
 		fi
 	fi
