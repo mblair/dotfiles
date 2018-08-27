@@ -94,7 +94,7 @@ if [[ -f ~/my_src/private/${_EMPLOYER}_updater.sh ]]; then
 	. ~/my_src/private/${_EMPLOYER}_updater.sh
 fi
 
-#~/Dropbox\ \(Personal\)/experiments/update_external.sh
+${_HERE}/update_external.sh
 
 brew prune
 brew outdated
