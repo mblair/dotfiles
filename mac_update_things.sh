@@ -24,8 +24,12 @@ fi
 #pip install -U autopep8 virtualenv howdoi ramlfications pockyt proselint
 #pip freeze | cut -d= -f1 | xargs pip install -U
 
-cd ~/.oh-my-zsh
-git pull
+if [[ -d ~/.oh-my-zsh ]]; then
+	cd ~/.oh-my-zsh
+	git pull
+else
+	git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+fi
 
 brew update
 
