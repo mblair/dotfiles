@@ -72,12 +72,10 @@ ${_HERE}/install.sh
 #brew tap caskroom/fonts
 
 brew install swiftformat python python@2 kubernetes-cli
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay n jid unrar mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter vim Nonchalant/appicon/appicon moreutils azure-cli macvim annie; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis phantomjs pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay n jid unrar mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter vim Nonchalant/appicon/appicon moreutils azure-cli macvim annie llvm; do
 	_install_flags=""
 	if [[ ${_pkg} == "curl" ]]; then
 		_install_flags="--with-nghttp2"
-		#elif [[ ${_pkg} == "macvim" ]]; then
-		#	_install_flags="--with-python@2 --without-python"
 	fi
 
 	brew install ${_install_flags} ${_pkg} || brew upgrade ${_pkg}
