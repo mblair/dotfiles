@@ -9,9 +9,9 @@ _HERE=$(
 
 source ${_HERE}/vcs.bash
 
-_HUB_VER="2.3.0-pre10"
+_HUB_VER="2.5.1"
 _CTOP_VER="0.7.1"
-_GO_VER="1.10.2"
+_GO_VER="1.11"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list -1 | grep wget; then
@@ -167,4 +167,7 @@ if [[ $(uname -s) == "Linux" ]]; then
 		git_update
 		make restart
 	fi
+
+    apt-get -y install cpanminus
+    cpanm App::dategrep
 fi
