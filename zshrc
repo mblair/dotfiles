@@ -116,8 +116,8 @@ fi
 
 alias gpgclean='killall -9 pinentry gpg-agent'
 
-alias yt='youtube-dl -o "%(title)s-%(id)s.%(ext)s"'
-alias yta='youtube-dl -o "%(title)s-%(id)s.%(ext)s" --extract-audio'
+alias yt='youtube-dl -o "%(title)s-%(id)s.%(ext)s" --no-mtime'
+alias yta='youtube-dl -o "%(title)s-%(id)s.%(ext)s" --extract-audio --no-mtime'
 
 alias cca='ccat -C=always'
 
