@@ -66,7 +66,6 @@ go get -u github.com/newhook/go-symbols
 go get -u github.com/nsf/gocode
 go get -u github.com/rogpeppe/godef
 go get -u github.com/tpng/gopkgs
-go get -u github.com/zmb3/gogetdoc
 go get -u sourcegraph.com/sqs/goreturns
 go get -u github.com/sourcegraph/go-langserver
 
