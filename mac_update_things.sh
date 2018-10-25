@@ -19,6 +19,12 @@ if [[ $(which gem) == "$HOME/.rbenv/shims/gem" ]]; then
 	gem cleanup --quiet
 fi
 
+if [[ $(which docker >/dev/null 2>&1) ]]; then
+	if [[ "$(du -ms ~/Library/Containers/com.docker.docker | awk '{print $1}')" -gt 25000 ]]; then
+		docker rmi -f $(docker images -q) || true
+	fi
+fi
+
 #easy_install -U setuptools
 #pip install -U pip
 #pip install -U autopep8 virtualenv howdoi ramlfications pockyt proselint
