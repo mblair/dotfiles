@@ -168,6 +168,6 @@ if [[ $(uname -s) == "Linux" ]]; then
 		make restart
 	fi
 
-    apt-get -y install cpanminus
-    cpanm App::dategrep
+	apt-get -y install cpanminus
+	cpanm App::dategrep
 fi
