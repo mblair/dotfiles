@@ -67,7 +67,7 @@ ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 #fi
 
 npm install -g npm
-npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline ndb
+npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline ndb bash-language-server
 
 ${_HERE}/install.sh
 
