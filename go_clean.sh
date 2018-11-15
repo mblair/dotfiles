@@ -94,6 +94,10 @@ go get -u github.com/genuinetools/weather
 go get -u github.com/kubernetes/kompose
 go get -u github.com/GoogleContainerTools/skaffold/cmd/skaffold
 go get -u github.com/FiloSottile/mkcert
-go get -u github.com/golang/dep/cmd/dep
 go get -u github.com/derekparker/delve/cmd/dlv
 go get -u github.com/cespare/reflex
+
+if command -v brew; then
+    brew update
+    brew install dep || true
+fi
