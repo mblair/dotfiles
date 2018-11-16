@@ -9,9 +9,9 @@ _HERE=$(
 
 source ${_HERE}/vcs.bash
 
-_HUB_VER="2.5.1"
+_HUB_VER="2.6.0"
 _CTOP_VER="0.7.1"
-_GO_VER="1.11"
+_GO_VER="1.11.2"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list -1 | grep wget; then
@@ -104,6 +104,9 @@ fi
 ln -sf ${_HERE}/vimrc ~/.vimrc
 cd ${_HERE}
 git submodule update --init
+
+mkdir -p ~/.vim/after/ftplugin/
+echo 'setlocal textwidth=0' > ~/.vim/after/ftplugin/gitcommit.vim
 
 cat >~/.gemrc <<EOF
 gem: --no-ri --no-rdoc

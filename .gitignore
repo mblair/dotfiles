@@ -5,3 +5,4 @@ vim/undodir/*
 vim/plugin/*
 *.swp
 .DS_Store
+vim/after
