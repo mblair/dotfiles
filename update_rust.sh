@@ -37,7 +37,7 @@ for _repo in rust-lang/book rust-lang/rust-by-example SergioBenitez/Rocket; do
 done
 
 #TODO: unify these somehow
-for _pkg in racer watchexec cargo-watch rg mdbook fd; do
+for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl; do
 	_crate=$_pkg
 	if [[ $_pkg == "rg" ]]; then
 		_crate="ripgrep"
