@@ -9,3 +9,7 @@ fmt:
 .PHONY: check
 check:
 	shellcheck *.sh
+
+.PHONY: update-vim
+update-vim:
+	git submodule update --recursive --remote
