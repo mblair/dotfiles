@@ -152,6 +152,10 @@ ff() {
 	ffmpeg -i "$1" -b:a 320k "${1%.*}".mp3
 }
 
+gif2png() {
+    convert -verbose -coalesce "$1" "${1%.*}".png
+}
+
 npmu() {
 	npm ls -depth 0 --json | jq ".dependencies | keys" | jq -r '@sh' | tr -d "'" | tr " " "\n" | xargs -I__ npm i --save __@latest
 }
