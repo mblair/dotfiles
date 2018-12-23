@@ -16,7 +16,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y --default-toolchai
 rustup default nightly
 rustup update
 rustup toolchain install stable
-for _component in rls-preview rust-analysis rust-src rustfmt-preview; do
+for _component in rls-preview rust-analysis rust-src rustfmt; do
 	rustup component add ${_component} || true # sometimes rls fails to build and isn't available
 done
 
