@@ -106,7 +106,7 @@ cd ${_HERE}
 git submodule update --init
 
 mkdir -p ~/.vim/after/ftplugin/
-echo 'setlocal textwidth=0' > ~/.vim/after/ftplugin/gitcommit.vim
+echo 'setlocal textwidth=0' >~/.vim/after/ftplugin/gitcommit.vim
 
 cat >~/.gemrc <<EOF
 gem: --no-ri --no-rdoc

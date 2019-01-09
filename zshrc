@@ -153,7 +153,7 @@ ff() {
 }
 
 gif2png() {
-    convert -verbose -coalesce "$1" "${1%.*}".png
+	convert -verbose -coalesce "$1" "${1%.*}".png
 }
 
 npmu() {

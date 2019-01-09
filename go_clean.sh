@@ -98,6 +98,6 @@ go get -u github.com/cespare/reflex
 go get -u github.com/golang-migrate/migrate/cmd/migrate
 
 if command -v brew; then
-    brew update
-    brew install dep || true
+	brew update
+	brew install dep || true
 fi
