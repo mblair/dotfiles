@@ -2,6 +2,8 @@
 
 set -xueo pipefail
 
+export HOMEBREW_INSTALL_CLEANUP=1
+
 _EMPLOYER="figma"
 
 _HERE=$(
@@ -100,5 +102,4 @@ fi
 
 ${_HERE}/update_external.sh
 
-brew prune
 brew outdated
