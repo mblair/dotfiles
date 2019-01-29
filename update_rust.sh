@@ -56,6 +56,10 @@ for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl; do
 	fi
 done
 
+if [[ $(uname -s) == "Darwin" ]]; then
+	brew install mysql || brew upgrade mysql
+fi
+
 #TODO: rg --version works now
 for _pkg in loc ripgrep diesel_cli; do
 	_cmd=$_pkg
@@ -64,7 +68,7 @@ for _pkg in loc ripgrep diesel_cli; do
 		_cmd="rg"
 	elif [[ $_pkg == "diesel_cli" ]]; then
 		_cmd="diesel"
-		_install_flags='-no-default-features --features "postgres sqlite"'
+		_install_flags='--no-default-features --features "postgres sqlite"'
 	fi
 	if ! command -v ${_cmd}; then
 		cargo install ${_pkg} || true # ripgrep's binary is rg
