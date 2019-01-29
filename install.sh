@@ -142,6 +142,7 @@ if [[ $(uname -s) == "Linux" ]]; then
 		cd
 		curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer
 	fi
+	go get -u github.com/golang/dep/cmd/dep
 
 	cp /usr/share/zoneinfo/UTC /etc/localtime || true
 
