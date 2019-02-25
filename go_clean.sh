@@ -63,7 +63,7 @@ go get -u github.com/fatih/gomodifytags
 go get -u golang.org/x/lint/golint
 go get -u github.com/ramya-rao-a/go-outline
 go get -u github.com/newhook/go-symbols
-go get -u github.com/nsf/gocode
+go get -u github.com/mdempsky/gocode
 go get -u github.com/rogpeppe/godef
 go get -u github.com/tpng/gopkgs
 go get -u sourcegraph.com/sqs/goreturns
