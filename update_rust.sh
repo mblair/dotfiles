@@ -36,13 +36,14 @@ for _repo in rust-lang/book rust-lang/rust-by-example SergioBenitez/Rocket; do
 	fi
 done
 
-#TODO: unify these somehow
-for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend; do
+for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend shellharden diesel; do
 	_crate=$_pkg
 	if [[ $_pkg == "rg" ]]; then
 		_crate="ripgrep"
 	elif [[ $_pkg == "fd" ]]; then
 		_crate="fd-find"
+	elif [[ $_pkg == "diesel" ]]; then
+		_crate="diesel_cli"
 	fi
 	${_pkg} --version || {
 		cargo install ${_crate}
@@ -59,34 +60,6 @@ done
 if [[ $(uname -s) == "Darwin" ]]; then
 	brew install mysql || brew upgrade mysql
 fi
-
-#TODO: rg --version works now
-for _pkg in loc ripgrep diesel_cli; do
-	_cmd=$_pkg
-	_install_flags=''
-	if [[ $_pkg == "ripgrep" ]]; then
-		_cmd="rg"
-	elif [[ $_pkg == "diesel_cli" ]]; then
-		_cmd="diesel"
-		_install_flags='--no-default-features --features "postgres sqlite"'
-	fi
-	if ! command -v ${_cmd}; then
-		cargo install ${_pkg} || true # ripgrep's binary is rg
-		continue
-	else
-		if [[ ! -d "$HOME/.cargo/registry/src" ]]; then
-			cargo uninstall ${_pkg}
-			cargo install ${_pkg}
-		else
-			_installed_ver=$(find "$HOME"/.cargo/registry/src -type d -name "${_pkg}-*" | sort | tail -1 | perl -pe "s/^.*${_pkg}-(.*)/\${1}/")
-			_latest_ver=$(cargo search ${_pkg} 2>/dev/null | ruby -e 'input = gets(nil); puts /[0-9\.]+/.match(input)')
-			if [[ $_installed_ver < $_latest_ver ]]; then
-				cargo uninstall ${_pkg}
-				cargo install ${_pkg} ${_install_flags}
-			fi
-		fi
-	fi
-done
 
 if which docker; then
 	docker pull rust
