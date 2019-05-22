@@ -36,7 +36,7 @@ for _repo in rust-lang/book rust-lang/rust-by-example SergioBenitez/Rocket; do
 	fi
 done
 
-for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend shellharden diesel; do
+for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend shellharden diesel lsd; do
 	_crate=$_pkg
 	if [[ $_pkg == "rg" ]]; then
 		_crate="ripgrep"
