@@ -27,3 +27,4 @@
   ;; Call Gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save))
 (add-hook 'go-mode-hook 'my/setup-go-mode-gofmt-hook)
+(setq ruby-insert-encoding-magic-comment nil)
