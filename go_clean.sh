@@ -90,7 +90,7 @@ go get -u github.com/uudashr/gopkgs/cmd/gopkgs
 go get -u github.com/GoogleChromeLabs/simplehttp2server
 go get -u golang.org/x/vgo
 go get -u github.com/genuinetools/weather
-go get -u github.com/kubernetes/kompose
+#go get -u github.com/kubernetes/kompose
 go get -u github.com/GoogleContainerTools/skaffold/cmd/skaffold
 go get -u github.com/FiloSottile/mkcert
 go get -u github.com/derekparker/delve/cmd/dlv
