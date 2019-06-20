@@ -36,14 +36,12 @@ for _repo in rust-lang/book rust-lang/rust-by-example SergioBenitez/Rocket; do
 	fi
 done
 
-for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend shellharden diesel lsd; do
+for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend shellharden lsd; do
 	_crate=$_pkg
 	if [[ $_pkg == "rg" ]]; then
 		_crate="ripgrep"
 	elif [[ $_pkg == "fd" ]]; then
 		_crate="fd-find"
-	elif [[ $_pkg == "diesel" ]]; then
-		_crate="diesel_cli"
 	fi
 	${_pkg} --version || {
 		cargo install ${_crate}
@@ -56,10 +54,6 @@ for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend shellharde
 		cargo install "${_crate}"
 	fi
 done
-
-if [[ $(uname -s) == "Darwin" ]]; then
-	brew install mysql || brew upgrade mysql
-fi
 
 if which docker; then
 	docker pull rust
