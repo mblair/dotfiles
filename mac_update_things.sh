@@ -88,7 +88,7 @@ done
 #brew install binwalk
 
 #brew cask install java font-hack-nerd-font minikube keybase
-brew cask install google-cloud-sdk emacs
+brew cask install google-cloud-sdk emacs macvim
 
 ${_HERE}/go_clean.sh
 
