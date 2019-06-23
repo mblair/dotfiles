@@ -55,7 +55,7 @@ for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend shellharde
 	fi
 done
 
-if which docker; then
-	docker pull rust
-	docker pull rustlang/rust:nightly
-fi
+#if which docker; then
+#	docker pull rust
+#	docker pull rustlang/rust:nightly
+#fi
