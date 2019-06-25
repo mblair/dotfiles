@@ -68,7 +68,6 @@ ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 #	brew install node
 #fi
 
-npm install -g npm
 npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script webtorrent-cli js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline ndb bash-language-server public-ip-cli
 
 ${_HERE}/install.sh
