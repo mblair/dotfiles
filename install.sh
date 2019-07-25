@@ -9,9 +9,8 @@ _HERE=$(
 
 source ${_HERE}/vcs.bash
 
-_HUB_VER="2.12.0"
-_CTOP_VER="0.7.2"
-_GO_VER="1.12.6"
+_HUB_VER="2.12.3"
+_GO_VER="1.12.7"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list -1 | grep wget; then
@@ -150,9 +149,6 @@ if [[ $(uname -s) == "Linux" ]]; then
 		systemctl disable snapd
 		systemctl stop snapd
 	fi
-
-	wget https://github.com/bcicen/ctop/releases/download/v${_CTOP_VER}/ctop-${_CTOP_VER}-linux-amd64 -O /usr/local/bin/ctop
-	chmod +x /usr/local/bin/ctop
 
 	cd
 	export GOPATH=$HOME/go
