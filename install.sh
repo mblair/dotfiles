@@ -157,13 +157,12 @@ if [[ $(uname -s) == "Linux" ]]; then
 	mkdir -p go/src/github.com/mblair/matthewblair.net
 	if [[ ! -d go/src/github.com/mblair/matthewblair.net/.git ]]; then
 		git clone https://github.com/mblair/matthewblair.net go/src/github.com/mblair/matthewblair.net
-		cd go/src/github.com/mblair/matthewblair.net
-		make run
-	else
-		cd go/src/github.com/mblair/matthewblair.net
-		git_update
-		make restart
 	fi
+
+	cd go/src/github.com/mblair/matthewblair.net
+	dep ensure
+	dep ensure
+	make run || make restart
 
 	apt-get -y install cpanminus
 	cpanm App::dategrep

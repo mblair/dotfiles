@@ -76,6 +76,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
 elif [[ $(uname -s) == "Linux" ]]; then
 	alias E="${_EMACS_C} -ct"
+	if [[ -d ~/go/bin ]]; then
+		PATH="~/go/bin/:$PATH"
+	fi
 fi
 
 alias b="brew"
