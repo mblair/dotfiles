@@ -142,7 +142,6 @@ if [[ $(uname -s) == "Linux" ]]; then
 		cd
 		curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer
 	fi
-	go get -u github.com/golang/dep/cmd/dep
 
 	cp /usr/share/zoneinfo/UTC /etc/localtime || true
 
@@ -152,16 +151,13 @@ if [[ $(uname -s) == "Linux" ]]; then
 	fi
 
 	cd
-	export GOPATH=$HOME/go
-	export PATH="$HOME/go/bin:$PATH"
-	mkdir -p go/src/github.com/mblair/matthewblair.net
-	if [[ ! -d go/src/github.com/mblair/matthewblair.net/.git ]]; then
-		git clone https://github.com/mblair/matthewblair.net go/src/github.com/mblair/matthewblair.net
+
+	if [[ ! -d ~/matthewblair.net/.git ]]; then 
+		git clone https://github.com/mblair/matthewblair.net ~
 	fi
 
-	cd go/src/github.com/mblair/matthewblair.net
-	dep ensure
-	dep ensure
+	cd ~/matthewblair.net
+    git_update
 	make run || make restart
 
 	apt-get -y install cpanminus
