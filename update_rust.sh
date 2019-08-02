@@ -24,19 +24,7 @@ if [[ ! -d $HOME/external_src ]]; then
 	mkdir -p "$HOME/external_src"
 fi
 
-for _repo in rust-lang/book rust-lang/rust-by-example SergioBenitez/Rocket; do
-	_dir=$HOME/external_src/${_repo##*/}
-
-	if [[ ! -d ${_dir} ]]; then
-		cd "$HOME/external_src/"
-		git clone https://github.com/"${_repo}"
-	else
-		cd "${_dir}"
-		git_update
-	fi
-done
-
-for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend shellharden lsd; do
+for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend shellharden lsd tokei; do
 	_crate=$_pkg
 	if [[ $_pkg == "rg" ]]; then
 		_crate="ripgrep"
