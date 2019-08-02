@@ -70,8 +70,6 @@ fi
 
 git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
 mkdir -p ~/.zsh/completion/ ~/external_src/
-git clone https://github.com/docker/cli ~/external_src/cli || (cd ~/external_src/cli && git pull)
-ln -sf ~/external_src/cli/contrib/completion/zsh/_docker ~/.zsh/completion/
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	ln -sf ${_HERE}/zshrc ~/.zshrc
