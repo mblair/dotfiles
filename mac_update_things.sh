@@ -41,29 +41,6 @@ fi
 
 brew update
 
-if [[ -d ~/external_src/prelude ]]; then
-	cd ~/external_src/prelude
-	git clean -fdx
-	git checkout init.el
-	git pull
-else
-	mkdir -p ~/external_src/prelude
-	git clone https://github.com/bbatsov/prelude ~/external_src/prelude
-fi
-
-rm -rf ~/.emacs.d
-ln -sf ~/external_src/prelude ~/.emacs.d
-cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
-cat >>~/.emacs.d/prelude-modules.el <<'EOF'
-  ;;(require 'prelude-helm)
-  ;;(require 'prelude-helm-everywhere)
-  (require 'prelude-company)
-  (require 'prelude-ido)
-  (require 'prelude-go)
-  (require 'prelude-rust)
-EOF
-ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
-
 #if [[ ! -x /usr/local/bin/npm ]]; then
 #	brew install node
 #fi

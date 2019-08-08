@@ -24,6 +24,29 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	if [[ -d $HOME/Dropbox\ \(Persona\)/fonts/ ]]; then
 		cp $HOME/Dropbox\ \(Personal\)/fonts/Hack-v*/* $HOME/Library/Fonts/
 	fi
+	if [[ -d ~/external_src/prelude ]]; then
+		cd ~/external_src/prelude
+		git clean -fdx
+		git checkout init.el
+		git pull
+	else
+		mkdir -p ~/external_src/prelude
+		git clone https://github.com/bbatsov/prelude ~/external_src/prelude
+	fi
+
+	rm -rf ~/.emacs.d
+	ln -sf ~/external_src/prelude ~/.emacs.d
+	gsed -i '1s/^/(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")\n/' ~/.emacs.d/init.el
+	cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
+	cat >>~/.emacs.d/prelude-modules.el <<'EOF'
+  ;;(require 'prelude-helm)
+  ;;(require 'prelude-helm-everywhere)
+  (require 'prelude-company)
+  (require 'prelude-ido)
+  (require 'prelude-go)
+  (require 'prelude-rust)
+EOF
+	ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 else
 	if ! which docker; then
 		curl -sSL https://get.docker.com/ | sh
@@ -150,12 +173,12 @@ if [[ $(uname -s) == "Linux" ]]; then
 
 	cd
 
-	if [[ ! -d ~/matthewblair.net/.git ]]; then 
+	if [[ ! -d ~/matthewblair.net/.git ]]; then
 		git clone https://github.com/mblair/matthewblair.net ~
 	fi
 
 	cd ~/matthewblair.net
-    git_update
+	git_update
 	make run || make restart
 
 	apt-get -y install cpanminus
