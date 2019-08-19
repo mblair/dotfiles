@@ -67,6 +67,7 @@ go get -u github.com/mdempsky/gocode
 go get -u github.com/rogpeppe/godef
 go get -u github.com/tpng/gopkgs
 go get -u sourcegraph.com/sqs/goreturns
+go get -u golang.org/x/tools/cmd/gopls
 
 go get -u golang.org/x/tools/cmd/{cover,godoc,gorename,guru}
 go get -u mvdan.cc/{unparam,sh/cmd/shfmt}
