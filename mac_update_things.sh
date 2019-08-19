@@ -76,3 +76,4 @@ fi
 ${_HERE}/update_external.sh
 
 brew outdated
+brew cask outdated
