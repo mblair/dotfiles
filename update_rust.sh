@@ -43,6 +43,8 @@ for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend shellharde
 	fi
 done
 
+cargo +nightly install nu --features rawkey,clipboard || true
+
 #if which docker; then
 #	docker pull rust
 #	docker pull rustlang/rust:nightly
