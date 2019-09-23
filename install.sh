@@ -17,10 +17,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		brew install wget
 	fi
 
-	if [[ -d /Applications/Xcode.app ]]; then
-		cp /Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Versions/A/Resources/fonts/* $HOME/Library/Fonts/
-	fi
-
 	if [[ -d $HOME/Dropbox\ \(Persona\)/fonts/ ]]; then
 		cp $HOME/Dropbox\ \(Personal\)/fonts/Hack-v*/* $HOME/Library/Fonts/
 	fi
