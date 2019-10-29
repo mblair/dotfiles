@@ -41,8 +41,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		export PATH="/usr/texbin:$PATH"
 	fi
 
-	export GOPATH="$HOME/go"
-	export PATH="$PATH:$GOPATH/bin"
+	export PATH="$PATH:$HOME/go/bin"
 
 	# So we can find Homebrew.
 	#export PATH="/usr/local/bin:$PATH"

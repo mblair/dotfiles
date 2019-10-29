@@ -137,8 +137,7 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 # For gitolite.
 export PATH="$HOME/bin:$PATH"
 
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 if [[ -f ~/.bash_profile ]]; then
 	_HERE=$(

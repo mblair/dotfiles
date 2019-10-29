@@ -24,12 +24,10 @@ if [[ ! -d $HOME/external_src ]]; then
 	mkdir -p "$HOME/external_src"
 fi
 
-for _pkg in racer watchexec cargo-watch rg mdbook fd bat hexyl ffsend shellharden lsd tokei; do
+for _pkg in racer watchexec cargo-watch rg mdbook bat hexyl ffsend shellharden lsd tokei; do
 	_crate=$_pkg
 	if [[ $_pkg == "rg" ]]; then
 		_crate="ripgrep"
-	elif [[ $_pkg == "fd" ]]; then
-		_crate="fd-find"
 	fi
 	${_pkg} --version || {
 		cargo install ${_crate}
