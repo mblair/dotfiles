@@ -7,7 +7,6 @@
 (global-set-key "\C-c c" 'comment-dwim)
 (global-set-key (kbd "C-SPC") 'easy-mark)
 (prelude-require-package 'warm-night-theme)
-;;(prelude-require-package 'lsp-rust)
 (prelude-require-package 'darktooth-theme)
 (prelude-require-package 'tide)
 (prelude-require-package 'ag)
@@ -21,7 +20,6 @@
 (set-face-attribute 'default nil :family "SF Mono")
 (setq whitespace-style (delete 'lines-tail whitespace-style))
 (add-to-list 'auto-mode-alist '("Jakefile$" . js2-mode))
-(setq rust-format-on-save t)
 (defun my/setup-go-mode-gofmt-hook ()
   ;; Use goimports instead of go-fmt
   (setq gofmt-command "goimports")

@@ -66,8 +66,6 @@ brew cask install google-cloud-sdk emacs macvim
 
 ${_HERE}/go_clean.sh
 
-${_HERE}/update_rust.sh || true
-
 if [[ -f ~/my_src/private/${_EMPLOYER}_updater.sh ]]; then
 	. ~/my_src/private/${_EMPLOYER}_updater.sh
 fi

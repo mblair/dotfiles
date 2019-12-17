@@ -40,7 +40,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
   (require 'prelude-company)
   (require 'prelude-ido)
   (require 'prelude-go)
-  (require 'prelude-rust)
 EOF
 	ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 else

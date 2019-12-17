@@ -137,15 +137,6 @@ if [[ -d $HOME/.cargo/bin ]]; then
 
 fi
 
-if [[ -d $HOME/.rustup ]]; then
-	if [[ $(uname -s) == "Darwin" ]]; then
-		rust_arch="apple-darwin"
-	else
-		rust_arch="unknown-linux-gnu"
-	fi
-	export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-${rust_arch}/lib/rustlib/src/rust/src
-fi
-
 if [[ -d $HOME/.go/bin ]]; then
 	export PATH=$PATH:$HOME/.go/bin
 fi

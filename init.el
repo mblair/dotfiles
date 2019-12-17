@@ -15,8 +15,6 @@
                       js2-mode
                       yaml-mode
                       puppet-mode
-                      rust-mode
-                      racer
                       systemd
                       clojure-mode
                       coffee-mode
@@ -40,7 +38,6 @@
                       rainbow-delimiters
                       company
                       flycheck
-                      flycheck-rust
                       gitconfig-mode
                       toml-mode
                       terraform-mode
@@ -345,20 +342,12 @@
 (require 'magit-gh-pulls)
 (add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
 
-(setq racer-cmd "/Users/matt/.cargo/bin/racer")
-(setq racer-rust-src-path "/Users/matt/external_src/rust/src/")
-
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-
 (add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'racer-mode-hook #'company-mode)
 
 (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 (setq company-tooltip-align-annotations t)
 
 (global-flycheck-mode)
-(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 (setq-default flycheck-disabled-checkers '(javascript-eslint javascript-jshint javascript-gjshint))
 
 (require 'dumb-jump)
