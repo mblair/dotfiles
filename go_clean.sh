@@ -65,13 +65,13 @@ go get -u github.com/tpng/gopkgs
 go get -u sourcegraph.com/sqs/goreturns
 #go get golang.org/x/tools/gopls@latest
 
-go get -u golang.org/x/tools/cmd/{cover,godoc,gorename,guru}
+go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,gorename,guru}
 go get -u mvdan.cc/{unparam,sh/cmd/shfmt}
 go get -u github.com/ChimeraCoder/gojson/gojson
 go get -u github.com/ChimeraCoder/goxml
 go get -u github.com/motemen/go-pocket/...
 go get -u github.com/axw/gocov/gocov
-go get -u gopkg.in/matm/v1/gocov-html
+#go get -u gopkg.in/matm/v1/gocov-html
 go get -u github.com/AlekSi/gocov-xml
 go get -u github.com/shurcooL/markdownfmt
 go get -u github.com/cespare/deplist
@@ -79,7 +79,7 @@ go get -u github.com/spf13/cobra/cobra
 go get -u github.com/KyleBanks/depth/cmd/depth
 go get -u honnef.co/go/tools/...
 #go get -u github.com/ascarter/conductor
-go get -u github.com/square/certigo
+#go get -u github.com/square/certigo
 go get -u github.com/govend/govend
 go get -u github.com/kyoh86/scopelint
 go get -u github.com/davecheney/httpstat
