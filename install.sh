@@ -32,6 +32,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
 	rm -rf ~/.emacs.d
 	ln -sf ~/external_src/prelude ~/.emacs.d
+	# TODO: guard this with a brew install gnu-sed.
 	gsed -i '1s/^/(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")\n/' ~/.emacs.d/init.el
 	cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
 	cat >>~/.emacs.d/prelude-modules.el <<'EOF'

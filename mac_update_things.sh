@@ -4,7 +4,7 @@ set -xueo pipefail
 
 export HOMEBREW_INSTALL_CLEANUP=1
 
-_EMPLOYER="figma"
+_EMPLOYER="google"
 
 _HERE=$(
 	cd $(dirname $0)
@@ -54,7 +54,7 @@ ${_HERE}/install.sh
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid unrar mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter vim Nonchalant/appicon/appicon moreutils azure-cli annie llvm imagemagick wireguard-tools iperf3 swiftformat python python@2 kubernetes-cli fd; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid unrar mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter vim Nonchalant/appicon/appicon moreutils azure-cli annie llvm imagemagick wireguard-tools iperf3 swiftformat python python@2 kubernetes-cli fd broot; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 

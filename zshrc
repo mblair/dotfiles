@@ -152,3 +152,5 @@ gif2png() {
 npmu() {
 	npm ls -depth 0 --json | jq ".dependencies | keys" | jq -r '@sh' | tr -d "'" | tr " " "\n" | xargs -I__ npm i --save __@latest
 }
+
+source /Users/matt/Library/Preferences/org.dystroy.broot/launcher/bash/br
