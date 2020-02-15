@@ -2,7 +2,7 @@
 
 set -xueo pipefail
 
-# _current_employer_github_org=figma
+# _current_employer_github_org=google
 # _github_gopath_prefix="${GOPATH}/src/github.com"
 # _current_employer_gopath="${_github_gopath_prefix}/${_current_employer_github_org}"
 # _unpushed_changes=0

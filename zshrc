@@ -1,4 +1,4 @@
-_EMPLOYER="figma"
+_EMPLOYER="google"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	_EMACS=/usr/local/bin/emacs

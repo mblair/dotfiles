@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-_EMPLOYER="figma"
+_EMPLOYER="google"
 
 # This makes Ctrl-S (forward-search-history) work.
 stty stop undef
