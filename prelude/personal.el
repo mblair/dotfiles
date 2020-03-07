@@ -17,9 +17,8 @@
 ;;(load-theme 'warm-night t)
 (load-theme 'ariake t)
 (set-face-attribute 'default nil :height 140)
-(set-face-attribute 'default nil :family "SF Mono")
+(set-face-attribute 'default nil :family "Inconsolata")
 (setq whitespace-style (delete 'lines-tail whitespace-style))
-(add-to-list 'auto-mode-alist '("Jakefile$" . js2-mode))
 (defun my/setup-go-mode-gofmt-hook ()
   ;; Use goimports instead of go-fmt
   (setq gofmt-command "goimports")
