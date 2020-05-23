@@ -44,7 +44,7 @@ brew update
 brew install node || brew upgrade node
 
 #npm install -g webtorrent-cli # broken rn
-npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline ndb bash-language-server public-ip-cli
+npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline ndb bash-language-server public-ip-cli corona-cli
 
 ${_HERE}/install.sh
 
@@ -54,7 +54,7 @@ ${_HERE}/install.sh
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid unrar mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter vim Nonchalant/appicon/appicon moreutils azure-cli annie llvm imagemagick wireguard-tools iperf3 swiftformat python python@2 kubernetes-cli fd broot cppcheck; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid unrar mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter vim Nonchalant/appicon/appicon moreutils azure-cli annie llvm imagemagick wireguard-tools iperf3 swiftformat python python@2 kubernetes-cli fd broot cppcheck openssh; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
