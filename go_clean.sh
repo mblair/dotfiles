@@ -52,6 +52,8 @@ set -xueo pipefail
 #go get -u github.com/alecthomas/gometalinter
 #gometalinter --install
 
+GO111MODULE=on go get golang.org/x/tools/gopls@latest
+
 # vs code wants these
 go get -u github.com/acroca/go-symbols
 go get -u github.com/cweill/gotests/...
@@ -63,7 +65,6 @@ go get -u github.com/mdempsky/gocode
 go get -u github.com/rogpeppe/godef
 go get -u github.com/tpng/gopkgs
 go get -u sourcegraph.com/sqs/goreturns
-#go get golang.org/x/tools/gopls@latest
 
 go get -u golang.org/x/tools/cmd/{cover,godoc,goimports,gorename,guru}
 go get -u mvdan.cc/{unparam,sh/cmd/shfmt}
