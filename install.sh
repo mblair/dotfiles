@@ -48,6 +48,8 @@ else
 		curl -sSL https://get.docker.com/ | sh
 	fi
 
+	bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+
 	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
 	apt-get update
 	apt-get -y dist-upgrade
