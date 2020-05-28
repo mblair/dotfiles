@@ -73,6 +73,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		export PATH="/usr/local/Cellar/node/${_NODE_VERSION}/bin:$PATH"
 	fi
 
+    source /Users/matt/Library/Preferences/org.dystroy.broot/launcher/bash/br
 elif [[ $(uname -s) == "Linux" ]]; then
 	alias E="${_EMACS_C} -ct"
 	if [[ -d ~/go/bin ]]; then
@@ -153,4 +154,3 @@ npmu() {
 	npm ls -depth 0 --json | jq ".dependencies | keys" | jq -r '@sh' | tr -d "'" | tr " " "\n" | xargs -I__ npm i --save __@latest
 }
 
-source /Users/matt/Library/Preferences/org.dystroy.broot/launcher/bash/br
