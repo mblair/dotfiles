@@ -55,3 +55,5 @@
 	tool = gvimdiff
 [commit]
     gpgsign = true
+[init]
+	defaultBranch = main
