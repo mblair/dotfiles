@@ -9,8 +9,8 @@ _HERE=$(
 
 source ${_HERE}/vcs.bash
 
-_HUB_VER="2.14.1"
-_GO_VER="1.14"
+_HUB_VER="2.14.2"
+_GO_VER="1.15.5
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list -1 | grep wget; then
@@ -53,7 +53,7 @@ else
 	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
 	apt-get update
 	apt-get -y dist-upgrade
-	apt-get -y install autojump silversearcher-ag git emacs25-nox vim htop curl wget tmux jq ruby python build-essential strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr zsh whois moreutils
+	apt-get -y install autojump silversearcher-ag git emacs-nox vim htop curl wget tmux jq ruby python build-essential strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr zsh whois moreutils
 	chsh -s /bin/zsh
 	apt-get -y purge unattended-upgrades lxd snapd lxcfs
 
