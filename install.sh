@@ -13,7 +13,7 @@ _HUB_VER="2.14.2"
 _GO_VER="1.15.5"
 
 if [[ $(uname -s) == "Darwin" ]]; then
-	if ! brew list -1 | grep wget; then
+	if ! brew list --formula| grep wget; then
 		brew install wget
 	fi
 
@@ -48,30 +48,12 @@ else
 		curl -sSL https://get.docker.com/ | sh
 	fi
 
-	bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-
 	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
 	apt-get update
 	apt-get -y dist-upgrade
-	apt-get -y install autojump silversearcher-ag git emacs-nox vim htop curl wget tmux jq ruby python build-essential strace locate tcpdump shellcheck mtr traceroute iftop auditd reptyr zsh whois moreutils
+	apt-get -y install autojump silversearcher-ag git emacs-nox vim htop curl wget tmux jq ruby python build-essential strace locate tcpdump shellcheck mtr traceroute iftop reptyr zsh whois moreutils
 	chsh -s /bin/zsh
 	apt-get -y purge unattended-upgrades lxd snapd lxcfs
-
-	_AUDITD_RESTART=0
-	if ! sudo grep -q execve /etc/audit/audit.rules; then
-		echo "-a exit,always -F arch=b64 -S execve" | sudo tee --append /etc/audit/audit.rules
-		echo "-a exit,always -F arch=b32 -S execve" | sudo tee --append /etc/audit/audit.rules
-		_AUDITD_RESTART=1
-	fi
-
-	if ! sudo grep -q 'active = yes' /etc/audisp/plugins.d/syslog.conf; then
-		sudo sed -i '/active/ s/no/yes/' /etc/audisp/plugins.d/syslog.conf
-		_AUDITD_RESTART=1
-	fi
-
-	if [[ $_AUDITD_RESTART -eq 1 ]]; then
-		sudo service auditd restart
-	fi
 fi
 
 if [[ $(uname -s) == "Darwin" ]]; then
@@ -172,7 +154,7 @@ if [[ $(uname -s) == "Linux" ]]; then
 	cd
 
 	if [[ ! -d ~/matthewblair.net/.git ]]; then
-		git clone https://github.com/mblair/matthewblair.net ~
+		cd; git clone https://github.com/mblair/matthewblair.net
 	fi
 
 	cd ~/matthewblair.net
