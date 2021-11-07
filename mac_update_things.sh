@@ -54,7 +54,7 @@ ${_HERE}/install.sh
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid unrar mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter vim Nonchalant/appicon/appicon moreutils azure-cli annie llvm imagemagick wireguard-tools iperf3 swiftformat python python@2 kubernetes-cli fd broot cppcheck openssh; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter moreutils azure-cli annie llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh vim; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
@@ -62,7 +62,7 @@ done
 #brew install binwalk
 
 #brew cask install java font-hack-nerd-font minikube keybase
-brew cask install google-cloud-sdk emacs macvim
+brew install --cask google-cloud-sdk emacs
 
 ${_HERE}/go_clean.sh
 
@@ -73,4 +73,4 @@ fi
 ${_HERE}/update_external.sh
 
 brew outdated
-brew cask outdated
+brew outdated --cask
