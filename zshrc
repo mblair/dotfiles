@@ -16,7 +16,7 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git osx github virtualenv docker cargo terraform)
+plugins=(git macos github virtualenv docker cargo terraform)
 fpath=(/usr/local/share/zsh-completions $fpath)
 source $ZSH/oh-my-zsh.sh
 
@@ -73,7 +73,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		export PATH="/usr/local/Cellar/node/${_NODE_VERSION}/bin:$PATH"
 	fi
 
-	source /Users/matt/Library/Preferences/org.dystroy.broot/launcher/bash/br
 elif [[ $(uname -s) == "Linux" ]]; then
 	alias E="${_EMACS_C} -ct"
 	if [[ -d ~/go/bin ]]; then
