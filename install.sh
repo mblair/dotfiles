@@ -10,7 +10,7 @@ _HERE=$(
 source ${_HERE}/vcs.bash
 
 _HUB_VER="2.14.2"
-_GO_VER="1.15.5"
+_GO_VER="1.17.3"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list --formula| grep wget; then
@@ -32,7 +32,12 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
 	rm -rf ~/.emacs.d
 	ln -sf ~/external_src/prelude ~/.emacs.d
-	# TODO: guard this with a brew install gnu-sed.
+	if ! brew list --formula | grep hub; then
+		brew install hub
+	fi
+	if ! brew list --formula | grep gnu-sed; then
+		brew install gnu-sed
+	fi
 	gsed -i '1s/^/(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")\n/' ~/.emacs.d/init.el
 	cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
 	cat >>~/.emacs.d/prelude-modules.el <<'EOF'
