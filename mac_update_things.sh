@@ -44,7 +44,7 @@ brew update
 brew install node || brew upgrade node
 
 #npm install -g webtorrent-cli # broken rn
-npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline ndb bash-language-server public-ip-cli corona-cli
+#npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline ndb bash-language-server public-ip-cli corona-cli
 
 ${_HERE}/install.sh
 
@@ -54,7 +54,7 @@ ${_HERE}/install.sh
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter moreutils azure-cli annie llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh vim; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter moreutils azure-cli annie llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh vim loc gopls; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
@@ -63,8 +63,6 @@ done
 
 #brew cask install java font-hack-nerd-font minikube keybase
 brew install --cask google-cloud-sdk emacs
-
-${_HERE}/go_clean.sh
 
 if [[ -f ~/my_src/private/${_EMPLOYER}_updater.sh ]]; then
 	. ~/my_src/private/${_EMPLOYER}_updater.sh

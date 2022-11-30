@@ -53,7 +53,5 @@
 	prune = true
 [merge]
 	tool = gvimdiff
-[commit]
-    gpgsign = true
 [init]
 	defaultBranch = main
