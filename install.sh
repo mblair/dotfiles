@@ -13,7 +13,7 @@ _HUB_VER="2.14.2"
 _GO_VER="1.17.3"
 
 if [[ $(uname -s) == "Darwin" ]]; then
-	if ! brew list --formula| grep wget; then
+	if ! brew list --formula | grep wget; then
 		brew install wget
 	fi
 
@@ -159,7 +159,8 @@ if [[ $(uname -s) == "Linux" ]]; then
 	cd
 
 	if [[ ! -d ~/matthewblair.net/.git ]]; then
-		cd; git clone https://github.com/mblair/matthewblair.net
+		cd
+		git clone https://github.com/mblair/matthewblair.net
 	fi
 
 	cd ~/matthewblair.net
