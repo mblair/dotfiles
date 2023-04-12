@@ -10,14 +10,12 @@
   (package-refresh-contents))
 
 (defvar my-packages '(markdown-mode
-                      coffee-mode
                       less-css-mode
                       js2-mode
                       yaml-mode
                       puppet-mode
                       systemd
                       clojure-mode
-                      coffee-mode
                       auto-complete
                       ac-cider
                       cider
@@ -138,12 +136,11 @@
 (add-to-list 'auto-mode-alist '("\\.ru" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Cakefile$" . coffee-mode))
 
 (add-to-list 'magic-mode-alist '("#!/usr/bin/env bundle exec ruby" . ruby-mode))
 
 (set-face-attribute 'default nil :height 140)
-(set-face-attribute 'default nil :family "Menlo")
+(set-face-attribute 'default nil :family "Consolas")
 
 ;; http://stackoverflow.com/questions/7616761/even-when-emacsclient-is-started-in-a-terminal-window-system-is-non-nil
 (defun color-config (&optional frame)
@@ -173,7 +170,7 @@
 (require 'powerline)
 (powerline-default-theme)
 
-(autoload 'kill-ring-search "kill-ring-search"
+(Autoload 'kill-ring-search "kill-ring-search"
   "Search the kill ring in the minibuffer."
   (interactive))
 
