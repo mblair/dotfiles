@@ -16,7 +16,11 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git macos github docker rust python virtualenv)
+plugins=(git github docker rust python virtualenv)
+if [[ $(uname -s) == "Darwin" ]]; then
+    plugins+=(macos)
+fi
+
 fpath=(/usr/local/share/zsh-completions $fpath)
 source $ZSH/oh-my-zsh.sh
 
