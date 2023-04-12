@@ -72,10 +72,6 @@ mkdir -p ~/.gnupg
 ln -sf ${_HERE}/gpg.conf ~/.gnupg/
 ln -sf ${_HERE}/gpg-agent.conf ~/.gnupg/
 
-if [[ -d ~/my_src/private ]]; then
-	~/my_src/private/install.sh
-fi
-
 git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
 mkdir -p ~/.zsh/completion/ ~/external_src/
 

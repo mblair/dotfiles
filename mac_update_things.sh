@@ -70,5 +70,9 @@ fi
 
 ${_HERE}/update_external.sh
 
+if [[ -f ~/my_src/private/install.sh ]]; then
+    ~/my_src/private/install.sh
+fi
+
 brew outdated
 brew outdated --cask
