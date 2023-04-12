@@ -1,7 +1,7 @@
 _EMPLOYER="google"
 
 if [[ $(uname -s) == "Darwin" ]]; then
-	_EMACS=/usr/local/bin/emacs
+	_EMACS=/opt/homebrew/bin/emacs
 	_EMACS_C="${_EMACS}client"
 	#_EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
 	#_EMACS_C="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
@@ -73,12 +73,19 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		export PATH="/usr/local/Cellar/node/${_NODE_VERSION}/bin:$PATH"
 	fi
 
-    alias ls=exa
+	alias ls=exa
+
+	_PYTHON_VERSION=$(brew info python --json | jq -r '.[0].versions.stable' | cut -d'.' -f1-2)
+	export PATH="/opt/homebrew/opt/python@${_PYTHON_VERSION}/libexec/bin:$PATH"
 elif [[ $(uname -s) == "Linux" ]]; then
 	alias E="${_EMACS_C} -ct"
 	if [[ -d ~/go/bin ]]; then
 		PATH="~/go/bin/:$PATH"
 	fi
+
+    if dpkg -l | grep --silent autojump; then
+        . /usr/share/autojump/autojump.sh
+    fi
 fi
 
 alias b="brew"
