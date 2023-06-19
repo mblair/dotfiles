@@ -48,6 +48,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
   (require 'prelude-go)
 EOF
 	ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
+
+	mkdir -p ~/.config/karabiner/
+	ln -sf ~/my_src/dotfiles/karabiner.json ~/.config/karabiner/karabiner.json
 else
 	if ! which docker; then
 		curl -sSL https://get.docker.com/ | sh

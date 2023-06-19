@@ -18,7 +18,7 @@ DISABLE_AUTO_UPDATE=true
 
 plugins=(git github docker rust python virtualenv)
 if [[ $(uname -s) == "Darwin" ]]; then
-    plugins+=(macos)
+	plugins+=(macos)
 fi
 
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -87,9 +87,9 @@ elif [[ $(uname -s) == "Linux" ]]; then
 		PATH="~/go/bin/:$PATH"
 	fi
 
-    if dpkg -l | grep --silent autojump; then
-        . /usr/share/autojump/autojump.sh
-    fi
+	if dpkg -l | grep --silent autojump; then
+		. /usr/share/autojump/autojump.sh
+	fi
 fi
 
 alias b="brew"
@@ -164,3 +164,5 @@ gif2png() {
 npmu() {
 	npm ls -depth 0 --json | jq ".dependencies | keys" | jq -r '@sh' | tr -d "'" | tr " " "\n" | xargs -I__ npm i --save __@latest
 }
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
