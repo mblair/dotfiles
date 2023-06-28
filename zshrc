@@ -16,12 +16,12 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git github docker rust python virtualenv)
+plugins=(git github docker python virtualenv gcloud brew)
 if [[ $(uname -s) == "Darwin" ]]; then
 	plugins+=(macos)
 fi
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 source $ZSH/oh-my-zsh.sh
 
 alias es="${_EMACS} --daemon"
