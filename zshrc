@@ -1,4 +1,4 @@
-_EMPLOYER="google"
+_EMPLOYER="descript"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	_EMACS=/opt/homebrew/bin/emacs
