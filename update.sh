@@ -21,13 +21,16 @@ while [ "$#" -gt 0 ]; do
 done
 
 _outer_dir=~/"$PREFIX"_src
-cd ${_outer_dir}
-for _inner_dir in $(ls -1); do
-	if [[ -d "${_outer_dir}/${_inner_dir}" ]]; then
-		echo "${_outer_dir}/${_inner_dir}"
-		cd "${_outer_dir}/${_inner_dir}"
-		git_update
-	fi
-done
+
+if [[ -d ${_outer_dir} ]]; then
+	cd ${_outer_dir}
+	for _inner_dir in $(ls -1); do
+		if [[ -d "${_outer_dir}/${_inner_dir}" ]]; then
+			echo "${_outer_dir}/${_inner_dir}"
+			cd "${_outer_dir}/${_inner_dir}"
+			git_update
+		fi
+	done
+fi
 
 cd "${_HERE}"

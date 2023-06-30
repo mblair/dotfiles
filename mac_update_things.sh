@@ -66,8 +66,6 @@ go install github.com/shurcooL/markdownfmt@latest
 #brew cask install java font-hack-nerd-font minikube keybase
 brew install --cask google-cloud-sdk emacs
 
-. ~/my_src/private/updater.sh --${_EMPLOYER}
-
 ${_HERE}/update.sh --prefix external
 ${_HERE}/update.sh --prefix ${_EMPLOYER}
 
