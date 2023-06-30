@@ -30,6 +30,7 @@ git_clean() {
 
 git_update() {
     _default_branch=$(git for-each-ref --format='%(refname:short)' refs/heads/ | head -n1)
+    _current_branch=$(git branch --show-current)
     git checkout "${_default_branch}"
     if [[ -f .gitmodules ]]; then
         git submodule update --init
@@ -40,5 +41,8 @@ git_update() {
         git stash
         git pull
         git stash pop
+    fi
+    if [[ $_default_branch != $_current_branch ]]; then
+        git checkout "${_current_branch}"
     fi
 }
