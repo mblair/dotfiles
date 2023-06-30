@@ -4,7 +4,7 @@ set -xueo pipefail
 
 export HOMEBREW_INSTALL_CLEANUP=1
 
-_EMPLOYER="google"
+_EMPLOYER="descript"
 
 _HERE=$(
 	cd $(dirname $0)
@@ -54,9 +54,11 @@ ${_HERE}/install.sh
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh vim loc gopls; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh vim loc gopls shfmt; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
+
+go install github.com/shurcooL/markdownfmt@latest
 
 # gcc is busted on catalina, needed for binwalk.
 #brew install binwalk
@@ -64,11 +66,10 @@ done
 #brew cask install java font-hack-nerd-font minikube keybase
 brew install --cask google-cloud-sdk emacs
 
-if [[ -f ~/my_src/private/${_EMPLOYER}_updater.sh ]]; then
-	. ~/my_src/private/${_EMPLOYER}_updater.sh
-fi
+. ~/my_src/private/updater.sh --${_EMPLOYER}
 
-${_HERE}/update_external.sh
+${_HERE}/update.sh --prefix external
+${_HERE}/update.sh --prefix ${_EMPLOYER}
 
 if [[ -f ~/my_src/private/install.sh ]]; then
 	~/my_src/private/install.sh
