@@ -47,6 +47,7 @@ brew install node || brew upgrade node
 #npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline ndb bash-language-server public-ip-cli corona-cli
 
 ${_HERE}/install.sh
+${_HERE}/python.sh
 
 #rm -rf ~/.emacs.d
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
@@ -71,6 +72,10 @@ ${_HERE}/update.sh --prefix ${_EMPLOYER}
 
 if [[ -f ~/my_src/private/install.sh ]]; then
 	~/my_src/private/install.sh
+fi
+
+if [[ -f ~/my_src/private/${_EMPLOYER}_install.sh ]]; then
+    ~/my_src/private/${_EMPLOYER}_install.sh
 fi
 
 brew outdated
