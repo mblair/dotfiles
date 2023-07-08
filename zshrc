@@ -21,7 +21,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	plugins+=(macos)
 fi
 
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 source $ZSH/oh-my-zsh.sh
 
 alias es="${_EMACS} --daemon"
@@ -32,6 +31,7 @@ alias ekk="kill -9 $(ps -Ao 'pid,command' | grep '[e]macs' | awk '{print $1}')"
 alias eclean="rm -r ~/.emacs.d; (cd ~/external_src/prelude && git clean -fdx && git pull); ln -s ~/external_src/prelude ~/.emacs.d; ln -s ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal"
 
 if [[ $(uname -s) == "Darwin" ]]; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 	export VISUAL="${_EMACS_C} -c -n"
 	alias E="${_EMACS_C} -c -n"
 	alias e="${_EMACS_C} -ct"
