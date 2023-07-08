@@ -75,7 +75,7 @@ if [[ -f ~/my_src/private/install.sh ]]; then
 fi
 
 if [[ -f ~/my_src/private/${_EMPLOYER}_install.sh ]]; then
-    ~/my_src/private/${_EMPLOYER}_install.sh
+	~/my_src/private/${_EMPLOYER}_install.sh
 fi
 
 brew outdated
