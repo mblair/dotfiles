@@ -164,5 +164,3 @@ gif2png() {
 npmu() {
 	npm ls -depth 0 --json | jq ".dependencies | keys" | jq -r '@sh' | tr -d "'" | tr " " "\n" | xargs -I__ npm i --save __@latest
 }
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
