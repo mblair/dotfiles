@@ -59,7 +59,9 @@ for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd she
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
+# Install random tools in Go and Node.
 go install github.com/shurcooL/markdownfmt@latest
+npm install -g git-removed-branches
 
 # gcc is busted on catalina, needed for binwalk.
 #brew install binwalk
