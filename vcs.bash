@@ -29,7 +29,7 @@ git_clean() {
 }
 
 git_update() {
-    _default_branch=$(git for-each-ref --format='%(refname:short)' refs/heads/ | head -n1)
+    _default_branch=$(git remote show origin | grep 'HEAD branch' | perl -pe 's|HEAD branch: (.*)|${1}|g' | awk '{print $1}')
     _current_branch=$(git branch --show-current)
     git checkout "${_default_branch}"
     if [[ -f .gitmodules ]]; then
