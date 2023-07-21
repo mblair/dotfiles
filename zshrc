@@ -16,7 +16,7 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git python virtualenv gcloud brew gh kubectl terraform)
+plugins=(git python virtualenv gcloud brew gh kubectl terraform github)
 if [[ $(uname -s) == "Darwin" ]]; then
 	plugins+=(macos)
 fi
