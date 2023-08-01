@@ -39,8 +39,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		brew install gnu-sed
 	fi
 	gsed -i '1s/^/(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")\n/' ~/.emacs.d/init.el
-	cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/
-	cat >>~/.emacs.d/prelude-modules.el <<'EOF'
+    mkdir -p ~/.emacs.d/personal
+	cp ~/external_src/prelude/sample/prelude-modules.el ~/.emacs.d/personal/
+	cat >>~/.emacs.d/personal/prelude-modules.el <<'EOF'
   ;;(require 'prelude-helm)
   ;;(require 'prelude-helm-everywhere)
   (require 'prelude-company)

@@ -2,7 +2,7 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
 (setq prelude-whitespace nil)
-(global-linum-mode 1)
+;;(global-linum-mode 1)
 (global-set-key (kbd "M-l") 'goto-line)
 (global-set-key "\C-c c" 'comment-dwim)
 (global-set-key (kbd "C-SPC") 'easy-mark)
