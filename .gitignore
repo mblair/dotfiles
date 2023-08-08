@@ -6,3 +6,4 @@ vim/plugin/*
 *.swp
 .DS_Store
 vim/after
+npmrc
