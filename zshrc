@@ -144,10 +144,7 @@ gif() {
 	ffmpeg -i $1 -pix_fmt rgb24 -r 20 -f gif - | gifsicle --optimize=3 --delay=3 >$2
 }
 
-if [[ -d $HOME/.cargo/bin ]]; then
-	export PATH=$PATH:$HOME/.cargo/bin
-
-fi
+. "$HOME/.cargo/env"
 
 if [[ -d $HOME/.go/bin ]]; then
 	export PATH=$PATH:$HOME/.go/bin
