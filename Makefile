@@ -3,7 +3,7 @@ all: fmt check
 
 .PHONY: fmt
 fmt:
-	shfmt -w *.sh zshrc
+	shfmt -w *.sh zshrc bashrc
 	markdownfmt -w *.md
 
 .PHONY: check
