@@ -11,6 +11,7 @@
 	br = branch
 	tags-sorted = !git tag --sort=creatordate
 	addnw = !sh -c 'git diff -w --no-color "$@" | git apply --cached --ignore-whitespace' -
+	top = rev-parse --show-toplevel
 [core]
 	editor = emacsclient -c
 	excludesfile = ~/.gitignore_global
