@@ -51,7 +51,7 @@ EOF
 	ln -sf ~/my_src/dotfiles/prelude/personal.el ~/.emacs.d/personal
 
 	mkdir -p ~/.config/karabiner/
-	cp ~/my_src/dotfiles/karabiner.json ~/.config/karabiner/karabiner.json
+	cp ~/my_src/dotfiles/karabiner.json ~/.config/karabiner/karabiner.json || true
 else
 	if ! which docker; then
 		curl -sSL https://get.docker.com/ | sh
