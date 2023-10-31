@@ -83,6 +83,8 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	export PATH="/opt/homebrew/opt/python@${_PYTHON_VERSION}/libexec/bin:$PATH"
 	_PG_VER=$(brew list | grep postgresql | cut -d'@' -f2)
 	export PATH="/opt/homebrew/opt/postgresql@${_PG_VER}/bin:$PATH"
+
+	export PATH="/opt/homebrew/opt/uutils-coreutils/libexec/uubin:$PATH"
 elif [[ $(uname -s) == "Linux" ]]; then
 	alias E="${_EMACS_C} -ct"
 	if [[ -d ~/go/bin ]]; then
