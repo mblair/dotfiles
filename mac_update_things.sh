@@ -82,3 +82,7 @@ fi
 
 brew outdated
 brew outdated --cask
+
+if [[ -d ~/.cargo ]]; then
+	rustup check
+fi
