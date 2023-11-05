@@ -80,9 +80,7 @@ if [[ -f ~/my_src/private/${_EMPLOYER}_install.sh ]]; then
 	~/my_src/private/${_EMPLOYER}_install.sh
 fi
 
+~/my_src/dotfiles/update_rust.sh
+
 brew outdated
 brew outdated --cask
-
-if [[ -d ~/.cargo ]]; then
-	rustup check
-fi
