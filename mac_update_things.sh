@@ -41,8 +41,7 @@ fi
 
 brew update
 
-brew install node || brew upgrade node
-
+#brew install node || brew upgrade node
 #npm install -g webtorrent-cli # broken rn
 #npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline ndb bash-language-server public-ip-cli corona-cli
 
