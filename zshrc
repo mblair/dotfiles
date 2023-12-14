@@ -77,8 +77,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		export PATH="/usr/local/Cellar/node/${_NODE_VERSION}/bin:$PATH"
 	fi
 
-	alias ls=exa
-
 	_PYTHON_VERSION=$(brew info python --json | jq -r '.[0].versions.stable' | cut -d'.' -f1-2)
 	export PATH="/opt/homebrew/opt/python@${_PYTHON_VERSION}/libexec/bin:$PATH"
 	_PG_VER=$(brew list | grep postgresql | cut -d'@' -f2)
