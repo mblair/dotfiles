@@ -9,3 +9,5 @@ if [[ $(uname -s) == "Darwin" ]]; then
 elif [[ $(uname -s) == "Linux" ]]; then
 	apt -y install python3 black
 fi
+
+pip install huggingface-hub
