@@ -13,4 +13,5 @@ for _project in $(ls -1); do
 	fi
 done
 
+rustup update
 rustup check
