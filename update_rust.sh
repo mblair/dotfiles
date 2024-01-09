@@ -10,6 +10,7 @@ for _project in $(ls -1); do
 		echo "${_tld}/${_project}"
 		cd "${_tld}/${_project}"
 		cargo clean
+		cargo update || true
 	fi
 done
 
