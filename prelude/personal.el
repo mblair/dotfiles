@@ -13,6 +13,7 @@
 (prelude-require-package 'nord-theme)
 (prelude-require-package 'markdown-mode)
 (prelude-require-package 'terraform-mode)
+(prelude-require-package 'typescript-mode)
 (custom-set-variables
  '(terraform-format-on-save t))
 ;;(load-theme 'darktooth t)
