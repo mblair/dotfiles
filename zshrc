@@ -49,6 +49,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
 	# So we can find Homebrew.
 	#export PATH="/usr/local/bin:$PATH"
+    export HF_HUB_ENABLE_HF_TRANSFER=True
 
 	if [[ -f "/Users/matt/venv/bin/activate" ]]; then
 		source /Users/matt/venv/bin/activate

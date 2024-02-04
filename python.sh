@@ -10,4 +10,5 @@ elif [[ $(uname -s) == "Linux" ]]; then
 	apt -y install python3 black
 fi
 
-pip install huggingface-hub
+pip install 'huggingface-hub[cli]'
+pip install hf-transfer
