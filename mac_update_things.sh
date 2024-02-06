@@ -54,7 +54,7 @@ ${_HERE}/python.sh
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon orbstack rustup-init minikube uutils-coreutils ijq; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id the_silver_searcher tmux wget youtube-dl zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs exa telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon orbstack rustup-init minikube uutils-coreutils ijq hidetatz/tap/kubecolor; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
