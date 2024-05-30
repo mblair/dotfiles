@@ -49,7 +49,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
 	# So we can find Homebrew.
 	#export PATH="/usr/local/bin:$PATH"
-    export HF_HUB_ENABLE_HF_TRANSFER=True
+	export HF_HUB_ENABLE_HF_TRANSFER=True
 
 	if [[ -f "/Users/matt/venv/bin/activate" ]]; then
 		source /Users/matt/venv/bin/activate
@@ -73,17 +73,17 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		eval "$(rbenv init -)"
 	fi
 
-	if which node >/dev/null; then
-		_NODE_VERSION=$(node --version | tr -d 'A-Za-z')
-		export PATH="/usr/local/Cellar/node/${_NODE_VERSION}/bin:$PATH"
-	fi
+	#if which node >/dev/null; then
+	#	_NODE_VERSION=$(node --version | tr -d 'A-Za-z')
+	#	export PATH="/usr/local/Cellar/node/${_NODE_VERSION}/bin:$PATH"
+	#fi
 
 	_PYTHON_VERSION=$(brew info python --json | jq -r '.[0].versions.stable' | cut -d'.' -f1-2)
 	export PATH="/opt/homebrew/opt/python@${_PYTHON_VERSION}/libexec/bin:$PATH"
 	_PG_VER=$(brew list | grep postgresql | cut -d'@' -f2)
 	export PATH="/opt/homebrew/opt/postgresql@${_PG_VER}/bin:$PATH"
 
-	export PATH="/opt/homebrew/opt/uutils-coreutils/libexec/uubin:$PATH"
+	alias ag=rg
 elif [[ $(uname -s) == "Linux" ]]; then
 	alias E="${_EMACS_C} -ct"
 	if [[ -d ~/go/bin ]]; then
@@ -166,3 +166,9 @@ gif2png() {
 npmu() {
 	npm ls -depth 0 --json | jq ".dependencies | keys" | jq -r '@sh' | tr -d "'" | tr " " "\n" | xargs -I__ npm i --save __@latest
 }
+#
+# Created by `pipx` on 2024-02-24 22:15:31
+export PATH="$PATH:/Users/matt/.local/bin"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

@@ -3,12 +3,12 @@
 set -xueo pipefail
 
 if [[ $(uname -s) == "Darwin" ]]; then
-	for _pkg in python black; do
+	for _pkg in python pipx black; do
 		brew install ${_pkg} || brew upgrade ${_pkg}
 	done
 elif [[ $(uname -s) == "Linux" ]]; then
 	apt -y install python3 black
 fi
 
-pip install 'huggingface-hub[cli]'
-pip install hf-transfer
+pipx install 'huggingface-hub[cli]'
+#pip install hf-transfer

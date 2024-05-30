@@ -28,7 +28,7 @@ if [[ -d ${_outer_dir} ]]; then
 		if [[ -d "${_outer_dir}/${_inner_dir}" ]]; then
 			echo "${_outer_dir}/${_inner_dir}"
 			cd "${_outer_dir}/${_inner_dir}"
-			git_update
+			git_update || true
 		fi
 	done
 fi
