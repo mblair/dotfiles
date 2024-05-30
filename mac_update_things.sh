@@ -46,7 +46,7 @@ brew update
 #npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline ndb bash-language-server public-ip-cli corona-cli
 
 ${_HERE}/install.sh
-${_HERE}/python.sh
+# ${_HERE}/python.sh
 
 #rm -rf ~/.emacs.d
 #mkdir -p ~/.emacs.d/; ln -s ${_HERE}/init.el ~/.emacs.d
