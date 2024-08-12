@@ -12,7 +12,7 @@ _ME=$(whoami)
 source ${_HERE}/vcs.bash
 
 _HUB_VER="2.14.2"
-_GO_VER="1.20.5"
+_GO_VER="1.22.6"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list --formula | grep wget; then
