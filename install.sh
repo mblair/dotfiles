@@ -7,6 +7,8 @@ _HERE=$(
 	pwd
 )
 
+_ME=$(whoami)
+
 source ${_HERE}/vcs.bash
 
 _HUB_VER="2.14.2"
@@ -60,8 +62,7 @@ else
 	sudo apt update
 	sudo apt -y dist-upgrade
 	sudo apt -y install autojump silversearcher-ag git emacs-nox vim htop curl wget tmux jq ruby build-essential strace locate tcpdump shellcheck mtr traceroute iftop reptyr zsh whois moreutils
-	_me=$(whoami)
-	sudo chsh -s /bin/zsh $_me
+	sudo chsh -s /bin/zsh $_ME
 	sudo apt -y purge unattended-upgrades lxd snapd lxcfs
 fi
 
@@ -79,10 +80,14 @@ ln -sf ${_HERE}/gpg-agent.conf ~/.gnupg/
 git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
 mkdir -p ~/.zsh/completion/ ~/external_src/
 
-if [[ $(uname -s) == "Darwin" ]]; then
-	ln -sf ${_HERE}/zshrc ~/.zshrc
+if [[ $(uname -s) == "Linux" ]]; then
+	if [[ $_ME == "root" ]]; then
+		ln -sf ${_HERE}/zshrc /etc/zsh/zshrc
+	else
+		ln -sf ${_HERE}/zshrc ~/.zshrc
+	fi
 else
-	ln -sf ${_HERE}/zshrc /etc/zsh/zshrc
+	ln -sf ${_HERE}/zshrc ~/.zshrc
 fi
 
 ln -sf ${_HERE}/gitconfig ~/.gitconfig
