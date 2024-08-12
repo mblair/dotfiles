@@ -54,15 +54,14 @@ EOF
 	cp ~/my_src/dotfiles/karabiner.json ~/.config/karabiner/karabiner.json || true
 else
 	if ! which docker; then
-		curl -sSL https://get.docker.com/ | sh
+		curl -sSL https://get.docker.com/ | sudo sh
 	fi
 
-	curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
-	apt-get update
-	apt-get -y dist-upgrade
-	apt-get -y install autojump silversearcher-ag git emacs-nox vim htop curl wget tmux jq ruby build-essential strace locate tcpdump shellcheck mtr traceroute iftop reptyr zsh whois moreutils
+	sudo apt update
+	sudo apt -y dist-upgrade
+	sudo apt -y install autojump silversearcher-ag git emacs-nox vim htop curl wget tmux jq ruby build-essential strace locate tcpdump shellcheck mtr traceroute iftop reptyr zsh whois moreutils
 	chsh -s /bin/zsh
-	apt-get -y purge unattended-upgrades lxd snapd lxcfs
+	sudo apt -y purge unattended-upgrades lxd snapd lxcfs
 fi
 
 if [[ $(uname -s) == "Darwin" ]]; then
@@ -159,21 +158,12 @@ if [[ $(uname -s) == "Linux" ]]; then
 	cp /usr/share/zoneinfo/UTC /etc/localtime || true
 
 	if pgrep snapd >/dev/null 2>&1; then
-		systemctl disable snapd
-		systemctl stop snapd
+		sudo systemctl disable snapd
+		sudo systemctl stop snapd
 	fi
 
 	cd
 
-	if [[ ! -d ~/matthewblair.net/.git ]]; then
-		cd
-		git clone https://github.com/mblair/matthewblair.net
-	fi
-
-	cd ~/matthewblair.net
-	git_update
-	make run || make restart
-
-	apt-get -y install cpanminus
+	sudo apt -y install cpanminus
 	cpanm App::dategrep
 fi
