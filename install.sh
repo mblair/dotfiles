@@ -60,7 +60,8 @@ else
 	sudo apt update
 	sudo apt -y dist-upgrade
 	sudo apt -y install autojump silversearcher-ag git emacs-nox vim htop curl wget tmux jq ruby build-essential strace locate tcpdump shellcheck mtr traceroute iftop reptyr zsh whois moreutils
-	chsh -s /bin/zsh
+	_me=$(whoami)
+	sudo chsh -s /bin/zsh $_me
 	sudo apt -y purge unattended-upgrades lxd snapd lxcfs
 fi
 
