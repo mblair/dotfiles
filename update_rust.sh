@@ -13,6 +13,3 @@ for _project in $(ls -1); do
 		cargo update || true
 	fi
 done
-
-rustup update
-rustup check

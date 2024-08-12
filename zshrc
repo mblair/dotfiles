@@ -84,6 +84,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	export PATH="/opt/homebrew/opt/postgresql@${_PG_VER}/bin:$PATH"
 
 	alias ag=rg
+	alias remove-whitespace="gsed -i 's/[ \t]*$//'"
 elif [[ $(uname -s) == "Linux" ]]; then
 	alias E="${_EMACS_C} -ct"
 	if [[ -d ~/go/bin ]]; then
@@ -99,7 +100,7 @@ alias b="brew"
 alias git="hub"
 alias c="clear"
 alias dc="cd"
-alias f="fd"
+alias f="fd -H"
 alias l="ls -lha"
 alias p="ping google.com"
 alias pw="prettier --write --print-width=110"

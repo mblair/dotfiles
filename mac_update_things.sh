@@ -42,7 +42,6 @@ fi
 brew update
 
 #brew install node || brew upgrade node
-#npm install -g webtorrent-cli # broken rn
 #npm install -g grunt-cli redis-dump rickshaw jquery bootstrap react underscore d3 coffee-script js-yaml how2 eslint create-react-app parsimmon exif standard standard-format write-good fast-cli prettier js-beautify hyperapp wunderline ndb bash-language-server public-ip-cli corona-cli
 
 ${_HERE}/install.sh
@@ -54,13 +53,13 @@ ${_HERE}/install.sh
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget youtube-dl zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup-init minikube ijq hidetatz/tap/kubecolor httpie; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq hidetatz/tap/kubecolor httpie yt-dlp; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
 # Install random tools in Go and Node.
 go install github.com/shurcooL/markdownfmt@latest
-npm install -g git-removed-branches
+npm install -g git-removed-branches webtorrent-cli wscat turbo@2
 
 # gcc is busted on catalina, needed for binwalk.
 #brew install binwalk
@@ -79,7 +78,7 @@ if [[ -f ~/my_src/private/${_EMPLOYER}_install.sh ]]; then
 	~/my_src/private/${_EMPLOYER}_install.sh
 fi
 
-#~/my_src/dotfiles/update_rust.sh
+${_HERE}/update_rust.sh
 
 brew outdated
 brew outdated --cask
