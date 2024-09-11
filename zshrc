@@ -83,7 +83,8 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	_PG_VER=$(brew list | grep postgresql | cut -d'@' -f2)
 	export PATH="/opt/homebrew/opt/postgresql@${_PG_VER}/bin:$PATH"
 
-	alias ag=rg
+	alias ag='rg --hidden'
+    alias rg='rg --hidden'
 	alias remove-whitespace="gsed -i 's/[ \t]*$//'"
 elif [[ $(uname -s) == "Linux" ]]; then
 	alias E="${_EMACS_C} -ct"
@@ -167,9 +168,7 @@ gif2png() {
 npmu() {
 	npm ls -depth 0 --json | jq ".dependencies | keys" | jq -r '@sh' | tr -d "'" | tr " " "\n" | xargs -I__ npm i --save __@latest
 }
-#
-# Created by `pipx` on 2024-02-24 22:15:31
-export PATH="$PATH:/Users/matt/.local/bin"
+
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"

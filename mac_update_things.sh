@@ -5,6 +5,7 @@ set -xueo pipefail
 export HOMEBREW_INSTALL_CLEANUP=1
 
 _EMPLOYER="descript"
+_NODE_MAJOR_VER=22
 
 _HERE=$(
 	cd $(dirname $0)
@@ -53,13 +54,16 @@ ${_HERE}/install.sh
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq hidetatz/tap/kubecolor httpie yt-dlp; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq hidetatz/tap/kubecolor httpie yt-dlp nodenv; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
 # Install random tools in Go and Node.
 go install github.com/shurcooL/markdownfmt@latest
-npm install -g git-removed-branches webtorrent-cli wscat turbo@2
+
+nodenv install --skip-existing $(nodenv install --list | grep $_NODE_MAJOR_VER)
+nodenv global $(nodenv install --list | grep $_NODE_MAJOR_VER)
+npm install -g git-removed-branches webtorrent-cli wscat repopack
 
 # gcc is busted on catalina, needed for binwalk.
 #brew install binwalk
