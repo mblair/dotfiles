@@ -54,7 +54,7 @@ ${_HERE}/install.sh
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq hidetatz/tap/kubecolor httpie yt-dlp nodenv pipx; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq hidetatz/tap/kubecolor httpie yt-dlp nodenv pipx repomix ruff jj uv; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
@@ -63,15 +63,19 @@ go install github.com/shurcooL/markdownfmt@latest
 
 nodenv install --skip-existing $(nodenv install --list | grep $_NODE_MAJOR_VER)
 nodenv global $(nodenv install --list | grep $_NODE_MAJOR_VER)
-npm install -g git-removed-branches webtorrent-cli wscat repopack
+npm install -g git-removed-branches webtorrent-cli wscat gnomon
 
-pipx install token-count
+pipx install token-count llm shot-scraper black
 
 # gcc is busted on catalina, needed for binwalk.
 #brew install binwalk
 
 #brew cask install java font-hack-nerd-font minikube keybase
-brew install --cask google-cloud-sdk emacs || true
+brew install --cask google-cloud-sdk emacs alacritty || true
+
+if xattr /Applications/Alacritty.app | grep -q quarantine; then
+    xattr -d com.apple.quarantine /Applications/Alacritty.app
+fi
 
 ${_HERE}/update.sh --prefix external
 ${_HERE}/update.sh --prefix ${_EMPLOYER}
@@ -83,6 +87,7 @@ fi
 if [[ -f ~/my_src/private/${_EMPLOYER}_install.sh ]]; then
 	~/my_src/private/${_EMPLOYER}_install.sh
 fi
+
 
 ${_HERE}/update_rust.sh
 

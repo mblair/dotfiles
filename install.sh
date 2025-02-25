@@ -11,8 +11,9 @@ _ME=$(whoami)
 
 source ${_HERE}/vcs.bash
 
+# TODO: port to gh
 _HUB_VER="2.14.2"
-_GO_VER="1.22.6"
+_GO_VER="1.24"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list --formula | grep wget; then

@@ -2,6 +2,8 @@
 
 set -xueo pipefail
 
+cargo install cargo-edit
+
 cd ~/Google\ Drive/My\ Drive/experiments/rust
 _tld=$(pwd)
 

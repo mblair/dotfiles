@@ -32,6 +32,7 @@ git_update() {
     _default_branch=$(git remote show origin | grep 'HEAD branch' | perl -pe 's|HEAD branch: (.*)|${1}|g' | awk '{print $1}')
     _current_branch=$(git branch --show-current)
     git checkout "${_default_branch}"
+
     if [[ -f .gitmodules ]]; then
         git submodule update --init
     fi
@@ -45,4 +46,6 @@ git_update() {
     if [[ $_default_branch != $_current_branch ]]; then
         git checkout "${_current_branch}"
     fi
+
+    git-removed-branches -f -p
 }
