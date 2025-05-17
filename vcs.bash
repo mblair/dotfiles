@@ -47,5 +47,5 @@ git_update() {
         git checkout "${_current_branch}"
     fi
 
-    git-removed-branches -f -p
+    git-removed-branches -f -p || nodenv which node
 }
