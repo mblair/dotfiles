@@ -115,6 +115,10 @@ if [[ -f ~/my_src/private/${_EMPLOYER}_rc ]]; then
 	. ~/my_src/private/${_EMPLOYER}_rc
 fi
 
+if [[ -f ~/my_src/private/matt_rc ]]; then
+    . ~/my_src/private/matt_rc
+fi
+
 cleanup() {
 	ls | while read -r FILE; do
 		mv -v "$FILE" $(echo $FILE | tr ' ' '_' | tr -d '[{}(),\!]:"' | tr -d "\'" | tr '[A-Z]' '[a-z]' | tr '&' 'n' | sed 's/_-_/_/g')
