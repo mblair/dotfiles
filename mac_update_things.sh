@@ -65,7 +65,8 @@ nodenv install --skip-existing $(nodenv install --list | grep $_NODE_MAJOR_VER)
 nodenv global $(nodenv install --list | grep $_NODE_MAJOR_VER)
 npm install -g git-removed-branches webtorrent-cli wscat gnomon
 
-pipx install token-count llm shot-scraper black
+pipx install token-count llm shot-scraper black ttok --force
+llm install --upgrade llm-ollama llm-video-frames
 
 # gcc is busted on catalina, needed for binwalk.
 #brew install binwalk
