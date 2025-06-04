@@ -54,7 +54,7 @@ ${_HERE}/install.sh
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq hidetatz/tap/kubecolor httpie yt-dlp nodenv pipx repomix ruff jj uv kubectl-ai; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq hidetatz/tap/kubecolor httpie yt-dlp nodenv pipx repomix ruff jj uv kubectl-ai font-inter; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
@@ -63,7 +63,7 @@ go install github.com/shurcooL/markdownfmt@latest
 
 nodenv install --skip-existing $(nodenv install --list | grep $_NODE_MAJOR_VER)
 nodenv global $(nodenv install --list | grep $_NODE_MAJOR_VER)
-npm install -g git-removed-branches webtorrent-cli wscat gnomon
+npm install -g git-removed-branches webtorrent-cli wscat gnomon @anthropic-ai/claude-code socket.io-cli
 
 pipx install token-count llm shot-scraper black ttok --force
 llm install --upgrade llm-ollama llm-video-frames
