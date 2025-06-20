@@ -11,9 +11,7 @@ _ME=$(whoami)
 
 source ${_HERE}/vcs.bash
 
-# TODO: port to gh
-_HUB_VER="2.14.2"
-_GO_VER="1.24"
+_GO_VER="1.24.4"
 
 if [[ $(uname -s) == "Darwin" ]]; then
 	if ! brew list --formula | grep wget; then
@@ -125,26 +123,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	ln -sf ${_HERE}/hyper.js ~/.hyper.js
 fi
 
-install_hub() {
-	wget "https://github.com/github/hub/releases/download/v${_HUB_VER}/hub-linux-amd64-${_HUB_VER}.tgz"
-	tar xf "hub-linux-amd64-${_HUB_VER}.tgz"
-	rm "hub-linux-amd64-${_HUB_VER}.tgz"
-	sudo mv "hub-linux-amd64-${_HUB_VER}/bin/hub" /usr/local/bin
-	rm -r "hub-linux-amd64-${_HUB_VER}"
-}
-
 if [[ $(uname -s) == "Linux" ]]; then
 	mkdir -p ~/.irssi
 	ln -sf ${_HERE}/irssi_config ~/.irssi/config
-
-	if ! which hub; then
-		install_hub
-	else
-		_installed_hub_ver=$(hub --version 2>&1 | /bin/grep hub | cut -d" " -f3)
-		if [[ ${_installed_hub_ver} != ${_HUB_VER} ]]; then
-			install_hub
-		fi
-	fi
 
 	if [[ -d $HOME/.go/bin ]]; then
 		export PATH=$HOME/.go/bin:$PATH
@@ -156,11 +137,14 @@ if [[ $(uname -s) == "Linux" ]]; then
 	fi
 
 	type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+
+    if ! which gh; then
 	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
 		sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
 		echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
 		sudo apt update &&
 		sudo apt install gh -y
+    fi
 
 	cp /usr/share/zoneinfo/UTC /etc/localtime || true
 
