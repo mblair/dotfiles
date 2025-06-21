@@ -72,9 +72,6 @@ else
 fi
 
 ln -sf ${_HERE}/bashrc ${_BASH_RC}
-mkdir -p ~/.gnupg
-ln -sf ${_HERE}/gpg.conf ~/.gnupg/
-ln -sf ${_HERE}/gpg-agent.conf ~/.gnupg/
 
 git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh || (cd ~/.oh-my-zsh/ && git pull)
 mkdir -p ~/.zsh/completion/ ~/external_src/

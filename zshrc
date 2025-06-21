@@ -16,7 +16,7 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git python virtualenv gcloud brew gh kubectl terraform github)
+plugins=(git python gcloud brew gh kubectl terraform github)
 if [[ $(uname -s) == "Darwin" ]]; then
 	plugins+=(macos)
 fi
@@ -124,20 +124,6 @@ cleanup() {
 		mv -v "$FILE" $(echo $FILE | tr ' ' '_' | tr -d '[{}(),\!]:"' | tr -d "\'" | tr '[A-Z]' '[a-z]' | tr '&' 'n' | sed 's/_-_/_/g')
 	done
 }
-
-export GPG_TTY="$(tty)"
-
-if [[ -f "$HOME/.gpg-agent-info" ]]; then
-	. "$HOME/.gpg-agent-info"
-	export GPG_AGENT_INFO
-
-fi
-
-if which "gpg-agent" >"/dev/null" 2>"/dev/null" && ! gpg-agent >/dev/null 2>&1; then
-	eval "$(gpg-agent --daemon --disable-scdaemon)"
-fi
-
-alias gpgclean='killall -9 pinentry gpg-agent'
 
 alias yt='youtube-dl -o "%(title)s-%(id)s.%(ext)s" --no-mtime'
 alias yta='youtube-dl -o "%(title)s-%(id)s.%(ext)s" --extract-audio --no-mtime'
