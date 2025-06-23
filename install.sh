@@ -151,7 +151,4 @@ if [[ $(uname -s) == "Linux" ]]; then
 	fi
 
 	cd
-
-	sudo apt -y install cpanminus
-	cpanm App::dategrep
 fi
