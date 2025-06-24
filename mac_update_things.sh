@@ -72,7 +72,7 @@ llm install --upgrade llm-ollama llm-video-frames
 #brew install binwalk
 
 #brew cask install java font-hack-nerd-font minikube keybase
-brew install --cask google-cloud-sdk emacs alacritty || true
+brew install --cask google-cloud-sdk emacs-app alacritty || true
 
 if xattr /Applications/Alacritty.app | grep -q quarantine; then
     xattr -d com.apple.quarantine /Applications/Alacritty.app
