@@ -75,7 +75,7 @@ llm install --upgrade llm-ollama llm-video-frames
 brew install --cask google-cloud-sdk emacs-app alacritty || true
 
 if xattr /Applications/Alacritty.app | grep -q quarantine; then
-    xattr -d com.apple.quarantine /Applications/Alacritty.app
+	xattr -d com.apple.quarantine /Applications/Alacritty.app
 fi
 
 ${_HERE}/update.sh --prefix external
@@ -88,7 +88,6 @@ fi
 if [[ -f ~/my_src/private/${_EMPLOYER}_install.sh ]]; then
 	~/my_src/private/${_EMPLOYER}_install.sh
 fi
-
 
 ${_HERE}/update_rust.sh
 

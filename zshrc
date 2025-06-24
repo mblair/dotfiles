@@ -84,7 +84,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	export PATH="/opt/homebrew/opt/postgresql@${_PG_VER}/bin:$PATH"
 
 	alias ag='rg --hidden'
-    alias rg='rg --hidden'
+	alias rg='rg --hidden'
 	alias remove-whitespace="gsed -i 's/[ \t]*$//'"
 elif [[ $(uname -s) == "Linux" ]]; then
 	alias E="${_EMACS_C} -ct"
@@ -115,7 +115,7 @@ if [[ -f ~/my_src/private/${_EMPLOYER}_rc ]]; then
 fi
 
 if [[ -f ~/my_src/private/matt_rc ]]; then
-    . ~/my_src/private/matt_rc
+	. ~/my_src/private/matt_rc
 fi
 
 cleanup() {
@@ -157,4 +157,8 @@ gif2png() {
 npmu() {
 	npm ls -depth 0 --json | jq ".dependencies | keys" | jq -r '@sh' | tr -d "'" | tr " " "\n" | xargs -I__ npm i --save __@latest
 }
-eval "$(~/.local/bin/mise activate zsh)"
+
+if which mise >/dev/null; then
+	_MISE=$(which mise)
+	eval "$(${_MISE} activate zsh)"
+fi
