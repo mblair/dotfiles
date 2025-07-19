@@ -63,9 +63,9 @@ go install github.com/shurcooL/markdownfmt@latest
 
 nodenv install --skip-existing $(nodenv install --list | grep $_NODE_MAJOR_VER)
 nodenv global $(nodenv install --list | grep $_NODE_MAJOR_VER)
-npm install -g git-removed-branches webtorrent-cli wscat gnomon @anthropic-ai/claude-code socket.io-cli
+npm install -g webtorrent-cli wscat gnomon @anthropic-ai/claude-code socket.io-cli @google/gemini-cli
 
-pipx install token-count llm shot-scraper black ttok --force
+pipx install token-count llm shot-scraper black ttok git-delete-merged-branches --force
 llm install --upgrade llm-ollama llm-video-frames
 
 # gcc is busted on catalina, needed for binwalk.
