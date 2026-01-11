@@ -1,0 +1,19 @@
+[user]
+	name = Matt Blair
+	email = me@matthewblair.net
+[alias]
+	co = checkout
+	cp = cherry-pick
+	wlog = log --color-words -p
+	wdiff = diff --color-words
+	st = status --ignore-submodules=untracked
+	br = branch
+	tags-sorted = !git tag --sort=creatordate
+	addnw = !sh -c 'git diff -w --no-color "$@" | git apply --cached --ignore-whitespace' -
+	top = rev-parse --show-toplevel
+[branch]
+	autosetuprebase = always
+[pull]
+	rebase = true
+[push]
+	default = simple
