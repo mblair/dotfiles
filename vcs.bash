@@ -29,10 +29,23 @@ git_clean() {
 }
 
 git_update() {
-	_default_branch=$(git remote show origin | grep 'HEAD branch' | perl -pe 's|HEAD branch: (.*)|${1}|g' | awk '{print $1}')
 	_current_branch=$(git branch --show-current)
+
+	# Try origin first, fall back to upstream if origin is unreachable
+	_remote="origin"
+	if ! timeout 5 git ls-remote --exit-code origin &>/dev/null; then
+		if git remote get-url upstream &>/dev/null; then
+			echo "origin unreachable, using upstream instead"
+			_remote="upstream"
+		else
+			echo "origin unreachable and no upstream remote, skipping"
+			return 1
+		fi
+	fi
+
+	_default_branch=$(git remote show "${_remote}" | grep 'HEAD branch' | perl -pe 's|HEAD branch: (.*)|${1}|g' | awk '{print $1}')
 	git checkout "${_default_branch}"
-	git branch --set-upstream-to=origin/"${_default_branch}" "${_default_branch}"
+	git branch --set-upstream-to="${_remote}"/"${_default_branch}" "${_default_branch}"
 
 	if [[ -f .gitmodules ]]; then
 		git submodule update --init
@@ -42,5 +55,5 @@ git_update() {
 		git checkout "${_current_branch}"
 	fi
 
-	git-delete-merged-branches
+	#git-delete-merged-branches
 }

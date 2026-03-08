@@ -7,7 +7,7 @@
 	cp = cherry-pick
 	wlog = log --color-words -p
 	wdiff = diff --color-words
-	st = status --ignore-submodules=untracked
+	st = status --ignore-submodules=untracked --short
 	br = branch
 	tags-sorted = !git tag --sort=creatordate
 	addnw = !sh -c 'git diff -w --no-color "$@" | git apply --cached --ignore-whitespace' -

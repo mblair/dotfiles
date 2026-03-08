@@ -5,7 +5,6 @@ set -xueo pipefail
 export HOMEBREW_INSTALL_CLEANUP=1
 
 _EMPLOYER="descript"
-_NODE_MAJOR_VER=22
 
 _HERE=$(
 	cd $(dirname $0)
@@ -54,18 +53,31 @@ ${_HERE}/install.sh
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq hidetatz/tap/kubecolor httpie yt-dlp nodenv pipx repomix ruff jj uv kubectl-ai font-inter mise ngrok just; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql@15 redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go hub gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq kubecolor httpie yt-dlp pipx ruff jj uv kubectl-ai font-inter mise ngrok just nbping llmfit shadcn gawk ty fzf do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
 # Install random tools in Go and Node.
 go install github.com/shurcooL/markdownfmt@latest
 
-nodenv install --skip-existing $(nodenv install --list | grep $_NODE_MAJOR_VER)
-nodenv global $(nodenv install --list | grep $_NODE_MAJOR_VER)
-npm install -g webtorrent-cli wscat gnomon @anthropic-ai/claude-code socket.io-cli @google/gemini-cli
+mise install
+eval "$(mise activate bash)"
+_NPM_PREFIX=$(npm prefix -g)
+for _npm in @google/gemini-cli @openai/codex@latest opencode-ai@latest git-trim @github/copilot npm-check-updates webtorrent-cli wscat gnomon socket.io-cli oxfmt oxlint @googleworkspace/cli; do
+	rm -rf ${_NPM_PREFIX}/lib/node_modules/${_npm%@latest}
+	npm i -g ${_npm}
+done
+# Fix broken execute permissions on npm global binaries (some packages don't set +x)
+find ${_NPM_PREFIX}/lib/node_modules -type f \( -name "*.js" -o -name "cli" \) -path "*/bin/*" -exec chmod +x {} \; 2>/dev/null || true
+chmod +x ${_NPM_PREFIX}/lib/node_modules/npm-check-updates/build/cli.js 2>/dev/null || true
 
-pipx install token-count llm shot-scraper black ttok git-delete-merged-branches --force
+curl -fsSL https://bun.com/install | bash
+
+${_HERE}/install_claude.sh
+
+for _pipx in token-count llm shot-scraper black ttok git-delete-merged-branches; do
+	pipx install ${_pipx} --force || pipx reinstall ${_pipx}
+done
 llm install --upgrade llm-ollama llm-video-frames
 
 # gcc is busted on catalina, needed for binwalk.
@@ -79,7 +91,7 @@ if xattr /Applications/Alacritty.app | grep -q quarantine; then
 fi
 
 ${_HERE}/update.sh --prefix external
-${_HERE}/update.sh --prefix ${_EMPLOYER}
+${_HERE}/update.sh --prefix ${_EMPLOYER} --recurse
 
 if [[ -f ~/my_src/private/install.sh ]]; then
 	~/my_src/private/install.sh
@@ -93,3 +105,24 @@ ${_HERE}/update_rust.sh
 
 brew outdated
 brew outdated --cask
+
+set +x
+
+# Show new formulae added to Homebrew in the last week
+echo "=== New Homebrew formulae (last week) ==="
+_HOMEBREW_CORE_PATH="${HOME}/external_src/homebrew-core"
+if [[ -d "${_HOMEBREW_CORE_PATH}" ]]; then
+	git -C "${_HOMEBREW_CORE_PATH}" fetch --quiet
+	_NEW_FORMULAE=$(git -C "${_HOMEBREW_CORE_PATH}" log --since="1 week ago" --diff-filter=A --pretty=format: --name-only -- Formula | sort -u | grep -v '^$')
+	if [[ -n "${_NEW_FORMULAE}" ]]; then
+		echo "${_NEW_FORMULAE}" | while read -r formula_path; do
+			formula_name=$(basename "${formula_path}" .rb)
+			desc=$(brew info "${formula_name}" 2>/dev/null | sed -n '2p')
+			printf "%-30s %s\n" "${formula_name}" "${desc}"
+		done
+	else
+		echo "No new formulae this week"
+	fi
+else
+	echo "homebrew-core not found at ${_HOMEBREW_CORE_PATH}"
+fi

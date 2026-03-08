@@ -7,3 +7,5 @@ vim/plugin/*
 .DS_Store
 vim/after
 npmrc
+node_modules/
+.tsgo-build/

@@ -92,6 +92,15 @@ ln -sf ${_HERE}/gitignore_global ~/.gitignore_global
 ln -sf ${_HERE}/inputrc ~/.inputrc
 ln -sf ${_HERE}/tmux.conf ~/.tmux.conf
 
+mkdir -p ~/.config/mise/
+ln -sf ${_HERE}/mise.toml ~/.config/mise/config.toml
+
+mkdir -p ~/.config/ghostty/
+ln -sf ${_HERE}/ghostty-config ~/.config/ghostty/config
+
+mkdir -p ~/.codex/
+ln -sf ${_HERE}/codex-config.toml ~/.codex/config.toml
+
 mkdir -p ${_HERE}/vim/autoload
 
 if [[ ! -f ${_HERE}/vim/autoload/pathogen.vim ]]; then

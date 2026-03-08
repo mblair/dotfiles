@@ -1,0 +1,31 @@
+[tools]
+node = "lts"
+'npm:oxfmt' = 'latest'
+'npm:oxlint' = 'latest'
+'npm:pnpm' = 'latest'
+
+[tasks]
+
+# Use `mise run format` here; `mise fmt` is a built-in command that formats `mise.toml`.
+format = "oxfmt clone_tools.ts reorder.ts summarize_clones.ts && printf 'Formatted clone_tools.ts reorder.ts summarize_clones.ts\n' && oxfmt --check clone_tools.ts reorder.ts summarize_clones.ts"
+
+# Check formatting for the standalone TS CLI entrypoints with oxfmt.
+format-check = "oxfmt --check clone_tools.ts reorder.ts summarize_clones.ts"
+
+# Lint the standalone TS CLI entrypoints with oxlint.
+lint = "oxlint --deny-warnings clone_tools.ts reorder.ts summarize_clones.ts"
+
+# Typecheck the standalone TS CLI entrypoints without emitting JS.
+typecheck = "pnpm exec tsgo --noEmit --module nodenext --moduleResolution nodenext --target es2024 --types node --skipLibCheck reorder.ts summarize_clones.ts"
+
+# Emit JS with tsgo for runtime execution on Node.
+build = "pnpm exec tsgo --module nodenext --moduleResolution nodenext --target es2024 --types node --skipLibCheck --outDir .tsgo-build reorder.ts summarize_clones.ts"
+
+# Compile with tsgo, then execute the emitted JS with Node.
+reorder = "pnpm exec tsgo --module nodenext --moduleResolution nodenext --target es2024 --types node --skipLibCheck --outDir .tsgo-build reorder.ts && node .tsgo-build/reorder.js"
+
+# Compile with tsgo, then execute the emitted JS with Node.
+summarize-clones = "pnpm exec tsgo --module nodenext --moduleResolution nodenext --target es2024 --types node --skipLibCheck --outDir .tsgo-build summarize_clones.ts && node .tsgo-build/summarize_clones.js"
+
+# Default task mirrors `reorder` so `mise run -- --prefix ...` works.
+default = "pnpm exec tsgo --module nodenext --moduleResolution nodenext --target es2024 --types node --skipLibCheck --outDir .tsgo-build reorder.ts && node .tsgo-build/reorder.js"

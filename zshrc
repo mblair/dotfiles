@@ -109,6 +109,9 @@ alias cifmt='find . -type f -name "ci.sh" | xargs -I__ shfmt -i 2 -w __'
 alias rscp='rsync -aP --no-whole-file --inplace'
 alias rsmv='rscp --remove-source-files'
 alias myip="curl -s https://api.ipify.org\?format\=json | jq -r '.ip'"
+alias wattage="system_profiler SPPowerDataType | awk '/Wattage/ {print \$3}'"
+alias battery="pmset -g batt | grep -o '[0-9]*%'"
+alias ocd="open -a /Applications/OpenCode.app"
 
 if [[ -f ~/my_src/private/${_EMPLOYER}_rc ]]; then
 	. ~/my_src/private/${_EMPLOYER}_rc
@@ -138,6 +141,23 @@ gif() {
 	ffmpeg -i $1 -pix_fmt rgb24 -r 20 -f gif - | gifsicle --optimize=3 --delay=3 >$2
 }
 
+d-ytdlp() {
+	yt-dlp -f "bv*[ext=mp4]+ba*[ext=m4a]" --merge-output-format mp4 "$@"
+}
+
+av1tohevc() {
+	local in="$1"
+	if [[ -z "$in" ]]; then
+		echo "Usage: av1tohevc /path/to/file.mp4"
+		return 1
+	fi
+	local out="${in%.mp4}-HEVC.mp4"
+	ffmpeg -i "$in" \
+		-c:v libx265 -preset slow -crf 20 -pix_fmt yuv420p -tag:v hvc1 -movflags +faststart \
+		-c:a aac -b:a 192k \
+		"$out"
+}
+
 if [[ -d $HOME/.cargo ]]; then
 	. "$HOME/.cargo/env"
 fi
@@ -162,3 +182,27 @@ if which mise >/dev/null; then
 	_MISE=$(which mise)
 	eval "$(${_MISE} activate zsh)"
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/matt/.lmstudio/bin"
+# End of LM Studio CLI section
+
+# bun completions
+[ -s "/Users/matt/.bun/_bun" ] && source "/Users/matt/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+if [[ -d "$HOME/.local/bin" ]]; then
+	case ":$PATH:" in
+	*":$HOME/.local/bin:"*) ;;
+	*) export PATH="$HOME/.local/bin:$PATH" ;;
+	esac
+fi
+
+code_locs() {
+	scc "${1:-.}" --by-file -s code --exclude-dir .git,node_modules,dist,build,coverage,vendor,tmp,out,target,.next,.turbo --no-min-gen --no-large
+}
+
+source <(fzf --zsh)

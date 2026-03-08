@@ -188,3 +188,7 @@ if [[ -f /usr/share/autojump/autojump.sh ]]; then
 fi
 
 . "$HOME/.cargo/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/matt/.lmstudio/bin"
+# End of LM Studio CLI section

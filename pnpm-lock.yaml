@@ -1,0 +1,129 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      commander:
+        specifier: ^14.0.3
+        version: 14.0.3
+      openai:
+        specifier: ^6.25.0
+        version: 6.27.0
+    devDependencies:
+      '@types/node':
+        specifier: ^25.3.3
+        version: 25.3.5
+      '@typescript/native-preview':
+        specifier: 7.0.0-dev.20260301.1
+        version: 7.0.0-dev.20260301.1
+
+packages:
+
+  '@types/node@25.3.5':
+    resolution: {integrity: sha512-oX8xrhvpiyRCQkG1MFchB09f+cXftgIXb3a7UUa4Y3wpmZPw5tyZGTLWhlESOLq1Rq6oDlc8npVU2/9xiCuXMA==}
+
+  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20260301.1':
+    resolution: {integrity: sha512-z8Efrjf04XjwX3QsLJARUMNl0/Bhe2z3iBbLI1hPAvqvkRK9C6T0Fywup3rEqBpUXCWsVjOyCxJjmuDA/9vZ5g==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@typescript/native-preview-darwin-x64@7.0.0-dev.20260301.1':
+    resolution: {integrity: sha512-qKySo/Tsya2zO3kIecrvP3WfEzS2GYy0qJwPmQ+LTqgONnuQJDohjyC3461cTKYBYL/kvkqfBrUGmjrg9fMyEA==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@typescript/native-preview-linux-arm64@7.0.0-dev.20260301.1':
+    resolution: {integrity: sha512-VNSRYpHbqnsJ18nO0buY85ZGloPoEi0W3rys93UzyZQGdxxqCKK5NxI+FV1siHNedFY2GRLr/7h1gZ8fcdeMvQ==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@typescript/native-preview-linux-arm@7.0.0-dev.20260301.1':
+    resolution: {integrity: sha512-os9ohNd3XSO3+jKgMo3Ac1L6vzqg2GY9gcBsjp6Z5NrnZtnbq6e+uHkqavsE73NP1VIAsjIwZThjw4zY9GY7bg==}
+    cpu: [arm]
+    os: [linux]
+
+  '@typescript/native-preview-linux-x64@7.0.0-dev.20260301.1':
+    resolution: {integrity: sha512-w2iRqNEjvJbzqOYuRckpRBOJpJio2lOFTei7INQ0QED/TOO3XqJvAkyOzDrIgCO9YGWjDUIbuXZ/+4fldGIs3Q==}
+    cpu: [x64]
+    os: [linux]
+
+  '@typescript/native-preview-win32-arm64@7.0.0-dev.20260301.1':
+    resolution: {integrity: sha512-w6uu75HQek25Agu5+CcpzPS9PN3NTEyHSNMp9oypR8dj7zPRsudM8M4vhFTMDVCZ/lX/mWXkgG8dHmI+myWWvw==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@typescript/native-preview-win32-x64@7.0.0-dev.20260301.1':
+    resolution: {integrity: sha512-r2T4W5oYhOHAOVE0U/L1aFCsNDhv0BIRtyk9pL3eqGPLoYH4vtR96/CIpsVt04JDuh0fxOBHcbVjWaZdeZaTCQ==}
+    cpu: [x64]
+    os: [win32]
+
+  '@typescript/native-preview@7.0.0-dev.20260301.1':
+    resolution: {integrity: sha512-hmQSkgiIDAzdjyk4P8/dU8lLch1sR8spamGZ/ypPkz3rmraiLaeDj6rqlrgyZNOcSpk0R3kXw3y5qJ9121gjNQ==}
+    hasBin: true
+
+  commander@14.0.3:
+    resolution: {integrity: sha512-H+y0Jo/T1RZ9qPP4Eh1pkcQcLRglraJaSLoyOtHxu6AapkjWVCy2Sit1QQ4x3Dng8qDlSsZEet7g5Pq06MvTgw==}
+    engines: {node: '>=20'}
+
+  openai@6.27.0:
+    resolution: {integrity: sha512-osTKySlrdYrLYTt0zjhY8yp0JUBmWDCN+Q+QxsV4xMQnnoVFpylgKGgxwN8sSdTNw0G4y+WUXs4eCMWpyDNWZQ==}
+    hasBin: true
+    peerDependencies:
+      ws: ^8.18.0
+      zod: ^3.25 || ^4.0
+    peerDependenciesMeta:
+      ws:
+        optional: true
+      zod:
+        optional: true
+
+  undici-types@7.18.2:
+    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
+
+snapshots:
+
+  '@types/node@25.3.5':
+    dependencies:
+      undici-types: 7.18.2
+
+  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20260301.1':
+    optional: true
+
+  '@typescript/native-preview-darwin-x64@7.0.0-dev.20260301.1':
+    optional: true
+
+  '@typescript/native-preview-linux-arm64@7.0.0-dev.20260301.1':
+    optional: true
+
+  '@typescript/native-preview-linux-arm@7.0.0-dev.20260301.1':
+    optional: true
+
+  '@typescript/native-preview-linux-x64@7.0.0-dev.20260301.1':
+    optional: true
+
+  '@typescript/native-preview-win32-arm64@7.0.0-dev.20260301.1':
+    optional: true
+
+  '@typescript/native-preview-win32-x64@7.0.0-dev.20260301.1':
+    optional: true
+
+  '@typescript/native-preview@7.0.0-dev.20260301.1':
+    optionalDependencies:
+      '@typescript/native-preview-darwin-arm64': 7.0.0-dev.20260301.1
+      '@typescript/native-preview-darwin-x64': 7.0.0-dev.20260301.1
+      '@typescript/native-preview-linux-arm': 7.0.0-dev.20260301.1
+      '@typescript/native-preview-linux-arm64': 7.0.0-dev.20260301.1
+      '@typescript/native-preview-linux-x64': 7.0.0-dev.20260301.1
+      '@typescript/native-preview-win32-arm64': 7.0.0-dev.20260301.1
+      '@typescript/native-preview-win32-x64': 7.0.0-dev.20260301.1
+
+  commander@14.0.3: {}
+
+  openai@6.27.0: {}
+
+  undici-types@7.18.2: {}
