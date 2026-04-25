@@ -4,10 +4,11 @@
   "type": "module",
   "dependencies": {
     "commander": "^14.0.3",
-    "openai": "^6.25.0"
+    "openai": "^6.33.0"
   },
   "devDependencies": {
-    "@types/node": "^25.3.3",
-    "@typescript/native-preview": "7.0.0-dev.20260301.1"
+    "@types/node": "^25.5.2",
+    "@typescript/native-preview": "7.0.0-dev.20260406.1",
+    "npm-check-updates": "^20.0.0"
   }
 }

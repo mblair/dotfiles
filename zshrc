@@ -16,7 +16,7 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git python gcloud brew gh kubectl terraform github ngrok)
+plugins=(git python gcloud brew gh kubectl terraform github)
 if [[ $(uname -s) == "Darwin" ]]; then
 	plugins+=(macos)
 fi
@@ -180,7 +180,7 @@ npmu() {
 
 if which mise >/dev/null; then
 	_MISE=$(which mise)
-	eval "$(${_MISE} activate zsh)"
+	eval "$(${_MISE} activate zsh --shims)"
 fi
 
 # Added by LM Studio CLI (lms)
@@ -206,3 +206,8 @@ code_locs() {
 }
 
 source <(fzf --zsh)
+
+alias isodate='date -u +"%Y-%m-%dT%H:%M:%SZ"'
+alias tz='date +"%z"'
+
+source <(kubectl-argo-rollouts completion zsh)

@@ -5,6 +5,7 @@ import { Command } from "commander";
 import {
   buildDesiredOrder,
   listCloneEntries,
+  needsRenumber,
   needsReorder,
   preflightRename,
   reorderClones,
@@ -31,21 +32,28 @@ async function main(): Promise<void> {
   const dirtyCount = clones.filter((clone) => clone.dirty).length;
   const cleanCount = clones.length - dirtyCount;
 
-  if (dirtyCount === 0) {
-    console.log(`All ${clones.length} clones are clean. No reordering needed.`);
-    return;
-  }
-
   const desiredOrder = buildDesiredOrder(clones);
-  if (!needsReorder(clones, desiredOrder)) {
-    console.log(`Dirty clones are already at the end (${dirtyCount} dirty). No reordering needed.`);
+  const reorderNeeded = needsReorder(clones, desiredOrder);
+  const renumberNeeded = needsRenumber(options.prefix, desiredOrder);
+
+  if (!reorderNeeded && !renumberNeeded) {
+    if (dirtyCount === 0) {
+      console.log(`All ${clones.length} clones are clean. No reordering needed.`);
+    } else {
+      console.log(
+        `Dirty clones are already at the end (${cleanCount} clean, ${dirtyCount} dirty). No reordering needed.`,
+      );
+    }
     return;
   }
 
   preflightRename(options.prefix, outerDir, clones);
   console.log(`Found ${clones.length} clone(s): ${cleanCount} clean, ${dirtyCount} dirty`);
+  if (renumberNeeded && !reorderNeeded) {
+    console.log(`Renumbering to ${options.prefix}, ${options.prefix}-2, ${options.prefix}-3, …`);
+  }
   reorderClones(options.prefix, outerDir, desiredOrder);
-  console.log(`Reordered clones under ${outerDir}`);
+  console.log(`Updated clone directories under ${outerDir}`);
 }
 
 main().catch((error: unknown) => {
