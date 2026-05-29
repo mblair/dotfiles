@@ -1,4 +1,5 @@
 [tools]
+"go:github.com/irskep/autowt" = "v0.6.0-rc3"
 node = "lts"
 'npm:oxfmt' = 'latest'
 'npm:oxlint' = 'latest'
@@ -21,6 +22,8 @@ lint = "oxlint --deny-warnings $(find . -maxdepth 1 -name '*.ts' -type f | sort)
 check = "shellcheck -x *.sh"
 
 clean = "rm -rf .tsgo-build"
+
+cleanup-mise = "./cleanup_mise.sh"
 
 distclean = "rm -rf .tsgo-build node_modules"
 

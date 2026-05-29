@@ -13,12 +13,14 @@ if ! rustup update; then
 fi
 
 cargo install cargo-edit
+cargo install cargo-shear --locked
 
 upgrade_cargo_project() {
 	local _project_path=$1
 	local _cargo_manifest
 	local _cargo_toml_before
 	local _cargo_toml_after
+	local _cargo_shear_status
 
 	[[ -d "${_project_path}" ]] || return 0
 
@@ -36,7 +38,16 @@ upgrade_cargo_project() {
 	cargo clean
 	cargo update || true
 	_cargo_toml_before=$(shasum -a 256 "${_cargo_manifest}" | awk '{print $1}')
-	cargo upgrade --incompatible
+	if grep -Eq '^[[:space:]]*tokio-quiche[[:space:]]*=' "${_cargo_manifest}" && grep -Eq '^[[:space:]]*boring[[:space:]]*=' "${_cargo_manifest}"; then
+		cargo upgrade --incompatible --recursive false --exclude boring
+	else
+		cargo upgrade --incompatible --recursive false
+	fi
+	_cargo_shear_status=0
+	cargo shear --fix || _cargo_shear_status=$?
+	if [[ "${_cargo_shear_status}" -gt 1 ]]; then
+		return "${_cargo_shear_status}"
+	fi
 	_cargo_toml_after=$(shasum -a 256 "${_cargo_manifest}" | awk '{print $1}')
 	if [[ "${_cargo_toml_before}" != "${_cargo_toml_after}" ]]; then
 		cargo check || true

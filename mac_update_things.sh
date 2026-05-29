@@ -60,6 +60,23 @@ list_wedged_employer_clones() {
 	done
 }
 
+update_autowt_mise_version() {
+	local _autowt_version
+
+	_autowt_version=$(
+		go list -m -versions github.com/irskep/autowt |
+			tr ' ' '\n' |
+			awk '/^v0\.6\.0$/ {stable = $0} /^v0\.6\.0-rc[0-9]+$/ {rc = $0} END {print stable ? stable : rc}'
+	)
+
+	if [[ -z "${_autowt_version}" ]]; then
+		echo "Unable to find a v0.6.0 autowt version from Go module metadata" >&2
+		return 0
+	fi
+
+	mise use -g "go:github.com/irskep/autowt@${_autowt_version}"
+}
+
 #TODO: break these all up into functions, make them individually addressable
 
 export PATH=/usr/local/bin:$PATH
@@ -102,30 +119,56 @@ brew update
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq kubecolor httpie yt-dlp pipx ruff jj uv kubectl-ai font-inter mise just nbping llmfit shadcn gawk ty fzf weave cloudflare-speed-cli dtop k9s sqlite kustomize pyrefly pi-coding-agent sem-cli; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq kubecolor httpie yt-dlp pipx ruff jj uv kubectl-ai font-inter mise just nbping llmfit shadcn gawk ty fzf weave cloudflare-speed-cli dtop k9s sqlite kustomize pyrefly sem-cli hyperfine hk fnox zizmor herdr; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
 # Install random tools in Go and Node.
 go install github.com/shurcooL/markdownfmt@latest
 
+update_autowt_mise_version
 mise install
 eval "$(mise activate bash)"
+"${_HERE}"/cleanup_mise.sh --apply
 npm cache clean --force
 _NPM_PREFIX=$(npm prefix -g)
-for _npm in @google/gemini-cli @openai/codex@latest opencode-ai@latest git-trim @github/copilot npm-check-updates webtorrent-cli wscat gnomon socket.io-cli oxfmt oxlint @googleworkspace/cli; do
-	rm -rf "${_NPM_PREFIX}"/lib/node_modules/${_npm%@latest}
-	npm i -g ${_npm}
+_NPM_GLOBAL_BIN="${_NPM_PREFIX}/bin"
+_PNPM_GLOBAL_DIR="${_NPM_PREFIX}/lib/pnpm-global"
+_PI_BIN="${_NPM_PREFIX}/bin/pi"
+rm -rf "${_NPM_PREFIX}"/lib/node_modules/@earendil-works/pi-coding-agent
+if [ -L "${_PI_BIN}" ] && readlink "${_PI_BIN}" | grep -q '@earendil-works/pi-coding-agent'; then
+	rm -f "${_PI_BIN}"
+fi
+for _npm in @openai/codex@latest opencode-ai@latest git-trim @github/copilot npm-check-updates wscat gnomon socket.io-cli oxfmt oxlint @googleworkspace/cli @earendil-works/pi-coding-agent; do
+	_npm_name="${_npm%@latest}"
+	rm -rf "${_NPM_PREFIX}/lib/node_modules/${_npm_name}"
+	npm i -g "${_npm}"
 done
+_pnpm=webtorrent-cli@latest
+_pnpm_name="${_pnpm%@latest}"
+rm -rf "${_NPM_PREFIX}/lib/node_modules/${_pnpm_name}"
+rm -f "${_NPM_GLOBAL_BIN}/webtorrent"
+PATH="${_NPM_GLOBAL_BIN}:${PATH}" pnpm \
+	--config.global-bin-dir="${_NPM_GLOBAL_BIN}" \
+	--config.global-dir="${_PNPM_GLOBAL_DIR}" \
+	add -g --force "${_pnpm}" \
+	--allow-build=bufferutil \
+	--allow-build=ip-set \
+	--allow-build=node-datachannel \
+	--allow-build=protobufjs \
+	--allow-build=utf-8-validate \
+	--allow-build=utp-native
 # Fix broken execute permissions on npm global binaries (some packages don't set +x)
 find "${_NPM_PREFIX}"/lib/node_modules -type f \( -name "*.js" -o -name "cli" \) -path "*/bin/*" -exec chmod +x {} \; 2>/dev/null || true
 chmod +x "${_NPM_PREFIX}"/lib/node_modules/npm-check-updates/build/cli.js 2>/dev/null || true
 
 curl -fsSL https://bun.com/install | bash
 
+curl -fsSL https://antigravity.google/cli/install.sh | bash
+
 "${_HERE}"/install_claude.sh
 
-for _pipx in token-count llm shot-scraper black ttok git-delete-merged-branches autowt; do
+for _pipx in token-count llm shot-scraper black ttok git-delete-merged-branches; do
 	pipx install ${_pipx} --force || pipx reinstall ${_pipx}
 done
 llm install --upgrade llm-ollama llm-video-frames

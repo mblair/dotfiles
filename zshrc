@@ -145,6 +145,67 @@ d-ytdlp() {
 	yt-dlp -f "bv*[ext=mp4]+ba*[ext=m4a]" --merge-output-format mp4 "$@"
 }
 
+yt-transcribe() (
+	emulate -L zsh
+	set -o pipefail
+
+	local url="$1"
+	if [[ -z "$url" ]]; then
+		echo "Usage: yt-transcribe URL" >&2
+		return 1
+	fi
+
+	local whisper_dir="${WHISPER_CPP_DIR:-$HOME/external_src/whisper.cpp}"
+	local whisper_cli="${WHISPER_CPP_BIN:-$whisper_dir/build/bin/whisper-cli}"
+	local whisper_model="${WHISPER_CPP_MODEL:-$whisper_dir/models/ggml-base.en.bin}"
+	local whisper_lang="${WHISPER_CPP_LANG:-en}"
+
+	if ! command -v yt-dlp >/dev/null 2>&1; then
+		echo "yt-transcribe: yt-dlp not found" >&2
+		return 1
+	fi
+	if ! command -v ffmpeg >/dev/null 2>&1; then
+		echo "yt-transcribe: ffmpeg not found" >&2
+		return 1
+	fi
+	if [[ ! -x "$whisper_cli" ]]; then
+		echo "yt-transcribe: whisper-cli not found at $whisper_cli" >&2
+		return 1
+	fi
+	if [[ ! -f "$whisper_model" ]]; then
+		echo "yt-transcribe: whisper model not found at $whisper_model" >&2
+		return 1
+	fi
+
+	local tmpdir
+	tmpdir="$(mktemp -d "${TMPDIR:-/tmp}/yt-transcribe.XXXXXX")" || return 1
+	trap 'rm -rf "$tmpdir"' EXIT
+
+	echo "yt-transcribe: downloading audio" >&2
+	local audio_path
+	audio_path="$(yt-dlp --quiet --no-warnings --no-playlist \
+		-f "bestaudio/best" \
+		-o "$tmpdir/%(title).180B [%(id)s].%(ext)s" \
+		--print after_move:filepath \
+		"$url")" || return 1
+	audio_path="${audio_path##*$'\n'}"
+
+	local stem="${${audio_path:t}%.*}"
+	local wav_path="$tmpdir/$stem.wav"
+	local out_base="${PWD:A}/$stem"
+	local txt_path="$out_base.txt"
+
+	echo "yt-transcribe: converting audio to wav" >&2
+	ffmpeg -hide_banner -loglevel error -y -i "$audio_path" \
+		-ar 16000 -ac 1 -c:a pcm_s16le "$wav_path" || return 1
+
+	echo "yt-transcribe: transcribing with whisper.cpp" >&2
+	"$whisper_cli" -m "$whisper_model" -l "$whisper_lang" -f "$wav_path" \
+		-otxt -of "$out_base" -np >&2 || return 1
+
+	echo "$txt_path"
+)
+
 av1tohevc() {
 	local in="$1"
 	if [[ -z "$in" ]]; then
@@ -183,6 +244,10 @@ if which mise >/dev/null; then
 	eval "$(${_MISE} activate zsh --shims)"
 fi
 
+if command -v twig >/dev/null 2>&1; then
+	eval "$(twig shell-init zsh)"
+fi
+
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/matt/.lmstudio/bin"
 # End of LM Studio CLI section
@@ -211,3 +276,7 @@ alias isodate='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 alias tz='date +"%z"'
 
 source <(kubectl-argo-rollouts completion zsh)
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/matt/.local/bin:$PATH"
