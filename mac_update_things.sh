@@ -119,7 +119,7 @@ brew update
 
 #brew tap caskroom/fonts
 
-for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql redis pup vault wget httpdiff gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt Nonchalant/appicon/appicon rustup minikube ijq kubecolor httpie yt-dlp pipx ruff jj uv kubectl-ai font-inter mise just nbping llmfit shadcn gawk ty fzf weave cloudflare-speed-cli dtop k9s sqlite kustomize pyrefly sem-cli hyperfine hk fnox zizmor herdr; do
+for _pkg in autojump bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql redis wget gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt rustup minikube ijq kubecolor httpie yt-dlp pipx ruff jj uv kubectl-ai font-inter mise just nbping llmfit shadcn gawk ty fzf weave cloudflare-speed-cli dtop k9s sqlite kustomize pyrefly sem-cli hyperfine hk fnox zizmor herdr binwalk; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
@@ -171,10 +171,9 @@ curl -fsSL https://antigravity.google/cli/install.sh | bash
 for _pipx in token-count llm shot-scraper black ttok git-delete-merged-branches; do
 	pipx install ${_pipx} --force || pipx reinstall ${_pipx}
 done
-llm install --upgrade llm-ollama llm-video-frames
+#llm install --upgrade llm-ollama llm-video-frames
 
 # gcc is busted on catalina, needed for binwalk.
-#brew install binwalk
 
 #brew cask install java font-hack-nerd-font minikube keybase
 brew install --cask gcloud-cli emacs-app || true

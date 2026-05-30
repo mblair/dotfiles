@@ -280,3 +280,7 @@ source <(kubectl-argo-rollouts completion zsh)
 
 # Added by Antigravity CLI installer
 export PATH="/Users/matt/.local/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/matthew/.local/bin:$PATH"

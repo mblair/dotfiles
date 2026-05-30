@@ -22,7 +22,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	if [[ -d $HOME/Dropbox\ \(Persona\)/fonts/ ]]; then
 		cp "$HOME"/Dropbox\ \(Personal\)/fonts/Hack-v*/* "$HOME"/Library/Fonts/
 	fi
-	if [[ -d ~/external_src/prelude ]]; then
+	if [[ -d ~/external_src/prelude/.git ]]; then
 		cd ~/external_src/prelude
 		git clean -fdx
 		git checkout init.el
