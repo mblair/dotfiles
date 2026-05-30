@@ -230,7 +230,11 @@ function targetNameForSlot(prefix: string, slot: number): string {
 }
 
 /** Map directory name to slot; legacy layout uses prefix-1 for the first extra clone. */
-function slotFromDirectoryName(prefix: string, name: string, legacyNumbering: boolean): number | null {
+function slotFromDirectoryName(
+  prefix: string,
+  name: string,
+  legacyNumbering: boolean,
+): number | null {
   if (name === prefix) {
     return 0;
   }
@@ -465,13 +469,7 @@ export async function buildDiffBundle(clone: CloneEntry, maxChars: number): Prom
 
   const stagedDiff = await runGitLimited(
     clone.clonePath,
-    [
-      "diff",
-      "--cached",
-      "--no-ext-diff",
-      "--binary",
-      "--submodule=diff",
-    ],
+    ["diff", "--cached", "--no-ext-diff", "--binary", "--submodule=diff"],
     maxChars,
   );
   const stagedText = withSectionTruncationNote(stagedDiff.stdout.trimEnd(), stagedDiff.truncated);
@@ -487,15 +485,13 @@ export async function buildDiffBundle(clone: CloneEntry, maxChars: number): Prom
 
   const unstagedDiff = await runGitLimited(
     clone.clonePath,
-    [
-      "diff",
-      "--no-ext-diff",
-      "--binary",
-      "--submodule=diff",
-    ],
+    ["diff", "--no-ext-diff", "--binary", "--submodule=diff"],
     maxChars,
   );
-  const unstagedText = withSectionTruncationNote(unstagedDiff.stdout.trimEnd(), unstagedDiff.truncated);
+  const unstagedText = withSectionTruncationNote(
+    unstagedDiff.stdout.trimEnd(),
+    unstagedDiff.truncated,
+  );
   anySectionTruncated ||= unstagedDiff.truncated;
   if (unstagedText) {
     sections.push(`[git diff]\n${unstagedText}`);

@@ -1093,10 +1093,7 @@ function updateCloneSnapshot(clone: CloneEntry): void {
   clone.dirty = clone.statusOutput.length > 0;
 }
 
-function createSafetySnapshotBranch(
-  clone: CloneEntry,
-  stashMarker: string,
-): string {
+function createSafetySnapshotBranch(clone: CloneEntry, stashMarker: string): string {
   const clonePath = clone.clonePath;
   const restoreTarget = getCheckoutRestoreTarget(clonePath);
   const snapshotBranch = createUniqueBranchName(
@@ -1149,7 +1146,9 @@ function refreshDefaultBranchAndRestoreDirtyWork(
   record(`stash dirty work (${marker})`);
   if (options.dryRun) {
     if (options.snapshotDirtyWork) {
-      record(`create safety snapshot branch snapshot/${currentDateStamp()}-${clone.name}-pre-recover`);
+      record(
+        `create safety snapshot branch snapshot/${currentDateStamp()}-${clone.name}-pre-recover`,
+      );
     }
     record(`fetch ${remote}`);
     record(`switch to ${defaultBranch}`);
@@ -1261,7 +1260,10 @@ async function resolveClone(
   return { cloneName: clone.name, status: "completed", actions };
 }
 
-function createActionRecorder(clone: CloneEntry, stateTracker?: ResolveStateTracker): ActionRecorder {
+function createActionRecorder(
+  clone: CloneEntry,
+  stateTracker?: ResolveStateTracker,
+): ActionRecorder {
   return (action: string) => {
     console.log(`[${clone.name}] ${action}`);
     stateTracker?.appendAction(clone.name, action);
@@ -1324,8 +1326,10 @@ async function runTargetClones(
     return { results, failed };
   }
 
-  const parallelResults = await mapWithConcurrency(targetClones, resolutionConcurrency, async (clone) =>
-    runOne(clone),
+  const parallelResults = await mapWithConcurrency(
+    targetClones,
+    resolutionConcurrency,
+    async (clone) => runOne(clone),
   );
   for (const result of parallelResults) {
     results.push(result);
@@ -1378,11 +1382,7 @@ async function main(): Promise<void> {
       "Keep processing remaining clones after a clone fails; recover mode defaults to stop-on-error",
       false,
     )
-    .option(
-      "--reset-state",
-      "Ignore any prior recover state file and start a fresh run",
-      false,
-    )
+    .option("--reset-state", "Ignore any prior recover state file and start a fresh run", false)
     .option(
       "--snapshot-dirty-work",
       "Before recover, create a local safety branch with a WIP snapshot commit of the dirty state",

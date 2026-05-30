@@ -16,7 +16,7 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git python gcloud brew gh kubectl terraform github)
+plugins=(git golang python gcloud brew gh kubectl terraform rust mise)
 if [[ $(uname -s) == "Darwin" ]]; then
 	plugins+=(macos)
 fi
@@ -62,8 +62,8 @@ if [[ $(uname -s) == "Darwin" ]]; then
 		export PATH="$HOME/.cabal/bin:$PATH"
 	fi
 
-	if [[ -s $(brew --prefix)/etc/autojump.sh ]]; then
-		. $(brew --prefix)/etc/autojump.sh
+	if which zoxide >/dev/null; then
+		eval "$(zoxide init zsh --cmd j)"
 	fi
 
 	#export JAVA_HOME="$(/usr/libexec/java_home)"
@@ -145,6 +145,111 @@ d-ytdlp() {
 	yt-dlp -f "bv*[ext=mp4]+ba*[ext=m4a]" --merge-output-format mp4 "$@"
 }
 
+_yt_transcribe_setup() {
+	emulate -L zsh
+
+	local cmd="${1:-yt-transcribe}"
+	local whisper_dir="${WHISPER_CPP_DIR:-$HOME/external_src/whisper.cpp}"
+	local whisper_cli="${WHISPER_CPP_BIN:-$whisper_dir/build/bin/whisper-cli}"
+	local whisper_lang="${WHISPER_CPP_LANG:-en}"
+	local whisper_model_name="${WHISPER_CPP_MODEL_NAME:-base.en}"
+	local default_model="$whisper_dir/models/ggml-$whisper_model_name.bin"
+	local whisper_model="${WHISPER_CPP_MODEL:-$default_model}"
+
+	if ! command -v ffmpeg >/dev/null 2>&1; then
+		echo "$cmd: ffmpeg not found" >&2
+		return 1
+	fi
+	if [[ ! -d "$whisper_dir" ]]; then
+		echo "$cmd: whisper.cpp not found at $whisper_dir" >&2
+		return 1
+	fi
+	if [[ ! -x "$whisper_cli" ]]; then
+		if ! command -v cmake >/dev/null 2>&1; then
+			echo "$cmd: cmake not found; cannot build whisper.cpp" >&2
+			return 1
+		fi
+		echo "$cmd: building whisper.cpp" >&2
+		(
+			cd "$whisper_dir" &&
+				cmake -B build &&
+				cmake --build build --config Release
+		) || return 1
+	fi
+	if [[ ! -f "$whisper_model" ]]; then
+		if [[ "$whisper_model" != "$default_model" ]]; then
+			echo "$cmd: whisper model not found at $whisper_model" >&2
+			return 1
+		fi
+		echo "$cmd: downloading whisper.cpp model $whisper_model_name" >&2
+		(
+			cd "$whisper_dir" &&
+				bash ./models/download-ggml-model.sh "$whisper_model_name"
+		) || return 1
+	fi
+
+	typeset -g _YT_TRANSCRIBE_WHISPER_CLI="$whisper_cli"
+	typeset -g _YT_TRANSCRIBE_WHISPER_MODEL="$whisper_model"
+	typeset -g _YT_TRANSCRIBE_WHISPER_LANG="$whisper_lang"
+}
+
+_yt_transcribe_file() {
+	emulate -L zsh
+	set -o pipefail
+
+	local cmd="$1"
+	local media_path="${2:A}"
+	local out_dir="${4:-${media_path:h}}"
+	local out_base="$out_dir/${${media_path:t}%.*}"
+	local wav_path="$3/${${media_path:t}%.*}.wav"
+	local txt_path="$out_base.txt"
+
+	echo "$cmd: converting $media_path to wav" >&2
+	ffmpeg -hide_banner -loglevel error -y -i "$media_path" \
+		-ar 16000 -ac 1 -c:a pcm_s16le "$wav_path" || return 1
+
+	echo "$cmd: transcribing $media_path with whisper.cpp" >&2
+	"$_YT_TRANSCRIBE_WHISPER_CLI" -m "$_YT_TRANSCRIBE_WHISPER_MODEL" \
+		-l "$_YT_TRANSCRIBE_WHISPER_LANG" -f "$wav_path" \
+		-otxt -of "$out_base" -np >/dev/null || return 1
+
+	echo "$txt_path"
+}
+
+yt-transcribe-local() (
+	emulate -L zsh
+	set -o pipefail
+
+	if [[ $# -eq 0 ]]; then
+		set -- .
+	fi
+
+	_yt_transcribe_setup yt-transcribe-local || return 1
+
+	local tmpdir
+	tmpdir="$(mktemp -d "${TMPDIR:-/tmp}/yt-transcribe-local.XXXXXX")" || return 1
+	trap 'rm -rf "$tmpdir"' EXIT
+
+	local target media_path
+	for target in "$@"; do
+		if [[ -d "$target" ]]; then
+			local found=0
+			for media_path in "$target"/*.(mp4|mkv|webm|m4a|mp3|wav|opus|flac|mov)(N); do
+				found=1
+				_yt_transcribe_file yt-transcribe-local "$media_path" "$tmpdir" || return 1
+			done
+			if [[ "$found" -eq 0 ]]; then
+				echo "yt-transcribe-local: no supported media files found in $target" >&2
+			fi
+		elif [[ -f "$target" ]]; then
+			_yt_transcribe_file yt-transcribe-local "$target" "$tmpdir" || return 1
+		else
+			echo "yt-transcribe-local: not a file or directory: $target" >&2
+			return 1
+		fi
+	done
+)
+
 yt-transcribe() (
 	emulate -L zsh
 	set -o pipefail
@@ -155,27 +260,11 @@ yt-transcribe() (
 		return 1
 	fi
 
-	local whisper_dir="${WHISPER_CPP_DIR:-$HOME/external_src/whisper.cpp}"
-	local whisper_cli="${WHISPER_CPP_BIN:-$whisper_dir/build/bin/whisper-cli}"
-	local whisper_model="${WHISPER_CPP_MODEL:-$whisper_dir/models/ggml-base.en.bin}"
-	local whisper_lang="${WHISPER_CPP_LANG:-en}"
-
 	if ! command -v yt-dlp >/dev/null 2>&1; then
 		echo "yt-transcribe: yt-dlp not found" >&2
 		return 1
 	fi
-	if ! command -v ffmpeg >/dev/null 2>&1; then
-		echo "yt-transcribe: ffmpeg not found" >&2
-		return 1
-	fi
-	if [[ ! -x "$whisper_cli" ]]; then
-		echo "yt-transcribe: whisper-cli not found at $whisper_cli" >&2
-		return 1
-	fi
-	if [[ ! -f "$whisper_model" ]]; then
-		echo "yt-transcribe: whisper model not found at $whisper_model" >&2
-		return 1
-	fi
+	_yt_transcribe_setup yt-transcribe || return 1
 
 	local tmpdir
 	tmpdir="$(mktemp -d "${TMPDIR:-/tmp}/yt-transcribe.XXXXXX")" || return 1
@@ -190,20 +279,7 @@ yt-transcribe() (
 		"$url")" || return 1
 	audio_path="${audio_path##*$'\n'}"
 
-	local stem="${${audio_path:t}%.*}"
-	local wav_path="$tmpdir/$stem.wav"
-	local out_base="${PWD:A}/$stem"
-	local txt_path="$out_base.txt"
-
-	echo "yt-transcribe: converting audio to wav" >&2
-	ffmpeg -hide_banner -loglevel error -y -i "$audio_path" \
-		-ar 16000 -ac 1 -c:a pcm_s16le "$wav_path" || return 1
-
-	echo "yt-transcribe: transcribing with whisper.cpp" >&2
-	"$whisper_cli" -m "$whisper_model" -l "$whisper_lang" -f "$wav_path" \
-		-otxt -of "$out_base" -np >&2 || return 1
-
-	echo "$txt_path"
+	_yt_transcribe_file yt-transcribe "$audio_path" "$tmpdir" "${PWD:A}" || return 1
 )
 
 av1tohevc() {
@@ -277,10 +353,8 @@ alias tz='date +"%z"'
 
 source <(kubectl-argo-rollouts completion zsh)
 
-
 # Added by Antigravity CLI installer
 export PATH="/Users/matt/.local/bin:$PATH"
-
 
 # Added by Antigravity CLI installer
 export PATH="/Users/matthew/.local/bin:$PATH"

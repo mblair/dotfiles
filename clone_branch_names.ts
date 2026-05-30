@@ -32,8 +32,7 @@ export async function suggestBranchNameForClone(
       content: [
         {
           type: "input_text" as const,
-          text:
-            "You are a senior engineer naming git branches for dirty worktrees. Use only the provided git status and diff. Return exactly one plain-text git branch name that starts with mattyblair/. Use lowercase kebab-case, keep it concise and specific, and do not include any explanation or punctuation outside the branch name.",
+          text: "You are a senior engineer naming git branches for dirty worktrees. Use only the provided git status and diff. Return exactly one plain-text git branch name that starts with mattyblair/. Use lowercase kebab-case, keep it concise and specific, and do not include any explanation or punctuation outside the branch name.",
         },
       ],
     },

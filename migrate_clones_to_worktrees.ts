@@ -99,9 +99,7 @@ function collectString(value: string, previous: string[]): string[] {
 function parseBranchOverride(raw: string): BranchOverride {
   const separatorIndex = raw.indexOf("=");
   if (separatorIndex <= 0 || separatorIndex === raw.length - 1) {
-    throw new InvalidArgumentError(
-      `Expected branch override in clone=branch format, got ${raw}`,
-    );
+    throw new InvalidArgumentError(`Expected branch override in clone=branch format, got ${raw}`);
   }
 
   const cloneName = raw.slice(0, separatorIndex).trim();
@@ -145,10 +143,13 @@ function repoNameForPath(repoPath: string): string {
 }
 
 function expandEnvironmentVariables(value: string): string {
-  return value.replace(/\$([A-Z_][A-Z0-9_]*)|\$\{([A-Z_][A-Z0-9_]*)\}/g, (_match, simple, braced) => {
-    const variableName = (simple || braced || "") as string;
-    return process.env[variableName] ?? "";
-  });
+  return value.replace(
+    /\$([A-Z_][A-Z0-9_]*)|\$\{([A-Z_][A-Z0-9_]*)\}/g,
+    (_match, simple, braced) => {
+      const variableName = (simple || braced || "") as string;
+      return process.env[variableName] ?? "";
+    },
+  );
 }
 
 function readAutowtDirectoryPattern(anchorPath: string): string | undefined {
@@ -266,11 +267,7 @@ function runCommand(
   return { stdout, stderr, status };
 }
 
-function runGit(
-  cwd: string,
-  args: string[],
-  allowedStatuses: number[] = [0],
-): CommandResult {
+function runGit(cwd: string, args: string[], allowedStatuses: number[] = [0]): CommandResult {
   return runCommand("git", cwd, args, allowedStatuses);
 }
 
@@ -592,7 +589,10 @@ async function createMigrationPlan(options: CliOptions): Promise<MigrationPlan> 
     }
 
     const client = new OpenAI({ apiKey });
-    const concurrency = effectiveConcurrency(options.summaryConcurrency, clonesNeedingOpenAI.length);
+    const concurrency = effectiveConcurrency(
+      options.summaryConcurrency,
+      clonesNeedingOpenAI.length,
+    );
     console.log(
       `Suggesting branch names for ${clonesNeedingOpenAI.length} clone(s) with ${options.openaiModel} (${concurrency} request(s) in flight)...`,
     );
@@ -859,7 +859,10 @@ function createLinkedWorktree(plan: MigrationPlan, entry: MigrationPlanEntry): "
   const existingWorktree = listGitWorktrees(plan.anchorPath).find(
     (worktree) => worktree.branch === entry.desiredBranch,
   );
-  if (existingWorktree && path.resolve(existingWorktree.path) !== path.resolve(entry.worktreePath)) {
+  if (
+    existingWorktree &&
+    path.resolve(existingWorktree.path) !== path.resolve(entry.worktreePath)
+  ) {
     throw new Error(
       `Branch ${entry.desiredBranch} is already checked out at ${existingWorktree.path}; remove or reuse that worktree before migrating ${entry.cloneName}.`,
     );
@@ -985,7 +988,12 @@ function applyEntry(
   }
 }
 
-function applyPlan(planPath: string, plan: MigrationPlan, selectedEntries: MigrationPlanEntry[], quarantine: boolean): void {
+function applyPlan(
+  planPath: string,
+  plan: MigrationPlan,
+  selectedEntries: MigrationPlanEntry[],
+  quarantine: boolean,
+): void {
   ensureAnchorReadyForApply(plan);
 
   for (const entry of selectedEntries) {
@@ -1031,7 +1039,10 @@ async function main(): Promise<void> {
       "--plan-file <path>",
       "Migration plan JSON path; defaults to ~/<prefix>_src/.<prefix>-worktree-migration-plan.json",
     )
-    .option("--anchor-path <path>", "Override the anchor repo path; defaults to ~/<prefix>_src/<prefix>")
+    .option(
+      "--anchor-path <path>",
+      "Override the anchor repo path; defaults to ~/<prefix>_src/<prefix>",
+    )
     .option(
       "--worktree-root <path>",
       "Root directory where linked worktrees should be created; defaults to the repo's .autowt.toml directory_pattern when present, otherwise ~/<prefix>_worktrees",
