@@ -16,7 +16,7 @@ DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git golang python gcloud brew gh kubectl terraform rust mise)
+plugins=(git golang python gcloud brew gh kubectl terraform rust)
 if [[ $(uname -s) == "Darwin" ]]; then
 	plugins+=(macos)
 fi

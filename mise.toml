@@ -1,5 +1,5 @@
 [tools]
-"go:github.com/irskep/autowt" = "v0.6.0-rc3"
+"go:github.com/irskep/autowt" = "v0.6.0-rc5"
 node = "lts"
 'npm:oxfmt' = 'latest'
 'npm:oxlint' = 'latest'
