@@ -119,7 +119,7 @@ brew update
 
 #brew tap caskroom/fonts
 
-for _pkg in bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql redis wget gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt rustup minikube ijq kubecolor httpie yt-dlp pipx ruff jj uv kubectl-ai font-inter mise just nbping llmfit shadcn gawk ty fzf weave cloudflare-speed-cli dtop k9s sqlite kustomize pyrefly sem-cli hyperfine hk fnox zizmor herdr binwalk zoxide cmake; do
+for _pkg in bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql redis wget gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt rustup minikube ijq kubecolor httpie yt-dlp pipx ruff jj uv kubectl-ai font-inter mise just nbping llmfit shadcn gawk ty fzf weave cloudflare-speed-cli dtop k9s sqlite kustomize pyrefly sem-cli hyperfine hk fnox zizmor herdr binwalk zoxide cmake btop mpv; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
@@ -139,7 +139,7 @@ rm -rf "${_NPM_PREFIX}"/lib/node_modules/@earendil-works/pi-coding-agent
 if [ -L "${_PI_BIN}" ] && readlink "${_PI_BIN}" | grep -q '@earendil-works/pi-coding-agent'; then
 	rm -f "${_PI_BIN}"
 fi
-for _npm in @openai/codex@latest opencode-ai@latest git-trim @github/copilot npm-check-updates wscat gnomon socket.io-cli oxfmt oxlint @googleworkspace/cli @earendil-works/pi-coding-agent; do
+for _npm in @openai/codex@latest opencode-ai@latest git-trim @github/copilot npm-check-updates wscat gnomon socket.io-cli oxfmt oxlint @googleworkspace/cli @earendil-works/pi-coding-agent claudefm; do
 	_npm_name="${_npm%@latest}"
 	rm -rf "${_NPM_PREFIX}/lib/node_modules/${_npm_name}"
 	npm i -g "${_npm}"
