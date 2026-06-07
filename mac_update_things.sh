@@ -119,12 +119,19 @@ brew update
 
 #brew tap caskroom/fonts
 
-for _pkg in bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql redis wget gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt rustup minikube ijq kubecolor httpie yt-dlp pipx ruff jj uv kubectl-ai font-inter mise just nbping llmfit shadcn gawk ty fzf weave cloudflare-speed-cli dtop k9s sqlite kustomize pyrefly sem-cli hyperfine hk fnox zizmor herdr binwalk zoxide cmake btop mpv; do
+for _pkg in bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql redis wget gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt rustup minikube ijq kubecolor httpie yt-dlp pipx ruff jj uv kubectl-ai font-inter mise just nbping llmfit shadcn gawk ty fzf weave cloudflare-speed-cli dtop k9s sqlite kustomize pyrefly sem-cli hyperfine hk fnox zizmor herdr binwalk zoxide cmake btop mpv cliclick; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
+if [[ -d /Applications/Xcode.app ]]; then
+    brew install Nonchalant/appicon/appicon || brew upgade Nonchalant/appicon/appicon
+fi
+
 # Install random tools in Go and Node.
 go install github.com/shurcooL/markdownfmt@latest
+
+herdr integration install claude
+herdr integration install codex
 
 update_autowt_mise_version
 mise install
