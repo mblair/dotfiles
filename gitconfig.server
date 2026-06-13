@@ -1,6 +1,8 @@
 [user]
 	name = Matt Blair
-	email = me@matthewblair.net
+    email = me@matthewblair.net
+[core]
+    editor = vim
 [alias]
 	co = checkout
 	cp = cherry-pick
