@@ -98,6 +98,7 @@ elif [[ $(uname -s) == "Linux" ]]; then
 fi
 
 alias b="brew"
+alias m="mise"
 alias c="clear"
 alias dc="cd"
 alias f="fd -H"

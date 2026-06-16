@@ -130,8 +130,9 @@ fi
 # Install random tools in Go and Node.
 go install github.com/shurcooL/markdownfmt@latest
 
-herdr integration install claude
-herdr integration install codex
+for integration in claude codex cursor; do
+	herdr integration install "$integration"
+done
 
 update_autowt_mise_version
 mise install

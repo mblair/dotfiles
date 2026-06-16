@@ -92,7 +92,7 @@ print_repo_group() {
 	_repos=("$@")
 
 	echo "${_label}: ${#_repos[@]}"
-	for _repo in "${_repos[@]}"; do
+	for _repo in ${_repos[@]+"${_repos[@]}"}; do
 		echo "  ${_repo}"
 	done
 }
@@ -205,11 +205,11 @@ if [[ -d ${_outer_dir} ]]; then
 fi
 
 echo "=== update.sh summary for ${PREFIX} ==="
-print_repo_group "updated" "${UPDATED_REPOS[@]}"
-print_repo_group "skipped (in-progress git op)" "${SKIPPED_IN_PROGRESS_REPOS[@]}"
-print_repo_group "skipped (unmerged paths)" "${SKIPPED_UNMERGED_REPOS[@]}"
-print_repo_group "skipped (dirty)" "${SKIPPED_DIRTY_REPOS[@]}"
-print_repo_group "failed" "${FAILED_REPOS[@]}"
+print_repo_group "updated" ${UPDATED_REPOS[@]+"${UPDATED_REPOS[@]}"}
+print_repo_group "skipped (in-progress git op)" ${SKIPPED_IN_PROGRESS_REPOS[@]+"${SKIPPED_IN_PROGRESS_REPOS[@]}"}
+print_repo_group "skipped (unmerged paths)" ${SKIPPED_UNMERGED_REPOS[@]+"${SKIPPED_UNMERGED_REPOS[@]}"}
+print_repo_group "skipped (dirty)" ${SKIPPED_DIRTY_REPOS[@]+"${SKIPPED_DIRTY_REPOS[@]}"}
+print_repo_group "failed" ${FAILED_REPOS[@]+"${FAILED_REPOS[@]}"}
 
 cd "${_HERE}"
 recover_dirty_descript_clones
