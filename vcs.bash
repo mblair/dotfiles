@@ -47,6 +47,19 @@ git_has_in_progress_operation() {
 		[[ -f "${_git_dir}/BISECT_LOG" ]]
 }
 
+run_with_optional_timeout() {
+	_timeout_seconds=$1
+	shift
+
+	if command -v timeout &>/dev/null; then
+		timeout "${_timeout_seconds}" "$@"
+	elif command -v gtimeout &>/dev/null; then
+		gtimeout "${_timeout_seconds}" "$@"
+	else
+		"$@"
+	fi
+}
+
 git_default_branch_for_remote() {
 	_remote=$1
 
@@ -94,7 +107,7 @@ git_update() {
 
 	# Try origin first, fall back to upstream if origin is unreachable
 	_remote="origin"
-	if ! timeout 5 git ls-remote --exit-code origin &>/dev/null; then
+	if ! run_with_optional_timeout 5 git ls-remote --exit-code origin &>/dev/null; then
 		if git remote get-url upstream &>/dev/null; then
 			echo "origin unreachable, using upstream instead"
 			_remote="upstream"
