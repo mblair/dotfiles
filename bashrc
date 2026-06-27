@@ -2,6 +2,10 @@
 
 _EMPLOYER="google"
 
+if [[ $(uname -s) == "Darwin" ]]; then
+	export HOMEBREW_NO_ASK=1
+fi
+
 # This makes Ctrl-S (forward-search-history) work.
 stty stop undef
 

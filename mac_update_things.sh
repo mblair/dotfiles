@@ -3,6 +3,7 @@
 set -xueo pipefail
 
 export HOMEBREW_INSTALL_CLEANUP=1
+export HOMEBREW_NO_ASK=1
 
 _EMPLOYER="descript"
 _RESOLVE_CLONES=false

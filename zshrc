@@ -39,6 +39,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	export GIT_EDITOR='vim -f'
 	export EDITOR='vim -f'
 	export HOMEBREW_EDITOR='vim -f'
+	export HOMEBREW_NO_ASK=1
 
 	# http://tug.org/mactex/faq/
 	if [[ -d "/usr/texbin" ]]; then
