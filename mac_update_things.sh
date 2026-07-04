@@ -120,7 +120,7 @@ brew update
 
 #brew tap caskroom/fonts
 
-for _pkg in bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql redis wget gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt rustup minikube ijq kubecolor httpie yt-dlp pipx ruff jj uv kubectl-ai font-inter mise just nbping llmfit shadcn gawk ty fzf weave cloudflare-speed-cli dtop k9s sqlite kustomize pyrefly sem-cli hyperfine hk fnox zizmor herdr binwalk zoxide cmake btop mpv cliclick todoist-cli mac-cleanup-go step certigo cfssl git-filter-repo; do
+for _pkg in bash ffmpeg git git-extras gnu-sed gnupg irssi jq s3cmd shellcheck ssh-copy-id ripgrep tmux wget zsh findutils ghi nginx postgresql redis wget gifsicle zsh-completions wifi-password cowsay jid mtr ccat watch go gh httpstat clang-format ctop pngcheck curl git-lfs telnet pgformatter moreutils azure-cli llvm imagemagick wireguard-tools iperf3 swiftformat python kubernetes-cli fd broot cppcheck openssh macvim loc gopls shfmt rustup minikube ijq kubecolor httpie yt-dlp pipx ruff jj uv kubectl-ai font-inter mise just nbping llmfit shadcn gawk ty fzf weave cloudflare-speed-cli dtop k9s sqlite kustomize pyrefly sem-cli hyperfine hk fnox zizmor herdr binwalk zoxide cmake btop mpv cliclick todoist-cli mac-cleanup-go step certigo cfssl git-filter-repo 1password-cli; do
 	brew install ${_pkg} || brew upgrade ${_pkg}
 done
 
