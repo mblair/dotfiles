@@ -144,7 +144,36 @@ gif() {
 }
 
 d-ytdlp() {
-	yt-dlp -f "bv*[ext=mp4]+ba*[ext=m4a]" --merge-output-format mp4 "$@"
+	emulate -L zsh
+	set -o pipefail
+
+	local format_selector="bv*[ext=mp4][vcodec^=avc1]+ba*[ext=m4a]/b[ext=mp4][vcodec^=avc1]"
+	local -a ytdlp_args
+	ytdlp_args=(-f "$format_selector" --merge-output-format mp4 "$@")
+
+	if command -v jq >/dev/null 2>&1; then
+		command yt-dlp --simulate --dump-single-json --no-warnings "${ytdlp_args[@]}" | jq -r '
+			def size:
+				(.filesize // .filesize_approx) as $bytes
+				| if $bytes then "\((($bytes / 1048576 * 10) | round) / 10)MiB" else "unknown size" end;
+			def fps:
+				if .fps then " \(.fps)fps" else "" end;
+			def fmt_line:
+				"  \(.format_id): \(.ext // "?") \((.resolution // .format_note // "unknown"))\(fps), video=\(.vcodec // "none"), audio=\(.acodec // "none"), \(size)";
+			def selected:
+				"d-ytdlp: \(.title // .id // "video") -> \(.format_id // "unknown")",
+				(if (.requested_formats // []) != [] then (.requested_formats[] | fmt_line) else fmt_line end);
+			if ._type == "playlist" and (.entries // null) then
+				.entries[]? | select(. != null) | selected
+			else
+				selected
+			end
+		' >&2 || return 1
+	else
+		command yt-dlp --simulate --no-warnings "${ytdlp_args[@]}" --print 'd-ytdlp: %(title)s -> %(format_id)s: %(ext)s %(resolution)s, video=%(vcodec)s, audio=%(acodec)s' >&2 || return 1
+	fi
+
+	command yt-dlp "${ytdlp_args[@]}"
 }
 
 _yt_transcribe_setup() {
