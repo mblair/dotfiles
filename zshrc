@@ -281,6 +281,31 @@ yt-transcribe-local() (
 	done
 )
 
+# Transcribe an audio/video file with whisper.cpp -> [basename].txt beside the file.
+# Usage: audio-transcribe recording.m4a
+audio-transcribe() (
+	emulate -L zsh
+	set -o pipefail
+
+	local media_path="$1"
+	if [[ -z "$media_path" ]]; then
+		echo "Usage: audio-transcribe FILE" >&2
+		return 1
+	fi
+	if [[ ! -f "$media_path" ]]; then
+		echo "audio-transcribe: not a file: $media_path" >&2
+		return 1
+	fi
+
+	_yt_transcribe_setup audio-transcribe || return 1
+
+	local tmpdir
+	tmpdir="$(mktemp -d "${TMPDIR:-/tmp}/audio-transcribe.XXXXXX")" || return 1
+	trap 'rm -rf "$tmpdir"' EXIT
+
+	_yt_transcribe_file audio-transcribe "$media_path" "$tmpdir" || return 1
+)
+
 yt-transcribe() (
 	emulate -L zsh
 	set -o pipefail
