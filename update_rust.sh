@@ -12,7 +12,7 @@ if ! rustup update; then
 	rustup update
 fi
 
-cargo install cargo-edit
+cargo install cargo-edit superseedr
 cargo install cargo-shear --locked
 
 upgrade_cargo_project() {
