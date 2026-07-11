@@ -136,7 +136,7 @@ for integration in claude codex cursor opencode; do
 done
 
 update_autowt_mise_version
-mise install
+(cd "${_HERE}" && mise install)
 eval "$(mise activate bash)"
 "${_HERE}"/cleanup_mise.sh --apply
 npm cache clean --force

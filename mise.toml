@@ -1,3 +1,6 @@
+[settings]
+npm.package_manager = "npm"
+
 [tools]
 "go:github.com/irskep/autowt" = "v0.6.0"
 node = "lts"
