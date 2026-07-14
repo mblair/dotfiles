@@ -177,7 +177,7 @@ curl -fsSL https://antigravity.google/cli/install.sh | bash
 
 "${_HERE}"/install_claude.sh
 
-for _pipx in token-count llm shot-scraper black ttok git-delete-merged-branches; do
+for _pipx in token-count llm shot-scraper black ttok git-delete-merged-branches sqlite-utils; do
 	pipx install ${_pipx} --force || pipx reinstall ${_pipx}
 done
 #llm install --upgrade llm-ollama llm-video-frames
