@@ -99,6 +99,9 @@ ln -sf "${_HERE}/mise.toml" ~/.config/mise/config.toml
 mkdir -p ~/.config/ghostty/
 ln -sf "${_HERE}/ghostty-config" ~/.config/ghostty/config
 
+mkdir -p ~/.config/herdr/
+ln -sf "${_HERE}/herdr-config.toml" ~/.config/herdr/config.toml
+
 mkdir -p "${_HERE}/vim/autoload"
 
 if [[ ! -f "${_HERE}/vim/autoload/pathogen.vim" ]]; then

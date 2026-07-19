@@ -1,0 +1,11 @@
+onboarding = false
+
+[terminal]
+default_shell = "zsh"
+
+[theme]
+name = "gruvbox"
+auto_switch = false
+
+[advanced]
+scrollback_limit_bytes = 50000000

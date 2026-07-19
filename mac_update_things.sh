@@ -136,40 +136,13 @@ for integration in claude codex cursor opencode; do
 done
 
 update_autowt_mise_version
-(cd "${_HERE}" && mise install)
+(
+	cd "${_HERE}"
+	mise install
+	mise upgrade
+)
 eval "$(mise activate bash)"
 "${_HERE}"/cleanup_mise.sh --apply
-npm cache clean --force
-_NPM_PREFIX=$(npm prefix -g)
-_NPM_GLOBAL_BIN="${_NPM_PREFIX}/bin"
-_PNPM_GLOBAL_DIR="${_NPM_PREFIX}/lib/pnpm-global"
-_PI_BIN="${_NPM_PREFIX}/bin/pi"
-rm -rf "${_NPM_PREFIX}"/lib/node_modules/@earendil-works/pi-coding-agent
-if [ -L "${_PI_BIN}" ] && readlink "${_PI_BIN}" | grep -q '@earendil-works/pi-coding-agent'; then
-	rm -f "${_PI_BIN}"
-fi
-for _npm in @openai/codex@latest opencode-ai@latest git-trim @github/copilot npm-check-updates wscat gnomon socket.io-cli oxfmt oxlint @googleworkspace/cli @earendil-works/pi-coding-agent claudefm; do
-	_npm_name="${_npm%@latest}"
-	rm -rf "${_NPM_PREFIX}/lib/node_modules/${_npm_name}"
-	npm i -g "${_npm}"
-done
-_pnpm=webtorrent-cli@latest
-_pnpm_name="${_pnpm%@latest}"
-rm -rf "${_NPM_PREFIX}/lib/node_modules/${_pnpm_name}"
-rm -f "${_NPM_GLOBAL_BIN}/webtorrent"
-PATH="${_NPM_GLOBAL_BIN}:${PATH}" pnpm \
-	--config.global-bin-dir="${_NPM_GLOBAL_BIN}" \
-	--config.global-dir="${_PNPM_GLOBAL_DIR}" \
-	add -g --force "${_pnpm}" \
-	--allow-build=bufferutil \
-	--allow-build=ip-set \
-	--allow-build=node-datachannel \
-	--allow-build=protobufjs \
-	--allow-build=utf-8-validate \
-	--allow-build=utp-native
-# Fix broken execute permissions on npm global binaries (some packages don't set +x)
-find "${_NPM_PREFIX}"/lib/node_modules -type f \( -name "*.js" -o -name "cli" \) -path "*/bin/*" -exec chmod +x {} \; 2>/dev/null || true
-chmod +x "${_NPM_PREFIX}"/lib/node_modules/npm-check-updates/build/cli.js 2>/dev/null || true
 
 curl -fsSL https://bun.com/install | bash
 

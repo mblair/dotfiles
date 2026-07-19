@@ -1,11 +1,23 @@
 [settings]
-npm.package_manager = "npm"
+npm.package_manager = "pnpm"
 
 [tools]
 "go:github.com/irskep/autowt" = "v0.6.0"
 node = "lts"
+'npm:@earendil-works/pi-coding-agent' = 'latest'
+'npm:@github/copilot' = 'latest'
+'npm:@googleworkspace/cli' = { version = 'latest', allow_builds = ['@googleworkspace/cli'] }
+'npm:@openai/codex' = 'latest'
+'npm:claudefm' = 'latest'
+'npm:git-trim' = 'latest'
+'npm:gnomon' = 'latest'
+'npm:npm-check-updates' = 'latest'
+'npm:opencode-ai' = { version = 'latest', allow_builds = ['opencode-ai'] }
 'npm:oxfmt' = 'latest'
 'npm:oxlint' = 'latest'
+'npm:socket.io-cli' = 'latest'
+'npm:webtorrent-cli' = { version = 'latest', allow_builds = ['bufferutil', 'ip-set', 'node-datachannel', 'protobufjs', 'utf-8-validate', 'utp-native'] }
+'npm:wscat' = 'latest'
 pnpm = 'latest'
 
 [tasks]
