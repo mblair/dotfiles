@@ -82,7 +82,7 @@ run = "node .tsgo-build/migrate_clones_to_worktrees.js"
 
 [tasks.upgrade]
 depends = ["install"]
-run = "pnpm exec npm-check-updates -u && pnpm install && mise run build"
+run = "npm-check-updates -u && pnpm install && mise run build"
 
 [tasks.default]
 depends = ["build"]
