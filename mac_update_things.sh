@@ -135,6 +135,9 @@ for integration in claude codex cursor opencode; do
 	herdr integration install "$integration"
 done
 
+codex mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
+claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest || true
+
 update_autowt_mise_version
 (
 	cd "${_HERE}"
