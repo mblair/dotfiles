@@ -182,6 +182,8 @@ fi
 
 "${_HERE}"/update_rust.sh
 
+gh extension install github/gh-stack
+
 brew outdated
 brew outdated --cask
 
