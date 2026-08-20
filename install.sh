@@ -94,7 +94,7 @@ ln -sf "${_HERE}/inputrc" ~/.inputrc
 ln -sf "${_HERE}/tmux.conf" ~/.tmux.conf
 
 mkdir -p ~/.config/mise/
-ln -sf "${_HERE}/mise.toml" ~/.config/mise/config.toml
+ln -sf "${_HERE}/mise-global.toml" ~/.config/mise/config.toml
 
 mkdir -p ~/.config/ghostty/
 ln -sf "${_HERE}/ghostty-config" ~/.config/ghostty/config
