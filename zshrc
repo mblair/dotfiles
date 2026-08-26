@@ -140,7 +140,13 @@ alias cca='ccat -C=always'
 #--delay=3 means 30ms between each gif
 #--optimize=3 says use slowest optimization for best file size
 gif() {
-	ffmpeg -i $1 -pix_fmt rgb24 -r 20 -f gif - | gifsicle --optimize=3 --delay=3 >$2
+	if (( $# < 1 )); then
+		print -u2 'usage: gif INPUT [OUTPUT]'
+		return 2
+	fi
+
+	local output="${2:-${1:r}.gif}"
+	ffmpeg -i "$1" -pix_fmt rgb24 -r 20 -f gif - | gifsicle --optimize=3 --delay=3 >"$output"
 }
 
 d-ytdlp() {
