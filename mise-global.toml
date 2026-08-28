@@ -9,6 +9,7 @@ node = "lts"
 'npm:@googleworkspace/cli' = { version = 'latest', allow_builds = ['@googleworkspace/cli'] }
 'npm:@openai/codex' = 'latest'
 'npm:claudefm' = 'latest'
+'npm:fieldtheory' = 'latest'
 'npm:git-trim' = 'latest'
 'npm:gnomon' = 'latest'
 'npm:npm-check-updates' = 'latest'
