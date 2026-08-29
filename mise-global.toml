@@ -19,4 +19,4 @@ node = "lts"
 'npm:socket.io-cli' = 'latest'
 'npm:webtorrent-cli' = { version = 'latest', allow_builds = ['bufferutil', 'ip-set', 'node-datachannel', 'protobufjs', 'utf-8-validate', 'utp-native'] }
 'npm:wscat' = 'latest'
-pnpm = 'latest'
+pnpm = '11'
