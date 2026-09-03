@@ -128,8 +128,8 @@ if [[ -d /Applications/Xcode.app ]]; then
     brew install Nonchalant/appicon/appicon || brew upgade Nonchalant/appicon/appicon
 fi
 
-# Install random tools in Go and Node.
 go install github.com/shurcooL/markdownfmt@latest
+go install github.com/asheshgoplani/agent-deck/cmd/agent-deck@latest
 
 for integration in claude codex cursor opencode; do
 	herdr integration install "$integration"
