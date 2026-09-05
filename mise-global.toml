@@ -8,6 +8,7 @@ node = "lts"
 'npm:@github/copilot' = 'latest'
 'npm:@googleworkspace/cli' = { version = 'latest', allow_builds = ['@googleworkspace/cli'] }
 'npm:@openai/codex' = 'latest'
+'npm:ccusage' = 'latest'
 'npm:claudefm' = 'latest'
 'npm:fieldtheory' = 'latest'
 'npm:git-trim' = 'latest'
