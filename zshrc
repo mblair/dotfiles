@@ -230,28 +230,34 @@ _yt_transcribe_setup() {
 	typeset -g _YT_TRANSCRIBE_WHISPER_LANG="$whisper_lang"
 }
 
-_yt_transcribe_file() {
+_yt_transcribe_file() (
 	emulate -L zsh
 	set -o pipefail
 
 	local cmd="$1"
 	local media_path="${2:A}"
-	local out_dir="${4:-${media_path:h}}"
+	local out_dir="${3:-${media_path:h}}"
 	local out_base="$out_dir/${${media_path:t}%.*}"
-	local wav_path="$3/${${media_path:t}%.*}.wav"
-	local txt_path="$out_base.txt"
+	local tmpdir
+	# Publish only complete transcripts; keep staging on the destination filesystem.
+	tmpdir="$(mktemp -d "$out_dir/.yt-transcribe.XXXXXX")" || return 1
+	trap 'rm -rf -- "$tmpdir"' EXIT
+	trap 'exit 130' INT
+	trap 'exit 143' TERM
 
 	echo "$cmd: converting $media_path to wav" >&2
-	ffmpeg -hide_banner -loglevel error -y -i "$media_path" \
-		-ar 16000 -ac 1 -c:a pcm_s16le "$wav_path" || return 1
+	ffmpeg -nostdin -hide_banner -loglevel error -y -i "$media_path" \
+		-ar 16000 -ac 1 -c:a pcm_s16le "$tmpdir/audio.wav" </dev/null || return 1
 
 	echo "$cmd: transcribing $media_path with whisper.cpp" >&2
 	"$_YT_TRANSCRIBE_WHISPER_CLI" -m "$_YT_TRANSCRIBE_WHISPER_MODEL" \
-		-l "$_YT_TRANSCRIBE_WHISPER_LANG" -f "$wav_path" \
-		-otxt -of "$out_base" -np >/dev/null || return 1
+		-l "$_YT_TRANSCRIBE_WHISPER_LANG" -f "$tmpdir/audio.wav" \
+		-otxt -of "$tmpdir/transcript" -np </dev/null >/dev/null || return 1
+	[[ -s "$tmpdir/transcript.txt" ]] || return 1
+	mv -f -- "$tmpdir/transcript.txt" "$out_base.txt" || return 1
 
-	echo "$txt_path"
-}
+	print -r -- "$out_base.txt"
+)
 
 yt-transcribe-local() (
 	emulate -L zsh
@@ -263,23 +269,19 @@ yt-transcribe-local() (
 
 	_yt_transcribe_setup yt-transcribe-local || return 1
 
-	local tmpdir
-	tmpdir="$(mktemp -d "${TMPDIR:-/tmp}/yt-transcribe-local.XXXXXX")" || return 1
-	trap 'rm -rf "$tmpdir"' EXIT
-
 	local target media_path
 	for target in "$@"; do
 		if [[ -d "$target" ]]; then
 			local found=0
 			for media_path in "$target"/*.(mp4|mkv|webm|m4a|mp3|wav|opus|flac|mov)(N); do
 				found=1
-				_yt_transcribe_file yt-transcribe-local "$media_path" "$tmpdir" || return 1
+				_yt_transcribe_file yt-transcribe-local "$media_path" || return 1
 			done
 			if [[ "$found" -eq 0 ]]; then
 				echo "yt-transcribe-local: no supported media files found in $target" >&2
 			fi
 		elif [[ -f "$target" ]]; then
-			_yt_transcribe_file yt-transcribe-local "$target" "$tmpdir" || return 1
+			_yt_transcribe_file yt-transcribe-local "$target" || return 1
 		else
 			echo "yt-transcribe-local: not a file or directory: $target" >&2
 			return 1
@@ -287,14 +289,100 @@ yt-transcribe-local() (
 	done
 )
 
+# Download YouTube videos/playlists as WebM/MKV + local Whisper .txt transcripts.
+# Usage: yt-download-transcribe URL [DIRECTORY] (defaults to the current directory).
+# Reruns find videos by ID, resume partial downloads, and fill in missing transcripts.
+yt-download-transcribe() (
+	emulate -L zsh
+	set -o pipefail
+
+	if [[ $# -eq 1 && ( "$1" == --help || "$1" == -h ) ]]; then
+		print 'Usage: yt-download-transcribe URL [DIRECTORY]'
+		print 'Download a YouTube video or playlist plus .txt transcripts; skip completed files.'
+		return 0
+	fi
+	if (( $# < 1 || $# > 2 )) || [[ -z "$1" ]]; then
+		print -u2 'Usage: yt-download-transcribe URL [DIRECTORY]'
+		return 2
+	fi
+	if ! command -v yt-dlp >/dev/null 2>&1; then
+		print -u2 'yt-download-transcribe: yt-dlp not found'
+		return 1
+	fi
+	_yt_transcribe_setup yt-download-transcribe || return 1
+
+	local url="$1" out_dir="${2:-.}" tmpdir
+	mkdir -p -- "$out_dir" || return 1
+	out_dir="${out_dir:A}"
+	tmpdir="$(mktemp -d "${TMPDIR:-/tmp}/yt-download-transcribe.XXXXXX")" || return 1
+	trap 'rm -rf -- "$tmpdir"' EXIT
+	trap 'exit 130' INT
+	trap 'exit 143' TERM
+
+	command yt-dlp --ignore-config --yes-playlist --flat-playlist \
+		--print '%(id)s' -- "$url" > "$tmpdir/ids" || return 1
+	if [[ ! -s "$tmpdir/ids" ]]; then
+		print -u2 'yt-download-transcribe: no videos found'
+		return 1
+	fi
+
+	local video_id media_path txt_path
+	local -a media_files
+	local -A seen_ids
+	local completed=0 skipped=0 failed=0
+	while IFS= read -r video_id; do
+		if [[ ! "$video_id" =~ '^[A-Za-z0-9_-]{11}$' ]]; then
+			print -u2 -- "yt-download-transcribe: invalid YouTube video ID: $video_id"
+			(( failed += 1 ))
+			continue
+		fi
+		[[ -n "${seen_ids[$video_id]}" ]] && continue
+		seen_ids[$video_id]=1
+		media_files=( "$out_dir"/*"[$video_id]".(webm|mkv|mp4)(N) )
+		if (( ${#media_files} == 0 )); then
+			if ! command yt-dlp --ignore-config --no-playlist --no-overwrites --continue \
+				--merge-output-format 'webm/mkv' --concurrent-fragments 4 \
+				--sleep-requests 0.75 --sleep-interval 2 --max-sleep-interval 5 \
+				-P "$out_dir" -o '%(title)s [%(id)s].%(ext)s' \
+				-- "https://www.youtube.com/watch?v=$video_id" </dev/null; then
+				(( failed += 1 ))
+				continue
+			fi
+			media_files=( "$out_dir"/*"[$video_id]".(webm|mkv|mp4)(N) )
+		fi
+		if (( ${#media_files} != 1 )) || [[ ! -s "${media_files[1]}" ]]; then
+			print -u2 -- "yt-download-transcribe: expected one nonempty video for $video_id; found ${#media_files}"
+			(( failed += 1 ))
+			continue
+		fi
+		media_path="${media_files[1]}"
+		txt_path="${media_path:r}.txt"
+		if [[ -s "$txt_path" ]]; then
+			print -- "yt-download-transcribe: already complete: ${media_path:t}"
+			(( skipped += 1 ))
+			continue
+		fi
+
+		if _yt_transcribe_file yt-download-transcribe "$media_path" >/dev/null; then
+			print -- "yt-download-transcribe: complete: $txt_path"
+			(( completed += 1 ))
+		else
+			print -u2 -- "yt-download-transcribe: transcription failed: $media_path"
+			(( failed += 1 ))
+		fi
+	done < "$tmpdir/ids"
+
+	print -- "yt-download-transcribe: $completed completed, $skipped already complete, $failed failed"
+	(( failed == 0 ))
+)
+
 # Transcribe an audio/video file with whisper.cpp -> [basename].txt beside the file.
 # Usage: audio-transcribe recording.m4a
 audio-transcribe() (
 	emulate -L zsh
-	set -o pipefail
 
 	local media_path="$1"
-	if [[ -z "$media_path" ]]; then
+	if (( $# != 1 )) || [[ -z "$media_path" ]]; then
 		echo "Usage: audio-transcribe FILE" >&2
 		return 1
 	fi
@@ -303,13 +391,7 @@ audio-transcribe() (
 		return 1
 	fi
 
-	_yt_transcribe_setup audio-transcribe || return 1
-
-	local tmpdir
-	tmpdir="$(mktemp -d "${TMPDIR:-/tmp}/audio-transcribe.XXXXXX")" || return 1
-	trap 'rm -rf "$tmpdir"' EXIT
-
-	_yt_transcribe_file audio-transcribe "$media_path" "$tmpdir" || return 1
+	yt-transcribe-local "$media_path"
 )
 
 yt-transcribe() (
@@ -341,7 +423,7 @@ yt-transcribe() (
 		"$url")" || return 1
 	audio_path="${audio_path##*$'\n'}"
 
-	_yt_transcribe_file yt-transcribe "$audio_path" "$tmpdir" "${PWD:A}" || return 1
+	_yt_transcribe_file yt-transcribe "$audio_path" "${PWD:A}" || return 1
 )
 
 av1tohevc() {
