@@ -129,7 +129,8 @@ if [[ -d /Applications/Xcode.app ]]; then
 fi
 
 go install github.com/shurcooL/markdownfmt@latest
-go install github.com/asheshgoplani/agent-deck/cmd/agent-deck@latest
+# Use checksum-verified release binaries to avoid Go checksum database lookup failures.
+curl -fsSL https://raw.githubusercontent.com/asheshgoplani/agent-deck/main/install.sh | bash -s -- --non-interactive
 
 for integration in claude codex cursor opencode; do
 	herdr integration install "$integration"
