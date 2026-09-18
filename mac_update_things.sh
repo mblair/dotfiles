@@ -78,6 +78,25 @@ update_autowt_mise_version() {
 	mise use -g "go:github.com/irskep/autowt@${_autowt_version}"
 }
 
+# pnpm's global virtual store symlinks every mise npm:* install into
+# ~/Library/pnpm/store. Anything that wipes that store (e.g. mac-cleanup's
+# "pnpm Store" target) leaves the shims dangling; force-reinstall only those.
+repair_broken_mise_npm_tools() {
+	local _tool _dir _bin _target
+	mise ls --current 2>/dev/null | awk '$1 ~ /^npm:/ {print $1}' | sort -u | while read -r _tool; do
+		_dir=$(mise where "${_tool}" 2>/dev/null) || continue
+		for _bin in "${_dir}"/bin/*; do
+			[[ -f "${_bin}" ]] || continue
+			_target=$(grep -o 'cmd-shim-target=.*' "${_bin}" | cut -d= -f2-)
+			if [[ -n "${_target}" && ! -e "${_target}" ]]; then
+				echo "${_tool}: broken shim (${_target} missing), reinstalling" >&2
+				mise install --force "${_tool}" || true
+				break
+			fi
+		done
+	done
+}
+
 #TODO: break these all up into functions, make them individually addressable
 
 export PATH=/usr/local/bin:$PATH
@@ -136,7 +155,8 @@ for integration in claude codex cursor opencode; do
 	herdr integration install "$integration"
 done
 
-codex mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
+repair_broken_mise_npm_tools
+codex mcp add chrome-devtools -- npx chrome-devtools-mcp@latest || true
 claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest || true
 
 update_autowt_mise_version
