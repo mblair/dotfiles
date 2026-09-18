@@ -215,7 +215,8 @@ echo "=== New Homebrew formulae (last week) ==="
 _HOMEBREW_CORE_PATH="${HOME}/external_src/homebrew-core"
 if [[ -d "${_HOMEBREW_CORE_PATH}" ]]; then
 	git -C "${_HOMEBREW_CORE_PATH}" fetch --quiet
-	_NEW_FORMULAE=$(git -C "${_HOMEBREW_CORE_PATH}" log --since="1 week ago" --diff-filter=A --pretty=format: --name-only -- Formula | sort -u | grep -v '^$')
+	# grep -v exits 1 when there are no new formulae; don't let pipefail + set -e kill the script.
+	_NEW_FORMULAE=$(git -C "${_HOMEBREW_CORE_PATH}" log --since="1 week ago" --diff-filter=A --pretty=format: --name-only -- Formula | sort -u | grep -v '^$' || true)
 	if [[ -n "${_NEW_FORMULAE}" ]]; then
 		echo "${_NEW_FORMULAE}" | while read -r formula_path; do
 			formula_name=$(basename "${formula_path}" .rb)
