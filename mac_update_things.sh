@@ -87,7 +87,8 @@ repair_broken_mise_npm_tools() {
 		_dir=$(mise where "${_tool}" 2>/dev/null) || continue
 		for _bin in "${_dir}"/bin/*; do
 			[[ -f "${_bin}" ]] || continue
-			_target=$(grep -o 'cmd-shim-target=.*' "${_bin}" | cut -d= -f2-)
+			# Valid executables may not be pnpm shims; grep's no-match status is expected.
+			_target=$(grep -o 'cmd-shim-target=.*' "${_bin}" | cut -d= -f2-) || continue
 			if [[ -n "${_target}" && ! -e "${_target}" ]]; then
 				echo "${_tool}: broken shim (${_target} missing), reinstalling" >&2
 				mise install --force "${_tool}" || true
