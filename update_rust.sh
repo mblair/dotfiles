@@ -12,8 +12,9 @@ if ! rustup update; then
 	rustup update
 fi
 
-cargo install cargo-edit superseedr
-cargo install cargo-shear --locked
+# Use the updated stable toolchain even if the default or current directory pins an older one.
+rustup run stable cargo install cargo-edit superseedr
+rustup run stable cargo install cargo-shear --locked
 
 upgrade_cargo_project() {
 	local _project_path=$1
