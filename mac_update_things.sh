@@ -61,23 +61,6 @@ list_wedged_employer_clones() {
 	done
 }
 
-update_autowt_mise_version() {
-	local _autowt_version
-
-	_autowt_version=$(
-		go list -m -versions github.com/irskep/autowt |
-			tr ' ' '\n' |
-			awk '/^v0\.6\.0$/ {stable = $0} /^v0\.6\.0-rc[0-9]+$/ {rc = $0} END {print stable ? stable : rc}'
-	)
-
-	if [[ -z "${_autowt_version}" ]]; then
-		echo "Unable to find a v0.6.0 autowt version from Go module metadata" >&2
-		return 0
-	fi
-
-	mise use -g "go:github.com/irskep/autowt@${_autowt_version}"
-}
-
 # pnpm's global virtual store symlinks every mise npm:* install into
 # ~/Library/pnpm/store. Anything that wipes that store (e.g. mac-cleanup's
 # "pnpm Store" target) leaves the shims dangling; force-reinstall only those.
@@ -160,7 +143,6 @@ repair_broken_mise_npm_tools
 codex mcp add chrome-devtools -- npx chrome-devtools-mcp@latest || true
 claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest || true
 
-update_autowt_mise_version
 (
 	cd "${_HERE}"
 	mise install
