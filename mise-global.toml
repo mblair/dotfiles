@@ -1,5 +1,5 @@
 [settings]
-npm.package_manager = "pnpm"
+npm.package_manager = "auto"
 
 [tools]
 "go:github.com/irskep/autowt" = "v0.6.0"
@@ -20,4 +20,4 @@ node = "lts"
 'npm:socket.io-cli' = 'latest'
 'npm:webtorrent-cli' = { version = 'latest', allow_builds = ['bufferutil', 'ip-set', 'node-datachannel', 'protobufjs', 'utf-8-validate', 'utp-native'] }
 'npm:wscat' = 'latest'
-pnpm = '11'
+'npm:pnpm' = '11'
