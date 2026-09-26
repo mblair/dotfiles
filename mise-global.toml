@@ -19,4 +19,4 @@ node = "lts"
 'npm:oxlint' = 'latest'
 'npm:socket.io-cli' = { version = 'latest', allow_low_downloads = true }
 'npm:wscat' = 'latest'
-'npm:pnpm' = '12'
+'npm:pnpm' = { version = '12', allow_builds = ['pnpm'] }
