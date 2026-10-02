@@ -153,7 +153,8 @@ eval "$(mise activate bash)"
 
 curl -fsSL https://bun.com/install | bash
 
-curl -fsSL https://antigravity.google/cli/install.sh | bash
+# The installer endpoint can return gzip even without Accept-Encoding.
+curl --compressed -fsSL https://antigravity.google/cli/install.sh | bash
 
 "${_HERE}"/install_claude.sh
 
