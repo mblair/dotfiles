@@ -167,6 +167,14 @@ done
 brew install --cask gcloud-cli emacs-app || true
 
 "${_HERE}"/update.sh --prefix external
+
+# CMake rebuilds changed sources and reuses up-to-date build outputs.
+_WHISPER_DIR="${WHISPER_CPP_DIR:-$HOME/external_src/whisper.cpp}"
+if [[ -d "${_WHISPER_DIR}" ]]; then
+	cmake -S "${_WHISPER_DIR}" -B "${_WHISPER_DIR}/build"
+	cmake --build "${_WHISPER_DIR}/build" --config Release --parallel
+fi
+
 "${_HERE}"/update.sh --prefix ${_EMPLOYER} --recurse
 
 if [[ "${_RESOLVE_CLONES}" == true ]]; then
