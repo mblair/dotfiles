@@ -31,6 +31,18 @@ while [[ $# -gt 0 ]]; do
 	esac
 done
 
+# Shells can retain expired tokens after the saved gh login has been refreshed.
+# Fall back only for rejected credentials, and only after verifying that login.
+if command -v gh >/dev/null 2>&1 && [[ -n "${GH_TOKEN:-}${GITHUB_TOKEN:-}" ]]; then
+	_gh_auth_error=$(gh api user --silent 2>&1) || {
+		if [[ "${_gh_auth_error}" == *"HTTP 401"* ]] && env -u GH_TOKEN -u GITHUB_TOKEN gh api user --silent >/dev/null 2>&1; then
+			echo "Exported GitHub credentials were rejected; using the saved gh login for this update."
+			unset GH_TOKEN GITHUB_TOKEN
+		fi
+	}
+	unset _gh_auth_error
+fi
+
 list_wedged_employer_clones() {
 	_outer_dir=~/"${_EMPLOYER}"_src
 	[[ -d "${_outer_dir}" ]] || return 0
