@@ -3,12 +3,12 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "commander": "^14.0.3",
-    "openai": "^6.33.0"
+    "commander": "^15.0.0",
+    "openai": "^7.43.0"
   },
   "devDependencies": {
-    "@types/node": "^25.5.2",
-    "@typescript/native-preview": "7.0.0-dev.20260406.1",
-    "npm-check-updates": "^20.0.0"
+    "@types/node": "^26.6.5",
+    "@typescript/native-preview": "7.0.0-dev.20260707.2",
+    "npm-check-updates": "^23.1.1"
   }
 }
