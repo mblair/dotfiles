@@ -15,6 +15,7 @@ RECURSE=false
 RECOVER_DIRTY=false
 LAST_PATH_IS_GIT_REPO=false
 UPDATED_REPOS=()
+SKIPPED_WORKTREE_REPOS=()
 SKIPPED_IN_PROGRESS_REPOS=()
 SKIPPED_UNMERGED_REPOS=()
 SKIPPED_DIRTY_REPOS=()
@@ -42,6 +43,13 @@ is_git_repo() {
 	git rev-parse --is-inside-work-tree &>/dev/null
 }
 
+is_linked_git_worktree() {
+	local _worktree_git_dir _common_git_dir
+	_worktree_git_dir=$(git rev-parse --path-format=absolute --git-dir) || return 1
+	_common_git_dir=$(git rev-parse --path-format=absolute --git-common-dir) || return 1
+	[[ "${_worktree_git_dir}" != "${_common_git_dir}" ]]
+}
+
 update_repo_path() {
 	_repo_path=$1
 	LAST_PATH_IS_GIT_REPO=false
@@ -50,6 +58,13 @@ update_repo_path() {
 	cd "${_repo_path}"
 	if is_git_repo; then
 		LAST_PATH_IS_GIT_REPO=true
+		# Linked worktrees share refs with their main clone. Leave their branches
+		# and files alone, and keep LAST_PATH_IS_GIT_REPO true to prevent recursion.
+		if is_linked_git_worktree; then
+			echo "Skipping linked git worktree: ${_repo_path}"
+			SKIPPED_WORKTREE_REPOS+=("${_repo_path}")
+			return 0
+		fi
 		if [[ "${PREFIX}" == descript ]]; then
 			delete_descript_jest_cache_dirs
 		fi
@@ -206,6 +221,7 @@ fi
 
 echo "=== update.sh summary for ${PREFIX} ==="
 print_repo_group "updated" ${UPDATED_REPOS[@]+"${UPDATED_REPOS[@]}"}
+print_repo_group "skipped (linked worktree)" ${SKIPPED_WORKTREE_REPOS[@]+"${SKIPPED_WORKTREE_REPOS[@]}"}
 print_repo_group "skipped (in-progress git op)" ${SKIPPED_IN_PROGRESS_REPOS[@]+"${SKIPPED_IN_PROGRESS_REPOS[@]}"}
 print_repo_group "skipped (unmerged paths)" ${SKIPPED_UNMERGED_REPOS[@]+"${SKIPPED_UNMERGED_REPOS[@]}"}
 print_repo_group "skipped (dirty)" ${SKIPPED_DIRTY_REPOS[@]+"${SKIPPED_DIRTY_REPOS[@]}"}
