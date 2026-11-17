@@ -56,13 +56,13 @@ upgrade_cargo_project() {
 	cargo clean
 }
 
-_rust_experiments_dir="${HOME}/matthewblair87@gmail.com - Google Drive/My Drive/experiments/rust"
-if [[ -d "${_rust_experiments_dir}" ]]; then
-	for _project_path in "${_rust_experiments_dir}"/*; do
-		if [[ -d "${_project_path}" ]]; then
-			upgrade_cargo_project "${_project_path}"
-		fi
-	done
-fi
+# _rust_experiments_dir="${HOME}/matthewblair87@gmail.com - Google Drive/My Drive/experiments/rust"
+# if [[ -d "${_rust_experiments_dir}" ]]; then
+# 	for _project_path in "${_rust_experiments_dir}"/*; do
+# 		if [[ -d "${_project_path}" ]]; then
+# 			upgrade_cargo_project "${_project_path}"
+# 		fi
+# 	done
+# fi
 
 upgrade_cargo_project "${HOME}/my_src/mattyb.rs"
