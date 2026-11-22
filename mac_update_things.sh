@@ -168,6 +168,41 @@ curl -fsSL https://bun.com/install | bash
 # The installer endpoint can return gzip even without Accept-Encoding.
 curl --compressed -fsSL https://antigravity.google/cli/install.sh | bash
 
+python3 - <<'PY'
+import json
+import os
+from pathlib import Path
+from stat import S_IMODE
+from tempfile import NamedTemporaryFile
+
+settings_path = (Path.home() / ".gemini/antigravity-cli/settings.json").resolve()
+try:
+    with settings_path.open(encoding="utf-8") as settings_file:
+        settings = json.load(settings_file)
+        mode = S_IMODE(os.fstat(settings_file.fileno()).st_mode)
+except FileNotFoundError:
+    settings = {}
+    mode = 0o600
+
+if not isinstance(settings, dict):
+    raise SystemExit(f"Expected a JSON object in {settings_path}")
+if settings.get("modelProvider") != "gemini":
+    settings["modelProvider"] = "gemini"
+    settings_path.parent.mkdir(parents=True, exist_ok=True)
+    temp_file = NamedTemporaryFile(
+        mode="w", encoding="utf-8", dir=settings_path.parent, delete=False
+    )
+    temp_path = Path(temp_file.name)
+    try:
+        with temp_file:
+            json.dump(settings, temp_file, indent=2, ensure_ascii=False)
+            temp_file.write("\n")
+        temp_path.chmod(mode)
+        temp_path.replace(settings_path)
+    finally:
+        temp_path.unlink(missing_ok=True)
+PY
+
 "${_HERE}"/install_claude.sh
 
 for _pipx in token-count llm shot-scraper black ttok git-delete-merged-branches sqlite-utils; do
