@@ -13,7 +13,7 @@ if ! rustup update; then
 fi
 
 # Use the updated stable toolchain even if the default or current directory pins an older one.
-rustup run stable cargo install cargo-edit superseedr
+rustup run stable cargo install cargo-edit superseedr bttf
 rustup run stable cargo install cargo-shear --locked
 
 upgrade_cargo_project() {
